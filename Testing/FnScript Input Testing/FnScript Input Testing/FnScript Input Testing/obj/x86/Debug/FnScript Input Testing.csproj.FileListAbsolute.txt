@@ -1,0 +1,17 @@
+C:\Users\JDos\Documents\Projects\Dynamo\Source\Windows 7_Phone7_Xbox360\FnScript Input Testing\FnScript Input Testing\FnScript Input Testing\bin\x86\Debug\FnScript Input Testing.exe
+C:\Users\JDos\Documents\Projects\Dynamo\Source\Windows 7_Phone7_Xbox360\FnScript Input Testing\FnScript Input Testing\FnScript Input Testing\bin\x86\Debug\FnScript Input Testing.pdb
+C:\Users\JDos\Documents\Projects\Dynamo\Source\Windows 7_Phone7_Xbox360\FnScript Input Testing\FnScript Input Testing\FnScript Input Testing\bin\x86\Debug\Dynamo.dll
+C:\Users\JDos\Documents\Projects\Dynamo\Source\Windows 7_Phone7_Xbox360\FnScript Input Testing\FnScript Input Testing\FnScript Input Testing\bin\x86\Debug\Dynamo.pdb
+C:\Users\JDos\Documents\Projects\Dynamo\Source\Windows 7_Phone7_Xbox360\FnScript Input Testing\FnScript Input Testing\FnScript Input Testing\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\Users\JDos\Documents\Projects\Dynamo\Source\Windows 7_Phone7_Xbox360\FnScript Input Testing\FnScript Input Testing\FnScript Input Testing\obj\x86\Debug\Microsoft.Xna.Framework.RuntimeProfile.txt
+C:\Users\JDos\Documents\Projects\Dynamo\Source\Windows 7_Phone7_Xbox360\FnScript Input Testing\FnScript Input Testing\FnScript Input Testing\obj\x86\Debug\FnScript Input Testing.exe
+C:\Users\JDos\Documents\Projects\Dynamo\Source\Windows 7_Phone7_Xbox360\FnScript Input Testing\FnScript Input Testing\FnScript Input Testing\obj\x86\Debug\FnScript Input Testing.pdb
+D:\Data\My Documents\Projects\Dynamo\Source\Windows 7_Phone7_Xbox360\FnScript Input Testing\FnScript Input Testing\FnScript Input Testing\obj\x86\Debug\FnScript Input Testing.csprojResolveAssemblyReference.cache
+D:\Data\My Documents\Projects\Dynamo\Source\Windows 7_Phone7_Xbox360\FnScript Input Testing\FnScript Input Testing\FnScript Input Testing\obj\x86\Debug\Microsoft.Xna.Framework.RuntimeProfile.txt
+D:\Data\My Documents\Projects\Dynamo\Source\Windows 7_Phone7_Xbox360\FnScript Input Testing\FnScript Input Testing\FnScript Input Testing\obj\x86\Debug\FnScript Input Testing.exe
+D:\Data\My Documents\Projects\Dynamo\Source\Windows 7_Phone7_Xbox360\FnScript Input Testing\FnScript Input Testing\FnScript Input Testing\bin\x86\Debug\FnScript Input Testing.exe
+D:\Data\My Documents\Projects\Dynamo\Source\Windows 7_Phone7_Xbox360\FnScript Input Testing\FnScript Input Testing\FnScript Input Testing\bin\x86\Debug\FnScript Input Testing.pdb
+D:\Data\My Documents\Projects\Dynamo\Source\Windows 7_Phone7_Xbox360\FnScript Input Testing\FnScript Input Testing\FnScript Input Testing\bin\x86\Debug\Dynamo.dll
+D:\Data\My Documents\Projects\Dynamo\Source\Windows 7_Phone7_Xbox360\FnScript Input Testing\FnScript Input Testing\FnScript Input Testing\bin\x86\Debug\Dynamo.pdb
+D:\Data\My Documents\Projects\Dynamo\Source\Windows 7_Phone7_Xbox360\FnScript Input Testing\FnScript Input Testing\FnScript Input Testing\obj\x86\Debug\FnScript Input Testing.pdb
+D:\Data\My Documents\Projects\Dynamo\Source\Windows 7_Phone7_Xbox360\FnScript Input Testing\FnScript Input Testing\FnScript Input Testing\bin\x86\Debug\Content\Marvel What.xnb
