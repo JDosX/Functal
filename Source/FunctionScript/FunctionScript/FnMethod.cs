@@ -121,8 +121,8 @@ namespace FunctionScript
 
         internal override bool IsCachable()
         {
-            //The method is only cachable if it is marked cachable with compile flags
-            //And its arguments are cachable
+            // The method is only cachable if it is cachable
+            // And its arguments are cachable
 
             // If the method is cachable
             if (CompileFlags != null && CompileFlags.Contains(FnScriptResources.CompileFlags.DO_NOT_CACHE))

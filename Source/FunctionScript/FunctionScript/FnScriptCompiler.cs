@@ -376,7 +376,6 @@ namespace FunctionScript
         private void CacheExpression(ref List<FnObject> ExecutionList)
         {
             //ExecutionList.Last().Flush();
-
             List<FnObject> removableNodes = ExecutionList.Last().CheckAndCache();
 
             //now we remove the un-needed nodes from the List of nodes in the expression

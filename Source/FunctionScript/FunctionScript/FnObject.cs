@@ -59,7 +59,7 @@ namespace FunctionScript
         /// </summary>
         /// <param name="methodParameters"></param>
         /// <returns></returns>
-        internal override FnObject  CreateFnIfWithSameType(FnObject<bool> condition, FnObject trueArg, FnObject falseArg)
+        internal override FnObject CreateFnIfWithSameType(FnObject<bool> condition, FnObject trueArg, FnObject falseArg)
         {
             return new FnIf<T>(condition, trueArg, falseArg);
         }
@@ -80,31 +80,6 @@ namespace FunctionScript
         {
         }
     }
-
-    //OLD ISCACHABLE METHOD
-    /*/// <summary>
-    /// Determines if the FnObject is Cachable
-    /// </summary>
-    /// <returns></returns>
-    public Boolean IsCachable()
-    {
-        if (CompileFlags.Contains(FnScriptResources.CompileFlags.DO_NOT_CACHE))
-        {
-            return false;
-        }
-        else if (_MethodParameters != null)
-        {
-            for (Int32 i = 0; i < _MethodParameters.Count; i++)
-            {
-                if (!_MethodParameters[i].IsCachable())
-                {
-                    return false;
-                }
-            }
-        }
-        return true;
-    }*/
-
 
 
     //OLD CHECK AND CACHE METHOD
