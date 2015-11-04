@@ -39,6 +39,21 @@ namespace FunctionScript
             return false;
         }
 
+        internal override FnObject CheckAndCache()
+        {
+            // Optimize child FnObjects
+            Condition = Condition.CheckAndCache() as FnObject<Boolean>;
+            TrueArg = TrueArg.CheckAndCache() as FnObject<T>;
+            FalseArg = FalseArg.CheckAndCache() as FnObject<T>;
+
+            // Optimize this node
+            if (IsCachable())
+            {
+                return new FnConstant<T>(GetValue());
+            }
+            return this;
+        }
+
         public override T GetValue()
         {
             if (Condition.GetValue())

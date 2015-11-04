@@ -145,6 +145,31 @@ namespace FunctionScript
             return true;
         }
 
+        internal override FnObject CheckAndCache()
+        {
+            // Optimize method arguments
+            for (int i = 0; i < ArgsInfo.Length; i++)
+            {
+                // Assign the optimized method arguments using reflection
+                ArgsInfo[i].SetValue(this, (ArgsInfo[i].GetValue(this) as FnObject).CheckAndCache());
+            }
+
+            // Optimize this node
+            FnObject returnValue;
+            if (IsCachable())
+            {
+                returnValue = new FnConstant<T>(GetValue());
+            }
+            else
+            {
+                returnValue = this;
+            }
+
+            ClearDataPostCache();
+
+            return returnValue;
+        }
+
         /// <summary>
         /// Clears any data this is no longer needed after an FnMethod has been cached
         /// </summary>

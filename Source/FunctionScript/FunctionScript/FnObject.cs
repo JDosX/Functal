@@ -24,7 +24,7 @@ namespace FunctionScript
         /// <summary>
         /// Checks the execution tree stemming from this FnObject and caches all acceptable nodes
         /// </summary>
-        internal abstract List<FnObject> CheckAndCache();
+        internal abstract FnObject CheckAndCache();
         /// <summary>
         /// Determines if this FnObject is cachable
         /// </summary>
@@ -65,11 +65,53 @@ namespace FunctionScript
         }
         #endregion
 
-        internal override List<FnObject> CheckAndCache()
-        {
-            //For the moment
-            return null;
-        }
+        /// <summary>
+        /// Optimises the execution tree that branches out from this node.
+        /// Returns a new execution tree root node.
+        /// </summary>
+        //internal override FnObject CheckAndCache()
+        //{
+        //    Boolean cachable = true;
+
+        //    if (IsCachable())
+        //    {
+
+        //    }
+
+
+
+        //    Boolean cachable = true;
+
+        //    if (_MethodParameters != null)
+        //    {
+        //        for (int i = 0; i < _MethodParameters.Count; i++)
+        //        {
+        //            removedObjects.AddRange(_MethodParameters[i].CheckAndCache());
+
+        //            if ((_MethodParameters[i].CompileFlags != null && _MethodParameters[i].CompileFlags.Contains(FnScriptResources.CompileFlags.DO_NOT_CACHE)) || !_MethodParameters[i].IsVariable())
+        //            {
+        //                cachable = false;
+        //            }
+        //        }
+        //    }
+
+        //    if ((CompileFlags == null || !CompileFlags.Contains(FnScriptResources.CompileFlags.DO_NOT_CACHE)) && cachable == true)
+        //    {
+        //        GetValue();
+
+        //        EvalMethod = null;
+
+        //        //record the FnObjects which are being removed from the expression so they can be removed in the master list
+        //        if (_MethodParameters != null)
+        //        {
+        //            removedObjects.AddRange(_MethodParameters);
+        //        }
+
+        //        _MethodParameters = null;
+        //    }
+
+        //    return removedObjects;
+        //}
         #endregion
     }
 
@@ -80,81 +122,4 @@ namespace FunctionScript
         {
         }
     }
-
-
-    //OLD CHECK AND CACHE METHOD
-
-    /*/// <summary>
-    /// Caches the execution tree starting from this FnObject node, it returns a list of all the nodes that were removed during the caching process
-    /// </summary>
-    public List<FnObject> CheckAndCache()
-    {
-        List<FnObject> removedObjects = new List<FnObject>();
-
-        Boolean cachable = true;
-
-        if (_MethodParameters != null)
-        {
-            for (int i = 0; i < _MethodParameters.Count; i++)
-            {
-                removedObjects.AddRange(_MethodParameters[i].CheckAndCache());
-
-                if ((_MethodParameters[i].CompileFlags != null && _MethodParameters[i].CompileFlags.Contains(FnScriptResources.CompileFlags.DO_NOT_CACHE)) || !_MethodParameters[i].IsVariable())
-                {
-                    cachable = false;
-                }
-            }
-        }
-
-        if ((CompileFlags == null || !CompileFlags.Contains(FnScriptResources.CompileFlags.DO_NOT_CACHE)) && cachable == true)
-        {
-            GetValue();
-
-            EvalMethod = null;
-
-            //record the FnObjects which are being removed from the expression so they can be removed in the master list
-            if (_MethodParameters != null)
-            {
-                removedObjects.AddRange(_MethodParameters);
-            }
-
-            _MethodParameters = null;
-        }
-
-        return removedObjects;
-    }*/
-
-
-    //OLD GETVALUE METHOD
-    /*/// <summary>
-    /// Returns the output of the FnObject if it exists. If not, it executes the bound method and then returns the value
-    /// </summary>
-    /// <returns></returns>
-    public T GetValue()
-    {
-        //if we have already executed the bound method, return the result only.
-        //if not, execute the method, store the output in ObjectValue, return ObjectValue
-
-        if (_HasExecuted == false)
-        {
-            if (EvalMethod != null) //if it's a method
-            {
-                ObjectValue = EvalMethod(_MethodParameters);     //Execute bound method and store the result
-            }
-            else                    //it's a condition
-            {
-                if ((_MethodParameters[0] as FnObject<Boolean>).GetValue() == true)
-                {
-                    ObjectValue = (_MethodParameters[1] as FnObject<T>).GetValue();
-                }
-                else
-                {
-                    ObjectValue = (_MethodParameters[2] as FnObject<T>).GetValue();
-                }
-            }
-            _HasExecuted = true;
-        }
-
-        return ObjectValue;
-    }*/
 }

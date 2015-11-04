@@ -32,13 +32,6 @@ namespace FunctionScript
         /// </summary>
         private Dictionary<String, FnObject> Parameters;
         /// <summary>
-        /// This is the list containing all the FnObjects that make up the execution tree.
-        /// The tree is created recursively, and child nodes are nested inside their parents. It is retained for
-        /// profiling and template matching at later stages in compilation, so simple trees can be automatically swapped
-        /// for their native code replacements
-        /// </summary>
-        private List<FnObject> ExecutionList;
-        /// <summary>
         /// This is the root node of the execution tree. This has its own reference for faster access, and
         /// because we know its return type will match the type of the expression
         /// </summary>
@@ -47,13 +40,12 @@ namespace FunctionScript
         /// <summary>
         /// The default constructor, creates a new blank FnScriptExpression
         /// </summary>
-        public FnScriptExpression(List<FnObject> executionList, string rawExpression, Dictionary<String, FnObject> parameters, FnVariable<Boolean> isPreExecute)
+        public FnScriptExpression(FnObject<T> executionNode, string rawExpression, Dictionary<String, FnObject> parameters, FnVariable<Boolean> isPreExecute)
             : base(isPreExecute)
         {
             RawExpression = rawExpression;
 
-            ExecutionList = executionList;
-            ExecutionNode = (ExecutionList.Last() as FnObject<T>);
+            ExecutionNode = executionNode;
 
             Parameters = parameters;
         }

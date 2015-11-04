@@ -298,14 +298,15 @@ namespace FunctionScript
                 }
             }
 
-            //COMMENTED OUT
-            //CacheExpression(ref ExecutionList);
+            // TODO: This is a temporary patch up to push the execution node through the optimiser rather than the entire list
+            // We need to extend node based copilation instead of list based compilation throughout the entire FnScriptCompiler
+            FnObject<T> executionNode = executionList.Last() as FnObject<T>;
 
-            //Now that the expression is completely ready, we can bind the root node to the ExecutionNode variable for faster access
-            //ExecutionNode = (ExecutionList.Last() as FnObject<T>);
+            // Optimize the expression tree
+            CacheExpression(ref executionNode);
 
             //TODO: MAKE THIS RETURN THE CORRECT FNSCRIPTEXPRESSION
-            FnScriptExpression<T> returnExpression = new FnScriptExpression<T>(executionList, rawExpression, parameters, isPreExecute);
+            FnScriptExpression<T> returnExpression = new FnScriptExpression<T>(executionNode, rawExpression, parameters, isPreExecute);
             
             return returnExpression;
         }
@@ -373,16 +374,9 @@ namespace FunctionScript
         /// <summary>
         /// Executes all nodes of the tree that are not marked with a DO_NOT_CACHE flag, deletes child nodes in the execution tree, and then converts that node into a variable
         /// </summary>
-        private void CacheExpression(ref List<FnObject> ExecutionList)
+        private void CacheExpression<T>(ref FnObject<T> executionNode)
         {
-            //ExecutionList.Last().Flush();
-            List<FnObject> removableNodes = ExecutionList.Last().CheckAndCache();
-
-            //now we remove the un-needed nodes from the List of nodes in the expression
-            for (int i = 0; i < removableNodes.Count; i++)
-            {
-                ExecutionList.Remove(removableNodes[i]);
-            }
+            executionNode = executionNode.CheckAndCache() as FnObject<T>;
         }
 
         #region Ghost Argument and Parameter Setup Methods
