@@ -1,0 +1,51 @@
+Have arguments/return types in a table of the form:
+
+--------------------------------
+| Arguments/Operands | Returns |
+--------------------------------
+| (Byte) + (Byte)    | Byte    |
+--------------------------------
+
+OPERATORS
+
+ARITHMETIC OPERATORS
+
++
+-
+*
+/
+%
+
++ - Addition
+
+Adds two operands
+
+(byte) + (byte)
+returns a Byte
+
+(sbyte) + (sbyte)
+returns an SByte
+
+(short) + (short)
+returns a short
+
+(ushort) + (ushort)
+returns a ushort
+
+
+COMPARISON OPERATORS
+
+==
+!=
+>
+>=
+<
+<=
+
+BOOLEAN OPERATORS
+
+!
+&&
+||
+!&&
+!||
