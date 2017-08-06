@@ -41,7 +41,7 @@ namespace FunctionScript
         /// Creates a new blank FnMethod
         /// </summary>
         /// <param name="argumentTypes">The datatype of each consecutive method argument</param>
-        internal FnMethod()
+        public FnMethod()
         {
             Construct(null);
         }
@@ -51,7 +51,7 @@ namespace FunctionScript
         /// </summary>
         /// <param name="argumentTypes">The datatype of each consecutive method argument</param>
         /// <param name="compileFlags">The list of compile flags the method should have</param>
-        internal FnMethod(FnScriptResources.CompileFlags[] compileFlags)
+        public FnMethod(FnScriptResources.CompileFlags[] compileFlags)
         {
             Construct(compileFlags);
         }

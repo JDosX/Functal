@@ -4077,122 +4077,122 @@ namespace FunctionScript
     #region Math.Pow
     internal class FnMethod_Pow_Int32 : FnMethod<Int32>
     {
-        [FnArg] protected FnObject<Int32> Param0;
-        [FnArg] protected FnObject<Int32> Param1;
+        [FnArg] protected FnObject<Int32> Num;
+        [FnArg] protected FnObject<Int32> Pow;
 
         public override Int32 GetValue()
         {
-            return (Int32)Math.Pow(Param0.GetValue(), Param1.GetValue());
+            return (Int32)Math.Pow(Num.GetValue(), Pow.GetValue());
         }
     }
     internal class FnMethod_Pow_UInt32 : FnMethod<UInt32>
     {
-        [FnArg] protected FnObject<UInt32> Param0;
-        [FnArg] protected FnObject<UInt32> Param1;
+        [FnArg] protected FnObject<UInt32> Num;
+        [FnArg] protected FnObject<UInt32> Pow;
 
         public override UInt32 GetValue()
         {
-            return (UInt32)Math.Pow(Param0.GetValue(), Param1.GetValue());
+            return (UInt32)Math.Pow(Num.GetValue(), Pow.GetValue());
         }
     }
     internal class FnMethod_Pow_Int64 : FnMethod<Int64>
     {
-        [FnArg] protected FnObject<Int64> Param0;
-        [FnArg] protected FnObject<Int64> Param1;
+        [FnArg] protected FnObject<Int64> Num;
+        [FnArg] protected FnObject<Int64> Pow;
 
         public override Int64 GetValue()
         {
-            return (Int64)Math.Pow(Param0.GetValue(), Param1.GetValue());
+            return (Int64)Math.Pow(Num.GetValue(), Pow.GetValue());
         }
     }
     internal class FnMethod_Pow_UInt64 : FnMethod<UInt64>
     {
-        [FnArg] protected FnObject<UInt64> Param0;
-        [FnArg] protected FnObject<UInt64> Param1;
+        [FnArg] protected FnObject<UInt64> Num;
+        [FnArg] protected FnObject<UInt64> Pow;
 
         public override UInt64 GetValue()
         {
-            return (UInt64)Math.Pow(Param0.GetValue(), Param1.GetValue());
+            return (UInt64)Math.Pow(Num.GetValue(), Pow.GetValue());
         }
     }
     internal class FnMethod_Pow_Single : FnMethod<Single>
     {
-        [FnArg] protected FnObject<Single> Param0;
-        [FnArg] protected FnObject<Single> Param1;
+        [FnArg] protected FnObject<Single> Num;
+        [FnArg] protected FnObject<Single> Pow;
 
         public override Single GetValue()
         {
-            return (Single)Math.Pow(Param0.GetValue(), Param1.GetValue());
+            return (Single)Math.Pow(Num.GetValue(), Pow.GetValue());
         }
     }
     internal class FnMethod_Pow_Double : FnMethod<Double>
     {
-        [FnArg] protected FnObject<Double> Param0;
-        [FnArg] protected FnObject<Double> Param1;
+        [FnArg] protected FnObject<Double> Num;
+        [FnArg] protected FnObject<Double> Pow;
 
         public override Double GetValue()
         {
-            return Math.Pow(Param0.GetValue(), Param1.GetValue());
+            return Math.Pow(Num.GetValue(), Pow.GetValue());
         }
     }
     #endregion
     #region Math.Round
     internal class FnMethod_Round_Single_1 : FnMethod<Single>
     {
-        [FnArg] protected FnObject<Single> Param0;
+        [FnArg] protected FnObject<Single> Num;
 
         public override Single GetValue()
         {
-            return (Single)Math.Round(Param0.GetValue());
+            return (Single)Math.Round(Num.GetValue());
         }
     }
     internal class FnMethod_Round_Double_1 : FnMethod<Double>
     {
-        [FnArg] protected FnObject<Double> Param0;
+        [FnArg] protected FnObject<Double> Num;
 
         public override Double GetValue()
         {
-            return Math.Round(Param0.GetValue());
+            return Math.Round(Num.GetValue());
         }
     }
     internal class FnMethod_Round_Decimal_1 : FnMethod<Decimal>
     {
-        [FnArg] protected FnObject<Decimal> Param0;
+        [FnArg] protected FnObject<Decimal> Num;
 
         public override Decimal GetValue()
         {
-            return Math.Round(Param0.GetValue());
+            return Math.Round(Num.GetValue());
         }
     }
 
     internal class FnMethod_Round_Single_2 : FnMethod<Single>
     {
-        [FnArg] protected FnObject<Single> Param0;
-        [FnArg] protected FnObject<Int32> Param1;
+        [FnArg] protected FnObject<Single> Num;
+        [FnArg] protected FnObject<Int32> Digits;
 
         public override Single GetValue()
         {
-            return (Single)Math.Round(Param0.GetValue(), Param1.GetValue());
+            return (Single)Math.Round(Num.GetValue(), Digits.GetValue());
         }
     }
     internal class FnMethod_Round_Double_2 : FnMethod<Double>
     {
-        [FnArg] protected FnObject<Double> Param0;
-        [FnArg] protected FnObject<Int32> Param1;
+        [FnArg] protected FnObject<Double> Num;
+        [FnArg] protected FnObject<Int32> Digits;
 
         public override Double GetValue()
         {
-            return Math.Round(Param0.GetValue(), Param1.GetValue());
+            return Math.Round(Num.GetValue(), Digits.GetValue());
         }
     }
     internal class FnMethod_Round_Decimal_2 : FnMethod<Decimal>
     {
-        [FnArg] protected FnObject<Decimal> Param0;
-        [FnArg] protected FnObject<Int32> Param1;
+        [FnArg] protected FnObject<Decimal> Num;
+        [FnArg] protected FnObject<Int32> Digits;
 
         public override Decimal GetValue()
         {
-            return Math.Round(Param0.GetValue(), Param1.GetValue());
+            return Math.Round(Num.GetValue(), Digits.GetValue());
         }
     }
     #endregion
@@ -4304,60 +4304,60 @@ namespace FunctionScript
     #region Math.Sqrt
     internal class FnMethod_Sqrt_Single : FnMethod<Single>
     {
-        [FnArg] protected FnObject<Single> Param0;
+        [FnArg] protected FnObject<Single> Num;
 
         public override Single GetValue()
         {
-            return (Single)Math.Sqrt(Param0.GetValue());
+            return (Single)Math.Sqrt(Num.GetValue());
         }
     }
     internal class FnMethod_Sqrt_Double : FnMethod<Double>
     {
-        [FnArg] protected FnObject<Double> Param0;
+        [FnArg] protected FnObject<Double> Num;
 
         public override Double GetValue()
         {
-            return Math.Sqrt(Param0.GetValue());
+            return Math.Sqrt(Num.GetValue());
         }
     }
     #endregion
     #region Math.Tan
     internal class FnMethod_Tan_Single : FnMethod<Single>
     {
-       [FnArg] protected FnObject<Single> Value;
+        [FnArg] protected FnObject<Single> Num;
 
         public override Single GetValue()
         {
-            return (Single)Math.Tan(Value.GetValue());
+            return (Single)Math.Tan(Num.GetValue());
         }
     }
     internal class FnMethod_Tan_Double : FnMethod<Double>
     {
-        [FnArg] protected FnObject<Double> Value;
+        [FnArg] protected FnObject<Double> Num;
 
         public override Double GetValue()
         {
-            return Math.Tan(Value.GetValue());
+            return Math.Tan(Num.GetValue());
         }
     }
     #endregion
     #region Math.Tanh
     internal class FnMethod_Tanh_Single : FnMethod<Single>
     {
-        [FnArg] protected FnObject<Single> Value;
+        [FnArg] protected FnObject<Single> Num;
 
         public override Single GetValue()
         {
-            return (Single)Math.Tanh(Value.GetValue());
+            return (Single)Math.Tanh(Num.GetValue());
         }
     }
     internal class FnMethod_Tanh_Double : FnMethod<Double>
     {
-        [FnArg] protected FnObject<Double> Value;
+        [FnArg] protected FnObject<Double> Num;
 
         public override Double GetValue()
         {
-            return Math.Tanh(Value.GetValue());
+            return Math.Tanh(Num.GetValue());
         }
     }
     #endregion
@@ -4468,14 +4468,14 @@ namespace FunctionScript
     #region Cycle
     internal class FnMethod_Cycle_Int32 : FnMethod<Int32>
     {
-        [FnArg] protected FnObject<Int32> Value;
+        [FnArg] protected FnObject<Int32> Num;
 
         [FnArg] protected FnObject<Int32> LowerBound;
         [FnArg] protected FnObject<Int32> UpperBound;
 
         public override Int32 GetValue()
         {
-            Int32 value = Value.GetValue();
+            Int32 value = Num.GetValue();
 
             Int32 lowerBound = LowerBound.GetValue();
             Int32 upperBound = UpperBound.GetValue();
@@ -4485,14 +4485,14 @@ namespace FunctionScript
     }
     internal class FnMethod_Cycle_Single : FnMethod<Single>
     {
-        [FnArg] protected FnObject<Single> Value;
+        [FnArg] protected FnObject<Single> Num;
 
         [FnArg] protected FnObject<Single> LowerBound;
         [FnArg] protected FnObject<Single> UpperBound;
 
         public override Single GetValue()
         {
-            Single value = Value.GetValue();
+            Single value = Num.GetValue();
 
             Single lowerBound = LowerBound.GetValue();
             Single upperBound = UpperBound.GetValue();
@@ -4624,7 +4624,7 @@ namespace FunctionScript
         /// </summary>
         Random RandomGenerator;
 
-        [FnArg] protected FnObject<Int32> StringLength;
+        [FnArg] protected FnObject<Int32> Length;
 
         public FnMethod_RandomString_WithoutPrefix()
             : base(new FnScriptResources.CompileFlags[]{ FnScriptResources.CompileFlags.DO_NOT_CACHE })
@@ -4635,7 +4635,7 @@ namespace FunctionScript
         public override String GetValue()
         {
             //Convert arguments into parameters
-            Int32 stringLength = StringLength.GetValue();
+            Int32 stringLength = Length.GetValue();
 
             //Our return value
             StringBuilder output = new StringBuilder("", stringLength);
@@ -4654,7 +4654,7 @@ namespace FunctionScript
     {
         Random RandomGenerator;
 
-        [FnArg] protected FnObject<Int32> StringLength;
+        [FnArg] protected FnObject<Int32> Length;
         [FnArg] protected FnObject<String> Prefix;
 
         public FnMethod_RandomString_WithPrefix()
@@ -4666,7 +4666,7 @@ namespace FunctionScript
         public override String GetValue()
         {
             //Convert arguments into parameters
-            Int32 stringLength = StringLength.GetValue();
+            Int32 stringLength = Length.GetValue();
             String prefix = Prefix.GetValue();
             StringBuilder output = new StringBuilder(prefix, stringLength);
 
