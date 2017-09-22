@@ -3810,21 +3810,21 @@ namespace FunctionScript
     internal class FnMethod_Log_CustomBase_Single : FnMethod<Single>
     {
         [FnArg] protected FnObject<Single> Param0;
-        [FnArg] protected FnObject<Single> Param1;
+        [FnArg] protected FnObject<Single> Base;
 
         public override Single GetValue()
         {
-            return (Single)Math.Log(Param0.GetValue(), Param1.GetValue());
+            return (Single)Math.Log(Param0.GetValue(), Base.GetValue());
         }
     }
     internal class FnMethod_Log_CustomBase_Double : FnMethod<Double>
     {
         [FnArg] protected FnObject<Double> Param0;
-        [FnArg] protected FnObject<Double> Param1;
+        [FnArg] protected FnObject<Double> Base;
 
         public override Double GetValue()
         {
-            return Math.Log(Param0.GetValue(), Param1.GetValue());
+            return Math.Log(Param0.GetValue(), Base.GetValue());
         }
     }
     #endregion
@@ -3851,113 +3851,113 @@ namespace FunctionScript
     #region Math.Max
     internal class FnMethod_Max_Byte : FnMethod<Byte>
     {
-        [FnArg] protected FnObject<Byte> Param0;
-        [FnArg] protected FnObject<Byte> Param1;
+        [FnArg] protected FnObject<Byte> A;
+        [FnArg] protected FnObject<Byte> B;
 
         public override Byte GetValue()
         {
-            return Math.Max(Param0.GetValue(), Param1.GetValue());
+            return Math.Max(A.GetValue(), B.GetValue());
         }
     }
     internal class FnMethod_Max_SByte : FnMethod<SByte>
     {
-        [FnArg] protected FnObject<SByte> Param0;
-        [FnArg] protected FnObject<SByte> Param1;
+        [FnArg] protected FnObject<SByte> A;
+        [FnArg] protected FnObject<SByte> B;
 
         public override SByte GetValue()
         {
-            return Math.Max(Param0.GetValue(), Param1.GetValue());
+            return Math.Max(A.GetValue(), B.GetValue());
         }
     }
     internal class FnMethod_Max_Int16 : FnMethod<Int16>
     {
-        [FnArg] protected FnObject<Int16> Param0;
-        [FnArg] protected FnObject<Int16> Param1;
+        [FnArg] protected FnObject<Int16> A;
+        [FnArg] protected FnObject<Int16> B;
 
         public override Int16 GetValue()
         {
-            return Math.Max(Param0.GetValue(), Param1.GetValue());
+            return Math.Max(A.GetValue(), B.GetValue());
         }
     }
     internal class FnMethod_Max_UInt16 : FnMethod<UInt16>
     {
-        [FnArg] protected FnObject<UInt16> Param0;
-        [FnArg] protected FnObject<UInt16> Param1;
+        [FnArg] protected FnObject<UInt16> A;
+        [FnArg] protected FnObject<UInt16> B;
 
         public override UInt16 GetValue()
         {
-            return Math.Max(Param0.GetValue(), Param1.GetValue());
+            return Math.Max(A.GetValue(), B.GetValue());
         }
     }
     internal class FnMethod_Max_Int32 : FnMethod<Int32>
     {
-        [FnArg] protected FnObject<Int32> Param0;
-        [FnArg] protected FnObject<Int32> Param1;
+        [FnArg] protected FnObject<Int32> A;
+        [FnArg] protected FnObject<Int32> B;
 
         public override Int32 GetValue()
         {
-            return Math.Max(Param0.GetValue(), Param1.GetValue());
+            return Math.Max(A.GetValue(), B.GetValue());
         }
     }
     internal class FnMethod_Max_UInt32 : FnMethod<UInt32>
     {
-        [FnArg] protected FnObject<UInt32> Param0;
-        [FnArg] protected FnObject<UInt32> Param1;
+        [FnArg] protected FnObject<UInt32> A;
+        [FnArg] protected FnObject<UInt32> B;
 
         public override UInt32 GetValue()
         {
-            return Math.Max(Param0.GetValue(), Param1.GetValue());
+            return Math.Max(A.GetValue(), B.GetValue());
         }
     }
     internal class FnMethod_Max_Int64 : FnMethod<Int64>
     {
-        [FnArg] protected FnObject<Int64> Param0;
-        [FnArg] protected FnObject<Int64> Param1;
+        [FnArg] protected FnObject<Int64> A;
+        [FnArg] protected FnObject<Int64> B;
 
         public override Int64 GetValue()
         {
-            return Math.Max(Param0.GetValue(), Param1.GetValue());
+            return Math.Max(A.GetValue(), B.GetValue());
         }
     }
     internal class FnMethod_Max_UInt64 : FnMethod<UInt64>
     {
-        [FnArg] protected FnObject<UInt64> Param0;
-        [FnArg] protected FnObject<UInt64> Param1;
+        [FnArg] protected FnObject<UInt64> A;
+        [FnArg] protected FnObject<UInt64> B;
 
         public override UInt64 GetValue()
         {
-            return Math.Max(Param0.GetValue(), Param1.GetValue());
+            return Math.Max(A.GetValue(), B.GetValue());
         }
     }
 
     internal class FnMethod_Max_Single : FnMethod<Single>
     {
-        [FnArg] protected FnObject<Single> Param0;
-        [FnArg] protected FnObject<Single> Param1;
+        [FnArg] protected FnObject<Single> A;
+        [FnArg] protected FnObject<Single> B;
 
         public override Single GetValue()
         {
-            return Math.Max(Param0.GetValue(), Param1.GetValue());
+            return Math.Max(A.GetValue(), B.GetValue());
         }
     }
     internal class FnMethod_Max_Double : FnMethod<Double>
     {
-        [FnArg] protected FnObject<Double> Param0;
-        [FnArg] protected FnObject<Double> Param1;
+        [FnArg] protected FnObject<Double> A;
+        [FnArg] protected FnObject<Double> B;
 
         public override Double GetValue()
         {
-            return Math.Max(Param0.GetValue(), Param1.GetValue());
+            return Math.Max(A.GetValue(), B.GetValue());
         }
     }
     internal class FnMethod_Max_Decimal : FnMethod<Decimal>
     {
-        [FnArg] protected FnObject<Decimal> Param0;
-        [FnArg] protected FnObject<Decimal> Param1;
+        [FnArg] protected FnObject<Decimal> A;
+        [FnArg] protected FnObject<Decimal> B;
 
         public override Decimal GetValue()
         {
-            return Math.Max(Param0.GetValue(), Param1.GetValue());
+            return Math.Max(A.GetValue(), B.GetValue());
         }
     }
     #endregion

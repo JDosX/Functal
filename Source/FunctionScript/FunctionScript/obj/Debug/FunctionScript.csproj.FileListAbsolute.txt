@@ -3,3 +3,8 @@ D:\Data\My Documents\Projects\FunctionScript\Source\FunctionScript\FunctionScrip
 D:\Data\My Documents\Projects\FunctionScript\Source\FunctionScript\FunctionScript\obj\Debug\FunctionScript.csprojResolveAssemblyReference.cache
 D:\Data\My Documents\Projects\FunctionScript\Source\FunctionScript\FunctionScript\obj\Debug\FunctionScript.dll
 D:\Data\My Documents\Projects\FunctionScript\Source\FunctionScript\FunctionScript\obj\Debug\FunctionScript.pdb
+E:\Users\Jayden\Projects\FunctionScript\Source\FunctionScript\FunctionScript\bin\Debug\FunctionScript.dll
+E:\Users\Jayden\Projects\FunctionScript\Source\FunctionScript\FunctionScript\bin\Debug\FunctionScript.pdb
+E:\Users\Jayden\Projects\FunctionScript\Source\FunctionScript\FunctionScript\obj\Debug\FunctionScript.csprojResolveAssemblyReference.cache
+E:\Users\Jayden\Projects\FunctionScript\Source\FunctionScript\FunctionScript\obj\Debug\FunctionScript.dll
+E:\Users\Jayden\Projects\FunctionScript\Source\FunctionScript\FunctionScript\obj\Debug\FunctionScript.pdb
