@@ -1,7 +1,8 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workbench ActiveDocument="FunctionScript/DefaultMethods.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="FunctionScript/FnScriptCompiler.cs">
     <Files>
-      <File FileName="FunctionScript/DefaultMethods.cs" Line="17" Column="42" />
+      <File FileName="FunctionScript/DefaultMethods.cs" Line="4619" Column="5" />
+      <File FileName="FunctionScript/FnScriptCompiler.cs" Line="1351" Column="122" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
