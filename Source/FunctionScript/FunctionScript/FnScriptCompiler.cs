@@ -33,7 +33,6 @@ namespace FunctionScript
             UInt64,
             Single,
             Double,
-            Decimal,
             Operator,
             BinaryOperator,
             UnaryPrefixOperator,
@@ -905,7 +904,7 @@ namespace FunctionScript
                 || profile == FnObjectProfiles.Int16 || profile == FnObjectProfiles.UInt16
                 || profile == FnObjectProfiles.Int32 || profile == FnObjectProfiles.UInt32
                 || profile == FnObjectProfiles.Int64 || profile == FnObjectProfiles.UInt64
-                || profile == FnObjectProfiles.Single || profile == FnObjectProfiles.Double || profile == FnObjectProfiles.Decimal)
+                || profile == FnObjectProfiles.Single || profile == FnObjectProfiles.Double)
             {
                 return true;
             }
@@ -923,7 +922,7 @@ namespace FunctionScript
                 || profile == FnObjectProfiles.Int16 || profile == FnObjectProfiles.UInt16
                 || profile == FnObjectProfiles.Int32 || profile == FnObjectProfiles.UInt32
                 || profile == FnObjectProfiles.Int64 || profile == FnObjectProfiles.UInt64
-                || profile == FnObjectProfiles.Single || profile == FnObjectProfiles.Double || profile == FnObjectProfiles.Decimal)
+                || profile == FnObjectProfiles.Single || profile == FnObjectProfiles.Double)
             {
                 return true;
             }
@@ -942,7 +941,7 @@ namespace FunctionScript
                 || profile == FnObjectProfiles.Int16 || profile == FnObjectProfiles.UInt16
                 || profile == FnObjectProfiles.Int32 || profile == FnObjectProfiles.UInt32
                 || profile == FnObjectProfiles.Int64 || profile == FnObjectProfiles.UInt64
-                || profile == FnObjectProfiles.Single || profile == FnObjectProfiles.Double || profile == FnObjectProfiles.Decimal)
+                || profile == FnObjectProfiles.Single || profile == FnObjectProfiles.Double)
             {
                 return true;
             }
@@ -1392,11 +1391,6 @@ namespace FunctionScript
                             dataType = FnObjectProfiles.Single;
                             break;
                         }
-                    case "m":           //if we have a decimal
-                        {
-                            dataType = FnObjectProfiles.Decimal;
-                            break;
-                        }
                     default:
                         {
                             throw new ArgumentException("the provided numeric suffix has no implementation", suffix);
@@ -1467,11 +1461,6 @@ namespace FunctionScript
                 {
                     Double output = 0;
                     if (!Double.TryParse(expression.Substring(numericStart, numericSuccessor - numericStart), out output)) { throw new ArgumentException("invalid numeric format detected", expression.Substring(numericStart, numericSuccessor - numericStart)); }
-                }
-                else if (dataType == FnObjectProfiles.Decimal)
-                {
-                    Decimal output = 0;
-                    if (!Decimal.TryParse(expression.Substring(numericStart, numericSuccessor - numericStart), out output)) { throw new ArgumentException("invalid numeric format detected", expression.Substring(numericStart, numericSuccessor - numericStart)); }
                 }
                 else
                 {
@@ -1817,10 +1806,6 @@ namespace FunctionScript
             else if (profiles[literalStart] == FnObjectProfiles.Double)
             {
                 ExecutionList.Add(new FnConstant<Double>(Double.Parse(literal)));
-            }
-            else if (profiles[literalStart] == FnObjectProfiles.Decimal)
-            {
-                ExecutionList.Add(new FnConstant<Decimal>(Decimal.Parse(literal)));
             }
             else if (profiles[literalStart] == FnObjectProfiles.StringBody)
             {
