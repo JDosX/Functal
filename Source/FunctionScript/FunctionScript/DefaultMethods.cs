@@ -4644,7 +4644,7 @@ namespace FunctionScript
             for (int i = 0; i < stringLength; i++)
             {
                 //the space character is at position 32 <- why did I do this?
-                output[i] = (Char)(RandomGenerator.Next(33, 126));
+                output.Append((Char)(RandomGenerator.Next(33, 126)));
             }
 
             return output.ToString();
@@ -4674,7 +4674,7 @@ namespace FunctionScript
             for (int i = prefix.Length; i < stringLength; i++)
             {
                 //the space character is at position 32 <- why did I do this?
-                output[i] = (Char)(RandomGenerator.Next(33, 126));
+                output.Append((Char)(RandomGenerator.Next(33, 126)));
             }
 
             return output.ToString();
@@ -4726,7 +4726,7 @@ namespace FunctionScript
             
             for (int i = 0; i < input.Length; i++)
             {
-                output[i] = input[input.Length - 1 - i];
+                output.Append(input[input.Length - 1 - i]);
             }
 
             return output.ToString();

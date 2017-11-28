@@ -9,7 +9,7 @@ namespace FunctionScript
     {
         internal FnVariable<Boolean> IsPreExecute;
 
-        public FnScriptExpression(FnVariable<Boolean> isPreExecute)
+        protected FnScriptExpression(FnVariable<Boolean> isPreExecute)
         {
             IsPreExecute = isPreExecute;
         }

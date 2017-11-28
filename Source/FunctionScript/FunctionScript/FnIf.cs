@@ -5,7 +5,7 @@ using System.Text;
 
 namespace FunctionScript
 {
-    public class FnIf<T> : FnObject<T>
+    internal class FnIf<T> : FnObject<T>
     {
         private FnObject<bool> Condition;
         private FnObject<T> TrueArg;

@@ -8,9 +8,8 @@ E:/Users/Jayden/Projects/FunctionScript/Source/FunctionScript/FunctionScript/bin
 E:/Users/Jayden/Projects/FunctionScript/Source/FunctionScript/FunctionScript/obj/Debug/FunctionScript.csprojResolveAssemblyReference.cache
 E:/Users/Jayden/Projects/FunctionScript/Source/FunctionScript/FunctionScript/obj/Debug/FunctionScript.dll
 E:/Users/Jayden/Projects/FunctionScript/Source/FunctionScript/FunctionScript/obj/Debug/FunctionScript.pdb
-/Users/JDos/Repos/FunctionScript/Source/FunctionScript/FunctionScript/obj/Debug/FunctionScript.csprojResolveAssemblyReference.cache
+/Users/JDos/Repos/FunctionScript/Source/FunctionScript/FunctionScript/bin/Debug/FunctionScript.dll
+/Users/JDos/Repos/FunctionScript/Source/FunctionScript/FunctionScript/bin/Debug/FunctionScript.pdb
 /Users/JDos/Repos/FunctionScript/Source/FunctionScript/FunctionScript/obj/Debug/FunctionScript.csproj.CoreCompileInputs.cache
 /Users/JDos/Repos/FunctionScript/Source/FunctionScript/FunctionScript/obj/Debug/FunctionScript.dll
 /Users/JDos/Repos/FunctionScript/Source/FunctionScript/FunctionScript/obj/Debug/FunctionScript.pdb
-/Users/JDos/Repos/FunctionScript/Source/FunctionScript/FunctionScript/bin/Debug/FunctionScript.dll
-/Users/JDos/Repos/FunctionScript/Source/FunctionScript/FunctionScript/bin/Debug/FunctionScript.pdb
