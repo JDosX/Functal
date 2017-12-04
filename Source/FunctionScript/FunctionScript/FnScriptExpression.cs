@@ -35,12 +35,12 @@ namespace FunctionScript
         /// This is the root node of the execution tree. This has its own reference for faster access, and
         /// because we know its return type will match the type of the expression
         /// </summary>
-        public FnObject<T> ExecutionNode;
+        internal FnObject<T> ExecutionNode;
 
         /// <summary>
         /// The default constructor, creates a new blank FnScriptExpression
         /// </summary>
-        public FnScriptExpression(FnObject<T> executionNode, string rawExpression, Dictionary<String, FnObject> parameters, FnVariable<Boolean> isPreExecute)
+        internal FnScriptExpression(FnObject<T> executionNode, string rawExpression, Dictionary<String, FnObject> parameters, FnVariable<Boolean> isPreExecute)
             : base(isPreExecute)
         {
             RawExpression = rawExpression;
@@ -76,15 +76,14 @@ namespace FunctionScript
         }
 
         /// <summary>
-        /// Returns the data type this expression will return when executed
+        /// Returns the data type this expression will return when executed.
         /// </summary>
-        /// <returns></returns>
-        public Type GetTypeOfObject()
+        public Type GetReturnType()
         {
             return typeof(T);
         }
 
-        public T PreExecute()
+        public T ImmutableExecute()
         {
             IsPreExecute.Value = true;
             T data = ExecutionNode.GetValue();

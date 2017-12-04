@@ -17,12 +17,12 @@ namespace FunctionScript
         /// <summary>
         /// Stores all the method calls that can be used within FnScript, along with their name
         /// </summary>
-        public static Dictionary<String, FnMethodSwitch> FnMethods;
+        internal static Dictionary<String, FnMethodSwitch> FnMethods;
         
         /// <summary>
         /// Stores all method calls that can be used to conduct implicit conversions
         /// </summary>
-        public static Dictionary<Type, FnMethodSwitch> ImplicitConversionSwitches;
+        internal static Dictionary<Type, FnMethodSwitch> ImplicitConversionSwitches;
 
         /// <summary>
         /// Stores the precedence of data types that can be provided as arguments to methods
@@ -1184,7 +1184,7 @@ namespace FunctionScript
         /// </summary>
         /// <param name="name">The name of the method</param>
         /// <returns></returns>
-        public static FnMethodSwitch GetMethod(String name)
+        internal static FnMethodSwitch GetMethod(String name)
         {
             if (DoesMethodExist(name)) { return FnMethods[name]; }
             throw new ArgumentException("The method you have requested (" + name + ") does not exist");

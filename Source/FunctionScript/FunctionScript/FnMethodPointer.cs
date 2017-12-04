@@ -5,10 +5,10 @@ using System.Text;
 
 namespace FunctionScript
 {
-    /// <summary>
-    /// The generic interface for an FnMethodPointer
-    /// </summary>
-    public interface FnMethodPointer
+  /// <summary>
+  /// The generic interface for an FnMethodPointer.
+  /// </summary>
+  internal interface FnMethodPointer
     {
         /// <summary>
         /// Gets the return type of the contained method reference
@@ -32,7 +32,7 @@ namespace FunctionScript
     /// and can be used to create an FnObject containing the method reference
     /// </summary>
     /// <typeparam name="T"></typeparam>
-    public class FnMethodPointer<T> : FnMethodPointer
+    internal class FnMethodPointer<T> : FnMethodPointer
     {
         /// <summary>
         /// The method reference this FnMethodPointer wraps

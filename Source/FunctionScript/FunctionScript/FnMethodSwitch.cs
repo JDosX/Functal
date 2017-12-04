@@ -8,7 +8,7 @@ namespace FunctionScript
     /// <summary>
     /// Is used to define a method callable from fnScript, encapsulates all possible overloads, and returns the corrent one to the compiler based on input parameters
     /// </summary>
-    public class FnMethodSwitch
+    internal class FnMethodSwitch
     {
         /// <summary>
         /// The method name
