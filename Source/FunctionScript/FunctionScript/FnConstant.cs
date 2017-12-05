@@ -3,43 +3,43 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace FunctionScript
-{
+namespace FunctionScript {
+  /// <summary>
+  /// Represents a FunctionScript constant.
+  /// </summary>
+  /// <typeparam name="T">The contained type of the constant.</typeparam>
+  public class FnConstant<T> : FnObject<T> {
     /// <summary>
-    /// Represents an FnScript Constant
+    /// The value of the constant.
     /// </summary>
-    /// <typeparam name="T"></typeparam>
-    public class FnConstant<T> : FnObject<T>
-    {
-        public readonly T Value;
+    public readonly T Value;
 
-        public FnConstant(T value)
-        {
-            Value = value;
-        }
-
-        internal override bool IsCachable()
-        {
-            return true;
-        }
-
-        /// <summary>
-        /// Returns an optimized version of this FnObject
-        /// </summary>
-        /// <returns></returns>
-        internal override FnObject CheckAndCache()
-        {
-            return this;
-        }
-
-        public override T GetValue()
-        {
-            return Value;
-        }
-
-        public override object GetValueAsObject()
-        {
-            return (object)Value;
-        }
+    /// <summary>
+    /// Constructor.
+    /// </summary>
+    /// <param name="value">The value of the constant.</param>
+    public FnConstant(T value) {
+      Value = value;
     }
+
+    internal override bool IsCachable() {
+      return true;
+    }
+
+    /// <summary>
+    /// Returns an optimized version of this FnObject.
+    /// </summary>
+    /// <returns>An optimized version of this FnObject.</returns>
+    internal override FnObject CheckAndCache() {
+      return this;
+    }
+
+    public override T GetValue() {
+      return Value;
+    }
+
+    public override object GetValueAsObject() {
+      return (object)Value;
+    }
+  }
 }
