@@ -22,34 +22,26 @@ namespace FunctionScript {
     }
 
     internal override bool IsCachable() {
-      //THIS SHOULD IN FACT BE
-
-      //IF Condition.IsCachable THEN
-      //   IF Condition == true && TrueArg.IsCachable THEN Return true;
-      //   ELSE IF Condition == false && FalseArg.IsCachable THEN Return true;
-      //   END IF
-      //END IF
-
-      //But to get it to work we have to run a pre-execute on the Condition to calculate its value. So it's another optimisation we can wait until after finishing to look at.
-      //Easy to do by setting Pre-Execute from the expression and then running CheckAndCache()
-
-      if (Condition.IsCachable() && TrueArg.IsCachable() && FalseArg.IsCachable()) {
-        return true;
+      if (Condition.IsCachable()) {
+        bool condition = Condition.GetValue();
+        return (condition && TrueArg.IsCachable()) || (!condition && FalseArg.IsCachable());
       }
 
       return false;
     }
 
     internal override FnObject CheckAndCache() {
-      // Optimize child FnObjects
+      // Optimize child FnObjects.
       Condition = Condition.CheckAndCache() as FnObject<Boolean>;
-      TrueArg = TrueArg.CheckAndCache() as FnObject<T>;
-      FalseArg = FalseArg.CheckAndCache() as FnObject<T>;
+      TrueArg   =   TrueArg.CheckAndCache() as FnObject<T>;
+      FalseArg  =  FalseArg.CheckAndCache() as FnObject<T>;
 
-      // Optimize this node
+      // Optimize this node.
       if (IsCachable()) {
         return new FnConstant<T>(GetValue());
       }
+
+      // Can't optimize.
       return this;
     }
 
