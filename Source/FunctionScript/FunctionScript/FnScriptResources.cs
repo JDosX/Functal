@@ -27,7 +27,7 @@ namespace FunctionScript
         /// <summary>
         /// Stores the precedence of data types that can be provided as arguments to methods
         /// </summary>
-        public static Dictionary<Type, Byte> TypePrecedence;
+        internal static Dictionary<Type, Byte> TypePrecedence;
 
         /// <summary>
         /// Global parameters that can be accessed by any FnObject

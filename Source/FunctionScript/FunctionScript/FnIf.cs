@@ -11,6 +11,12 @@ namespace FunctionScript
         private FnObject<T> TrueArg;
         private FnObject<T> FalseArg;
 
+        /// <summary>
+        /// Creates a new FunctionScript conditional.
+        /// </summary>
+        /// <param name="condition">A boolean expression which determines if trueArg or falseArg is executed and returned</param>
+        /// <param name="trueArg">An expression whose value is returned if condition returns true.</param>
+        /// <param name="falseArg">An expression whose value is returned if condition returns false.</param>
         internal FnIf(FnObject<bool> condition, FnObject trueArg, FnObject falseArg)
         {
             Condition = condition;
@@ -74,24 +80,4 @@ namespace FunctionScript
             return FalseArg.GetValueAsObject();
         }
     }
-
-    //OLD CONDITION CONSRUCTOR
-
-    /*/// <summary>
-    /// Constructs the FnObject as a condition
-    /// </summary>
-    /// <param name="methodParameters">The arguments to be used for the conditional method.
-    /// The first is a boolean argument which determines which of the second and third arguments are returned.
-    /// Second if true, third if false.</param>
-    /// <param name="compileFlags">Compile Flags which can be assigned to the method call. These change the way the FnObject is compiled</param>
-    public FnObject(List<FnObject> methodParameters, List<FnScriptResources.CompileFlags> compileFlags)
-    {
-        EvalMethod = null;
-        _MethodParameters = methodParameters;       
-        CompileFlags = compileFlags;
-
-        ObjectValue = default(T);
-
-        _HasExecuted = false;
-    }*/
 }
