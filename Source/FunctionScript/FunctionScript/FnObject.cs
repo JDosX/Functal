@@ -3,27 +3,38 @@ using System;
 namespace FunctionScript {
 
   /// <summary>
-  /// Represents a construct of the FunctionScript language.
+  /// Represents a FunctionScript language construct.
   /// </summary>
   public abstract class FnObject {
     /// <summary>
-    /// Returns the data type of the variable wrapped by this FnObject
+    /// Returns the data type wrapped by this FnObject.
     /// </summary>
-    /// <returns></returns>
     public abstract Type GetWrappedObjectType();
+
     /// <summary>
-    /// Gets the value of the variable wrapped by this FnObject as an Object
+    /// Gets the value of the data wrapped by this FnObject as an <see cref="object"/>.
     /// </summary>
-    /// <returns></returns>
     public abstract Object GetValueAsObject();
 
     internal abstract FnObject CreateFnVariableWithSameType();
+
     internal abstract FnObject CreateFnIfWithSameType(FnObject<bool> condition, FnObject trueArg, FnObject falseArg);
 
     /// <summary>
-    /// Checks the execution tree stemming from this FnObject and caches all acceptable nodes
+    /// Optimises the execution tree stemming from this FnObject.
     /// </summary>
+    /// <remarks>
+    /// The optimisations performed will vary depending on the version of FunctionScript. In this version, the following
+    /// optimisations are performed:
+    /// <list type="bullet">
+    ///   <item>
+    ///   Collapse any nodes in the execution tree that are immutable. That is, any nodes that can't be mutated (such as
+    ///   constants), and any nodes that do not have side-effects (such as a pure function).
+    ///   </item>
+    /// </list>
+    /// </remarks>
     internal abstract FnObject CheckAndCache();
+
     /// <summary>
     /// Determines if this FnObject is cachable
     /// </summary>
