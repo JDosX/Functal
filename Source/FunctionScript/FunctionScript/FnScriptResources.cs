@@ -1,7 +1,6 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 
 namespace FunctionScript
 {
@@ -12,7 +11,7 @@ namespace FunctionScript
     {
         /// <summary>
         /// Stores all the constants that can be used within FnScript, along with their name
-        /// </summarys>
+        /// </summary>
         static Dictionary<String, FnObject> Constants;
         /// <summary>
         /// Stores all the method calls that can be used within FnScript, along with their name
@@ -35,7 +34,7 @@ namespace FunctionScript
         public static Dictionary<String, FnObject> GlobalParameters;
 
         #region Exception Messages
-        const String InvalidNumberOfArguments = "No overload for this method matches the number of arguments provided";
+        const String InvalidNumberOfArguments = "No overload for this function matches the arguments provided.";
         #endregion
 
         /// <summary>
