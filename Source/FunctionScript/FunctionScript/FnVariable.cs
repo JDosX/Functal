@@ -20,9 +20,8 @@ namespace FunctionScript
         }
 
         /// <summary>
-        /// Returns an optimized version of this FnObject
+        /// Returns an optimized version of this FnObject.
         /// </summary>
-        /// <returns></returns>
         internal override FnObject CheckAndCache()
         {
             return this;
