@@ -35,7 +35,7 @@ namespace FunctionScript
         public static Dictionary<String, FnObject> GlobalParameters;
 
         #region Exception Messages
-        static String InvalidNumberOfArguments = "No overload for this method matches the number of arguments provided";
+        const String InvalidNumberOfArguments = "No overload for this method matches the number of arguments provided";
         #endregion
 
         /// <summary>

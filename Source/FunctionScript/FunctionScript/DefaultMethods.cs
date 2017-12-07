@@ -4,6 +4,10 @@ using System.Linq;
 using System.Text;
 
 namespace FunctionScript {
+  // Disabling non-assignment warning to prevent one warning being thrown per FnArg. Each FnArg will be assigned to
+  // during expression compilation via reflection.
+  #pragma warning disable 0649
+
   #region Binary Operator Methods
   #region Addition Methods
   internal class FnMethod_Add_Int32 : FnMethod<Int32> {
@@ -3817,4 +3821,6 @@ namespace FunctionScript {
   #endregion
   #endregion
   #endregion
+
+  #pragma warning restore 0649
 }
