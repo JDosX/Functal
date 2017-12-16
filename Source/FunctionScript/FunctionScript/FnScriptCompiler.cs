@@ -171,10 +171,13 @@ namespace FunctionScript {
     }
 
     /// <summary>
-    /// Compiles an expression in string form into an execution tree by checking the syntax and then constructing an execution tree. The lead node is then evaluated when calling execute on the expression
+    /// Compiles an expression in string form into an execution tree by checking the syntax and then constructing an
+    /// execution tree. The lead node is then evaluated when calling execute on the expression
     /// </summary>
     /// <param name="expression">The FnScript expression to compile</param>
-    public FnScriptExpression<T> Compile<T>(string expression, Dictionary<String, FnObject> localParameters, Dictionary<String, FnObject> collectionParameters) {
+    public FnScriptExpression<T> Compile<T>(
+      string expression, Dictionary<String, FnObject> localParameters, Dictionary<String, FnObject> collectionParameters
+    ) {
       #region Data Needed to construct the final FnScriptExpression 
 
       string rawExpression = "";
@@ -274,10 +277,10 @@ namespace FunctionScript {
       // We need to extend node based copilation instead of list based compilation throughout the entire FnScriptCompiler
       FnObject<T> executionNode = executionList.Last() as FnObject<T>;
 
-      // Optimize the expression tree
+      // Optimize the expression tree.
       CacheExpression(ref executionNode);
 
-      //TODO: MAKE THIS RETURN THE CORRECT FNSCRIPTEXPRESSION
+      //TODO: MAKE THIS RETURN THE CORRECT FNSCRIPTEXPRESSION (Is this referring to rawexpression?)
       FnScriptExpression<T> returnExpression = new FnScriptExpression<T>(executionNode, rawExpression, parameters, isPreExecute);
 
       return returnExpression;
@@ -287,8 +290,14 @@ namespace FunctionScript {
     /// Converts the provided minimised expression into an execution tree that can be executed when desired.
     /// </summary>
     /// <param name="expression">The expression to compile in minimised string format</param>
-    /// <param name="characterProfiles">The profile for each character in the string, to be used to determine the purpose of each element in the expression</param>
-    private void ConvertToExecutionTree(String expression, List<FnObjectProfiles> characterProfiles, ref Dictionary<String, FnObject> parameters, ref List<FnObject> executionList, ref List<Boolean> isBound, FnVariable<Boolean> isPreExecute) {
+    /// <param name="characterProfiles">
+    /// The profile for each character in the string, to be used to determine the purpose of each element in the
+    /// expression.
+    /// </param>
+    private void ConvertToExecutionTree(
+      String expression, List<FnObjectProfiles> characterProfiles, ref Dictionary<String, FnObject> parameters,
+      ref List<FnObject> executionList, ref List<Boolean> isBound, FnVariable<Boolean> isPreExecute
+    ) {
       Stack<String> operatorStack = new Stack<String>();
       Stack<FnObjectProfiles> operatorProfileStack = new Stack<FnObjectProfiles>();
 
@@ -811,12 +820,12 @@ namespace FunctionScript {
     /// <param name="profile">The profile to analyse</param>
     /// <returns></returns>
     private Boolean IsLiteralTypeProfile(FnObjectProfiles profile) {
-      if (profile == FnObjectProfiles.StringBody || profile == FnObjectProfiles.CharBody
-          || profile == FnObjectProfiles.Byte || profile == FnObjectProfiles.SByte
-          || profile == FnObjectProfiles.Int16 || profile == FnObjectProfiles.UInt16
-          || profile == FnObjectProfiles.Int32 || profile == FnObjectProfiles.UInt32
-          || profile == FnObjectProfiles.Int64 || profile == FnObjectProfiles.UInt64
-          || profile == FnObjectProfiles.Single || profile == FnObjectProfiles.Double) {
+      if (   profile == FnObjectProfiles.StringBody || profile == FnObjectProfiles.CharBody
+          || profile == FnObjectProfiles.Byte       || profile == FnObjectProfiles.SByte
+          || profile == FnObjectProfiles.Int16      || profile == FnObjectProfiles.UInt16
+          || profile == FnObjectProfiles.Int32      || profile == FnObjectProfiles.UInt32
+          || profile == FnObjectProfiles.Int64      || profile == FnObjectProfiles.UInt64
+          || profile == FnObjectProfiles.Single     || profile == FnObjectProfiles.Double) {
         return true;
       }
       return false;
@@ -828,7 +837,9 @@ namespace FunctionScript {
     /// <param name="profile">The profile to analyse</param>
     /// <returns></returns>
     private Boolean IsOperatorTypeProfile(FnObjectProfiles profile) {
-      if (profile == FnObjectProfiles.UnaryPrefixOperator || profile == FnObjectProfiles.UnarySuffixOperator || profile == FnObjectProfiles.BinaryOperator) {
+      if (   profile == FnObjectProfiles.UnaryPrefixOperator
+          || profile == FnObjectProfiles.UnarySuffixOperator
+          || profile == FnObjectProfiles.BinaryOperator) {
         return true;
       }
       return false;
@@ -861,7 +872,17 @@ namespace FunctionScript {
             RemoveCharacterFromExpression(ref expression, ref profiles, index);
 
             //now look at the escape character and see which escape character it is, if it's one at all
-            if (expression[index] == 'a') { ReplaceAt(ref expression, index, "\a"); } else if (expression[index] == 'b') { ReplaceAt(ref expression, index, "\b"); } else if (expression[index] == 'f') { ReplaceAt(ref expression, index, "\f"); } else if (expression[index] == 'n') { ReplaceAt(ref expression, index, "\n"); } else if (expression[index] == 'r') { ReplaceAt(ref expression, index, "\r"); } else if (expression[index] == 't') { ReplaceAt(ref expression, index, "\t"); } else if (expression[index] == 'v') { ReplaceAt(ref expression, index, "\v"); } else if (expression[index] == '\'') { ReplaceAt(ref expression, index, "\'"); } else if (expression[index] == '"') { ReplaceAt(ref expression, index, "\""); } else if (expression[index] == '\\') { ReplaceAt(ref expression, index, "\\"); } else { throw new ArgumentException("Unrecognised escape sequence", expression[index].ToString()); }
+            if      (expression[index] == 'a')  { ReplaceAt(ref expression, index, "\a"); }
+            else if (expression[index] == 'b')  { ReplaceAt(ref expression, index, "\b"); }
+            else if (expression[index] == 'f')  { ReplaceAt(ref expression, index, "\f"); }
+            else if (expression[index] == 'n')  { ReplaceAt(ref expression, index, "\n"); }
+            else if (expression[index] == 'r')  { ReplaceAt(ref expression, index, "\r"); }
+            else if (expression[index] == 't')  { ReplaceAt(ref expression, index, "\t"); }
+            else if (expression[index] == 'v')  { ReplaceAt(ref expression, index, "\v"); }
+            else if (expression[index] == '\'') { ReplaceAt(ref expression, index, "\'"); }
+            else if (expression[index] == '"')  { ReplaceAt(ref expression, index, "\""); }
+            else if (expression[index] == '\\') { ReplaceAt(ref expression, index, "\\"); }
+            else { throw new ArgumentException("Unrecognised escape sequence", expression[index].ToString()); }
           }
 
           profiles[index] = FnObjectProfiles.StringBody;
@@ -925,12 +946,10 @@ namespace FunctionScript {
           if (index >= expression.Length) { throw new ArgumentException("Char was not closed, did you forget a '?", expression.ToString()); }
         }
 
-        //profiles[index] = FnObjectProfiles.CharEnd;
         RemoveCharacterFromExpression(ref expression, ref profiles, index);
         index -= 1;
 
         //format the piece succeeding the char
-
         if (!FollowsOperandSuccessorRule(ref expression, ref profiles, index + 1)) {
           throw new ArgumentException("invalid operand/operator combination found");
         }

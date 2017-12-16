@@ -1,15 +1,32 @@
 using System;
 
 namespace FunctionScript {
+  /// <summary>
+  /// A FunctionScript conditional.
+  /// </summary>
   internal class FnIf<T> : FnObject<T> {
+
+    /// <summary>
+    /// The conditional.
+    /// </summary>
     private FnObject<bool> Condition;
+
+    /// <summary>
+    /// This FnObject is executed in the event that Conditon evaluates to true.
+    /// </summary>
     private FnObject<T> TrueArg;
+
+    /// <summary>
+    /// This FnObject is executed in the event that Condition evaluates to false.
+    /// </summary>
     private FnObject<T> FalseArg;
 
     /// <summary>
-    /// Creates a new FunctionScript conditional.
+    /// Constructor.
     /// </summary>
-    /// <param name="condition">A boolean expression which determines if trueArg or falseArg is executed and returned</param>
+    /// <param name="condition">
+    /// A boolean expression which determines if trueArg or falseArg is executed and returned.
+    /// </param>
     /// <param name="trueArg">An expression whose value is returned if condition returns true.</param>
     /// <param name="falseArg">An expression whose value is returned if condition returns false.</param>
     internal FnIf(FnObject<bool> condition, FnObject trueArg, FnObject falseArg) {

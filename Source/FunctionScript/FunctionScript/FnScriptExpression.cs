@@ -7,33 +7,44 @@ namespace FunctionScript {
   /// Represents a FunctionScript expression.
   /// </summary>
   public abstract class FnScriptExpression {
-    
+
+    /// <summary>
+    /// Stores whether the expression is executing immutably.
+    /// </summary>
     internal FnVariable<Boolean> IsImmutableExecute;
 
+    /// <summary>
+    /// Constructor.
+    /// </summary>
+    /// <param name="isImmutableExecute">The FnVariable to fill when performing an immutable execution.</param>
     protected FnScriptExpression(FnVariable<Boolean> isImmutableExecute) {
       IsImmutableExecute = isImmutableExecute;
     }
   }
 
   /// <summary>
-  /// Represents a FunctionScript expression, which is compiled from an imput string by calling the Compile method and then evaluated by calling the Execute method
+  /// Represents a FunctionScript expression.
   /// </summary>
-  /// <typeparam name="T">The return type of the expression</typeparam>
+  /// <typeparam name="T">The return type of the expression.</typeparam>
   public class FnScriptExpression<T> : FnScriptExpression {
 
     /// <summary>
-    /// Contains the raw expression that was used to compile this FnScriptExpression
+    /// The raw expression that was used to compile this FnScriptExpression.
     /// </summary>
     public readonly String RawExpression;
+
     /// <summary>
-    /// Stores an aggregation of all the parameters accessible from this expression,
-    /// obeying Local, Collection and Global precedence rules
+    /// Stores an aggregation of all the parameters accessible from this expression,  obeying Local, Collection and
+    /// Global precedence rules.
     /// </summary>
     private Dictionary<String, FnObject> Parameters;
+
     /// <summary>
-    /// This is the root node of the execution tree. This has its own reference for faster access, and
-    /// because we know its return type will match the type of the expression
+    /// The root node of the execution tree. The FnScriptExpression is executed by polling this FnObject for its value.
     /// </summary>
+    /// <remarks>
+    /// The wrapped type of this FnObject will always match the return type of the FnScriptExpression.
+    /// </remarks>
     private FnObject<T> ExecutionNode;
 
     /// <summary>

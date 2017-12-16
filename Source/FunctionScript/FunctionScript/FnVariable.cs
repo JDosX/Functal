@@ -1,12 +1,19 @@
 using System;
 
 namespace FunctionScript {
+  /// <summary>
+  /// Represents a FunctionScript variable.
+  /// </summary>
   public class FnVariable<T> : FnObject<T> {
-    //FnVariable will also need a bit to link to the related FnMethod it gets
-    //its value from, which can be null if it isn't linked to anything
-
+    /// <summary>
+    /// The value this FnVariable wraps.
+    /// </summary>
     public T Value;
 
+    /// <summary>
+    /// Constructor.
+    /// </summary>
+    /// <param name="value">The value the FnVariable should wrap.</param>
     public FnVariable(T value) {
       Value = value;
     }
