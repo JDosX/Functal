@@ -1,18 +1,13 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workbench ActiveDocument="FunctionScript/FnIf.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="FunctionScript/FnScriptExpression.cs">
     <Files>
-      <File FileName="FunctionScript/DefaultMethods.cs" Line="1" Column="1" />
-      <File FileName="FunctionScript/FnScriptCompiler.cs" Line="1" Column="1" />
-      <File FileName="FunctionScript/FnScriptResources.cs" Line="31" Column="5" />
-      <File FileName="FunctionScript/project.json" Line="1" Column="1" />
-      <File FileName="FunctionScript/FnVariable.cs" Line="1" Column="1" />
-      <File FileName="FunctionScript/FnConstant.cs" Line="1" Column="1" />
-      <File FileName="FunctionScript/FnIf.cs" Line="11" Column="37" />
-      <File FileName="FunctionScript/FnMethod.cs" Line="92" Column="32" />
-      <File FileName="FunctionScript/FnObject.cs" Line="39" Column="27" />
-      <File FileName="FunctionScript/FnMethodPointer.cs" Line="1" Column="1" />
-      <File FileName="FunctionScript/FnScriptExpression.cs" Line="1" Column="1" />
-      <File FileName="FunctionScript/FnMethodSwitch.cs" Line="1" Column="1" />
+      <File FileName="FunctionScript/FnConstant.cs" Line="25" Column="5" />
+      <File FileName="FunctionScript/FnObject.cs" Line="14" Column="1" />
+      <File FileName="FunctionScript/DefaultMethods.cs" Line="3625" Column="34" />
+      <File FileName="FunctionScript/FnMethodPointer.cs" Line="2" Column="34" />
+      <File FileName="FunctionScript/FnMethodSwitch.cs" Line="8" Column="25" />
+      <File FileName="FunctionScript/FnScriptCompiler.cs" Line="280" Column="39" />
+      <File FileName="FunctionScript/FnScriptExpression.cs" Line="10" Column="5" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />

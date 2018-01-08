@@ -5,7 +5,6 @@ namespace FunctionScript {
   /// A FunctionScript conditional.
   /// </summary>
   internal class FnIf<T> : FnObject<T> {
-
     /// <summary>
     /// The conditional.
     /// </summary>
@@ -59,6 +58,10 @@ namespace FunctionScript {
       return this;
     }
 
+    /// <summary>
+    /// Returns the contained value of this FnObject.
+    /// </summary>
+    /// <returns>The value.</returns>
     public override T GetValue() {
       if (Condition.GetValue()) {
         return TrueArg.GetValue();
@@ -67,6 +70,9 @@ namespace FunctionScript {
       return FalseArg.GetValue();
     }
 
+    /// <summary>
+    /// Gets the value of the data wrapped by this FnObject as an <see cref="object"/>.
+    /// </summary>
     public override object GetValueAsObject() {
       if (Condition.GetValue()) {
         return TrueArg.GetValueAsObject();

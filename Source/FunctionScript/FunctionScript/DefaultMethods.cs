@@ -3685,7 +3685,7 @@ namespace FunctionScript {
       //PROBLEM: If "Paramter" is not an FnVariable this right now provides a very nondescript
       //exception, it will simply say there's a null reference error and point somewhere in the engine
       //Fix this with some specific error catching.
-      if (!IsPreExecute.Value) {
+      if (!IsImmutableExecute.Value) {
         Parameter.Value = Value.GetValue();
       }
 

@@ -47,7 +47,7 @@ namespace FunctionScript {
     /// <summary>
     /// Determines if this <see cref="FnObject"/> is cachable.
     /// </summary>
-    /// <returns></returns>
+    /// <returns>True if the FnObject is Cachable, False if not.</returns>
     internal abstract Boolean IsCachable();
   }
 
@@ -64,6 +64,9 @@ namespace FunctionScript {
     #endregion
 
     #region Public Methods
+    /// <summary>
+    /// Returns the data type wrapped by this FnObject.
+    /// </summary>
     public override Type GetWrappedObjectType() {
       return typeof(T);
     }

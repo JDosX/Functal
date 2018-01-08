@@ -23,18 +23,21 @@ namespace FunctionScript {
       return true;
     }
 
-    /// <summary>
-    /// Returns an optimized version of this FnObject.
-    /// </summary>
-    /// <returns>An optimized version of this FnObject.</returns>
     internal override FnObject CheckAndCache() {
       return this;
     }
 
+    /// <summary>
+    /// Returns the contained value of this FnObject.
+    /// </summary>
+    /// <returns>The value.</returns>
     public override T GetValue() {
       return Value;
     }
 
+    /// <summary>
+    /// Gets the value of the data wrapped by this FnObject as an <see cref="object"/>.
+    /// </summary>
     public override object GetValueAsObject() {
       return (object)Value;
     }

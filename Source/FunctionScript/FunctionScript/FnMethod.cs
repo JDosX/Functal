@@ -10,6 +10,9 @@ namespace FunctionScript {
   [System.AttributeUsage(AttributeTargets.Field)]
   public class FnArg : System.Attribute { }
 
+  /// <summary>
+  /// Represents a FunctionScript Function.
+  /// </summary>
   public abstract class FnMethod<T> : FnObject<T> {
     #region Fields
     /// <summary>
@@ -17,52 +20,50 @@ namespace FunctionScript {
     /// is cachable. Can be cleared using the ClearDataPostCache method
     /// </summary>
     private FnObject[] MethodArguments_CacheCheck;
+
     /// <summary>
     /// Stores the data types for the arguments which this method will contain when filled.
     /// Is only populated if an FnMethod is constructed blankly.
     /// </summary>
     internal Type[] ArgumentTypes;
+
     /// <summary>
-    /// The local variable which stores the values which are used by the CompileFlags Property
+    /// The local variable which stores the values which are used by the CompileFlags property.
     /// </summary>
     internal FnScriptResources.CompileFlags[] CompileFlags;
 
     /// <summary>
-    /// Stores the field information for the FnMethod's arguments.
-    /// Can be cleared using the ClearDataPostCache method
+    /// Stores the field information for the FnMethod's arguments. Can be cleared using the ClearDataPostCache method.
     /// </summary>
     private FieldInfo[] ArgsInfo;
 
-    internal FnVariable<Boolean> IsPreExecute;
+    internal FnVariable<Boolean> IsImmutableExecute;
 
     protected Dictionary<String, FnObject> Parameters;
     #endregion
 
     #region Constructors
     /// <summary>
-    /// Creates a new blank FnMethod
+    /// Creates a new FnMethod.
     /// </summary>
-    /// <param name="argumentTypes">The datatype of each consecutive method argument</param>
     public FnMethod() {
       Construct(null);
     }
 
     /// <summary>
-    /// Creates a new blank FnMethod
+    /// Creates a new FnMethod with the specified list of compiler flags.
     /// </summary>
-    /// <param name="argumentTypes">The datatype of each consecutive method argument</param>
     /// <param name="compileFlags">The list of compile flags the method should have</param>
     public FnMethod(FnScriptResources.CompileFlags[] compileFlags) {
       Construct(compileFlags);
     }
 
     /// <summary>
-    /// Constructs a blank FnMethod, called by the Constructors
+    /// Initializer.
     /// </summary>
-    /// <param name="argumentTypes">The datatype of each consecutive method argument</param>
     /// <param name="compileFlags">The list of compile flags the method should have</param>
     private void Construct(FnScriptResources.CompileFlags[] compileFlags) {
-      // Construct Argument Types
+      // Compute argument types.
 
       // Start by getting all the FnArgs defined for the method
       ArgsInfo = this.GetType()
@@ -76,27 +77,35 @@ namespace FunctionScript {
         ArgumentTypes[i] = ArgsInfo[i].FieldType.GenericTypeArguments[0];
       }
 
+      // Set compile flags.
       CompileFlags = (compileFlags != null) ? compileFlags : new FnScriptResources.CompileFlags[] { };
     }
     #endregion
 
-    public FnObject CreateNewBlankMethod() {
+    internal FnObject CreateNewBlankMethod() {
       return (FnObject)Activator.CreateInstance(this.GetType());
     }
 
+    /// <summary>
+    /// Gets the value of the data wrapped by this FnObject as an <see cref="object"/>.
+    /// </summary>
     public override object GetValueAsObject() {
       return (Object)GetValue();
     }
 
-    internal FnObject CreateNewMethod(List<FnObject> methodArguments, Dictionary<String, FnObject> parameters, FnVariable<Boolean> isPreExecute) {
+    internal FnObject CreateNewMethod(
+      List<FnObject> methodArguments, Dictionary<String, FnObject> parameters, FnVariable<Boolean> isImmutableExecute
+    ) {
       FnMethod<T> ReturnMethod = (CreateNewBlankMethod() as FnMethod<T>);
-      ReturnMethod.Populate(methodArguments, parameters, isPreExecute);
+      ReturnMethod.Populate(methodArguments, parameters, isImmutableExecute);
 
       return ReturnMethod;
     }
 
-    internal void Populate(List<FnObject> methodArguments, Dictionary<String, FnObject> parameters, FnVariable<Boolean> isPreExecute) {
-      IsPreExecute = isPreExecute;
+    internal void Populate(
+      List<FnObject> methodArguments, Dictionary<String, FnObject> parameters, FnVariable<Boolean> isImmutableExecute
+    ) {
+      IsImmutableExecute = isImmutableExecute;
       Parameters = parameters;
 
       MethodArguments_CacheCheck = new FnObject[methodArguments.Count];
@@ -105,7 +114,7 @@ namespace FunctionScript {
         MethodArguments_CacheCheck[i] = methodArguments[i];
       }
 
-      //Now we push these into our named method arguments
+      // Now we push these into our named method arguments
       for (int i = 0; i < methodArguments.Count; i++) {
         ArgsInfo[i].SetValue(this, methodArguments[i]);
       }

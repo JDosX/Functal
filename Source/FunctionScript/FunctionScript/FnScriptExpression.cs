@@ -7,7 +7,7 @@ namespace FunctionScript {
   /// Represents a FunctionScript expression.
   /// </summary>
   public abstract class FnScriptExpression {
-
+    
     /// <summary>
     /// Stores whether the expression is executing immutably.
     /// </summary>
@@ -27,7 +27,7 @@ namespace FunctionScript {
   /// </summary>
   /// <typeparam name="T">The return type of the expression.</typeparam>
   public class FnScriptExpression<T> : FnScriptExpression {
-
+    
     /// <summary>
     /// The raw expression that was used to compile this FnScriptExpression.
     /// </summary>
