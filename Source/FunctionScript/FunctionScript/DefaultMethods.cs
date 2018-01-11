@@ -708,7 +708,7 @@ namespace FunctionScript {
     [FnArg] protected FnObject<Byte> Value;
 
     public FnMethod_Cast_ToInt16_FromByte()
-        : base(new FnScriptResources.CompileFlags[] { FnScriptResources.CompileFlags.IMPLICIT_CONVERSION }) {
+        : base(new CompileFlags[] { CompileFlags.IMPLICIT_CONVERSION }) {
     }
 
     public override Int16 GetValue() {
@@ -719,7 +719,7 @@ namespace FunctionScript {
     [FnArg] protected FnObject<SByte> Value;
 
     public FnMethod_Cast_ToInt16_FromSByte()
-        : base(new FnScriptResources.CompileFlags[] { FnScriptResources.CompileFlags.IMPLICIT_CONVERSION }) {
+        : base(new CompileFlags[] { CompileFlags.IMPLICIT_CONVERSION }) {
     }
 
     public override Int16 GetValue() {
@@ -828,7 +828,7 @@ namespace FunctionScript {
     [FnArg] protected FnObject<Byte> Value;
 
     public FnMethod_Cast_ToUInt16_FromByte()
-        : base(new FnScriptResources.CompileFlags[] { FnScriptResources.CompileFlags.IMPLICIT_CONVERSION }) {
+        : base(new CompileFlags[] { CompileFlags.IMPLICIT_CONVERSION }) {
     }
 
     public override UInt16 GetValue() {
@@ -911,7 +911,7 @@ namespace FunctionScript {
     [FnArg] protected FnObject<Char> Value;
 
     public FnMethod_Cast_ToUInt16_FromChar()
-        : base(new FnScriptResources.CompileFlags[] { FnScriptResources.CompileFlags.IMPLICIT_CONVERSION }) {
+        : base(new CompileFlags[] { CompileFlags.IMPLICIT_CONVERSION }) {
     }
 
     public override UInt16 GetValue() {
@@ -948,7 +948,7 @@ namespace FunctionScript {
     [FnArg] protected FnObject<Byte> Value;
 
     public FnMethod_Cast_ToInt32_FromByte()
-        : base(new FnScriptResources.CompileFlags[] { FnScriptResources.CompileFlags.IMPLICIT_CONVERSION }) {
+        : base(new CompileFlags[] { CompileFlags.IMPLICIT_CONVERSION }) {
     }
 
     public override Int32 GetValue() {
@@ -959,7 +959,7 @@ namespace FunctionScript {
     [FnArg] protected FnObject<SByte> Value;
 
     public FnMethod_Cast_ToInt32_FromSByte()
-        : base(new FnScriptResources.CompileFlags[] { FnScriptResources.CompileFlags.IMPLICIT_CONVERSION }) {
+        : base(new CompileFlags[] { CompileFlags.IMPLICIT_CONVERSION }) {
     }
 
     public override Int32 GetValue() {
@@ -970,7 +970,7 @@ namespace FunctionScript {
     [FnArg] protected FnObject<Int16> Value;
 
     public FnMethod_Cast_ToInt32_FromInt16()
-        : base(new FnScriptResources.CompileFlags[] { FnScriptResources.CompileFlags.IMPLICIT_CONVERSION }) {
+        : base(new CompileFlags[] { CompileFlags.IMPLICIT_CONVERSION }) {
     }
 
     public override Int32 GetValue() {
@@ -981,7 +981,7 @@ namespace FunctionScript {
     [FnArg] protected FnObject<UInt16> Value;
 
     public FnMethod_Cast_ToInt32_FromUInt16()
-        : base(new FnScriptResources.CompileFlags[] { FnScriptResources.CompileFlags.IMPLICIT_CONVERSION }) {
+        : base(new CompileFlags[] { CompileFlags.IMPLICIT_CONVERSION }) {
     }
 
     public override Int32 GetValue() {
@@ -1043,7 +1043,7 @@ namespace FunctionScript {
     [FnArg] protected FnObject<Char> Value;
 
     public FnMethod_Cast_ToInt32_FromChar()
-        : base(new FnScriptResources.CompileFlags[] { FnScriptResources.CompileFlags.IMPLICIT_CONVERSION }) {
+        : base(new CompileFlags[] { CompileFlags.IMPLICIT_CONVERSION }) {
     }
 
     public override Int32 GetValue() {
@@ -1080,7 +1080,7 @@ namespace FunctionScript {
     [FnArg] protected FnObject<Byte> Value;
 
     public FnMethod_Cast_ToUInt32_FromByte()
-        : base(new FnScriptResources.CompileFlags[] { FnScriptResources.CompileFlags.IMPLICIT_CONVERSION }) {
+        : base(new CompileFlags[] { CompileFlags.IMPLICIT_CONVERSION }) {
     }
 
     public override UInt32 GetValue() {
@@ -1105,7 +1105,7 @@ namespace FunctionScript {
     [FnArg] protected FnObject<UInt16> Value;
 
     public FnMethod_Cast_ToUInt32_FromUInt16()
-        : base(new FnScriptResources.CompileFlags[] { FnScriptResources.CompileFlags.IMPLICIT_CONVERSION }) {
+        : base(new CompileFlags[] { CompileFlags.IMPLICIT_CONVERSION }) {
     }
 
     public override UInt32 GetValue() {
@@ -1167,7 +1167,7 @@ namespace FunctionScript {
     [FnArg] protected FnObject<Char> Value;
 
     public FnMethod_Cast_ToUInt32_FromChar()
-        : base(new FnScriptResources.CompileFlags[] { FnScriptResources.CompileFlags.IMPLICIT_CONVERSION }) {
+        : base(new CompileFlags[] { CompileFlags.IMPLICIT_CONVERSION }) {
     }
 
     public override UInt32 GetValue() {
@@ -1204,7 +1204,7 @@ namespace FunctionScript {
     [FnArg] protected FnObject<Byte> Value;
 
     public FnMethod_Cast_ToInt64_FromByte()
-        : base(new FnScriptResources.CompileFlags[] { FnScriptResources.CompileFlags.IMPLICIT_CONVERSION }) {
+        : base(new CompileFlags[] { CompileFlags.IMPLICIT_CONVERSION }) {
     }
 
     public override Int64 GetValue() {
@@ -1215,7 +1215,7 @@ namespace FunctionScript {
     [FnArg] protected FnObject<SByte> Value;
 
     public FnMethod_Cast_ToInt64_FromSByte()
-        : base(new FnScriptResources.CompileFlags[] { FnScriptResources.CompileFlags.IMPLICIT_CONVERSION }) {
+        : base(new CompileFlags[] { CompileFlags.IMPLICIT_CONVERSION }) {
     }
 
     public override Int64 GetValue() {
@@ -1226,7 +1226,7 @@ namespace FunctionScript {
     [FnArg] protected FnObject<Int16> Value;
 
     public FnMethod_Cast_ToInt64_FromInt16()
-        : base(new FnScriptResources.CompileFlags[] { FnScriptResources.CompileFlags.IMPLICIT_CONVERSION }) {
+        : base(new CompileFlags[] { CompileFlags.IMPLICIT_CONVERSION }) {
     }
 
     public override Int64 GetValue() {
@@ -1237,7 +1237,7 @@ namespace FunctionScript {
     [FnArg] protected FnObject<UInt16> Value;
 
     public FnMethod_Cast_ToInt64_FromUInt16()
-        : base(new FnScriptResources.CompileFlags[] { FnScriptResources.CompileFlags.IMPLICIT_CONVERSION }) {
+        : base(new CompileFlags[] { CompileFlags.IMPLICIT_CONVERSION }) {
     }
 
     public override Int64 GetValue() {
@@ -1248,7 +1248,7 @@ namespace FunctionScript {
     [FnArg] protected FnObject<Int32> Value;
 
     public FnMethod_Cast_ToInt64_FromInt32()
-        : base(new FnScriptResources.CompileFlags[] { FnScriptResources.CompileFlags.IMPLICIT_CONVERSION }) {
+        : base(new CompileFlags[] { CompileFlags.IMPLICIT_CONVERSION }) {
     }
 
     public override Int64 GetValue() {
@@ -1259,7 +1259,7 @@ namespace FunctionScript {
     [FnArg] protected FnObject<UInt32> Value;
 
     public FnMethod_Cast_ToInt64_FromUInt32()
-        : base(new FnScriptResources.CompileFlags[] { FnScriptResources.CompileFlags.IMPLICIT_CONVERSION }) {
+        : base(new CompileFlags[] { CompileFlags.IMPLICIT_CONVERSION }) {
     }
 
     public override Int64 GetValue() {
@@ -1307,7 +1307,7 @@ namespace FunctionScript {
     [FnArg] protected FnObject<Char> Value;
 
     public FnMethod_Cast_ToInt64_FromChar()
-        : base(new FnScriptResources.CompileFlags[] { FnScriptResources.CompileFlags.IMPLICIT_CONVERSION }) {
+        : base(new CompileFlags[] { CompileFlags.IMPLICIT_CONVERSION }) {
     }
 
     public override Int64 GetValue() {
@@ -1344,7 +1344,7 @@ namespace FunctionScript {
     [FnArg] protected FnObject<Byte> Value;
 
     public FnMethod_Cast_ToUInt64_FromByte()
-        : base(new FnScriptResources.CompileFlags[] { FnScriptResources.CompileFlags.IMPLICIT_CONVERSION }) {
+        : base(new CompileFlags[] { CompileFlags.IMPLICIT_CONVERSION }) {
     }
 
     public override UInt64 GetValue() {
@@ -1369,7 +1369,7 @@ namespace FunctionScript {
     [FnArg] protected FnObject<UInt16> Value;
 
     public FnMethod_Cast_ToUInt64_FromUInt16()
-        : base(new FnScriptResources.CompileFlags[] { FnScriptResources.CompileFlags.IMPLICIT_CONVERSION }) {
+        : base(new CompileFlags[] { CompileFlags.IMPLICIT_CONVERSION }) {
     }
 
     public override UInt64 GetValue() {
@@ -1387,7 +1387,7 @@ namespace FunctionScript {
     [FnArg] protected FnObject<UInt32> Value;
 
     public FnMethod_Cast_ToUInt64_FromUInt32()
-        : base(new FnScriptResources.CompileFlags[] { FnScriptResources.CompileFlags.IMPLICIT_CONVERSION }) {
+        : base(new CompileFlags[] { CompileFlags.IMPLICIT_CONVERSION }) {
     }
 
     public override UInt64 GetValue() {
@@ -1435,7 +1435,7 @@ namespace FunctionScript {
     [FnArg] protected FnObject<Char> Value;
 
     public FnMethod_Cast_ToUInt64_FromChar()
-        : base(new FnScriptResources.CompileFlags[] { FnScriptResources.CompileFlags.IMPLICIT_CONVERSION }) {
+        : base(new CompileFlags[] { CompileFlags.IMPLICIT_CONVERSION }) {
     }
 
     public override UInt64 GetValue() {
@@ -1473,7 +1473,7 @@ namespace FunctionScript {
     [FnArg] protected FnObject<Byte> Value;
 
     public FnMethod_Cast_ToSingle_FromByte()
-        : base(new FnScriptResources.CompileFlags[] { FnScriptResources.CompileFlags.IMPLICIT_CONVERSION }) {
+        : base(new CompileFlags[] { CompileFlags.IMPLICIT_CONVERSION }) {
     }
 
     public override Single GetValue() {
@@ -1484,7 +1484,7 @@ namespace FunctionScript {
     [FnArg] protected FnObject<SByte> Value;
 
     public FnMethod_Cast_ToSingle_FromSByte()
-        : base(new FnScriptResources.CompileFlags[] { FnScriptResources.CompileFlags.IMPLICIT_CONVERSION }) {
+        : base(new CompileFlags[] { CompileFlags.IMPLICIT_CONVERSION }) {
     }
 
     public override Single GetValue() {
@@ -1495,7 +1495,7 @@ namespace FunctionScript {
     [FnArg] protected FnObject<Int16> Value;
 
     public FnMethod_Cast_ToSingle_FromInt16()
-        : base(new FnScriptResources.CompileFlags[] { FnScriptResources.CompileFlags.IMPLICIT_CONVERSION }) {
+        : base(new CompileFlags[] { CompileFlags.IMPLICIT_CONVERSION }) {
     }
 
     public override Single GetValue() {
@@ -1506,7 +1506,7 @@ namespace FunctionScript {
     [FnArg] protected FnObject<UInt16> Value;
 
     public FnMethod_Cast_ToSingle_FromUInt16()
-        : base(new FnScriptResources.CompileFlags[] { FnScriptResources.CompileFlags.IMPLICIT_CONVERSION }) {
+        : base(new CompileFlags[] { CompileFlags.IMPLICIT_CONVERSION }) {
     }
 
     public override Single GetValue() {
@@ -1517,7 +1517,7 @@ namespace FunctionScript {
     [FnArg] protected FnObject<Int32> Value;
 
     public FnMethod_Cast_ToSingle_FromInt32()
-        : base(new FnScriptResources.CompileFlags[] { FnScriptResources.CompileFlags.IMPLICIT_CONVERSION }) {
+        : base(new CompileFlags[] { CompileFlags.IMPLICIT_CONVERSION }) {
     }
 
     public override Single GetValue() {
@@ -1528,7 +1528,7 @@ namespace FunctionScript {
     [FnArg] protected FnObject<UInt32> Value;
 
     public FnMethod_Cast_ToSingle_FromUInt32()
-        : base(new FnScriptResources.CompileFlags[] { FnScriptResources.CompileFlags.IMPLICIT_CONVERSION }) {
+        : base(new CompileFlags[] { CompileFlags.IMPLICIT_CONVERSION }) {
     }
 
     public override Single GetValue() {
@@ -1539,7 +1539,7 @@ namespace FunctionScript {
     [FnArg] protected FnObject<Int64> Value;
 
     public FnMethod_Cast_ToSingle_FromInt64()
-        : base(new FnScriptResources.CompileFlags[] { FnScriptResources.CompileFlags.IMPLICIT_CONVERSION }) {
+        : base(new CompileFlags[] { CompileFlags.IMPLICIT_CONVERSION }) {
     }
 
     public override Single GetValue() {
@@ -1550,7 +1550,7 @@ namespace FunctionScript {
     [FnArg] protected FnObject<UInt64> Value;
 
     public FnMethod_Cast_ToSingle_FromUInt64()
-        : base(new FnScriptResources.CompileFlags[] { FnScriptResources.CompileFlags.IMPLICIT_CONVERSION }) {
+        : base(new CompileFlags[] { CompileFlags.IMPLICIT_CONVERSION }) {
     }
 
     public override Single GetValue() {
@@ -1584,7 +1584,7 @@ namespace FunctionScript {
     [FnArg] protected FnObject<Char> Value;
 
     public FnMethod_Cast_ToSingle_FromChar()
-        : base(new FnScriptResources.CompileFlags[] { FnScriptResources.CompileFlags.IMPLICIT_CONVERSION }) {
+        : base(new CompileFlags[] { CompileFlags.IMPLICIT_CONVERSION }) {
     }
 
     public override Single GetValue() {
@@ -1612,7 +1612,7 @@ namespace FunctionScript {
     [FnArg] protected FnObject<Byte> Value;
 
     public FnMethod_Cast_ToDouble_FromByte()
-        : base(new FnScriptResources.CompileFlags[] { FnScriptResources.CompileFlags.IMPLICIT_CONVERSION }) {
+        : base(new CompileFlags[] { CompileFlags.IMPLICIT_CONVERSION }) {
     }
 
     public override Double GetValue() {
@@ -1623,7 +1623,7 @@ namespace FunctionScript {
     [FnArg] protected FnObject<SByte> Value;
 
     public FnMethod_Cast_ToDouble_FromSByte()
-        : base(new FnScriptResources.CompileFlags[] { FnScriptResources.CompileFlags.IMPLICIT_CONVERSION }) {
+        : base(new CompileFlags[] { CompileFlags.IMPLICIT_CONVERSION }) {
     }
 
     public override Double GetValue() {
@@ -1634,7 +1634,7 @@ namespace FunctionScript {
     [FnArg] protected FnObject<Int16> Value;
 
     public FnMethod_Cast_ToDouble_FromInt16()
-        : base(new FnScriptResources.CompileFlags[] { FnScriptResources.CompileFlags.IMPLICIT_CONVERSION }) {
+        : base(new CompileFlags[] { CompileFlags.IMPLICIT_CONVERSION }) {
     }
 
     public override Double GetValue() {
@@ -1645,7 +1645,7 @@ namespace FunctionScript {
     [FnArg] protected FnObject<UInt16> Value;
 
     public FnMethod_Cast_ToDouble_FromUInt16()
-        : base(new FnScriptResources.CompileFlags[] { FnScriptResources.CompileFlags.IMPLICIT_CONVERSION }) {
+        : base(new CompileFlags[] { CompileFlags.IMPLICIT_CONVERSION }) {
     }
 
     public override Double GetValue() {
@@ -1656,7 +1656,7 @@ namespace FunctionScript {
     [FnArg] protected FnObject<Int32> Value;
 
     public FnMethod_Cast_ToDouble_FromInt32()
-        : base(new FnScriptResources.CompileFlags[] { FnScriptResources.CompileFlags.IMPLICIT_CONVERSION }) {
+        : base(new CompileFlags[] { CompileFlags.IMPLICIT_CONVERSION }) {
     }
 
     public override Double GetValue() {
@@ -1667,7 +1667,7 @@ namespace FunctionScript {
     [FnArg] protected FnObject<UInt32> Value;
 
     public FnMethod_Cast_ToDouble_FromUInt32()
-        : base(new FnScriptResources.CompileFlags[] { FnScriptResources.CompileFlags.IMPLICIT_CONVERSION }) {
+        : base(new CompileFlags[] { CompileFlags.IMPLICIT_CONVERSION }) {
     }
 
     public override Double GetValue() {
@@ -1678,7 +1678,7 @@ namespace FunctionScript {
     [FnArg] protected FnObject<Int64> Value;
 
     public FnMethod_Cast_ToDouble_FromInt64()
-        : base(new FnScriptResources.CompileFlags[] { FnScriptResources.CompileFlags.IMPLICIT_CONVERSION }) {
+        : base(new CompileFlags[] { CompileFlags.IMPLICIT_CONVERSION }) {
     }
 
     public override Double GetValue() {
@@ -1689,7 +1689,7 @@ namespace FunctionScript {
     [FnArg] protected FnObject<UInt64> Value;
 
     public FnMethod_Cast_ToDouble_FromUInt64()
-        : base(new FnScriptResources.CompileFlags[] { FnScriptResources.CompileFlags.IMPLICIT_CONVERSION }) {
+        : base(new CompileFlags[] { CompileFlags.IMPLICIT_CONVERSION }) {
     }
 
     public override Double GetValue() {
@@ -1701,7 +1701,7 @@ namespace FunctionScript {
     [FnArg] protected FnObject<Single> Value;
 
     public FnMethod_Cast_ToDouble_FromSingle()
-        : base(new FnScriptResources.CompileFlags[] { FnScriptResources.CompileFlags.IMPLICIT_CONVERSION }) {
+        : base(new CompileFlags[] { CompileFlags.IMPLICIT_CONVERSION }) {
     }
 
     public override Double GetValue() {
@@ -1727,7 +1727,7 @@ namespace FunctionScript {
     [FnArg] protected FnObject<Char> Value;
 
     public FnMethod_Cast_ToDouble_FromChar()
-        : base(new FnScriptResources.CompileFlags[] { FnScriptResources.CompileFlags.IMPLICIT_CONVERSION }) {
+        : base(new CompileFlags[] { CompileFlags.IMPLICIT_CONVERSION }) {
     }
 
     public override Double GetValue() {
@@ -1755,7 +1755,7 @@ namespace FunctionScript {
     [FnArg] protected FnObject<Byte> Value;
 
     public FnMethod_Cast_ToDecimal_FromByte()
-        : base(new FnScriptResources.CompileFlags[] { FnScriptResources.CompileFlags.IMPLICIT_CONVERSION }) {
+        : base(new CompileFlags[] { CompileFlags.IMPLICIT_CONVERSION }) {
     }
 
     public override Decimal GetValue() {
@@ -1766,7 +1766,7 @@ namespace FunctionScript {
     [FnArg] protected FnObject<SByte> Value;
 
     public FnMethod_Cast_ToDecimal_FromSByte()
-        : base(new FnScriptResources.CompileFlags[] { FnScriptResources.CompileFlags.IMPLICIT_CONVERSION }) {
+        : base(new CompileFlags[] { CompileFlags.IMPLICIT_CONVERSION }) {
     }
 
     public override Decimal GetValue() {
@@ -1777,7 +1777,7 @@ namespace FunctionScript {
     [FnArg] protected FnObject<Int16> Value;
 
     public FnMethod_Cast_ToDecimal_FromInt16()
-        : base(new FnScriptResources.CompileFlags[] { FnScriptResources.CompileFlags.IMPLICIT_CONVERSION }) {
+        : base(new CompileFlags[] { CompileFlags.IMPLICIT_CONVERSION }) {
     }
 
     public override Decimal GetValue() {
@@ -1788,7 +1788,7 @@ namespace FunctionScript {
     [FnArg] protected FnObject<UInt16> Value;
 
     public FnMethod_Cast_ToDecimal_FromUInt16()
-        : base(new FnScriptResources.CompileFlags[] { FnScriptResources.CompileFlags.IMPLICIT_CONVERSION }) {
+        : base(new CompileFlags[] { CompileFlags.IMPLICIT_CONVERSION }) {
     }
 
     public override Decimal GetValue() {
@@ -1799,7 +1799,7 @@ namespace FunctionScript {
     [FnArg] protected FnObject<Int32> Value;
 
     public FnMethod_Cast_ToDecimal_FromInt32()
-        : base(new FnScriptResources.CompileFlags[] { FnScriptResources.CompileFlags.IMPLICIT_CONVERSION }) {
+        : base(new CompileFlags[] { CompileFlags.IMPLICIT_CONVERSION }) {
     }
 
     public override Decimal GetValue() {
@@ -1810,7 +1810,7 @@ namespace FunctionScript {
     [FnArg] protected FnObject<UInt32> Value;
 
     public FnMethod_Cast_ToDecimal_FromUInt32()
-        : base(new FnScriptResources.CompileFlags[] { FnScriptResources.CompileFlags.IMPLICIT_CONVERSION }) {
+        : base(new CompileFlags[] { CompileFlags.IMPLICIT_CONVERSION }) {
     }
 
     public override Decimal GetValue() {
@@ -1821,7 +1821,7 @@ namespace FunctionScript {
     [FnArg] protected FnObject<Int64> Value;
 
     public FnMethod_Cast_ToDecimal_FromInt64()
-        : base(new FnScriptResources.CompileFlags[] { FnScriptResources.CompileFlags.IMPLICIT_CONVERSION }) {
+        : base(new CompileFlags[] { CompileFlags.IMPLICIT_CONVERSION }) {
     }
 
     public override Decimal GetValue() {
@@ -1832,7 +1832,7 @@ namespace FunctionScript {
     [FnArg] protected FnObject<UInt64> Value;
 
     public FnMethod_Cast_ToDecimal_FromUInt64()
-        : base(new FnScriptResources.CompileFlags[] { FnScriptResources.CompileFlags.IMPLICIT_CONVERSION }) {
+        : base(new CompileFlags[] { CompileFlags.IMPLICIT_CONVERSION }) {
     }
 
     public override Decimal GetValue() {
@@ -1866,7 +1866,7 @@ namespace FunctionScript {
     [FnArg] protected FnObject<Char> Value;
 
     public FnMethod_Cast_ToDecimal_FromChar()
-        : base(new FnScriptResources.CompileFlags[] { FnScriptResources.CompileFlags.IMPLICIT_CONVERSION }) {
+        : base(new CompileFlags[] { CompileFlags.IMPLICIT_CONVERSION }) {
     }
 
     public override Decimal GetValue() {
@@ -2007,7 +2007,7 @@ namespace FunctionScript {
     [FnArg] protected FnObject<Object> Value;
 
     public FnMethod_ToNullableInt32_FromNull()
-        : base(new FnScriptResources.CompileFlags[] { FnScriptResources.CompileFlags.IMPLICIT_CONVERSION }) {
+        : base(new CompileFlags[] { CompileFlags.IMPLICIT_CONVERSION }) {
     }
 
     public override Int32? GetValue() {
@@ -2048,7 +2048,7 @@ namespace FunctionScript {
     [FnArg] protected FnObject<Object> Value;
 
     public FnMethod_Cast_ToObject_FromObject()
-        : base(new FnScriptResources.CompileFlags[] { FnScriptResources.CompileFlags.IMPLICIT_CONVERSION }) {
+        : base(new CompileFlags[] { CompileFlags.IMPLICIT_CONVERSION }) {
     }
 
     public override Object GetValue() {
@@ -3626,7 +3626,7 @@ namespace FunctionScript {
     private Random RandomGenerator;
 
     public FnMethod_RandomInt()
-        : base(new FnScriptResources.CompileFlags[] { FnScriptResources.CompileFlags.DO_NOT_CACHE }) {
+        : base(new CompileFlags[] { CompileFlags.DO_NOT_CACHE }) {
       RandomGenerator = new Random();
     }
 
@@ -3642,7 +3642,7 @@ namespace FunctionScript {
     private Random RandomGenerator;
 
     public FnMethod_RandomInt_Max()
-        : base(new FnScriptResources.CompileFlags[] { FnScriptResources.CompileFlags.DO_NOT_CACHE }) {
+        : base(new CompileFlags[] { CompileFlags.DO_NOT_CACHE }) {
       RandomGenerator = new Random();
     }
 
@@ -3658,7 +3658,7 @@ namespace FunctionScript {
     private Random RandomGenerator;
 
     public FnMethod_RandomInt_Min_Max()
-        : base(new FnScriptResources.CompileFlags[] { FnScriptResources.CompileFlags.DO_NOT_CACHE }) {
+        : base(new CompileFlags[] { CompileFlags.DO_NOT_CACHE }) {
       RandomGenerator = new Random();
     }
 
@@ -3676,7 +3676,7 @@ namespace FunctionScript {
     [FnArg] protected FnObject<T> Value;
 
     public FnMethod_SetParameter()
-        : base(new FnScriptResources.CompileFlags[] { FnScriptResources.CompileFlags.DO_NOT_CACHE }) {
+        : base(new CompileFlags[] { CompileFlags.DO_NOT_CACHE }) {
     }
 
     public override Object GetValue() {
@@ -3728,7 +3728,7 @@ namespace FunctionScript {
     [FnArg] protected FnObject<Int32> Length;
 
     public FnMethod_RandomString_WithoutPrefix()
-        : base(new FnScriptResources.CompileFlags[] { FnScriptResources.CompileFlags.DO_NOT_CACHE }) {
+        : base(new CompileFlags[] { CompileFlags.DO_NOT_CACHE }) {
       RandomGenerator = new Random();
     }
 
@@ -3755,7 +3755,7 @@ namespace FunctionScript {
     [FnArg] protected FnObject<String> Prefix;
 
     public FnMethod_RandomString_WithPrefix()
-        : base(new FnScriptResources.CompileFlags[] { FnScriptResources.CompileFlags.DO_NOT_CACHE }) {
+        : base(new CompileFlags[] { CompileFlags.DO_NOT_CACHE }) {
       RandomGenerator = new Random();
     }
 

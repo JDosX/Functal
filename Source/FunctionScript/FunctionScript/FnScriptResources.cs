@@ -4,25 +4,26 @@ using System.Linq;
 
 namespace FunctionScript {
   /// <summary>
-  /// This class contains the list of resources that fnScriptExpressions can access, this makes it simple to access pointers to methods for use in fnScript
+  /// Contains resources for the FunctionScript language, such as available functions, constants and global variables.
   /// </summary>
   public static class FnScriptResources {
     /// <summary>
     /// Stores all the constants that can be used within FnScript, along with their name
     /// </summary>
-    static Dictionary<String, FnObject> Constants;
+    private static Dictionary<String, FnObject> Constants;
+
     /// <summary>
-    /// Stores all the method calls that can be used within FnScript, along with their name
+    /// Stores all the functions that can be used within FunctionScript.
     /// </summary>
     internal static Dictionary<String, FnMethodSwitch> FnMethods;
 
     /// <summary>
-    /// Stores all method calls that can be used to conduct implicit conversions
+    /// Stores all the functions that can be used to conduct implicit conversions.
     /// </summary>
     internal static Dictionary<Type, FnMethodSwitch> ImplicitConversionSwitches;
 
     /// <summary>
-    /// Stores the precedence of data types that can be provided as arguments to methods
+    /// Stores the precedence of data types that can be provided as arguments to methods.
     /// </summary>
     internal static Dictionary<Type, Byte> TypePrecedence;
 
@@ -36,20 +37,12 @@ namespace FunctionScript {
     #endregion
 
     /// <summary>
-    /// A random number generator of no seed to use in FnScript methods.
+    /// A random number generator of no seed to use in FunctionScript methods.
     /// </summary>
-    public static Random GenericRandom;
+    public static readonly Random GenericRandom;
 
     /// <summary>
-    /// Compile flags which can be used in FnScript methods, constants, parameters and FnObjects to alter the way an expression is compiled
-    /// </summary>
-    public enum CompileFlags {
-      DO_NOT_CACHE = 0,
-      IMPLICIT_CONVERSION,
-    }
-
-    /// <summary>
-    /// The constructor
+    /// Constructor.
     /// </summary>
     static FnScriptResources() {
       GlobalParameters = new Dictionary<String, FnObject>();
@@ -67,7 +60,7 @@ namespace FunctionScript {
         { typeof(Single), 8 },
         { typeof(Double), 10 },
         { typeof(Decimal), 12 },
-        //EVERY OTHER DATA TYPE HAS PRECEDENCE 13
+        // EVERY OTHER DATA TYPE HAS PRECEDENCE 13.
         { typeof(Object), 14 }
 
         //What about nullable data types? Fix this
@@ -85,7 +78,7 @@ namespace FunctionScript {
     /// <summary>
     /// Initializes the constants dictionary and adds in all the default constants that can be used from the FnScript API
     /// </summary>
-    static void InitializeConstants() {
+    private static void InitializeConstants() {
       Constants = new Dictionary<String, FnObject>();
 
       #region Mathematical Constants
@@ -106,7 +99,7 @@ namespace FunctionScript {
     /// <summary>
     /// Initializes the methods dictionary and adds in all the defualt methods that can be called from the FnScript API
     /// </summary>
-    static void InitializeMethods() {
+    private static void InitializeMethods() {
       FnMethods = new Dictionary<String, FnMethodSwitch>();
 
       #region Default FnScript API Methods
@@ -638,7 +631,7 @@ namespace FunctionScript {
       #region Void Method Wrappers
       AddSwitch("Return");
 
-      //Add multiple void methods as arguments overloads (2 void methods, 3 void methods, etc...)
+      // Add multiple void methods as arguments overloads (2 void methods, 3 void methods, etc...).
       AddMethodPointerToSwitch<Byte>("Return", new FnMethod_Return<Byte>());
       AddMethodPointerToSwitch<SByte>("Return", new FnMethod_Return<SByte>());
       AddMethodPointerToSwitch<Int16>("Return", new FnMethod_Return<Int16>());
@@ -675,7 +668,6 @@ namespace FunctionScript {
       AddMethodPointerToSwitch<Double>("GetValue", new FnMethod_GetValue<Double>());
       AddMethodPointerToSwitch<Decimal>("GetValue", new FnMethod_GetValue<Decimal>());
       AddMethodPointerToSwitch<Char>("GetValue", new FnMethod_GetValue<Char>());
-      //Haven't put Rectangle here because it relies on a library. That will go in the Dynamo FnScript Extension class (yet to be added)
       #endregion
       #endregion
 
@@ -915,12 +907,16 @@ namespace FunctionScript {
       #endregion
     }
 
-    static void InitializeGlobalParameters() {
+    /// <summary>
+    /// Initializes default global parameters. Any default global parameters should be placed here.
+    /// </summary>
+    private static void InitializeGlobalParameters() {
     }
 
     #region Global Parameter Modification Methods
+
     /// <summary>
-    /// Adds a global parameter to the global parameters dictionary, initialized with the specified value
+    /// Defines a global parameter, initialized with the specified value.
     /// </summary>
     /// <typeparam name="TInput">The data type of the global parameter</typeparam>
     /// <param name="parameterName">The name to assign to the global parameter</param>
@@ -929,9 +925,10 @@ namespace FunctionScript {
       if (!GlobalParameters.ContainsKey(parameterName)) {
         GlobalParameters.Add(parameterName, new FnVariable<TInput>(parameterValue));
       } else {
-        throw new ArgumentException("Parameter of name \"" + parameterName + "\" already exists");
+        throw new ArgumentException(String.Format("Parameter of name \"{0}\" already exist.", parameterName));
       }
     }
+
     /// <summary>
     /// Sets the value of a specified global parameter with a specified value
     /// </summary>
@@ -943,23 +940,28 @@ namespace FunctionScript {
         if (GlobalParameters[parameterName] is FnVariable<TInput>) {
           (GlobalParameters[parameterName] as FnVariable<TInput>).Value = parameterValue;
         } else {
-          throw new ArgumentException("Parameter/input type mismatch, expected type " + GlobalParameters[parameterName].GetWrappedObjectType().ToString() + ", recieved value of type " + typeof(TInput).ToString());
+          throw new ArgumentException(String.Format(
+            "Parameter/input type mismatch, expected type {0}, recieved value of type {1}",
+            GlobalParameters[parameterName].GetWrappedObjectType(), typeof(TInput))
+          );
         }
       } else {
-        throw new ArgumentException("No parameter of this name exists");
+        throw new ArgumentException(String.Format("Parameter of name \"{0}\" doesn't exist.", parameterName));
       }
     }
+
     /// <summary>
-    /// Removes the specified global parameter from the global parameter list
+    /// Removes the global parameter with the specified name.
     /// </summary>
     /// <param name="parameterName">The name of the parameter to remove from the global parameters list</param>
     public static void RemoveGlobalParameter(String parameterName) {
       if (GlobalParameters.ContainsKey(parameterName)) {
         GlobalParameters.Remove(parameterName);
       } else {
-        throw new ArgumentException("Parameter of name \"" + parameterName + "\" doesn't exists");
+        throw new ArgumentException("Parameter of name \"{0}\" doesn't exist.", parameterName);
       }
     }
+
     #endregion
 
     /// <summary>
@@ -1018,7 +1020,7 @@ namespace FunctionScript {
       }
 
       //If this method has an implicit conversion flag
-      if (pointer.CompileFlags != null && pointer.CompileFlags.Contains(CompileFlags.IMPLICIT_CONVERSION)) {
+      if (pointer.Flags != null && pointer.Flags.Contains(FnMethod<T>.CompileFlags.IMPLICIT_CONVERSION)) {
         if (pointer.ArgumentTypes == null || pointer.ArgumentTypes.Length > 1 || pointer.ArgumentTypes.Length == 0) {
           throw new ArgumentException("The FnMethod provided has the incorrect number of parameters. To be a valid Implicit Converion method it must have exactly one parameter.");
         }

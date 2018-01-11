@@ -8,12 +8,42 @@ namespace FunctionScript {
   /// Reflection tag for identifying if an FnObject is a function argument in an FnMethod.
   /// </summary>
   [System.AttributeUsage(AttributeTargets.Field)]
-  public class FnArg : System.Attribute { }
+  public class FnArg : Attribute { }
+
+  [System.AttributeUsage(AttributeTargets.Class)]
+  public class UseFunction : Attribute {
+    /// <summary>
+    /// The list of names the attached FnMethod could have.
+    /// </summary>
+    private string[] FunctionNames;
+
+    public bool IsImmutable = false;
+    public bool ImplicitConversion = false;
+
+    /// <summary>
+    /// Constructor.
+    /// </summary>
+    /// <param name="functionNames">The list of names the attached FnMethod could have.</param>
+    public UseFunction(params string[] functionNames) {
+      FunctionNames = functionNames;
+    }
+  }
 
   /// <summary>
   /// Represents a FunctionScript Function.
   /// </summary>
   public abstract class FnMethod<T> : FnObject<T> {
+    #region Nested Data Types
+    /// <summary>
+    /// Compiler flags which can be used in FnMethods to alter the way an <see cref="FnScriptExpression"/>
+    /// is compiled.
+    /// </summary>
+    public enum CompileFlags {
+      DO_NOT_CACHE = 0,
+      IMPLICIT_CONVERSION,
+    }
+    #endregion
+
     #region Fields
     /// <summary>
     /// Stores the method arguments to be used when checking if the method
@@ -28,9 +58,9 @@ namespace FunctionScript {
     internal Type[] ArgumentTypes;
 
     /// <summary>
-    /// The local variable which stores the values which are used by the CompileFlags property.
+    /// The <see cref="CompileFlags"/> applied to this FnMethod"/>.
     /// </summary>
-    internal FnScriptResources.CompileFlags[] CompileFlags;
+    internal CompileFlags[] Flags;
 
     /// <summary>
     /// Stores the field information for the FnMethod's arguments. Can be cleared using the ClearDataPostCache method.
@@ -53,16 +83,16 @@ namespace FunctionScript {
     /// <summary>
     /// Creates a new FnMethod with the specified list of compiler flags.
     /// </summary>
-    /// <param name="compileFlags">The list of compile flags the method should have</param>
-    public FnMethod(FnScriptResources.CompileFlags[] compileFlags) {
-      Construct(compileFlags);
+    /// <param name="flags">The list of compile flags the method should have</param>
+    public FnMethod(CompileFlags[] flags) {
+      Construct(flags);
     }
 
     /// <summary>
     /// Initializer.
     /// </summary>
-    /// <param name="compileFlags">The list of compile flags the method should have</param>
-    private void Construct(FnScriptResources.CompileFlags[] compileFlags) {
+    /// <param name="flags">The list of compile flags the method should have</param>
+    private void Construct(CompileFlags[] flags) {
       // Compute argument types.
 
       // Start by getting all the FnArgs defined for the method
@@ -78,7 +108,7 @@ namespace FunctionScript {
       }
 
       // Set compile flags.
-      CompileFlags = (compileFlags != null) ? compileFlags : new FnScriptResources.CompileFlags[] { };
+      Flags = (flags != null) ? flags : new CompileFlags[] { };
     }
     #endregion
 
@@ -125,7 +155,7 @@ namespace FunctionScript {
       // And its arguments are cachable
 
       // If the method is cachable
-      if (CompileFlags != null && CompileFlags.Contains(FnScriptResources.CompileFlags.DO_NOT_CACHE)) {
+      if (Flags != null && Flags.Contains(CompileFlags.DO_NOT_CACHE)) {
         return false;
       }
 
@@ -167,7 +197,7 @@ namespace FunctionScript {
     internal void ClearDataPostCache() {
       MethodArguments_CacheCheck = null;
       ArgumentTypes = null;
-      CompileFlags = null;
+      Flags = null;
       ArgsInfo = null;
     }
   }

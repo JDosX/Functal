@@ -1,13 +1,15 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workbench ActiveDocument="FunctionScript/FnScriptExpression.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="FunctionScript/FnMethod.cs">
     <Files>
       <File FileName="FunctionScript/FnConstant.cs" Line="25" Column="5" />
       <File FileName="FunctionScript/FnObject.cs" Line="14" Column="1" />
-      <File FileName="FunctionScript/DefaultMethods.cs" Line="3625" Column="34" />
+      <File FileName="FunctionScript/DefaultMethods.cs" Line="3758" Column="45" />
       <File FileName="FunctionScript/FnMethodPointer.cs" Line="2" Column="34" />
       <File FileName="FunctionScript/FnMethodSwitch.cs" Line="8" Column="25" />
       <File FileName="FunctionScript/FnScriptCompiler.cs" Line="280" Column="39" />
-      <File FileName="FunctionScript/FnScriptExpression.cs" Line="10" Column="5" />
+      <File FileName="FunctionScript/FnScriptExpression.cs" Line="21" Column="47" />
+      <File FileName="FunctionScript/FnScriptResources.cs" Line="88" Column="42" />
+      <File FileName="FunctionScript/FnMethod.cs" Line="21" Column="44" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
