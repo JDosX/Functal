@@ -35,8 +35,7 @@ namespace FunctionScript {
   public abstract class FnMethod<T> : FnObject<T> {
     #region Nested Data Types
     /// <summary>
-    /// Compiler flags which can be used in FnMethods to alter the way an <see cref="FnScriptExpression"/>
-    /// is compiled.
+    /// Compiler flags which can be used in FnMethods to alter the way an <see cref="FnScriptExpression"/> is compiled.
     /// </summary>
     public enum CompileFlags {
       DO_NOT_CACHE = 0,
