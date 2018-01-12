@@ -5,7 +5,7 @@ namespace FunctionScript {
   /// <summary>
   /// Is used to define a method callable from fnScript, encapsulates all possible overloads, and returns the corrent one to the compiler based on input parameters
   /// </summary>
-  internal class FnMethodSwitch {
+  internal class FnMethodGroup {
     /// <summary>
     /// The method name
     /// </summary>
@@ -20,7 +20,7 @@ namespace FunctionScript {
     /// </summary>
     /// <param name="name">The name you want to give your switch. This becomes your method name when you want to call the method in fnScript</param>
     /// <param name="compileFlags">Any compile flags the method switch neds</param>
-    public FnMethodSwitch(String name) {
+    public FnMethodGroup(String name) {
       MethodPointers = new List<FnMethodPointer>();
 
       Name = name;

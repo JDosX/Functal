@@ -77,7 +77,7 @@ namespace FunctionScript {
     /// Creates a new FnMethod.
     /// </summary>
     public FnMethod() {
-      Construct(null);
+      Initialize(null);
     }
 
     /// <summary>
@@ -85,20 +85,20 @@ namespace FunctionScript {
     /// </summary>
     /// <param name="flags">The list of compile flags the method should have</param>
     public FnMethod(CompileFlags[] flags) {
-      Construct(flags);
+      Initialize(flags);
     }
 
     /// <summary>
     /// Initializer.
     /// </summary>
     /// <param name="flags">The list of compile flags the method should have</param>
-    private void Construct(CompileFlags[] flags) {
+    private void Initialize(CompileFlags[] flags) {
       // Compute argument types.
 
       // Start by getting all the FnArgs defined for the method
       ArgsInfo = this.GetType()
-          .GetRuntimeFields()                                                 // get fields
-          .Where(field => field.GetCustomAttribute(typeof(FnArg)) != null)    // that are also FnArgs
+          .GetRuntimeFields()                                                 // Get fields.
+          .Where(field => field.GetCustomAttribute(typeof(FnArg)) != null)    // That are also FnArgs.
           .ToArray<FieldInfo>();
 
       // Now sift through the collected arguments and extract the types their FnObjects encompass

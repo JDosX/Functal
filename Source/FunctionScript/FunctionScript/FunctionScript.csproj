@@ -41,7 +41,7 @@
     <Compile Include="FnIf.cs" />
     <Compile Include="FnMethod.cs" />
     <Compile Include="FnMethodPointer.cs" />
-    <Compile Include="FnMethodSwitch.cs" />
+    <Compile Include="FnMethodGroup.cs" />
     <Compile Include="FnObject.cs" />
     <Compile Include="FnScriptCompiler.cs" />
     <Compile Include="FnScriptExpression.cs" />
