@@ -15,15 +15,15 @@ namespace FunctionScript {
     /// <summary>
     /// Stores all the functions that can be used within FunctionScript.
     /// </summary>
-    internal static Dictionary<String, FnMethodGroup> FnMethods;
+    internal static Dictionary<String, FnFunctionGroup> FnFunctions;
 
     /// <summary>
     /// Stores all the functions that can be used to conduct implicit conversions.
     /// </summary>
-    internal static Dictionary<Type, FnMethodGroup> ImplicitConversionSwitches;
+    internal static Dictionary<Type, FnFunctionGroup> ImplicitConversionSwitches;
 
     /// <summary>
-    /// Stores the precedence of data types that can be provided as arguments to methods.
+    /// Stores the precedence of data types that can be provided as function arguments.
     /// </summary>
     internal static Dictionary<Type, Byte> TypePrecedence;
 
@@ -37,7 +37,7 @@ namespace FunctionScript {
     #endregion
 
     /// <summary>
-    /// A random number generator of no seed to use in FunctionScript methods.
+    /// A random number generator of no seed to use in FunctionScript functions.
     /// </summary>
     public static readonly Random GenericRandom;
 
@@ -46,7 +46,7 @@ namespace FunctionScript {
     /// </summary>
     static FnScriptResources() {
       GlobalParameters = new Dictionary<String, FnObject>();
-      ImplicitConversionSwitches = new Dictionary<Type, FnMethodGroup>();
+      ImplicitConversionSwitches = new Dictionary<Type, FnFunctionGroup>();
 
       TypePrecedence = new Dictionary<Type, Byte>() {
         { typeof(SByte), 0 },
@@ -70,7 +70,7 @@ namespace FunctionScript {
       GenericRandom = new Random();
 
       InitializeConstants();
-      InitializeMethods();
+      InitializeFunctions();
 
       InitializeGlobalParameters();
     }
@@ -97,809 +97,809 @@ namespace FunctionScript {
     }
 
     /// <summary>
-    /// Initializes the methods dictionary and adds in all the defualt methods that can be called from the FnScript API
+    /// Initializes the functions dictionary and adds in all the defualt functions that can be called.
     /// </summary>
-    private static void InitializeMethods() {
-      FnMethods = new Dictionary<String, FnMethodGroup>();
+    private static void InitializeFunctions() {
+      FnFunctions = new Dictionary<String, FnFunctionGroup>();
 
-      #region Default FnScript API Methods
+      #region Default FnScript API Functions
 
-      #region Addition Methods
-      CreateMethodGroup("Add");
-      AddMethodToGroup<Int32>("Add", new FnMethod_Add_Int32());
-      AddMethodToGroup<UInt32>("Add", new FnMethod_Add_UInt32());
-      AddMethodToGroup<Int64>("Add", new FnMethod_Add_Int64());
-      AddMethodToGroup<UInt64>("Add", new FnMethod_Add_UInt64());
-      AddMethodToGroup<Single>("Add", new FnMethod_Add_Single());
-      AddMethodToGroup<Double>("Add", new FnMethod_Add_Double());
-      AddMethodToGroup<Decimal>("Add", new FnMethod_Add_Decimal());
-      AddMethodToGroup<String>("Add", new FnMethod_Add_String());
+      #region Addition Functions
+      CreateFunctionGroup("Add");
+      AddFunctionToGroup("Add", new FnFunction_Add_Int32());
+      AddFunctionToGroup("Add", new FnFunction_Add_UInt32());
+      AddFunctionToGroup("Add", new FnFunction_Add_Int64());
+      AddFunctionToGroup("Add", new FnFunction_Add_UInt64());
+      AddFunctionToGroup("Add", new FnFunction_Add_Single());
+      AddFunctionToGroup("Add", new FnFunction_Add_Double());
+      AddFunctionToGroup("Add", new FnFunction_Add_Decimal());
+      AddFunctionToGroup("Add", new FnFunction_Add_String());
       #endregion
-      #region Subtraction Methods
-      CreateMethodGroup("Subtract");
-      AddMethodToGroup<Int32>("Subtract", new FnMethod_Subtract_Int32());
-      AddMethodToGroup<UInt32>("Subtract", new FnMethod_Subtract_UInt32());
-      AddMethodToGroup<Int64>("Subtract", new FnMethod_Subtract_Int64());
-      AddMethodToGroup<UInt64>("Subtract", new FnMethod_Subtract_UInt64());
-      AddMethodToGroup<Single>("Subtract", new FnMethod_Subtract_Single());
-      AddMethodToGroup<Double>("Subtract", new FnMethod_Subtract_Double());
-      AddMethodToGroup<Decimal>("Subtract", new FnMethod_Subtract_Decimal());
+      #region Subtraction Functions
+      CreateFunctionGroup("Subtract");
+      AddFunctionToGroup("Subtract", new FnFunction_Subtract_Int32());
+      AddFunctionToGroup("Subtract", new FnFunction_Subtract_UInt32());
+      AddFunctionToGroup("Subtract", new FnFunction_Subtract_Int64());
+      AddFunctionToGroup("Subtract", new FnFunction_Subtract_UInt64());
+      AddFunctionToGroup("Subtract", new FnFunction_Subtract_Single());
+      AddFunctionToGroup("Subtract", new FnFunction_Subtract_Double());
+      AddFunctionToGroup("Subtract", new FnFunction_Subtract_Decimal());
       #endregion
-      #region Multiplication Methods
-      CreateMethodGroup("Multiply");
-      AddMethodToGroup<Int32>("Multiply", new FnMethod_Multiply_Int32());
-      AddMethodToGroup<UInt32>("Multiply", new FnMethod_Multiply_UInt32());
-      AddMethodToGroup<Int64>("Multiply", new FnMethod_Multiply_Int64());
-      AddMethodToGroup<UInt64>("Multiply", new FnMethod_Multiply_UInt64());
-      AddMethodToGroup<Single>("Multiply", new FnMethod_Multiply_Single());
-      AddMethodToGroup<Double>("Multiply", new FnMethod_Multiply_Double());
-      AddMethodToGroup<Decimal>("Multiply", new FnMethod_Multiply_Decimal());
+      #region Multiplication Functions
+      CreateFunctionGroup("Multiply");
+      AddFunctionToGroup("Multiply", new FnFunction_Multiply_Int32());
+      AddFunctionToGroup("Multiply", new FnFunction_Multiply_UInt32());
+      AddFunctionToGroup("Multiply", new FnFunction_Multiply_Int64());
+      AddFunctionToGroup("Multiply", new FnFunction_Multiply_UInt64());
+      AddFunctionToGroup("Multiply", new FnFunction_Multiply_Single());
+      AddFunctionToGroup("Multiply", new FnFunction_Multiply_Double());
+      AddFunctionToGroup("Multiply", new FnFunction_Multiply_Decimal());
       #endregion
-      #region Division Methods
-      CreateMethodGroup("Divide");
-      AddMethodToGroup<Int32>("Divide", new FnMethod_Divide_Int32());
-      AddMethodToGroup<UInt32>("Divide", new FnMethod_Divide_UInt32());
-      AddMethodToGroup<Int64>("Divide", new FnMethod_Divide_Int64());
-      AddMethodToGroup<UInt64>("Divide", new FnMethod_Divide_UInt64());
-      AddMethodToGroup<Single>("Divide", new FnMethod_Divide_Single());
-      AddMethodToGroup<Double>("Divide", new FnMethod_Divide_Double());
-      AddMethodToGroup<Decimal>("Divide", new FnMethod_Divide_Decimal());
+      #region Division Functions
+      CreateFunctionGroup("Divide");
+      AddFunctionToGroup("Divide", new FnFunction_Divide_Int32());
+      AddFunctionToGroup("Divide", new FnFunction_Divide_UInt32());
+      AddFunctionToGroup("Divide", new FnFunction_Divide_Int64());
+      AddFunctionToGroup("Divide", new FnFunction_Divide_UInt64());
+      AddFunctionToGroup("Divide", new FnFunction_Divide_Single());
+      AddFunctionToGroup("Divide", new FnFunction_Divide_Double());
+      AddFunctionToGroup("Divide", new FnFunction_Divide_Decimal());
       #endregion
-      #region Mod Methods
-      CreateMethodGroup("Mod");
-      AddMethodToGroup<Int32>("Mod", new FnMethod_Mod_Int32());
-      AddMethodToGroup<UInt32>("Mod", new FnMethod_Mod_UInt32());
-      AddMethodToGroup<Int64>("Mod", new FnMethod_Mod_Int64());
-      AddMethodToGroup<UInt64>("Mod", new FnMethod_Mod_UInt64());
-      AddMethodToGroup<Single>("Mod", new FnMethod_Mod_Single());
-      AddMethodToGroup<Double>("Mod", new FnMethod_Mod_Double());
-      AddMethodToGroup<Decimal>("Mod", new FnMethod_Mod_Decimal());
-      #endregion
-
-      #region Unary Operator Methods
-      #region Positive Methods
-      CreateMethodGroup("Positive");
-      AddMethodToGroup<Byte>("Positive", new FnMethod_Positive_Byte());
-      AddMethodToGroup<SByte>("Positive", new FnMethod_Positive_SByte());
-      AddMethodToGroup<Int16>("Positive", new FnMethod_Positive_Int16());
-      AddMethodToGroup<UInt16>("Positive", new FnMethod_Positive_UInt16());
-      AddMethodToGroup<Int32>("Positive", new FnMethod_Positive_Int32());
-      AddMethodToGroup<UInt32>("Positive", new FnMethod_Positive_UInt32());
-      AddMethodToGroup<Int64>("Positive", new FnMethod_Positive_Int64());
-      AddMethodToGroup<UInt64>("Positive", new FnMethod_Positive_UInt64());
-      AddMethodToGroup<Single>("Positive", new FnMethod_Positive_Single());
-      AddMethodToGroup<Double>("Positive", new FnMethod_Positive_Double());
-      AddMethodToGroup<Decimal>("Positive", new FnMethod_Positive_Decimal());
-      #endregion
-      #region Negative Methods
-      CreateMethodGroup("Negative");
-      AddMethodToGroup<SByte>("Negative", new FnMethod_Negative_SByte());
-      AddMethodToGroup<Int16>("Negative", new FnMethod_Negative_Int16());
-      AddMethodToGroup<Int32>("Negative", new FnMethod_Negative_Int32());
-      AddMethodToGroup<Int64>("Negative", new FnMethod_Negative_Int64());
-      AddMethodToGroup<Single>("Negative", new FnMethod_Negative_Single());
-      AddMethodToGroup<Double>("Negative", new FnMethod_Negative_Double());
-      AddMethodToGroup<Decimal>("Negative", new FnMethod_Negative_Decimal());
-
-      AddMethodToGroup<Int16>("Negative", new FnMethod_Negative_Byte());
-      AddMethodToGroup<Int32>("Negative", new FnMethod_Negative_UInt16());
-      AddMethodToGroup<Int64>("Negative", new FnMethod_Negative_UInt32());
-      #endregion
-      #region Not Methods
-      CreateMethodGroup("Not");
-      AddMethodToGroup<Boolean>("Not", new FnMethod_Not_Boolean());
-      #endregion
+      #region Mod Functions
+      CreateFunctionGroup("Mod");
+      AddFunctionToGroup("Mod", new FnFunction_Mod_Int32());
+      AddFunctionToGroup("Mod", new FnFunction_Mod_UInt32());
+      AddFunctionToGroup("Mod", new FnFunction_Mod_Int64());
+      AddFunctionToGroup("Mod", new FnFunction_Mod_UInt64());
+      AddFunctionToGroup("Mod", new FnFunction_Mod_Single());
+      AddFunctionToGroup("Mod", new FnFunction_Mod_Double());
+      AddFunctionToGroup("Mod", new FnFunction_Mod_Decimal());
       #endregion
 
-      #region Casting Methods
-      #region Byte Casting Methods
-      CreateMethodGroup("Byte");
-      AddAliasForMethodGroup("Byte", "byte");
-      AddMethodToGroup<Byte>("Byte", new FnMethod_Cast_ToByte_FromByte());
-      AddMethodToGroup<Byte>("Byte", new FnMethod_Cast_ToByte_FromSByte());
-      AddMethodToGroup<Byte>("Byte", new FnMethod_Cast_ToByte_FromInt16());
-      AddMethodToGroup<Byte>("Byte", new FnMethod_Cast_ToByte_FromUInt16());
-      AddMethodToGroup<Byte>("Byte", new FnMethod_Cast_ToByte_FromInt32());
-      AddMethodToGroup<Byte>("Byte", new FnMethod_Cast_ToByte_FromUInt32());
-      AddMethodToGroup<Byte>("Byte", new FnMethod_Cast_ToByte_FromInt64());
-      AddMethodToGroup<Byte>("Byte", new FnMethod_Cast_ToByte_FromUInt64());
-
-      AddMethodToGroup<Byte>("Byte", new FnMethod_Cast_ToByte_FromSingle());
-      AddMethodToGroup<Byte>("Byte", new FnMethod_Cast_ToByte_FromDouble());
-      AddMethodToGroup<Byte>("Byte", new FnMethod_Cast_ToByte_FromDecimal());
-
-      AddMethodToGroup<Byte>("Byte", new FnMethod_Cast_ToByte_FromChar());
-      AddMethodToGroup<Byte>("Byte", new FnMethod_Cast_ToByte_FromString());
-
-      AddMethodToGroup<Byte>("Byte", new FnMethod_Cast_ToByte_FromObject());
+      #region Unary Operator Functions
+      #region Positive Functions
+      CreateFunctionGroup("Positive");
+      AddFunctionToGroup("Positive", new FnFunction_Positive_Byte());
+      AddFunctionToGroup("Positive", new FnFunction_Positive_SByte());
+      AddFunctionToGroup("Positive", new FnFunction_Positive_Int16());
+      AddFunctionToGroup("Positive", new FnFunction_Positive_UInt16());
+      AddFunctionToGroup("Positive", new FnFunction_Positive_Int32());
+      AddFunctionToGroup("Positive", new FnFunction_Positive_UInt32());
+      AddFunctionToGroup("Positive", new FnFunction_Positive_Int64());
+      AddFunctionToGroup("Positive", new FnFunction_Positive_UInt64());
+      AddFunctionToGroup("Positive", new FnFunction_Positive_Single());
+      AddFunctionToGroup("Positive", new FnFunction_Positive_Double());
+      AddFunctionToGroup("Positive", new FnFunction_Positive_Decimal());
       #endregion
-      #region SByte Casting Methods
-      CreateMethodGroup("SByte");
-      AddAliasForMethodGroup("SByte", "sbyte");
-      AddMethodToGroup<SByte>("SByte", new FnMethod_Cast_ToSByte_FromByte());
-      AddMethodToGroup<SByte>("SByte", new FnMethod_Cast_ToSByte_FromSByte());
-      AddMethodToGroup<SByte>("SByte", new FnMethod_Cast_ToSByte_FromInt16());
-      AddMethodToGroup<SByte>("SByte", new FnMethod_Cast_ToSByte_FromUInt16());
-      AddMethodToGroup<SByte>("SByte", new FnMethod_Cast_ToSByte_FromInt32());
-      AddMethodToGroup<SByte>("SByte", new FnMethod_Cast_ToSByte_FromUInt32());
-      AddMethodToGroup<SByte>("SByte", new FnMethod_Cast_ToSByte_FromInt64());
-      AddMethodToGroup<SByte>("SByte", new FnMethod_Cast_ToSByte_FromUInt64());
+      #region Negative Functions
+      CreateFunctionGroup("Negative");
+      AddFunctionToGroup("Negative", new FnFunction_Negative_SByte());
+      AddFunctionToGroup("Negative", new FnFunction_Negative_Int16());
+      AddFunctionToGroup("Negative", new FnFunction_Negative_Int32());
+      AddFunctionToGroup("Negative", new FnFunction_Negative_Int64());
+      AddFunctionToGroup("Negative", new FnFunction_Negative_Single());
+      AddFunctionToGroup("Negative", new FnFunction_Negative_Double());
+      AddFunctionToGroup("Negative", new FnFunction_Negative_Decimal());
 
-      AddMethodToGroup<SByte>("SByte", new FnMethod_Cast_ToSByte_FromSingle());
-      AddMethodToGroup<SByte>("SByte", new FnMethod_Cast_ToSByte_FromDouble());
-      AddMethodToGroup<SByte>("SByte", new FnMethod_Cast_ToSByte_FromDecimal());
-
-      AddMethodToGroup<SByte>("SByte", new FnMethod_Cast_ToSByte_FromChar());
-      AddMethodToGroup<SByte>("SByte", new FnMethod_CastSByte_FromString());
-
-      AddMethodToGroup<SByte>("SByte", new FnMethod_CastSByte_FromObject());
+      AddFunctionToGroup("Negative", new FnFunction_Negative_Byte());
+      AddFunctionToGroup("Negative", new FnFunction_Negative_UInt16());
+      AddFunctionToGroup("Negative", new FnFunction_Negative_UInt32());
       #endregion
-      #region Int16 Casting Methods
-      CreateMethodGroup("Int16");
-      AddAliasForMethodGroup("Int16", "short");
-      AddMethodToGroup<Int16>("Int16", new FnMethod_Cast_ToInt16_FromByte());
-      AddMethodToGroup<Int16>("Int16", new FnMethod_Cast_ToInt16_FromSByte());
-      AddMethodToGroup<Int16>("Int16", new FnMethod_Cast_ToInt16_FromInt16());
-      AddMethodToGroup<Int16>("Int16", new FnMethod_Cast_ToInt16_FromUInt16());
-      AddMethodToGroup<Int16>("Int16", new FnMethod_Cast_ToInt16_FromInt32());
-      AddMethodToGroup<Int16>("Int16", new FnMethod_Cast_ToInt16_FromUInt32());
-      AddMethodToGroup<Int16>("Int16", new FnMethod_Cast_ToInt16_FromInt64());
-      AddMethodToGroup<Int16>("Int16", new FnMethod_Cast_ToInt16_FromUInt64());
-
-      AddMethodToGroup<Int16>("Int16", new FnMethod_Cast_ToInt16_FromSingle());
-      AddMethodToGroup<Int16>("Int16", new FnMethod_Cast_ToInt16_FromDouble());
-      AddMethodToGroup<Int16>("Int16", new FnMethod_Cast_ToInt16_FromDecimal());
-
-      AddMethodToGroup<Int16>("Int16", new FnMethod_Cast_ToInt16_FromChar());
-      AddMethodToGroup<Int16>("Int16", new FnMethod_Cast_ToInt16_FromString());
-
-      AddMethodToGroup<Int16>("Int16", new FnMethod_Cast_ToInt16_FromObject());
-      #endregion
-      #region UInt16 Casting Methods
-      CreateMethodGroup("UInt16");
-      AddAliasForMethodGroup("UInt16", "ushort");
-      AddMethodToGroup<UInt16>("UInt16", new FnMethod_Cast_ToUInt16_FromByte());
-      AddMethodToGroup<UInt16>("UInt16", new FnMethod_Cast_ToUInt16_FromSByte());
-      AddMethodToGroup<UInt16>("UInt16", new FnMethod_Cast_ToUInt16_FromInt16());
-      AddMethodToGroup<UInt16>("UInt16", new FnMethod_Cast_ToUInt16_FromUInt16());
-      AddMethodToGroup<UInt16>("UInt16", new FnMethod_Cast_ToUInt16_FromInt32());
-      AddMethodToGroup<UInt16>("UInt16", new FnMethod_Cast_ToUInt16_FromUInt32());
-      AddMethodToGroup<UInt16>("UInt16", new FnMethod_Cast_ToUInt16_FromInt64());
-      AddMethodToGroup<UInt16>("UInt16", new FnMethod_Cast_ToUInt16_FromUInt64());
-
-      AddMethodToGroup<UInt16>("UInt16", new FnMethod_Cast_ToUInt16_FromSingle());
-      AddMethodToGroup<UInt16>("UInt16", new FnMethod_Cast_ToUInt16_FromDouble());
-      AddMethodToGroup<UInt16>("UInt16", new FnMethod_Cast_ToUInt16_FromDecimal());
-
-      AddMethodToGroup<UInt16>("UInt16", new FnMethod_Cast_ToUInt16_FromChar());
-      AddMethodToGroup<UInt16>("UInt16", new FnMethod_Cast_ToUInt16_FromString());
-
-      AddMethodToGroup<UInt16>("UInt16", new FnMethod_Cast_ToUInt16_FromObject());
-      #endregion
-      #region Int32 Casting Methods
-      CreateMethodGroup("Int32");
-      AddAliasForMethodGroup("Int32", "int");
-      AddMethodToGroup<Int32>("Int32", new FnMethod_Cast_ToInt32_FromByte());
-      AddMethodToGroup<Int32>("Int32", new FnMethod_Cast_ToInt32_FromSByte());
-      AddMethodToGroup<Int32>("Int32", new FnMethod_Cast_ToInt32_FromInt16());
-      AddMethodToGroup<Int32>("Int32", new FnMethod_Cast_ToInt32_FromUInt16());
-      AddMethodToGroup<Int32>("Int32", new FnMethod_Cast_ToInt32_FromInt32());
-      AddMethodToGroup<Int32>("Int32", new FnMethod_Cast_ToInt32_FromUInt32());
-      AddMethodToGroup<Int32>("Int32", new FnMethod_Cast_ToInt32_FromInt64());
-      AddMethodToGroup<Int32>("Int32", new FnMethod_Cast_ToInt32_FromUInt64());
-
-      AddMethodToGroup<Int32>("Int32", new FnMethod_Cast_ToInt32_FromSingle());
-      AddMethodToGroup<Int32>("Int32", new FnMethod_Cast_ToInt32_FromDouble());
-      AddMethodToGroup<Int32>("Int32", new FnMethod_Cast_ToInt32_FromDecimal());
-
-      AddMethodToGroup<Int32>("Int32", new FnMethod_Cast_ToInt32_FromChar());
-      AddMethodToGroup<Int32>("Int32", new FnMethod_Cast_ToInt32_FromString());
-
-      AddMethodToGroup<Int32>("Int32", new FnMethod_Cast_ToInt32_FromObject());
-      #endregion
-      #region UInt32 Casting Methods
-      CreateMethodGroup("UInt32");
-      AddAliasForMethodGroup("UInt32", "uint");
-      AddMethodToGroup<UInt32>("UInt32", new FnMethod_Cast_ToUInt32_FromByte());
-      AddMethodToGroup<UInt32>("UInt32", new FnMethod_Cast_ToUInt32_FromSByte());
-      AddMethodToGroup<UInt32>("UInt32", new FnMethod_Cast_ToUInt32_FromInt16());
-      AddMethodToGroup<UInt32>("UInt32", new FnMethod_Cast_ToUInt32_FromUInt16());
-      AddMethodToGroup<UInt32>("UInt32", new FnMethod_Cast_ToUInt32_FromInt32());
-      AddMethodToGroup<UInt32>("UInt32", new FnMethod_Cast_ToUInt32_FromUInt32());
-      AddMethodToGroup<UInt32>("UInt32", new FnMethod_Cast_ToUInt32_FromInt64());
-      AddMethodToGroup<UInt32>("UInt32", new FnMethod_Cast_ToUInt32_FromUInt64());
-
-      AddMethodToGroup<UInt32>("UInt32", new FnMethod_Cast_ToUInt32_FromSingle());
-      AddMethodToGroup<UInt32>("UInt32", new FnMethod_Cast_ToUInt32_FromDouble());
-      AddMethodToGroup<UInt32>("UInt32", new FnMethod_Cast_ToUInt32_FromDecimal());
-
-      AddMethodToGroup<UInt32>("UInt32", new FnMethod_Cast_ToUInt32_FromChar());
-      AddMethodToGroup<UInt32>("UInt32", new FnMethod_Cast_ToUInt32_FromString());
-
-      AddMethodToGroup<UInt32>("UInt32", new FnMethod_Cast_ToUInt32_FromObject());
-      #endregion
-      #region Int64 Casting Methods
-      CreateMethodGroup("Int64");
-      AddAliasForMethodGroup("Int64", "long");
-      AddMethodToGroup<Int64>("Int64", new FnMethod_Cast_ToInt64_FromByte());
-      AddMethodToGroup<Int64>("Int64", new FnMethod_Cast_ToInt64_FromSByte());
-      AddMethodToGroup<Int64>("Int64", new FnMethod_Cast_ToInt64_FromInt16());
-      AddMethodToGroup<Int64>("Int64", new FnMethod_Cast_ToInt64_FromUInt16());
-      AddMethodToGroup<Int64>("Int64", new FnMethod_Cast_ToInt64_FromInt32());
-      AddMethodToGroup<Int64>("Int64", new FnMethod_Cast_ToInt64_FromUInt32());
-      AddMethodToGroup<Int64>("Int64", new FnMethod_Cast_ToInt64_FromInt64());
-      AddMethodToGroup<Int64>("Int64", new FnMethod_Cast_ToInt64_FromUInt64());
-
-      AddMethodToGroup<Int64>("Int64", new FnMethod_Cast_ToInt64_FromSingle());
-      AddMethodToGroup<Int64>("Int64", new FnMethod_Cast_ToInt64_FromDouble());
-      AddMethodToGroup<Int64>("Int64", new FnMethod_Cast_ToInt64_FromDecimal());
-
-      AddMethodToGroup<Int64>("Int64", new FnMethod_Cast_ToInt64_FromChar());
-      AddMethodToGroup<Int64>("Int64", new FnMethod_Cast_ToInt64_FromString());
-
-      AddMethodToGroup<Int64>("Int64", new FnMethod_Cast_ToInt64_FromObject());
-      #endregion
-      #region UInt64 Casting Methods
-      CreateMethodGroup("UInt64");
-      AddAliasForMethodGroup("UInt64", "ulong");
-      AddMethodToGroup<UInt64>("UInt64", new FnMethod_Cast_ToUInt64_FromByte());
-      AddMethodToGroup<UInt64>("UInt64", new FnMethod_Cast_ToUInt64_FromSByte());
-      AddMethodToGroup<UInt64>("UInt64", new FnMethod_Cast_ToUInt64_FromInt16());
-      AddMethodToGroup<UInt64>("UInt64", new FnMethod_Cast_ToUInt64_FromUInt16());
-      AddMethodToGroup<UInt64>("UInt64", new FnMethod_Cast_ToUInt64_FromInt32());
-      AddMethodToGroup<UInt64>("UInt64", new FnMethod_Cast_ToUInt64_FromUInt32());
-      AddMethodToGroup<UInt64>("UInt64", new FnMethod_Cast_ToUInt64_FromInt64());
-      AddMethodToGroup<UInt64>("UInt64", new FnMethod_Cast_ToUInt64_FromUInt64());
-
-      AddMethodToGroup<UInt64>("UInt64", new FnMethod_Cast_ToUInt64_FromSingle());
-      AddMethodToGroup<UInt64>("UInt64", new FnMethod_Cast_ToUInt64_FromDouble());
-      AddMethodToGroup<UInt64>("UInt64", new FnMethod_Cast_ToUInt64_FromDecimal());
-
-      AddMethodToGroup<UInt64>("UInt64", new FnMethod_Cast_ToUInt64_FromChar());
-      AddMethodToGroup<UInt64>("UInt64", new FnMethod_Cast_ToUInt64_FromString());
-
-      AddMethodToGroup<UInt64>("UInt64", new FnMethod_Cast_ToUInt64_FromObject());
-      #endregion
-      #region Single Casting Methods
-      CreateMethodGroup("Single");
-      AddAliasForMethodGroup("Single", "float");
-      AddMethodToGroup<Single>("Single", new FnMethod_Cast_ToSingle_FromByte());
-      AddMethodToGroup<Single>("Single", new FnMethod_Cast_ToSingle_FromSByte());
-      AddMethodToGroup<Single>("Single", new FnMethod_Cast_ToSingle_FromInt16());
-      AddMethodToGroup<Single>("Single", new FnMethod_Cast_ToSingle_FromUInt16());
-      AddMethodToGroup<Single>("Single", new FnMethod_Cast_ToSingle_FromInt32());
-      AddMethodToGroup<Single>("Single", new FnMethod_Cast_ToSingle_FromUInt32());
-      AddMethodToGroup<Single>("Single", new FnMethod_Cast_ToSingle_FromInt64());
-      AddMethodToGroup<Single>("Single", new FnMethod_Cast_ToSingle_FromUInt64());
-
-      AddMethodToGroup<Single>("Single", new FnMethod_Cast_ToSingle_FromSingle());
-      AddMethodToGroup<Single>("Single", new FnMethod_Cast_ToSingle_FromDouble());
-      AddMethodToGroup<Single>("Single", new FnMethod_Cast_ToSingle_FromDecimal());
-
-      AddMethodToGroup<Single>("Single", new FnMethod_Cast_ToSingle_FromChar());
-      AddMethodToGroup<Single>("Single", new FnMethod_Cast_ToSingle_FromString());
-
-      AddMethodToGroup<Single>("Single", new FnMethod_Cast_ToSingle_FromObject());
-      #endregion
-      #region Double Casting Methods
-      CreateMethodGroup("Double");
-      AddAliasForMethodGroup("Double", "double");
-      AddMethodToGroup<Double>("Double", new FnMethod_Cast_ToDouble_FromByte());
-      AddMethodToGroup<Double>("Double", new FnMethod_Cast_ToDouble_FromSByte());
-      AddMethodToGroup<Double>("Double", new FnMethod_Cast_ToDouble_FromInt16());
-      AddMethodToGroup<Double>("Double", new FnMethod_Cast_ToDouble_FromUInt16());
-      AddMethodToGroup<Double>("Double", new FnMethod_Cast_ToDouble_FromInt32());
-      AddMethodToGroup<Double>("Double", new FnMethod_Cast_ToDouble_FromUInt32());
-      AddMethodToGroup<Double>("Double", new FnMethod_Cast_ToDouble_FromInt64());
-      AddMethodToGroup<Double>("Double", new FnMethod_Cast_ToDouble_FromUInt64());
-
-      AddMethodToGroup<Double>("Double", new FnMethod_Cast_ToDouble_FromSingle());
-      AddMethodToGroup<Double>("Double", new FnMethod_Cast_ToDouble_FromDouble());
-      AddMethodToGroup<Double>("Double", new FnMethod_Cast_ToDouble_FromDecimal());
-
-      AddMethodToGroup<Double>("Double", new FnMethod_Cast_ToDouble_FromChar());
-      AddMethodToGroup<Double>("Double", new FnMethod_Cast_ToDouble_FromString());
-
-      AddMethodToGroup<Double>("Double", new FnMethod_Cast_ToDouble_FromObject());
-      #endregion
-      #region Decimal Casting Methods
-      CreateMethodGroup("Decimal");
-      AddAliasForMethodGroup("Decimal", "decimal");
-      AddMethodToGroup<Decimal>("Decimal", new FnMethod_Cast_ToDecimal_FromByte());
-      AddMethodToGroup<Decimal>("Decimal", new FnMethod_Cast_ToDecimal_FromSByte());
-      AddMethodToGroup<Decimal>("Decimal", new FnMethod_Cast_ToDecimal_FromInt16());
-      AddMethodToGroup<Decimal>("Decimal", new FnMethod_Cast_ToDecimal_FromUInt16());
-      AddMethodToGroup<Decimal>("Decimal", new FnMethod_Cast_ToDecimal_FromInt32());
-      AddMethodToGroup<Decimal>("Decimal", new FnMethod_Cast_ToDecimal_FromUInt32());
-      AddMethodToGroup<Decimal>("Decimal", new FnMethod_Cast_ToDecimal_FromInt64());
-      AddMethodToGroup<Decimal>("Decimal", new FnMethod_Cast_ToDecimal_FromUInt64());
-
-      AddMethodToGroup<Decimal>("Decimal", new FnMethod_Cast_ToDecimal_FromSingle());
-      AddMethodToGroup<Decimal>("Decimal", new FnMethod_Cast_ToDecimal_FromDouble());
-      AddMethodToGroup<Decimal>("Decimal", new FnMethod_Cast_ToDecimal_FromDecimal());
-
-      AddMethodToGroup<Decimal>("Decimal", new FnMethod_Cast_ToDecimal_FromChar());
-      AddMethodToGroup<Decimal>("Decimal", new FnMethod_Cast_ToDecimal_FromString());
-
-      AddMethodToGroup<Decimal>("Decimal", new FnMethod_Cast_ToDecimal_FromObject());
-      #endregion
-
-      #region Char Casting Methods
-      CreateMethodGroup("Char");
-      AddAliasForMethodGroup("Char", "char");
-      AddMethodToGroup<Char>("Char", new FnMethod_Cast_ToChar_FromByte());
-      AddMethodToGroup<Char>("Char", new FnMethod_Cast_ToChar_FromSByte());
-      AddMethodToGroup<Char>("Char", new FnMethod_Cast_ToChar_FromInt16());
-      AddMethodToGroup<Char>("Char", new FnMethod_Cast_ToChar_FromUInt16());
-      AddMethodToGroup<Char>("Char", new FnMethod_Cast_ToChar_FromInt32());
-      AddMethodToGroup<Char>("Char", new FnMethod_Cast_ToChar_FromUInt32());
-      AddMethodToGroup<Char>("Char", new FnMethod_Cast_ToChar_FromInt64());
-      AddMethodToGroup<Char>("Char", new FnMethod_Cast_ToChar_FromUInt64());
-
-      AddMethodToGroup<Char>("Char", new FnMethod_Cast_ToChar_FromSingle());
-      AddMethodToGroup<Char>("Char", new FnMethod_Cast_ToChar_FromDouble());
-      AddMethodToGroup<Char>("Char", new FnMethod_Cast_ToChar_FromDecimal());
-
-      AddMethodToGroup<Char>("Char", new FnMethod_Cast_ToChar_FromChar());
-      AddMethodToGroup<Char>("Char", new FnMethod_Cast_ToChar_FromString());
-
-      AddMethodToGroup<Char>("Char", new FnMethod_Cast_ToChar_FromObject());
-      #endregion
-      #region String Casting Methods
-      CreateMethodGroup("String");
-      AddAliasForMethodGroup("String", "string");
-      AddMethodToGroup<String>("String", new FnMethod_Cast_ToString_FromString());
-
-      AddMethodToGroup<String>("String", new FnMethod_Cast_ToString_FromObject());
-      #endregion
-      #region ToString Methods
-      CreateMethodGroup("ToString");
-      AddMethodToGroup<String>("ToString", new FnMethod_ToString<Byte>());
-      AddMethodToGroup<String>("ToString", new FnMethod_ToString<SByte>());
-      AddMethodToGroup<String>("ToString", new FnMethod_ToString<Int16>());
-      AddMethodToGroup<String>("ToString", new FnMethod_ToString<UInt16>());
-      AddMethodToGroup<String>("ToString", new FnMethod_ToString<Int32>());
-      AddMethodToGroup<String>("ToString", new FnMethod_ToString<UInt32>());
-      AddMethodToGroup<String>("ToString", new FnMethod_ToString<Int64>());
-      AddMethodToGroup<String>("ToString", new FnMethod_ToString<UInt64>());
-
-      AddMethodToGroup<String>("ToString", new FnMethod_ToString<Single>());
-      AddMethodToGroup<String>("ToString", new FnMethod_ToString<Double>());
-      AddMethodToGroup<String>("ToString", new FnMethod_ToString<Decimal>());
-
-      AddMethodToGroup<String>("ToString", new FnMethod_ToString<Char>());
-      AddMethodToGroup<String>("ToString", new FnMethod_ToString<String>());
-
-      AddMethodToGroup<String>("ToString", new FnMethod_ToString<Object>());
-      #endregion
-
-      #region Int32? Casting Methods
-      CreateMethodGroup("NullableInt32");
-      AddMethodToGroup<Int32?>("NullableInt32", new FnMethod_ToNullableInt32_FromNull());
-      #endregion
-
-      #region Object Casting Methods
-      CreateMethodGroup("Object");
-      AddAliasForMethodGroup("Object", "object");
-      AddMethodToGroup<Object>("Object", new FnMethod_Cast_ToObject_FromObject());
+      #region Not Functions
+      CreateFunctionGroup("Not");
+      AddFunctionToGroup("Not", new FnFunction_Not_Boolean());
       #endregion
       #endregion
-      #region Implicit Conversion Methods
 
-      //#region Int32? Implicit Conversion Methods
-      // There's an issue with this, but I don't remember what it is... Something about FnScript not being able to determine the correct overload when passing a struct to a method which accepts Nullable<struct>?
+      #region Casting Functions
+      #region Byte Casting Functions
+      CreateFunctionGroup("Byte");
+      AddAliasForFunctionGroup("Byte", "byte");
+      AddFunctionToGroup("Byte", new FnFunction_Cast_ToByte_FromByte());
+      AddFunctionToGroup("Byte", new FnFunction_Cast_ToByte_FromSByte());
+      AddFunctionToGroup("Byte", new FnFunction_Cast_ToByte_FromInt16());
+      AddFunctionToGroup("Byte", new FnFunction_Cast_ToByte_FromUInt16());
+      AddFunctionToGroup("Byte", new FnFunction_Cast_ToByte_FromInt32());
+      AddFunctionToGroup("Byte", new FnFunction_Cast_ToByte_FromUInt32());
+      AddFunctionToGroup("Byte", new FnFunction_Cast_ToByte_FromInt64());
+      AddFunctionToGroup("Byte", new FnFunction_Cast_ToByte_FromUInt64());
+
+      AddFunctionToGroup("Byte", new FnFunction_Cast_ToByte_FromSingle());
+      AddFunctionToGroup("Byte", new FnFunction_Cast_ToByte_FromDouble());
+      AddFunctionToGroup("Byte", new FnFunction_Cast_ToByte_FromDecimal());
+
+      AddFunctionToGroup("Byte", new FnFunction_Cast_ToByte_FromChar());
+      AddFunctionToGroup("Byte", new FnFunction_Cast_ToByte_FromString());
+
+      AddFunctionToGroup("Byte", new FnFunction_Cast_ToByte_FromObject());
+      #endregion
+      #region SByte Casting Functions
+      CreateFunctionGroup("SByte");
+      AddAliasForFunctionGroup("SByte", "sbyte");
+      AddFunctionToGroup("SByte", new FnFunction_Cast_ToSByte_FromByte());
+      AddFunctionToGroup("SByte", new FnFunction_Cast_ToSByte_FromSByte());
+      AddFunctionToGroup("SByte", new FnFunction_Cast_ToSByte_FromInt16());
+      AddFunctionToGroup("SByte", new FnFunction_Cast_ToSByte_FromUInt16());
+      AddFunctionToGroup("SByte", new FnFunction_Cast_ToSByte_FromInt32());
+      AddFunctionToGroup("SByte", new FnFunction_Cast_ToSByte_FromUInt32());
+      AddFunctionToGroup("SByte", new FnFunction_Cast_ToSByte_FromInt64());
+      AddFunctionToGroup("SByte", new FnFunction_Cast_ToSByte_FromUInt64());
+
+      AddFunctionToGroup("SByte", new FnFunction_Cast_ToSByte_FromSingle());
+      AddFunctionToGroup("SByte", new FnFunction_Cast_ToSByte_FromDouble());
+      AddFunctionToGroup("SByte", new FnFunction_Cast_ToSByte_FromDecimal());
+
+      AddFunctionToGroup("SByte", new FnFunction_Cast_ToSByte_FromChar());
+      AddFunctionToGroup("SByte", new FnFunction_CastSByte_FromString());
+
+      AddFunctionToGroup("SByte", new FnFunction_CastSByte_FromObject());
+      #endregion
+      #region Int16 Casting Functions
+      CreateFunctionGroup("Int16");
+      AddAliasForFunctionGroup("Int16", "short");
+      AddFunctionToGroup("Int16", new FnFunction_Cast_ToInt16_FromByte());
+      AddFunctionToGroup("Int16", new FnFunction_Cast_ToInt16_FromSByte());
+      AddFunctionToGroup("Int16", new FnFunction_Cast_ToInt16_FromInt16());
+      AddFunctionToGroup("Int16", new FnFunction_Cast_ToInt16_FromUInt16());
+      AddFunctionToGroup("Int16", new FnFunction_Cast_ToInt16_FromInt32());
+      AddFunctionToGroup("Int16", new FnFunction_Cast_ToInt16_FromUInt32());
+      AddFunctionToGroup("Int16", new FnFunction_Cast_ToInt16_FromInt64());
+      AddFunctionToGroup("Int16", new FnFunction_Cast_ToInt16_FromUInt64());
+
+      AddFunctionToGroup("Int16", new FnFunction_Cast_ToInt16_FromSingle());
+      AddFunctionToGroup("Int16", new FnFunction_Cast_ToInt16_FromDouble());
+      AddFunctionToGroup("Int16", new FnFunction_Cast_ToInt16_FromDecimal());
+
+      AddFunctionToGroup("Int16", new FnFunction_Cast_ToInt16_FromChar());
+      AddFunctionToGroup("Int16", new FnFunction_Cast_ToInt16_FromString());
+
+      AddFunctionToGroup("Int16", new FnFunction_Cast_ToInt16_FromObject());
+      #endregion
+      #region UInt16 Casting Functions
+      CreateFunctionGroup("UInt16");
+      AddAliasForFunctionGroup("UInt16", "ushort");
+      AddFunctionToGroup("UInt16", new FnFunction_Cast_ToUInt16_FromByte());
+      AddFunctionToGroup("UInt16", new FnFunction_Cast_ToUInt16_FromSByte());
+      AddFunctionToGroup("UInt16", new FnFunction_Cast_ToUInt16_FromInt16());
+      AddFunctionToGroup("UInt16", new FnFunction_Cast_ToUInt16_FromUInt16());
+      AddFunctionToGroup("UInt16", new FnFunction_Cast_ToUInt16_FromInt32());
+      AddFunctionToGroup("UInt16", new FnFunction_Cast_ToUInt16_FromUInt32());
+      AddFunctionToGroup("UInt16", new FnFunction_Cast_ToUInt16_FromInt64());
+      AddFunctionToGroup("UInt16", new FnFunction_Cast_ToUInt16_FromUInt64());
+
+      AddFunctionToGroup("UInt16", new FnFunction_Cast_ToUInt16_FromSingle());
+      AddFunctionToGroup("UInt16", new FnFunction_Cast_ToUInt16_FromDouble());
+      AddFunctionToGroup("UInt16", new FnFunction_Cast_ToUInt16_FromDecimal());
+
+      AddFunctionToGroup("UInt16", new FnFunction_Cast_ToUInt16_FromChar());
+      AddFunctionToGroup("UInt16", new FnFunction_Cast_ToUInt16_FromString());
+
+      AddFunctionToGroup("UInt16", new FnFunction_Cast_ToUInt16_FromObject());
+      #endregion
+      #region Int32 Casting Functions
+      CreateFunctionGroup("Int32");
+      AddAliasForFunctionGroup("Int32", "int");
+      AddFunctionToGroup("Int32", new FnFunction_Cast_ToInt32_FromByte());
+      AddFunctionToGroup("Int32", new FnFunction_Cast_ToInt32_FromSByte());
+      AddFunctionToGroup("Int32", new FnFunction_Cast_ToInt32_FromInt16());
+      AddFunctionToGroup("Int32", new FnFunction_Cast_ToInt32_FromUInt16());
+      AddFunctionToGroup("Int32", new FnFunction_Cast_ToInt32_FromInt32());
+      AddFunctionToGroup("Int32", new FnFunction_Cast_ToInt32_FromUInt32());
+      AddFunctionToGroup("Int32", new FnFunction_Cast_ToInt32_FromInt64());
+      AddFunctionToGroup("Int32", new FnFunction_Cast_ToInt32_FromUInt64());
+
+      AddFunctionToGroup("Int32", new FnFunction_Cast_ToInt32_FromSingle());
+      AddFunctionToGroup("Int32", new FnFunction_Cast_ToInt32_FromDouble());
+      AddFunctionToGroup("Int32", new FnFunction_Cast_ToInt32_FromDecimal());
+
+      AddFunctionToGroup("Int32", new FnFunction_Cast_ToInt32_FromChar());
+      AddFunctionToGroup("Int32", new FnFunction_Cast_ToInt32_FromString());
+
+      AddFunctionToGroup("Int32", new FnFunction_Cast_ToInt32_FromObject());
+      #endregion
+      #region UInt32 Casting Functions
+      CreateFunctionGroup("UInt32");
+      AddAliasForFunctionGroup("UInt32", "uint");
+      AddFunctionToGroup("UInt32", new FnFunction_Cast_ToUInt32_FromByte());
+      AddFunctionToGroup("UInt32", new FnFunction_Cast_ToUInt32_FromSByte());
+      AddFunctionToGroup("UInt32", new FnFunction_Cast_ToUInt32_FromInt16());
+      AddFunctionToGroup("UInt32", new FnFunction_Cast_ToUInt32_FromUInt16());
+      AddFunctionToGroup("UInt32", new FnFunction_Cast_ToUInt32_FromInt32());
+      AddFunctionToGroup("UInt32", new FnFunction_Cast_ToUInt32_FromUInt32());
+      AddFunctionToGroup("UInt32", new FnFunction_Cast_ToUInt32_FromInt64());
+      AddFunctionToGroup("UInt32", new FnFunction_Cast_ToUInt32_FromUInt64());
+
+      AddFunctionToGroup("UInt32", new FnFunction_Cast_ToUInt32_FromSingle());
+      AddFunctionToGroup("UInt32", new FnFunction_Cast_ToUInt32_FromDouble());
+      AddFunctionToGroup("UInt32", new FnFunction_Cast_ToUInt32_FromDecimal());
+
+      AddFunctionToGroup("UInt32", new FnFunction_Cast_ToUInt32_FromChar());
+      AddFunctionToGroup("UInt32", new FnFunction_Cast_ToUInt32_FromString());
+
+      AddFunctionToGroup("UInt32", new FnFunction_Cast_ToUInt32_FromObject());
+      #endregion
+      #region Int64 Casting Functions
+      CreateFunctionGroup("Int64");
+      AddAliasForFunctionGroup("Int64", "long");
+      AddFunctionToGroup("Int64", new FnFunction_Cast_ToInt64_FromByte());
+      AddFunctionToGroup("Int64", new FnFunction_Cast_ToInt64_FromSByte());
+      AddFunctionToGroup("Int64", new FnFunction_Cast_ToInt64_FromInt16());
+      AddFunctionToGroup("Int64", new FnFunction_Cast_ToInt64_FromUInt16());
+      AddFunctionToGroup("Int64", new FnFunction_Cast_ToInt64_FromInt32());
+      AddFunctionToGroup("Int64", new FnFunction_Cast_ToInt64_FromUInt32());
+      AddFunctionToGroup("Int64", new FnFunction_Cast_ToInt64_FromInt64());
+      AddFunctionToGroup("Int64", new FnFunction_Cast_ToInt64_FromUInt64());
+
+      AddFunctionToGroup("Int64", new FnFunction_Cast_ToInt64_FromSingle());
+      AddFunctionToGroup("Int64", new FnFunction_Cast_ToInt64_FromDouble());
+      AddFunctionToGroup("Int64", new FnFunction_Cast_ToInt64_FromDecimal());
+
+      AddFunctionToGroup("Int64", new FnFunction_Cast_ToInt64_FromChar());
+      AddFunctionToGroup("Int64", new FnFunction_Cast_ToInt64_FromString());
+
+      AddFunctionToGroup("Int64", new FnFunction_Cast_ToInt64_FromObject());
+      #endregion
+      #region UInt64 Casting Functions
+      CreateFunctionGroup("UInt64");
+      AddAliasForFunctionGroup("UInt64", "ulong");
+      AddFunctionToGroup("UInt64", new FnFunction_Cast_ToUInt64_FromByte());
+      AddFunctionToGroup("UInt64", new FnFunction_Cast_ToUInt64_FromSByte());
+      AddFunctionToGroup("UInt64", new FnFunction_Cast_ToUInt64_FromInt16());
+      AddFunctionToGroup("UInt64", new FnFunction_Cast_ToUInt64_FromUInt16());
+      AddFunctionToGroup("UInt64", new FnFunction_Cast_ToUInt64_FromInt32());
+      AddFunctionToGroup("UInt64", new FnFunction_Cast_ToUInt64_FromUInt32());
+      AddFunctionToGroup("UInt64", new FnFunction_Cast_ToUInt64_FromInt64());
+      AddFunctionToGroup("UInt64", new FnFunction_Cast_ToUInt64_FromUInt64());
+
+      AddFunctionToGroup("UInt64", new FnFunction_Cast_ToUInt64_FromSingle());
+      AddFunctionToGroup("UInt64", new FnFunction_Cast_ToUInt64_FromDouble());
+      AddFunctionToGroup("UInt64", new FnFunction_Cast_ToUInt64_FromDecimal());
+
+      AddFunctionToGroup("UInt64", new FnFunction_Cast_ToUInt64_FromChar());
+      AddFunctionToGroup("UInt64", new FnFunction_Cast_ToUInt64_FromString());
+
+      AddFunctionToGroup("UInt64", new FnFunction_Cast_ToUInt64_FromObject());
+      #endregion
+      #region Single Casting Functions
+      CreateFunctionGroup("Single");
+      AddAliasForFunctionGroup("Single", "float");
+      AddFunctionToGroup("Single", new FnFunction_Cast_ToSingle_FromByte());
+      AddFunctionToGroup("Single", new FnFunction_Cast_ToSingle_FromSByte());
+      AddFunctionToGroup("Single", new FnFunction_Cast_ToSingle_FromInt16());
+      AddFunctionToGroup("Single", new FnFunction_Cast_ToSingle_FromUInt16());
+      AddFunctionToGroup("Single", new FnFunction_Cast_ToSingle_FromInt32());
+      AddFunctionToGroup("Single", new FnFunction_Cast_ToSingle_FromUInt32());
+      AddFunctionToGroup("Single", new FnFunction_Cast_ToSingle_FromInt64());
+      AddFunctionToGroup("Single", new FnFunction_Cast_ToSingle_FromUInt64());
+
+      AddFunctionToGroup("Single", new FnFunction_Cast_ToSingle_FromSingle());
+      AddFunctionToGroup("Single", new FnFunction_Cast_ToSingle_FromDouble());
+      AddFunctionToGroup("Single", new FnFunction_Cast_ToSingle_FromDecimal());
+
+      AddFunctionToGroup("Single", new FnFunction_Cast_ToSingle_FromChar());
+      AddFunctionToGroup("Single", new FnFunction_Cast_ToSingle_FromString());
+
+      AddFunctionToGroup("Single", new FnFunction_Cast_ToSingle_FromObject());
+      #endregion
+      #region Double Casting Functions
+      CreateFunctionGroup("Double");
+      AddAliasForFunctionGroup("Double", "double");
+      AddFunctionToGroup("Double", new FnFunction_Cast_ToDouble_FromByte());
+      AddFunctionToGroup("Double", new FnFunction_Cast_ToDouble_FromSByte());
+      AddFunctionToGroup("Double", new FnFunction_Cast_ToDouble_FromInt16());
+      AddFunctionToGroup("Double", new FnFunction_Cast_ToDouble_FromUInt16());
+      AddFunctionToGroup("Double", new FnFunction_Cast_ToDouble_FromInt32());
+      AddFunctionToGroup("Double", new FnFunction_Cast_ToDouble_FromUInt32());
+      AddFunctionToGroup("Double", new FnFunction_Cast_ToDouble_FromInt64());
+      AddFunctionToGroup("Double", new FnFunction_Cast_ToDouble_FromUInt64());
+
+      AddFunctionToGroup("Double", new FnFunction_Cast_ToDouble_FromSingle());
+      AddFunctionToGroup("Double", new FnFunction_Cast_ToDouble_FromDouble());
+      AddFunctionToGroup("Double", new FnFunction_Cast_ToDouble_FromDecimal());
+
+      AddFunctionToGroup("Double", new FnFunction_Cast_ToDouble_FromChar());
+      AddFunctionToGroup("Double", new FnFunction_Cast_ToDouble_FromString());
+
+      AddFunctionToGroup("Double", new FnFunction_Cast_ToDouble_FromObject());
+      #endregion
+      #region Decimal Casting Functions
+      CreateFunctionGroup("Decimal");
+      AddAliasForFunctionGroup("Decimal", "decimal");
+      AddFunctionToGroup("Decimal", new FnFunction_Cast_ToDecimal_FromByte());
+      AddFunctionToGroup("Decimal", new FnFunction_Cast_ToDecimal_FromSByte());
+      AddFunctionToGroup("Decimal", new FnFunction_Cast_ToDecimal_FromInt16());
+      AddFunctionToGroup("Decimal", new FnFunction_Cast_ToDecimal_FromUInt16());
+      AddFunctionToGroup("Decimal", new FnFunction_Cast_ToDecimal_FromInt32());
+      AddFunctionToGroup("Decimal", new FnFunction_Cast_ToDecimal_FromUInt32());
+      AddFunctionToGroup("Decimal", new FnFunction_Cast_ToDecimal_FromInt64());
+      AddFunctionToGroup("Decimal", new FnFunction_Cast_ToDecimal_FromUInt64());
+
+      AddFunctionToGroup("Decimal", new FnFunction_Cast_ToDecimal_FromSingle());
+      AddFunctionToGroup("Decimal", new FnFunction_Cast_ToDecimal_FromDouble());
+      AddFunctionToGroup("Decimal", new FnFunction_Cast_ToDecimal_FromDecimal());
+
+      AddFunctionToGroup("Decimal", new FnFunction_Cast_ToDecimal_FromChar());
+      AddFunctionToGroup("Decimal", new FnFunction_Cast_ToDecimal_FromString());
+
+      AddFunctionToGroup("Decimal", new FnFunction_Cast_ToDecimal_FromObject());
+      #endregion
+
+      #region Char Casting Functions
+      CreateFunctionGroup("Char");
+      AddAliasForFunctionGroup("Char", "char");
+      AddFunctionToGroup("Char", new FnFunction_Cast_ToChar_FromByte());
+      AddFunctionToGroup("Char", new FnFunction_Cast_ToChar_FromSByte());
+      AddFunctionToGroup("Char", new FnFunction_Cast_ToChar_FromInt16());
+      AddFunctionToGroup("Char", new FnFunction_Cast_ToChar_FromUInt16());
+      AddFunctionToGroup("Char", new FnFunction_Cast_ToChar_FromInt32());
+      AddFunctionToGroup("Char", new FnFunction_Cast_ToChar_FromUInt32());
+      AddFunctionToGroup("Char", new FnFunction_Cast_ToChar_FromInt64());
+      AddFunctionToGroup("Char", new FnFunction_Cast_ToChar_FromUInt64());
+
+      AddFunctionToGroup("Char", new FnFunction_Cast_ToChar_FromSingle());
+      AddFunctionToGroup("Char", new FnFunction_Cast_ToChar_FromDouble());
+      AddFunctionToGroup("Char", new FnFunction_Cast_ToChar_FromDecimal());
+
+      AddFunctionToGroup("Char", new FnFunction_Cast_ToChar_FromChar());
+      AddFunctionToGroup("Char", new FnFunction_Cast_ToChar_FromString());
+
+      AddFunctionToGroup("Char", new FnFunction_Cast_ToChar_FromObject());
+      #endregion
+      #region String Casting Functions
+      CreateFunctionGroup("String");
+      AddAliasForFunctionGroup("String", "string");
+      AddFunctionToGroup("String", new FnFunction_Cast_ToString_FromString());
+
+      AddFunctionToGroup("String", new FnFunction_Cast_ToString_FromObject());
+      #endregion
+      #region ToString Functions
+      CreateFunctionGroup("ToString");
+      AddFunctionToGroup("ToString", new FnFunction_ToString<Byte>());
+      AddFunctionToGroup("ToString", new FnFunction_ToString<SByte>());
+      AddFunctionToGroup("ToString", new FnFunction_ToString<Int16>());
+      AddFunctionToGroup("ToString", new FnFunction_ToString<UInt16>());
+      AddFunctionToGroup("ToString", new FnFunction_ToString<Int32>());
+      AddFunctionToGroup("ToString", new FnFunction_ToString<UInt32>());
+      AddFunctionToGroup("ToString", new FnFunction_ToString<Int64>());
+      AddFunctionToGroup("ToString", new FnFunction_ToString<UInt64>());
+
+      AddFunctionToGroup("ToString", new FnFunction_ToString<Single>());
+      AddFunctionToGroup("ToString", new FnFunction_ToString<Double>());
+      AddFunctionToGroup("ToString", new FnFunction_ToString<Decimal>());
+
+      AddFunctionToGroup("ToString", new FnFunction_ToString<Char>());
+      AddFunctionToGroup("ToString", new FnFunction_ToString<String>());
+
+      AddFunctionToGroup("ToString", new FnFunction_ToString<Object>());
+      #endregion
+
+      #region Int32? Casting Functions
+      CreateFunctionGroup("NullableInt32");
+      AddFunctionToGroup("NullableInt32", new FnFunction_ToNullableInt32_FromNull());
+      #endregion
+
+      #region Object Casting Functions
+      CreateFunctionGroup("Object");
+      AddAliasForFunctionGroup("Object", "object");
+      AddFunctionToGroup("Object", new FnFunction_Cast_ToObject_FromObject());
+      #endregion
+      #endregion
+      #region Implicit Conversion Functions
+
+      //#region Int32? Implicit Conversion Functions
+      // There's an issue with this, but I don't remember what it is... Something about FnScript not being able to determine the correct overload when passing a struct to a Function which accepts Nullable<struct>?
       //AddSwitch("ImplicitToNullableInt32", new List<CompileFlags> { CompileFlags.IMPLICIT_CONVERSION });
-      //AddMethodToGroup<Int32?>("ImplicitToNullableInt32", ImplicitToNullableInt32_FromChar, new List<Type> { typeof(Char) });
-      //AddMethodToGroup<Int32?>("ImplicitToNullableInt32", ImplicitToNullableInt32_FromByte, new List<Type> { typeof(Byte) });
-      //AddMethodToGroup<Int32?>("ImplicitToNullableInt32", ImplicitToNullableInt32_FromSByte, new List<Type> { typeof(SByte) });
-      //AddMethodToGroup<Int32?>("ImplicitToNullableInt32", ImplicitToNullableInt32_FromInt16, new List<Type> { typeof(Int16) });
-      //AddMethodToGroup<Int32?>("ImplicitToNullableInt32", ImplicitToNullableInt32_FromUInt16, new List<Type> { typeof(UInt16) });
-      //AddMethodToGroup<Int32?>("ImplicitToNullableInt32", ImplicitToNullableInt32_FromInt32, new List<Type> { typeof(Int32) });
-      //AddMethodToGroup<Int32?>("ImplicitToNullableInt32", ImplicitToNullableInt32_FromNull, new List<Type> { typeof(Object) });
+      //AddFunctionToGroup<Int32?>("ImplicitToNullableInt32", ImplicitToNullableInt32_FromChar, new List<Type> { typeof(Char) });
+      //AddFunctionToGroup<Int32?>("ImplicitToNullableInt32", ImplicitToNullableInt32_FromByte, new List<Type> { typeof(Byte) });
+      //AddFunctionToGroup<Int32?>("ImplicitToNullableInt32", ImplicitToNullableInt32_FromSByte, new List<Type> { typeof(SByte) });
+      //AddFunctionToGroup<Int32?>("ImplicitToNullableInt32", ImplicitToNullableInt32_FromInt16, new List<Type> { typeof(Int16) });
+      //AddFunctionToGroup<Int32?>("ImplicitToNullableInt32", ImplicitToNullableInt32_FromUInt16, new List<Type> { typeof(UInt16) });
+      //AddFunctionToGroup<Int32?>("ImplicitToNullableInt32", ImplicitToNullableInt32_FromInt32, new List<Type> { typeof(Int32) });
+      //AddFunctionToGroup<Int32?>("ImplicitToNullableInt32", ImplicitToNullableInt32_FromNull, new List<Type> { typeof(Object) });
       //#endregion
       #endregion
 
-      #region Comparison Methods
-      #region IsGreaterThan Methods
-      CreateMethodGroup("IsGreaterThan");
-      AddMethodToGroup<Boolean>("IsGreaterThan", new FnMethod_IsGreaterThan_Byte());
-      AddMethodToGroup<Boolean>("IsGreaterThan", new FnMethod_IsGreaterThan_SByte());
-      AddMethodToGroup<Boolean>("IsGreaterThan", new FnMethod_IsGreaterThan_Int16());
-      AddMethodToGroup<Boolean>("IsGreaterThan", new FnMethod_IsGreaterThan_UInt16());
-      AddMethodToGroup<Boolean>("IsGreaterThan", new FnMethod_IsGreaterThan_Int32());
-      AddMethodToGroup<Boolean>("IsGreaterThan", new FnMethod_IsGreaterThan_UInt32());
-      AddMethodToGroup<Boolean>("IsGreaterThan", new FnMethod_IsGreaterThan_Int64());
-      AddMethodToGroup<Boolean>("IsGreaterThan", new FnMethod_IsGreaterThan_UInt64());
-      AddMethodToGroup<Boolean>("IsGreaterThan", new FnMethod_IsGreaterThan_Single());
-      AddMethodToGroup<Boolean>("IsGreaterThan", new FnMethod_IsGreaterThan_Double());
-      AddMethodToGroup<Boolean>("IsGreaterThan", new FnMethod_IsGreaterThan_Decimal());
+      #region Comparison Functions
+      #region IsGreaterThan Functions
+      CreateFunctionGroup("IsGreaterThan");
+      AddFunctionToGroup("IsGreaterThan", new FnFunction_IsGreaterThan_Byte());
+      AddFunctionToGroup("IsGreaterThan", new FnFunction_IsGreaterThan_SByte());
+      AddFunctionToGroup("IsGreaterThan", new FnFunction_IsGreaterThan_Int16());
+      AddFunctionToGroup("IsGreaterThan", new FnFunction_IsGreaterThan_UInt16());
+      AddFunctionToGroup("IsGreaterThan", new FnFunction_IsGreaterThan_Int32());
+      AddFunctionToGroup("IsGreaterThan", new FnFunction_IsGreaterThan_UInt32());
+      AddFunctionToGroup("IsGreaterThan", new FnFunction_IsGreaterThan_Int64());
+      AddFunctionToGroup("IsGreaterThan", new FnFunction_IsGreaterThan_UInt64());
+      AddFunctionToGroup("IsGreaterThan", new FnFunction_IsGreaterThan_Single());
+      AddFunctionToGroup("IsGreaterThan", new FnFunction_IsGreaterThan_Double());
+      AddFunctionToGroup("IsGreaterThan", new FnFunction_IsGreaterThan_Decimal());
 
-      AddMethodToGroup<Boolean>("IsGreaterThan", new FnMethod_IsGreaterThan_Char());
+      AddFunctionToGroup("IsGreaterThan", new FnFunction_IsGreaterThan_Char());
       #endregion
-      #region IsGreaterThanOrEqual Methods
-      CreateMethodGroup("IsGreaterThanOrEqual");
-      AddMethodToGroup<Boolean>("IsGreaterThanOrEqual", new FnMethod_IsGreaterThanOrEqual_Byte());
-      AddMethodToGroup<Boolean>("IsGreaterThanOrEqual", new FnMethod_IsGreaterThanOrEqual_SByte());
-      AddMethodToGroup<Boolean>("IsGreaterThanOrEqual", new FnMethod_IsGreaterThanOrEqual_Int16());
-      AddMethodToGroup<Boolean>("IsGreaterThanOrEqual", new FnMethod_IsGreaterThanOrEqual_UInt16());
-      AddMethodToGroup<Boolean>("IsGreaterThanOrEqual", new FnMethod_IsGreaterThanOrEqual_Int32());
-      AddMethodToGroup<Boolean>("IsGreaterThanOrEqual", new FnMethod_IsGreaterThanOrEqual_UInt32());
-      AddMethodToGroup<Boolean>("IsGreaterThanOrEqual", new FnMethod_IsGreaterThanOrEqual_Int64());
-      AddMethodToGroup<Boolean>("IsGreaterThanOrEqual", new FnMethod_IsGreaterThanOrEqual_UInt64());
-      AddMethodToGroup<Boolean>("IsGreaterThanOrEqual", new FnMethod_IsGreaterThanOrEqual_Single());
-      AddMethodToGroup<Boolean>("IsGreaterThanOrEqual", new FnMethod_IsGreaterThanOrEqual_Double());
-      AddMethodToGroup<Boolean>("IsGreaterThanOrEqual", new FnMethod_IsGreaterThanOrEqual_Decimal());
+      #region IsGreaterThanOrEqual Functions
+      CreateFunctionGroup("IsGreaterThanOrEqual");
+      AddFunctionToGroup("IsGreaterThanOrEqual", new FnFunction_IsGreaterThanOrEqual_Byte());
+      AddFunctionToGroup("IsGreaterThanOrEqual", new FnFunction_IsGreaterThanOrEqual_SByte());
+      AddFunctionToGroup("IsGreaterThanOrEqual", new FnFunction_IsGreaterThanOrEqual_Int16());
+      AddFunctionToGroup("IsGreaterThanOrEqual", new FnFunction_IsGreaterThanOrEqual_UInt16());
+      AddFunctionToGroup("IsGreaterThanOrEqual", new FnFunction_IsGreaterThanOrEqual_Int32());
+      AddFunctionToGroup("IsGreaterThanOrEqual", new FnFunction_IsGreaterThanOrEqual_UInt32());
+      AddFunctionToGroup("IsGreaterThanOrEqual", new FnFunction_IsGreaterThanOrEqual_Int64());
+      AddFunctionToGroup("IsGreaterThanOrEqual", new FnFunction_IsGreaterThanOrEqual_UInt64());
+      AddFunctionToGroup("IsGreaterThanOrEqual", new FnFunction_IsGreaterThanOrEqual_Single());
+      AddFunctionToGroup("IsGreaterThanOrEqual", new FnFunction_IsGreaterThanOrEqual_Double());
+      AddFunctionToGroup("IsGreaterThanOrEqual", new FnFunction_IsGreaterThanOrEqual_Decimal());
 
-      AddMethodToGroup<Boolean>("IsGreaterThanOrEqual", new FnMethod_IsGreaterThanOrEqual_Char());
+      AddFunctionToGroup("IsGreaterThanOrEqual", new FnFunction_IsGreaterThanOrEqual_Char());
       #endregion
-      #region IsLessThan Methods
-      CreateMethodGroup("IsLessThan");
-      AddMethodToGroup<Boolean>("IsLessThan", new FnMethod_IsLessThan_Byte());
-      AddMethodToGroup<Boolean>("IsLessThan", new FnMethod_IsLessThan_SByte());
-      AddMethodToGroup<Boolean>("IsLessThan", new FnMethod_IsLessThan_Int16());
-      AddMethodToGroup<Boolean>("IsLessThan", new FnMethod_IsLessThan_UInt16());
-      AddMethodToGroup<Boolean>("IsLessThan", new FnMethod_IsLessThan_Int32());
-      AddMethodToGroup<Boolean>("IsLessThan", new FnMethod_IsLessThan_UInt32());
-      AddMethodToGroup<Boolean>("IsLessThan", new FnMethod_IsLessThan_Int64());
-      AddMethodToGroup<Boolean>("IsLessThan", new FnMethod_IsLessThan_UInt64());
-      AddMethodToGroup<Boolean>("IsLessThan", new FnMethod_IsLessThan_Single());
-      AddMethodToGroup<Boolean>("IsLessThan", new FnMethod_IsLessThan_Double());
-      AddMethodToGroup<Boolean>("IsLessThan", new FnMethod_IsLessThan_Decimal());
+      #region IsLessThan Functions
+      CreateFunctionGroup("IsLessThan");
+      AddFunctionToGroup("IsLessThan", new FnFunction_IsLessThan_Byte());
+      AddFunctionToGroup("IsLessThan", new FnFunction_IsLessThan_SByte());
+      AddFunctionToGroup("IsLessThan", new FnFunction_IsLessThan_Int16());
+      AddFunctionToGroup("IsLessThan", new FnFunction_IsLessThan_UInt16());
+      AddFunctionToGroup("IsLessThan", new FnFunction_IsLessThan_Int32());
+      AddFunctionToGroup("IsLessThan", new FnFunction_IsLessThan_UInt32());
+      AddFunctionToGroup("IsLessThan", new FnFunction_IsLessThan_Int64());
+      AddFunctionToGroup("IsLessThan", new FnFunction_IsLessThan_UInt64());
+      AddFunctionToGroup("IsLessThan", new FnFunction_IsLessThan_Single());
+      AddFunctionToGroup("IsLessThan", new FnFunction_IsLessThan_Double());
+      AddFunctionToGroup("IsLessThan", new FnFunction_IsLessThan_Decimal());
 
-      AddMethodToGroup<Boolean>("IsLessThan", new FnMethod_IsLessThan_Char());
+      AddFunctionToGroup("IsLessThan", new FnFunction_IsLessThan_Char());
       #endregion
-      #region IsLessThanOrEqual Methods
-      CreateMethodGroup("IsLessThanOrEqual");
-      AddMethodToGroup<Boolean>("IsLessThanOrEqual", new FnMethod_IsLessThanOrEqual_Byte());
-      AddMethodToGroup<Boolean>("IsLessThanOrEqual", new FnMethod_IsLessThanOrEqual_SByte());
-      AddMethodToGroup<Boolean>("IsLessThanOrEqual", new FnMethod_IsLessThanOrEqual_Int16());
-      AddMethodToGroup<Boolean>("IsLessThanOrEqual", new FnMethod_IsLessThanOrEqual_UInt16());
-      AddMethodToGroup<Boolean>("IsLessThanOrEqual", new FnMethod_IsLessThanOrEqual_Int32());
-      AddMethodToGroup<Boolean>("IsLessThanOrEqual", new FnMethod_IsLessThanOrEqual_UInt32());
-      AddMethodToGroup<Boolean>("IsLessThanOrEqual", new FnMethod_IsLessThanOrEqual_Int64());
-      AddMethodToGroup<Boolean>("IsLessThanOrEqual", new FnMethod_IsLessThanOrEqual_UInt64());
-      AddMethodToGroup<Boolean>("IsLessThanOrEqual", new FnMethod_IsLessThanOrEqual_Single());
-      AddMethodToGroup<Boolean>("IsLessThanOrEqual", new FnMethod_IsLessThanOrEqual_Double());
-      AddMethodToGroup<Boolean>("IsLessThanOrEqual", new FnMethod_IsLessThanOrEqual_Decimal());
+      #region IsLessThanOrEqual Functions
+      CreateFunctionGroup("IsLessThanOrEqual");
+      AddFunctionToGroup("IsLessThanOrEqual", new FnFunction_IsLessThanOrEqual_Byte());
+      AddFunctionToGroup("IsLessThanOrEqual", new FnFunction_IsLessThanOrEqual_SByte());
+      AddFunctionToGroup("IsLessThanOrEqual", new FnFunction_IsLessThanOrEqual_Int16());
+      AddFunctionToGroup("IsLessThanOrEqual", new FnFunction_IsLessThanOrEqual_UInt16());
+      AddFunctionToGroup("IsLessThanOrEqual", new FnFunction_IsLessThanOrEqual_Int32());
+      AddFunctionToGroup("IsLessThanOrEqual", new FnFunction_IsLessThanOrEqual_UInt32());
+      AddFunctionToGroup("IsLessThanOrEqual", new FnFunction_IsLessThanOrEqual_Int64());
+      AddFunctionToGroup("IsLessThanOrEqual", new FnFunction_IsLessThanOrEqual_UInt64());
+      AddFunctionToGroup("IsLessThanOrEqual", new FnFunction_IsLessThanOrEqual_Single());
+      AddFunctionToGroup("IsLessThanOrEqual", new FnFunction_IsLessThanOrEqual_Double());
+      AddFunctionToGroup("IsLessThanOrEqual", new FnFunction_IsLessThanOrEqual_Decimal());
 
-      AddMethodToGroup<Boolean>("IsLessThanOrEqual", new FnMethod_IsLessThanOrEqual_Char());
+      AddFunctionToGroup("IsLessThanOrEqual", new FnFunction_IsLessThanOrEqual_Char());
       #endregion
-      #region IsEqual Methods
-      CreateMethodGroup("IsEqual");
-      AddMethodToGroup<Boolean>("IsEqual", new FnMethod_IsEqual_Byte());
-      AddMethodToGroup<Boolean>("IsEqual", new FnMethod_IsEqual_SByte());
-      AddMethodToGroup<Boolean>("IsEqual", new FnMethod_IsEqual_Int16());
-      AddMethodToGroup<Boolean>("IsEqual", new FnMethod_IsEqual_UInt16());
-      AddMethodToGroup<Boolean>("IsEqual", new FnMethod_IsEqual_Int32());
-      AddMethodToGroup<Boolean>("IsEqual", new FnMethod_IsEqual_UInt32());
-      AddMethodToGroup<Boolean>("IsEqual", new FnMethod_IsEqual_Int64());
-      AddMethodToGroup<Boolean>("IsEqual", new FnMethod_IsEqual_UInt64());
-      AddMethodToGroup<Boolean>("IsEqual", new FnMethod_IsEqual_Single());
-      AddMethodToGroup<Boolean>("IsEqual", new FnMethod_IsEqual_Double());
-      AddMethodToGroup<Boolean>("IsEqual", new FnMethod_IsEqual_Decimal());
+      #region IsEqual Functions
+      CreateFunctionGroup("IsEqual");
+      AddFunctionToGroup("IsEqual", new FnFunction_IsEqual_Byte());
+      AddFunctionToGroup("IsEqual", new FnFunction_IsEqual_SByte());
+      AddFunctionToGroup("IsEqual", new FnFunction_IsEqual_Int16());
+      AddFunctionToGroup("IsEqual", new FnFunction_IsEqual_UInt16());
+      AddFunctionToGroup("IsEqual", new FnFunction_IsEqual_Int32());
+      AddFunctionToGroup("IsEqual", new FnFunction_IsEqual_UInt32());
+      AddFunctionToGroup("IsEqual", new FnFunction_IsEqual_Int64());
+      AddFunctionToGroup("IsEqual", new FnFunction_IsEqual_UInt64());
+      AddFunctionToGroup("IsEqual", new FnFunction_IsEqual_Single());
+      AddFunctionToGroup("IsEqual", new FnFunction_IsEqual_Double());
+      AddFunctionToGroup("IsEqual", new FnFunction_IsEqual_Decimal());
 
-      AddMethodToGroup<Boolean>("IsEqual", new FnMethod_IsEqual_Char());
-      AddMethodToGroup<Boolean>("IsEqual", new FnMethod_IsEqual_String());
+      AddFunctionToGroup("IsEqual", new FnFunction_IsEqual_Char());
+      AddFunctionToGroup("IsEqual", new FnFunction_IsEqual_String());
 
-      AddMethodToGroup<Boolean>("IsEqual", new FnMethod_IsEqual_Boolean());
+      AddFunctionToGroup("IsEqual", new FnFunction_IsEqual_Boolean());
 
-      AddMethodToGroup<Boolean>("IsEqual", new FnMethod_IsEqual_Object());
+      AddFunctionToGroup("IsEqual", new FnFunction_IsEqual_Object());
       #endregion
-      #region IsNotEqualMethods
-      CreateMethodGroup("IsNotEqual");
-      AddMethodToGroup<Boolean>("IsNotEqual", new FnMethod_IsNotEqual_Byte());
-      AddMethodToGroup<Boolean>("IsNotEqual", new FnMethod_IsNotEqual_SByte());
-      AddMethodToGroup<Boolean>("IsNotEqual", new FnMethod_IsNotEqual_Int16());
-      AddMethodToGroup<Boolean>("IsNotEqual", new FnMethod_IsNotEqual_UInt16());
-      AddMethodToGroup<Boolean>("IsNotEqual", new FnMethod_IsNotEqual_Int32());
-      AddMethodToGroup<Boolean>("IsNotEqual", new FnMethod_IsNotEqual_UInt32());
-      AddMethodToGroup<Boolean>("IsNotEqual", new FnMethod_IsNotEqual_Int64());
-      AddMethodToGroup<Boolean>("IsNotEqual", new FnMethod_IsNotEqual_UInt64());
-      AddMethodToGroup<Boolean>("IsNotEqual", new FnMethod_IsNotEqual_Single());
-      AddMethodToGroup<Boolean>("IsNotEqual", new FnMethod_IsNotEqual_Double());
-      AddMethodToGroup<Boolean>("IsNotEqual", new FnMethod_IsNotEqual_Decimal());
+      #region IsNotEqualFunctions
+      CreateFunctionGroup("IsNotEqual");
+      AddFunctionToGroup("IsNotEqual", new FnFunction_IsNotEqual_Byte());
+      AddFunctionToGroup("IsNotEqual", new FnFunction_IsNotEqual_SByte());
+      AddFunctionToGroup("IsNotEqual", new FnFunction_IsNotEqual_Int16());
+      AddFunctionToGroup("IsNotEqual", new FnFunction_IsNotEqual_UInt16());
+      AddFunctionToGroup("IsNotEqual", new FnFunction_IsNotEqual_Int32());
+      AddFunctionToGroup("IsNotEqual", new FnFunction_IsNotEqual_UInt32());
+      AddFunctionToGroup("IsNotEqual", new FnFunction_IsNotEqual_Int64());
+      AddFunctionToGroup("IsNotEqual", new FnFunction_IsNotEqual_UInt64());
+      AddFunctionToGroup("IsNotEqual", new FnFunction_IsNotEqual_Single());
+      AddFunctionToGroup("IsNotEqual", new FnFunction_IsNotEqual_Double());
+      AddFunctionToGroup("IsNotEqual", new FnFunction_IsNotEqual_Decimal());
 
-      AddMethodToGroup<Boolean>("IsNotEqual", new FnMethod_IsNotEqual_Char());
-      AddMethodToGroup<Boolean>("IsNotEqual", new FnMethod_IsNotEqual_String());
+      AddFunctionToGroup("IsNotEqual", new FnFunction_IsNotEqual_Char());
+      AddFunctionToGroup("IsNotEqual", new FnFunction_IsNotEqual_String());
 
-      AddMethodToGroup<Boolean>("IsNotEqual", new FnMethod_IsNotEqual_Boolean());
+      AddFunctionToGroup("IsNotEqual", new FnFunction_IsNotEqual_Boolean());
 
-      AddMethodToGroup<Boolean>("IsNotEqual", new FnMethod_IsNotEqual_Object());
+      AddFunctionToGroup("IsNotEqual", new FnFunction_IsNotEqual_Object());
       #endregion
-      #region And Methods
-      CreateMethodGroup("And");
-      AddMethodToGroup<Boolean>("And", new FnMethod_And());
+      #region And Functions
+      CreateFunctionGroup("And");
+      AddFunctionToGroup("And", new FnFunction_And());
       #endregion
-      #region Nand Methods
-      CreateMethodGroup("Nand");
-      AddMethodToGroup<Boolean>("Nand", new FnMethod_Nand());
+      #region Nand Functions
+      CreateFunctionGroup("Nand");
+      AddFunctionToGroup("Nand", new FnFunction_Nand());
       #endregion
-      #region Or Methods
-      CreateMethodGroup("Or");
-      AddMethodToGroup<Boolean>("Or", new FnMethod_Or());
+      #region Or Functions
+      CreateFunctionGroup("Or");
+      AddFunctionToGroup("Or", new FnFunction_Or());
       #endregion
-      #region Nor Methods
-      CreateMethodGroup("Nor");
-      AddMethodToGroup<Boolean>("Nor", new FnMethod_Nor());
+      #region Nor Functions
+      CreateFunctionGroup("Nor");
+      AddFunctionToGroup("Nor", new FnFunction_Nor());
       #endregion
-      #region Xor Methods
-      CreateMethodGroup("Xor");
-      AddMethodToGroup<Boolean>("Xor", new FnMethod_Xor());
-      #endregion
-      #endregion
-
-      #region Void Method Wrappers
-      CreateMethodGroup("Return");
-
-      // Add multiple void methods as arguments overloads (2 void methods, 3 void methods, etc...).
-      AddMethodToGroup<Byte>("Return", new FnMethod_Return<Byte>());
-      AddMethodToGroup<SByte>("Return", new FnMethod_Return<SByte>());
-      AddMethodToGroup<Int16>("Return", new FnMethod_Return<Int16>());
-      AddMethodToGroup<UInt16>("Return", new FnMethod_Return<UInt16>());
-      AddMethodToGroup<Int32>("Return", new FnMethod_Return<Int32>());
-      AddMethodToGroup<UInt32>("Return", new FnMethod_Return<UInt32>());
-      AddMethodToGroup<Int64>("Return", new FnMethod_Return<Int64>());
-      AddMethodToGroup<UInt64>("Return", new FnMethod_Return<UInt64>());
-      AddMethodToGroup<Single>("Return", new FnMethod_Return<Single>());
-      AddMethodToGroup<Double>("Return", new FnMethod_Return<Double>());
-      AddMethodToGroup<Decimal>("Return", new FnMethod_Return<Decimal>());
-
-      AddMethodToGroup<Char>("Return", new FnMethod_Return<Char>());
-      AddMethodToGroup<String>("Return", new FnMethod_Return<String>());
-
-      AddMethodToGroup<Object>("Return", new FnMethod_Return<Object>());
-      #endregion
-
-      #region Nullable Types Helper Methods
-      CreateMethodGroup("IsNull");
-      AddMethodToGroup<Boolean>("IsNull", new FnMethod_IsNull());
-
-      #region Nullable GetValue Methods
-      CreateMethodGroup("GetValue");
-      AddMethodToGroup<Byte>("GetValue", new FnMethod_GetValue<Byte>());
-      AddMethodToGroup<SByte>("GetValue", new FnMethod_GetValue<SByte>());
-      AddMethodToGroup<Int16>("GetValue", new FnMethod_GetValue<Int16>());
-      AddMethodToGroup<UInt16>("GetValue", new FnMethod_GetValue<UInt16>());
-      AddMethodToGroup<Int32>("GetValue", new FnMethod_GetValue<Int32>());
-      AddMethodToGroup<UInt32>("GetValue", new FnMethod_GetValue<UInt32>());
-      AddMethodToGroup<Int64>("GetValue", new FnMethod_GetValue<Int64>());
-      AddMethodToGroup<UInt64>("GetValue", new FnMethod_GetValue<UInt64>());
-      AddMethodToGroup<Single>("GetValue", new FnMethod_GetValue<Single>());
-      AddMethodToGroup<Double>("GetValue", new FnMethod_GetValue<Double>());
-      AddMethodToGroup<Decimal>("GetValue", new FnMethod_GetValue<Decimal>());
-      AddMethodToGroup<Char>("GetValue", new FnMethod_GetValue<Char>());
+      #region Xor Functions
+      CreateFunctionGroup("Xor");
+      AddFunctionToGroup("Xor", new FnFunction_Xor());
       #endregion
       #endregion
 
-      #region .Net Math Wrapper Methods
+      #region Void Function Wrappers
+      CreateFunctionGroup("Return");
+
+      // Add multiple void functions as arguments overloads (2 void functionss, 3 void functionss, etc...).
+      AddFunctionToGroup("Return", new FnFunction_Return<Byte>());
+      AddFunctionToGroup("Return", new FnFunction_Return<SByte>());
+      AddFunctionToGroup("Return", new FnFunction_Return<Int16>());
+      AddFunctionToGroup("Return", new FnFunction_Return<UInt16>());
+      AddFunctionToGroup("Return", new FnFunction_Return<Int32>());
+      AddFunctionToGroup("Return", new FnFunction_Return<UInt32>());
+      AddFunctionToGroup("Return", new FnFunction_Return<Int64>());
+      AddFunctionToGroup("Return", new FnFunction_Return<UInt64>());
+      AddFunctionToGroup("Return", new FnFunction_Return<Single>());
+      AddFunctionToGroup("Return", new FnFunction_Return<Double>());
+      AddFunctionToGroup("Return", new FnFunction_Return<Decimal>());
+
+      AddFunctionToGroup("Return", new FnFunction_Return<Char>());
+      AddFunctionToGroup("Return", new FnFunction_Return<String>());
+
+      AddFunctionToGroup("Return", new FnFunction_Return<Object>());
+      #endregion
+
+      #region Nullable Types Helper Functions
+      CreateFunctionGroup("IsNull");
+      AddFunctionToGroup("IsNull", new FnFunction_IsNull());
+
+      #region Nullable GetValue Functions
+      CreateFunctionGroup("GetValue");
+      AddFunctionToGroup("GetValue", new FnFunction_GetValue<Byte>());
+      AddFunctionToGroup("GetValue", new FnFunction_GetValue<SByte>());
+      AddFunctionToGroup("GetValue", new FnFunction_GetValue<Int16>());
+      AddFunctionToGroup("GetValue", new FnFunction_GetValue<UInt16>());
+      AddFunctionToGroup("GetValue", new FnFunction_GetValue<Int32>());
+      AddFunctionToGroup("GetValue", new FnFunction_GetValue<UInt32>());
+      AddFunctionToGroup("GetValue", new FnFunction_GetValue<Int64>());
+      AddFunctionToGroup("GetValue", new FnFunction_GetValue<UInt64>());
+      AddFunctionToGroup("GetValue", new FnFunction_GetValue<Single>());
+      AddFunctionToGroup("GetValue", new FnFunction_GetValue<Double>());
+      AddFunctionToGroup("GetValue", new FnFunction_GetValue<Decimal>());
+      AddFunctionToGroup("GetValue", new FnFunction_GetValue<Char>());
+      #endregion
+      #endregion
+
+      #region .Net Math Wrapper Functions
       #region Math.Abs
-      CreateMethodGroup("Abs");
-      AddMethodToGroup<Decimal>("Abs", new FnMethod_Abs_Decimal());
-      AddMethodToGroup<Double>("Abs", new FnMethod_Abs_Double());
-      AddMethodToGroup<Single>("Abs", new FnMethod_Abs_Single());
-      AddMethodToGroup<Int64>("Abs", new FnMethod_Abs_Int64());
-      AddMethodToGroup<Int32>("Abs", new FnMethod_Abs_Int32());
-      AddMethodToGroup<Int16>("Abs", new FnMethod_Abs_Int16());
-      AddMethodToGroup<SByte>("Abs", new FnMethod_Abs_SByte());
+      CreateFunctionGroup("Abs");
+      AddFunctionToGroup("Abs", new FnFunction_Abs_Decimal());
+      AddFunctionToGroup("Abs", new FnFunction_Abs_Double());
+      AddFunctionToGroup("Abs", new FnFunction_Abs_Single());
+      AddFunctionToGroup("Abs", new FnFunction_Abs_Int64());
+      AddFunctionToGroup("Abs", new FnFunction_Abs_Int32());
+      AddFunctionToGroup("Abs", new FnFunction_Abs_Int16());
+      AddFunctionToGroup("Abs", new FnFunction_Abs_SByte());
       #endregion
       #region Math.Acos
-      CreateMethodGroup("Acos");
-      AddMethodToGroup<Double>("Acos", new FnMethod_Acos_Double());
-      AddMethodToGroup<Single>("Acos", new FnMethod_Acos_Single());
+      CreateFunctionGroup("Acos");
+      AddFunctionToGroup("Acos", new FnFunction_Acos_Double());
+      AddFunctionToGroup("Acos", new FnFunction_Acos_Single());
       #endregion
       #region Math.Asin
-      CreateMethodGroup("Asin");
-      AddMethodToGroup<Double>("Asin", new FnMethod_Asin_Double());
-      AddMethodToGroup<Single>("Asin", new FnMethod_Asin_Single());
+      CreateFunctionGroup("Asin");
+      AddFunctionToGroup("Asin", new FnFunction_Asin_Double());
+      AddFunctionToGroup("Asin", new FnFunction_Asin_Single());
       #endregion
       #region Math.Atan
-      CreateMethodGroup("Atan");
-      AddMethodToGroup<Double>("Atan", new FnMethod_Atan_Double());
-      AddMethodToGroup<Single>("Atan", new FnMethod_Atan_Single());
+      CreateFunctionGroup("Atan");
+      AddFunctionToGroup("Atan", new FnFunction_Atan_Double());
+      AddFunctionToGroup("Atan", new FnFunction_Atan_Single());
       #endregion
       #region Math.Atan2
-      CreateMethodGroup("Atan2");
-      AddMethodToGroup<Single>("Atan2", new FnMethod_Atan2_Single());
-      AddMethodToGroup<Double>("Atan2", new FnMethod_Atan2_Double());
+      CreateFunctionGroup("Atan2");
+      AddFunctionToGroup("Atan2", new FnFunction_Atan2_Single());
+      AddFunctionToGroup("Atan2", new FnFunction_Atan2_Double());
       #endregion
       #region Math.Ceiling
-      CreateMethodGroup("Ceiling");
-      AddMethodToGroup<Single>("Ceiling", new FnMethod_Ceiling_Single());
-      AddMethodToGroup<Double>("Ceiling", new FnMethod_Ceiling_Double());
+      CreateFunctionGroup("Ceiling");
+      AddFunctionToGroup("Ceiling", new FnFunction_Ceiling_Single());
+      AddFunctionToGroup("Ceiling", new FnFunction_Ceiling_Double());
       #endregion
       #region Math.Cos
-      CreateMethodGroup("Cos");
-      AddMethodToGroup<Single>("Cos", new FnMethod_Cos_Single());
-      AddMethodToGroup<Double>("Cos", new FnMethod_Cos_Double());
+      CreateFunctionGroup("Cos");
+      AddFunctionToGroup("Cos", new FnFunction_Cos_Single());
+      AddFunctionToGroup("Cos", new FnFunction_Cos_Double());
       #endregion
       #region Math.Cosh
-      CreateMethodGroup("Cosh");
-      AddMethodToGroup<Single>("Cosh", new FnMethod_Cosh_Single());
-      AddMethodToGroup<Double>("Cosh", new FnMethod_Cosh_Double());
+      CreateFunctionGroup("Cosh");
+      AddFunctionToGroup("Cosh", new FnFunction_Cosh_Single());
+      AddFunctionToGroup("Cosh", new FnFunction_Cosh_Double());
       #endregion
       #region Math.Exp
-      CreateMethodGroup("Exp");
-      AddMethodToGroup<Int32>("Exp", new FnMethod_Exp_Int32());
-      AddMethodToGroup<UInt32>("Exp", new FnMethod_Exp_UInt32());
-      AddMethodToGroup<Int64>("Exp", new FnMethod_Exp_Int64());
-      AddMethodToGroup<UInt64>("Exp", new FnMethod_Exp_UInt64());
-      AddMethodToGroup<Single>("Exp", new FnMethod_Exp_Single());
-      AddMethodToGroup<Double>("Exp", new FnMethod_Exp_Double());
+      CreateFunctionGroup("Exp");
+      AddFunctionToGroup("Exp", new FnFunction_Exp_Int32());
+      AddFunctionToGroup("Exp", new FnFunction_Exp_UInt32());
+      AddFunctionToGroup("Exp", new FnFunction_Exp_Int64());
+      AddFunctionToGroup("Exp", new FnFunction_Exp_UInt64());
+      AddFunctionToGroup("Exp", new FnFunction_Exp_Single());
+      AddFunctionToGroup("Exp", new FnFunction_Exp_Double());
       #endregion
       #region Math.Floor
-      CreateMethodGroup("Floor");
-      AddMethodToGroup<Single>("Floor", new FnMethod_Floor_Single());
-      AddMethodToGroup<Double>("Floor", new FnMethod_Floor_Double());
+      CreateFunctionGroup("Floor");
+      AddFunctionToGroup("Floor", new FnFunction_Floor_Single());
+      AddFunctionToGroup("Floor", new FnFunction_Floor_Double());
       #endregion
       #region Math.IEEERemainder
-      CreateMethodGroup("IEEERemainder");
-      AddMethodToGroup<Double>("IEEERemainder", new FnMethod_IEEERemainder());
+      CreateFunctionGroup("IEEERemainder");
+      AddFunctionToGroup("IEEERemainder", new FnFunction_IEEERemainder());
       #endregion
       #region Math.Log
-      CreateMethodGroup("Log");
-      AddMethodToGroup<Single>("Log", new FnMethod_Log_BaseE_Single());
-      AddMethodToGroup<Double>("Log", new FnMethod_Log_BaseE_Double());
-      AddMethodToGroup<Single>("Log", new FnMethod_Log_CustomBase_Single());
-      AddMethodToGroup<Double>("Log", new FnMethod_Log_CustomBase_Double());
+      CreateFunctionGroup("Log");
+      AddFunctionToGroup("Log", new FnFunction_Log_BaseE_Single());
+      AddFunctionToGroup("Log", new FnFunction_Log_BaseE_Double());
+      AddFunctionToGroup("Log", new FnFunction_Log_CustomBase_Single());
+      AddFunctionToGroup("Log", new FnFunction_Log_CustomBase_Double());
       #endregion
       #region Math.Log10
-      CreateMethodGroup("Log10");
-      AddMethodToGroup<Single>("Log10", new FnMethod_Log10_Single());
-      AddMethodToGroup<Double>("Log10", new FnMethod_Log10_Double());
+      CreateFunctionGroup("Log10");
+      AddFunctionToGroup("Log10", new FnFunction_Log10_Single());
+      AddFunctionToGroup("Log10", new FnFunction_Log10_Double());
       #endregion
       #region Math.Max
-      CreateMethodGroup("Max");
-      AddMethodToGroup<Byte>("Max", new FnMethod_Max_Byte());
-      AddMethodToGroup<SByte>("Max", new FnMethod_Max_SByte());
-      AddMethodToGroup<Int16>("Max", new FnMethod_Max_Int16());
-      AddMethodToGroup<UInt16>("Max", new FnMethod_Max_UInt16());
-      AddMethodToGroup<Int32>("Max", new FnMethod_Max_Int32());
-      AddMethodToGroup<UInt32>("Max", new FnMethod_Max_UInt32());
-      AddMethodToGroup<Int64>("Max", new FnMethod_Max_Int64());
-      AddMethodToGroup<UInt64>("Max", new FnMethod_Max_UInt64());
-      AddMethodToGroup<Single>("Max", new FnMethod_Max_Single());
-      AddMethodToGroup<Double>("Max", new FnMethod_Max_Double());
-      AddMethodToGroup<Decimal>("Max", new FnMethod_Max_Decimal());
+      CreateFunctionGroup("Max");
+      AddFunctionToGroup("Max", new FnFunction_Max_Byte());
+      AddFunctionToGroup("Max", new FnFunction_Max_SByte());
+      AddFunctionToGroup("Max", new FnFunction_Max_Int16());
+      AddFunctionToGroup("Max", new FnFunction_Max_UInt16());
+      AddFunctionToGroup("Max", new FnFunction_Max_Int32());
+      AddFunctionToGroup("Max", new FnFunction_Max_UInt32());
+      AddFunctionToGroup("Max", new FnFunction_Max_Int64());
+      AddFunctionToGroup("Max", new FnFunction_Max_UInt64());
+      AddFunctionToGroup("Max", new FnFunction_Max_Single());
+      AddFunctionToGroup("Max", new FnFunction_Max_Double());
+      AddFunctionToGroup("Max", new FnFunction_Max_Decimal());
       #endregion
       #region Math.Min
-      CreateMethodGroup("Min");
-      AddMethodToGroup<Byte>("Min", new FnMethod_Min_Byte());
-      AddMethodToGroup<SByte>("Min", new FnMethod_Min_SByte());
-      AddMethodToGroup<Int16>("Min", new FnMethod_Min_Int16());
-      AddMethodToGroup<UInt16>("Min", new FnMethod_Min_UInt16());
-      AddMethodToGroup<Int32>("Min", new FnMethod_Min_Int32());
-      AddMethodToGroup<UInt32>("Min", new FnMethod_Min_UInt32());
-      AddMethodToGroup<Int64>("Min", new FnMethod_Min_Int64());
-      AddMethodToGroup<UInt64>("Min", new FnMethod_Min_UInt64());
-      AddMethodToGroup<Single>("Min", new FnMethod_Min_Single());
-      AddMethodToGroup<Double>("Min", new FnMethod_Min_Double());
-      AddMethodToGroup<Decimal>("Min", new FnMethod_Min_Decimal());
+      CreateFunctionGroup("Min");
+      AddFunctionToGroup("Min", new FnFunction_Min_Byte());
+      AddFunctionToGroup("Min", new FnFunction_Min_SByte());
+      AddFunctionToGroup("Min", new FnFunction_Min_Int16());
+      AddFunctionToGroup("Min", new FnFunction_Min_UInt16());
+      AddFunctionToGroup("Min", new FnFunction_Min_Int32());
+      AddFunctionToGroup("Min", new FnFunction_Min_UInt32());
+      AddFunctionToGroup("Min", new FnFunction_Min_Int64());
+      AddFunctionToGroup("Min", new FnFunction_Min_UInt64());
+      AddFunctionToGroup("Min", new FnFunction_Min_Single());
+      AddFunctionToGroup("Min", new FnFunction_Min_Double());
+      AddFunctionToGroup("Min", new FnFunction_Min_Decimal());
       #endregion
       #region Math.Pow
-      CreateMethodGroup("Pow");
-      AddMethodToGroup<Int32>("Pow", new FnMethod_Pow_Int32());
-      AddMethodToGroup<UInt32>("Pow", new FnMethod_Pow_UInt32());
-      AddMethodToGroup<Int64>("Pow", new FnMethod_Pow_Int64());
-      AddMethodToGroup<UInt64>("Pow", new FnMethod_Pow_UInt64());
-      AddMethodToGroup<Double>("Pow", new FnMethod_Pow_Double());
+      CreateFunctionGroup("Pow");
+      AddFunctionToGroup("Pow", new FnFunction_Pow_Int32());
+      AddFunctionToGroup("Pow", new FnFunction_Pow_UInt32());
+      AddFunctionToGroup("Pow", new FnFunction_Pow_Int64());
+      AddFunctionToGroup("Pow", new FnFunction_Pow_UInt64());
+      AddFunctionToGroup("Pow", new FnFunction_Pow_Double());
       #endregion
       #region Math.Round
-      CreateMethodGroup("Round");
-      AddMethodToGroup<Single>("Round", new FnMethod_Round_Single_1());
-      AddMethodToGroup<Double>("Round", new FnMethod_Round_Double_1());
-      AddMethodToGroup<Decimal>("Round", new FnMethod_Round_Decimal_1());
+      CreateFunctionGroup("Round");
+      AddFunctionToGroup("Round", new FnFunction_Round_Single_1());
+      AddFunctionToGroup("Round", new FnFunction_Round_Double_1());
+      AddFunctionToGroup("Round", new FnFunction_Round_Decimal_1());
 
-      AddMethodToGroup<Single>("Round", new FnMethod_Round_Single_2());
-      AddMethodToGroup<Double>("Round", new FnMethod_Round_Double_2());
-      AddMethodToGroup<Decimal>("Round", new FnMethod_Round_Decimal_2());
+      AddFunctionToGroup("Round", new FnFunction_Round_Single_2());
+      AddFunctionToGroup("Round", new FnFunction_Round_Double_2());
+      AddFunctionToGroup("Round", new FnFunction_Round_Decimal_2());
       #endregion
       #region Math.Sign
-      CreateMethodGroup("Sign");
-      AddMethodToGroup<Int32>("Sign", new FnMethod_Sign_Decimal());
-      AddMethodToGroup<Int32>("Sign", new FnMethod_Sign_Double());
-      AddMethodToGroup<Int32>("Sign", new FnMethod_Sign_Single());
-      AddMethodToGroup<Int32>("Sign", new FnMethod_Sign_Int64());
-      AddMethodToGroup<Int32>("Sign", new FnMethod_Sign_Int32());
-      AddMethodToGroup<Int32>("Sign", new FnMethod_Sign_Int16());
-      AddMethodToGroup<Int32>("Sign", new FnMethod_Sign_SByte());
+      CreateFunctionGroup("Sign");
+      AddFunctionToGroup("Sign", new FnFunction_Sign_Decimal());
+      AddFunctionToGroup("Sign", new FnFunction_Sign_Double());
+      AddFunctionToGroup("Sign", new FnFunction_Sign_Single());
+      AddFunctionToGroup("Sign", new FnFunction_Sign_Int64());
+      AddFunctionToGroup("Sign", new FnFunction_Sign_Int32());
+      AddFunctionToGroup("Sign", new FnFunction_Sign_Int16());
+      AddFunctionToGroup("Sign", new FnFunction_Sign_SByte());
       #endregion
       #region Math.Sin
-      CreateMethodGroup("Sin");
-      AddMethodToGroup<Single>("Sin", new FnMethod_Sin_Single());
-      AddMethodToGroup<Double>("Sin", new FnMethod_Sin_Double());
+      CreateFunctionGroup("Sin");
+      AddFunctionToGroup("Sin", new FnFunction_Sin_Single());
+      AddFunctionToGroup("Sin", new FnFunction_Sin_Double());
       #endregion
       #region Math.Sinh
-      CreateMethodGroup("Sinh");
-      AddMethodToGroup<Single>("Sinh", new FnMethod_Sinh_Single());
-      AddMethodToGroup<Double>("Sinh", new FnMethod_Sinh_Double());
+      CreateFunctionGroup("Sinh");
+      AddFunctionToGroup("Sinh", new FnFunction_Sinh_Single());
+      AddFunctionToGroup("Sinh", new FnFunction_Sinh_Double());
       #endregion
       #region Math.Sqrt
-      CreateMethodGroup("Sqrt");
-      AddMethodToGroup<Single>("Sqrt", new FnMethod_Sqrt_Single());
-      AddMethodToGroup<Double>("Sqrt", new FnMethod_Sqrt_Double());
+      CreateFunctionGroup("Sqrt");
+      AddFunctionToGroup("Sqrt", new FnFunction_Sqrt_Single());
+      AddFunctionToGroup("Sqrt", new FnFunction_Sqrt_Double());
       #endregion
       #region Math.Tan
-      CreateMethodGroup("Tan");
-      AddMethodToGroup<Single>("Tan", new FnMethod_Tan_Single());
-      AddMethodToGroup<Double>("Tan", new FnMethod_Tan_Double());
+      CreateFunctionGroup("Tan");
+      AddFunctionToGroup("Tan", new FnFunction_Tan_Single());
+      AddFunctionToGroup("Tan", new FnFunction_Tan_Double());
       #endregion
       #region Math.Tanh
-      CreateMethodGroup("Tanh");
-      AddMethodToGroup<Single>("Tanh", new FnMethod_Tanh_Single());
-      AddMethodToGroup<Double>("Tanh", new FnMethod_Tanh_Double());
+      CreateFunctionGroup("Tanh");
+      AddFunctionToGroup("Tanh", new FnFunction_Tanh_Single());
+      AddFunctionToGroup("Tanh", new FnFunction_Tanh_Double());
       #endregion
       #endregion
 
-      #region Bezier Curve Methods
-      CreateMethodGroup("BezierCurve");
-      AddMethodToGroup<Single>("BezierCurve", new FnMethod_Bezier_Quadratic_Single());
-      AddMethodToGroup<Double>("BezierCurve", new FnMethod_Bezier_Quadratic_Double());
-      AddMethodToGroup<Single>("BezierCurve", new FnMethod_Bezier_Cubic_Single());
-      AddMethodToGroup<Double>("BezierCurve", new FnMethod_Bezier_Cubic_Double());
+      #region Bezier Curve Functions
+      CreateFunctionGroup("BezierCurve");
+      AddFunctionToGroup("BezierCurve", new FnFunction_Bezier_Quadratic_Single());
+      AddFunctionToGroup("BezierCurve", new FnFunction_Bezier_Quadratic_Double());
+      AddFunctionToGroup("BezierCurve", new FnFunction_Bezier_Cubic_Single());
+      AddFunctionToGroup("BezierCurve", new FnFunction_Bezier_Cubic_Double());
       #endregion
 
-      #region Other Maths Methods
+      #region Other Maths Functions
       #region Cycle
-      CreateMethodGroup("Cycle");
-      AddMethodToGroup<Int32>("Cycle", new FnMethod_Cycle_Int32());
-      AddMethodToGroup<Single>("Cycle", new FnMethod_Cycle_Single());
+      CreateFunctionGroup("Cycle");
+      AddFunctionToGroup("Cycle", new FnFunction_Cycle_Int32());
+      AddFunctionToGroup("Cycle", new FnFunction_Cycle_Single());
       #endregion
       #region RandomInt
-      CreateMethodGroup("RandomInt");
-      AddMethodToGroup<Int32>("RandomInt", new FnMethod_RandomInt());
-      AddMethodToGroup<Int32>("RandomInt", new FnMethod_RandomInt_Max());
-      AddMethodToGroup<Int32>("RandomInt", new FnMethod_RandomInt_Min_Max());
+      CreateFunctionGroup("RandomInt");
+      AddFunctionToGroup("RandomInt", new FnFunction_RandomInt());
+      AddFunctionToGroup("RandomInt", new FnFunction_RandomInt_Max());
+      AddFunctionToGroup("RandomInt", new FnFunction_RandomInt_Min_Max());
       #endregion
       #endregion
 
-      #region FnObject Parameter Methods
-      CreateMethodGroup("SetParameter");
-      AddMethodToGroup<Object>("SetParameter", new FnMethod_SetParameter<Byte>());
-      AddMethodToGroup<Object>("SetParameter", new FnMethod_SetParameter<SByte>());
-      AddMethodToGroup<Object>("SetParameter", new FnMethod_SetParameter<Int16>());
-      AddMethodToGroup<Object>("SetParameter", new FnMethod_SetParameter<UInt16>());
-      AddMethodToGroup<Object>("SetParameter", new FnMethod_SetParameter<Int32>());
-      AddMethodToGroup<Object>("SetParameter", new FnMethod_SetParameter<UInt32>());
-      AddMethodToGroup<Object>("SetParameter", new FnMethod_SetParameter<Int64>());
-      AddMethodToGroup<Object>("SetParameter", new FnMethod_SetParameter<UInt64>());
-      AddMethodToGroup<Object>("SetParameter", new FnMethod_SetParameter<Single>());
-      AddMethodToGroup<Object>("SetParameter", new FnMethod_SetParameter<Double>());
-      AddMethodToGroup<Object>("SetParameter", new FnMethod_SetParameter<Decimal>());
-      AddMethodToGroup<Object>("SetParameter", new FnMethod_SetParameter<Char>());
-      AddMethodToGroup<Object>("SetParameter", new FnMethod_SetParameter<String>());
+      #region FnObject Parameter Functions
+      CreateFunctionGroup("SetParameter");
+      AddFunctionToGroup("SetParameter", new FnFunction_SetParameter<Byte>());
+      AddFunctionToGroup("SetParameter", new FnFunction_SetParameter<SByte>());
+      AddFunctionToGroup("SetParameter", new FnFunction_SetParameter<Int16>());
+      AddFunctionToGroup("SetParameter", new FnFunction_SetParameter<UInt16>());
+      AddFunctionToGroup("SetParameter", new FnFunction_SetParameter<Int32>());
+      AddFunctionToGroup("SetParameter", new FnFunction_SetParameter<UInt32>());
+      AddFunctionToGroup("SetParameter", new FnFunction_SetParameter<Int64>());
+      AddFunctionToGroup("SetParameter", new FnFunction_SetParameter<UInt64>());
+      AddFunctionToGroup("SetParameter", new FnFunction_SetParameter<Single>());
+      AddFunctionToGroup("SetParameter", new FnFunction_SetParameter<Double>());
+      AddFunctionToGroup("SetParameter", new FnFunction_SetParameter<Decimal>());
+      AddFunctionToGroup("SetParameter", new FnFunction_SetParameter<Char>());
+      AddFunctionToGroup("SetParameter", new FnFunction_SetParameter<String>());
 
-      //This method won't provide universal Parameter setting available for all data types,
-      //but it's required to get setting parameters of data type "object" to work
-      AddMethodToGroup<Object>("SetParameter", new FnMethod_SetParameter<Object>());
+      // This function won't provide universal Parameter setting available for all data types,
+      // but it's required to get setting parameters of data type "object" to work
+      AddFunctionToGroup("SetParameter", new FnFunction_SetParameter<Object>());
 
-      AddMethodToGroup<Object>("SetParameter", new FnMethod_SetParameter<Int32?>());
+      AddFunctionToGroup("SetParameter", new FnFunction_SetParameter<Int32?>());
       #endregion
 
-      #region String Methods
-      #region String Class Wrapper Methods
+      #region String Functions
+      #region String Class Wrapper Functions
       #region SubString
-      CreateMethodGroup("SubString");
-      AddMethodToGroup<String>("SubString", new FnMethod_SubString_StartOnly());
-      AddMethodToGroup<String>("SubString", new FnMethod_SubString_StartAndEnd());
+      CreateFunctionGroup("SubString");
+      AddFunctionToGroup("SubString", new FnFunction_SubString_StartOnly());
+      AddFunctionToGroup("SubString", new FnFunction_SubString_StartAndEnd());
       #endregion
       #endregion
-      #region Custom String Methods
+      #region Custom String Functions
       #region RandomString
-      CreateMethodGroup("RandomString");
-      AddMethodToGroup<String>("RandomString", new FnMethod_RandomString_WithoutPrefix());
-      AddMethodToGroup<String>("RandomString", new FnMethod_RandomString_WithPrefix());
+      CreateFunctionGroup("RandomString");
+      AddFunctionToGroup("RandomString", new FnFunction_RandomString_WithoutPrefix());
+      AddFunctionToGroup("RandomString", new FnFunction_RandomString_WithPrefix());
       #endregion
       #region LengthOf
-      CreateMethodGroup("LengthOf");
-      AddMethodToGroup<Int32>("LengthOf", new FnMethod_LengthOf());
+      CreateFunctionGroup("LengthOf");
+      AddFunctionToGroup("LengthOf", new FnFunction_LengthOf());
       #endregion
       #region CharAt
-      CreateMethodGroup("CharAt");
-      AddMethodToGroup<Char>("CharAt", new FnMethod_CharAt());
+      CreateFunctionGroup("CharAt");
+      AddFunctionToGroup("CharAt", new FnFunction_CharAt());
       #endregion
       #region Reverse
-      CreateMethodGroup("Reverse");
-      AddMethodToGroup<String>("Reverse", new FnMethod_Reverse());
+      CreateFunctionGroup("Reverse");
+      AddFunctionToGroup("Reverse", new FnFunction_Reverse());
       #endregion
       #endregion
       #endregion
@@ -913,7 +913,7 @@ namespace FunctionScript {
     private static void InitializeGlobalParameters() {
     }
 
-    #region Global Parameter Modification Methods
+    #region Global Parameter Modification Functions
 
     /// <summary>
     /// Defines a global parameter, initialized with the specified value.
@@ -965,121 +965,126 @@ namespace FunctionScript {
     #endregion
 
     /// <summary>
-    /// Adds a constant to the FnScript list of constants with the specified name and value
+    /// Creates a constant with the specified name and value.
     /// </summary>
-    /// <typeparam name="T">The data type of the constant</typeparam>
+    /// <typeparam name="T">The data type of the constant.</typeparam>
     /// <param name="name">The name of the constant</param>
-    /// <param name="data">The value to initialize it with</param>
+    /// <param name="data">The value of the constant.</param>
     public static void AddConstant<T>(String name, T data) {
-      //check the validity of the constant name, constants can only be made of letters, digits or underscores, and must start with a letter or an underscore
+      // Check the validity of the constant name, constants can only be made of letters, digits or underscores, and must
+      // start with a letter or an underscore.
       if (IsValidName(name)) {
         Constants.Add(name, new FnConstant<T>(data));
       } else {
-        throw new ArgumentException("Invalid constant name provided. Names for constants can only contain underscores, letters or digits, must start with an underscore or a letter, and must not be blank");
+        throw new ArgumentException(
+          "Invalid constant name provided. Names for constants can only contain underscores, letters or digits, must" +
+          "start with an underscore or a letter, and must not be blank"
+        );
       }
     }
 
     /// <summary>
-    /// Creates a new FnMethodSwitch with the specified name and adds it to the list of callable methods from FnScript
+    /// Creates a new function group with the specified name and adds it to the list of callable functions.
     /// </summary>
-    /// <param name="name">The name of the switch</param>
-    /// <param name="compileFlags">A list of compile flags to add to the switch, which are propagated to any FnObject that is built using the switch</param>
-    public static void CreateMethodGroup(String name) {
-      if (IsValidName(name) && !FnMethods.ContainsKey(name)) {
-        FnMethods.Add(name, new FnMethodGroup(name));
+    /// <param name="name">The name of the group.</param>
+    public static void CreateFunctionGroup(String name) {
+      if (IsValidName(name) && !FnFunctions.ContainsKey(name)) {
+        FnFunctions.Add(name, new FnFunctionGroup(name));
       } else {
-        throw new ArgumentException("Invalid method name provided. Names for switches can only contain underscores, letters or digits, must start with an underscore or a letter, and must not be blank");
+        throw new ArgumentException(
+          "Invalid function name provided. Names for switches can only contain underscores, letters or digits, must" +
+          "start with an underscore or a letter, and must not be blank"
+        );
       }
     }
 
     /// <summary>
-    /// Creates an alias which references a switch. Changes made to the switch at any time are reflected in the alias
+    /// Creates an alias which references a switch. Changes made to the switch at any time are reflected in the alias.
     /// </summary>
-    /// <param name="switchName">The name of the method switch to alias</param>
-    /// <param name="Alias">The alias to use</param>
-    public static void AddAliasForMethodGroup(String switchName, String alias) {
-      if (IsValidName(alias) && !FnMethods.ContainsKey(alias)) {
-        FnMethods.Add(alias, FnMethods[switchName]);
+    /// <param name="groupName">The name of the function group to alias.</param>
+    /// <param name="alias">The alias.</param>
+    public static void AddAliasForFunctionGroup(String groupName, String alias) {
+      if (IsValidName(alias) && !FnFunctions.ContainsKey(alias)) {
+        FnFunctions.Add(alias, FnFunctions[groupName]);
       } else {
-        throw new ArgumentException("Invalid alias name provided. Aliases for switches can only contain underscores, letters or digits, must start with an underscore or a letter, and must not be blank", switchName);
+        throw new ArgumentException(
+          "Invalid alias name provided. Aliases for switches can only contain underscores, letters or digits, must" +
+          "start with an underscore or a letter, and must not be blank", groupName
+        );
       }
     }
 
     /// <summary>
-    /// Adds an <see cref="FnMethod"/> to the method group of the provided name.
+    /// Adds an <see cref="FnFunction"/> to the function group of the provided name.
     /// </summary>
-    /// <typeparam name="T">The return type of the method pointer</typeparam>
-    /// <param name="name">The name of the switch to add it to</param>
-    /// <param name="pointer">The pointer to the method itself</param>
-    public static void AddMethodToGroup<T>(String name, FnMethod<T> pointer) {
-      if (FnMethods.ContainsKey(name)) {
-        FnMethods[name].AddMethodPointer(new FnMethodPointer<T>(pointer));
-        // We do check for an overload conflict, but instead of doing it here it's done in the
-        // FnMethodSwitch.AddMethodPointer() method.
+    /// <typeparam name="T">The return type of the function.</typeparam>
+    /// <param name="name">The name of the group to add it to.</param>
+    /// <param name="function">An initialized copy of the function.</param>
+    public static void AddFunctionToGroup<T>(String name, FnFunction<T> function) {
+      if (FnFunctions.ContainsKey(name)) {
+        FnFunctions[name].AddFunctionPointer(new FnFunctionPointer<T>(function));
+        // We do check for an overload conflict, but instead of doing it here it's done in
+        // FnFunctionSwitch.AddFunctionPointer().
       } else {
-        throw new ArgumentException("Invalid method name provided. A method switch by this name does not exist");
+        throw new ArgumentException("Invalid function name provided. A function group by this name does not exist.");
       }
 
-      //If this method has an implicit conversion flag
-      if (pointer.Flags != null && pointer.Flags.Contains(FnMethod<T>.CompileFlags.IMPLICIT_CONVERSION)) {
-        if (pointer.ArgumentTypes == null || pointer.ArgumentTypes.Length > 1 || pointer.ArgumentTypes.Length == 0) {
+      // If this function has an implicit conversion flag.
+      if (function.Flags != null && function.Flags.Contains(FnFunction<T>.CompileFlags.IMPLICIT_CONVERSION)) {
+        if (function.ArgumentTypes == null || function.ArgumentTypes.Length > 1 || function.ArgumentTypes.Length == 0) {
           throw new ArgumentException(
-            "The FnMethod provided has the incorrect number of parameters. To be a valid Implicit Converion method it" +
+            "The FnFunction provided has the incorrect number of parameters. To be a valid Implicit Converion function it" +
             "must have exactly one parameter."
           );
         }
 
-        //We have now established that the implicit conversion method provided accepts exactly one method argument. Now we have to determine
-        //if it can be added to the list of implicit conversion switches
+        // We have now established that the implicit conversion function provided accepts exactly one argument. Now we
+        // have to determine if it can be added to the list of implicit conversion groups.
 
-        //If we don't have an implicit conversion switch for this data type yet, create it.
+        // If we don't have an implicit conversion switch for this data type yet, create it.
         if (!ImplicitConversionSwitches.ContainsKey(typeof(T))) {
-          ImplicitConversionSwitches.Add(typeof(T), new FnMethodGroup("ImplicitTo_" + typeof(T)));
+          ImplicitConversionSwitches.Add(typeof(T), new FnFunctionGroup("ImplicitTo_" + typeof(T)));
         }
 
-        //Now we check to see if this implicit conversion has been handled already, by looping through the methods in that
-        //switch and checking their input parameter type
-        foreach (FnMethodPointer m in ImplicitConversionSwitches[typeof(T)].MethodPointers) {
-          if (m.GetMethodTypeArray()[0] == pointer.ArgumentTypes[0]) {
+        // Now we check to see if this implicit conversion has been handled already, by looping through the functions in
+        // that group and checking their input parameter type.
+        foreach (FnFunctionPointer m in ImplicitConversionSwitches[typeof(T)].FunctionPointers) {
+          if (m.GetFunctionTypeArray()[0] == function.ArgumentTypes[0]) {
             throw new ArgumentException(
-              "The implicit conversion specified is already handled by another FnMethod", pointer.ToString()
+              "The implicit conversion specified is already handled by another FnFunction", function.ToString()
             );
           }
         }
 
-        //If we are successful, add the FnMethod to the implicit conversion switch
-        ImplicitConversionSwitches[typeof(T)].AddMethodPointer(new FnMethodPointer<T>(pointer));
+        // If we are successful, add the FnFunction to the implicit conversion group.
+        ImplicitConversionSwitches[typeof(T)].AddFunctionPointer(new FnFunctionPointer<T>(function));
       }
     }
 
     /// <summary>
     /// Returns the ambiguity score of a provided argument type versus the desired argument type. The higher the
-    /// ambiguity score, the more ambiguous the method call is. If a score of -1 is returned, then you cannot implicitly
+    /// ambiguity score, the more ambiguous the function call is. If a score of -1 is returned, then you cannot implicitly
     /// convert between the two types.
     /// </summary>
-    /// <param name="methodType">The parameter type for the method</param>
-    /// <param name="argumentType">The data type of the provided argument</param>
+    /// <param name="functionType">The parameter type for the function.</param>
+    /// <param name="argumentType">The data type of the provided argument.</param>
     /// <returns></returns>
-    internal static Int32 GetAmbiguityScore(Type methodType, Type argumentType) {
-      // If the method type can be ambiguous.
-      if (TypePrecedence.ContainsKey(methodType)) {
+    internal static Int32 GetAmbiguityScore(Type functionType, Type argumentType) {
+      // If the function type can be ambiguous.
+      if (TypePrecedence.ContainsKey(functionType)) {
         if (TypePrecedence.ContainsKey(argumentType)) {
-          if (TypePrecedence[methodType] % 2 == 0)    //if we have a signed method data type
-          {
-            if ((TypePrecedence[argumentType] % 2 == 1) && (TypePrecedence[argumentType] > TypePrecedence[methodType]))     //if we have an unsigned argument data type this is higher precedence than the method type
-            {
+          if (TypePrecedence[functionType] % 2 == 0) {    // If we have a signed function data type
+            if ((TypePrecedence[argumentType] % 2 == 1) && (TypePrecedence[argumentType] > TypePrecedence[functionType])) {     // If we have an unsigned argument data type this is higher precedence than the function type.
               return -1;
             }
           }
 
-          return TypePrecedence[methodType] - TypePrecedence[argumentType];
+          return TypePrecedence[functionType] - TypePrecedence[argumentType];
         } else {
-          if (argumentType == typeof(Char))  //if it's a char then we have to do some weird stuff
-          {
-            return TypePrecedence[methodType] - TypePrecedence[typeof(UInt16)];
-          } else //if it's anything else, give it ambiguity level 13 and return the result
-            {
-            return TypePrecedence[methodType] - 13;      // 13'S A MAGIC NUMBER BUT IT'S THERE BECAUSE THAT'S THE GAP THAT WAS LEFT BETWEEN DECIMAL AND OBJECT FOR AMBIGUITY SCORES
+          if (argumentType == typeof(Char)) {  //if it's a char then we have to do some weird stuff
+            return TypePrecedence[functionType] - TypePrecedence[typeof(UInt16)];
+          } else { //if it's anything else, give it ambiguity level 13 and return the result
+            return TypePrecedence[functionType] - 13;      // 13'S A MAGIC NUMBER BUT IT'S THERE BECAUSE THAT'S THE GAP THAT WAS LEFT BETWEEN DECIMAL AND OBJECT FOR AMBIGUITY SCORES
           }
         }
       } else {
@@ -1088,7 +1093,7 @@ namespace FunctionScript {
     }
 
     /// <summary>
-    /// Determines if the string specified is a valid name for a Method or Constant to be used in FnScript.
+    /// Determines if the string specified is a valid name for a Function or Constant to be used in FunctionScript.
     /// </summary>
     /// <param name="name">The name to verify</param>
     private static Boolean IsValidName(String name) {
@@ -1127,22 +1132,22 @@ namespace FunctionScript {
     }
 
     /// <summary>
-    /// Determines if an FnMethodSwitch with the spedified name exists.
+    /// Determines if an FnFunctionSwitch with the spedified name exists.
     /// </summary>
     /// <param name="name">The name to verify</param>
     /// <returns></returns>
-    public static Boolean DoesMethodExist(String name) {
-      return FnMethods.ContainsKey(name);
+    public static Boolean DoesFunctionExist(String name) {
+      return FnFunctions.ContainsKey(name);
     }
 
     /// <summary>
-    /// Returns the FnMethodSwitch with the specified name.
+    /// Returns the <see cref="FnFunctionGroup"/> with the specified name.
     /// </summary>
-    /// <param name="name">The name of the method</param>
+    /// <param name="name">The name of the function group.</param>
     /// <returns></returns>
-    internal static FnMethodGroup GetMethod(String name) {
-      if (DoesMethodExist(name)) { return FnMethods[name]; }
-      throw new ArgumentException("The method you have requested (" + name + ") does not exist");
+    internal static FnFunctionGroup GetFunctionGroup(String name) {
+      if (DoesFunctionExist(name)) { return FnFunctions[name]; }
+      throw new ArgumentException(String.Format("The function you have requested ({0}) does not exist", name));
     }
 
     /// <summary>
@@ -1152,7 +1157,7 @@ namespace FunctionScript {
     /// <returns></returns>
     public static FnObject GetConstant(String name) {
       if (DoesConstantExist(name)) { return Constants[name]; }
-      throw new ArgumentException("The constant you have requested (" + name + ") does not exist");
+      throw new ArgumentException(String.Format("The constant you have requested ({0}) does not exist", name));
     }
 
     /// <summary>

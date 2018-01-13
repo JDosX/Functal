@@ -6,9 +6,9 @@ namespace FunctionScript {
   // during expression compilation via reflection.
   #pragma warning disable 0649
 
-  #region Binary Operator Methods
-  #region Addition Methods
-  internal class FnMethod_Add_Int32 : FnMethod<Int32> {
+  #region Binary Operator Functions
+  #region Addition Functions
+  internal class FnFunction_Add_Int32 : FnFunction<Int32> {
     [FnArg] protected FnObject<Int32> Num0;
     [FnArg] protected FnObject<Int32> Num1;
 
@@ -16,7 +16,7 @@ namespace FunctionScript {
       return Num0.GetValue() + Num1.GetValue();
     }
   }
-  internal class FnMethod_Add_UInt32 : FnMethod<UInt32> {
+  internal class FnFunction_Add_UInt32 : FnFunction<UInt32> {
     [FnArg] protected FnObject<UInt32> Num0;
     [FnArg] protected FnObject<UInt32> Num1;
 
@@ -24,7 +24,7 @@ namespace FunctionScript {
       return Num0.GetValue() + Num1.GetValue();
     }
   }
-  internal class FnMethod_Add_Int64 : FnMethod<Int64> {
+  internal class FnFunction_Add_Int64 : FnFunction<Int64> {
     [FnArg] protected FnObject<Int64> Num0;
     [FnArg] protected FnObject<Int64> Num1;
 
@@ -32,7 +32,7 @@ namespace FunctionScript {
       return Num0.GetValue() + Num1.GetValue();
     }
   }
-  internal class FnMethod_Add_UInt64 : FnMethod<UInt64> {
+  internal class FnFunction_Add_UInt64 : FnFunction<UInt64> {
     [FnArg] protected FnObject<UInt64> Num0;
     [FnArg] protected FnObject<UInt64> Num1;
 
@@ -40,7 +40,7 @@ namespace FunctionScript {
       return Num0.GetValue() + Num1.GetValue();
     }
   }
-  internal class FnMethod_Add_Single : FnMethod<Single> {
+  internal class FnFunction_Add_Single : FnFunction<Single> {
     [FnArg] protected FnObject<Single> Num0;
     [FnArg] protected FnObject<Single> Num1;
 
@@ -48,7 +48,7 @@ namespace FunctionScript {
       return Num0.GetValue() + Num1.GetValue();
     }
   }
-  internal class FnMethod_Add_Double : FnMethod<Double> {
+  internal class FnFunction_Add_Double : FnFunction<Double> {
     [FnArg] protected FnObject<Double> Num0;
     [FnArg] protected FnObject<Double> Num1;
 
@@ -56,7 +56,7 @@ namespace FunctionScript {
       return Num0.GetValue() + Num1.GetValue();
     }
   }
-  internal class FnMethod_Add_Decimal : FnMethod<Decimal> {
+  internal class FnFunction_Add_Decimal : FnFunction<Decimal> {
     [FnArg] protected FnObject<Decimal> Num0;
     [FnArg] protected FnObject<Decimal> Num1;
 
@@ -64,7 +64,7 @@ namespace FunctionScript {
       return Num0.GetValue() + Num1.GetValue();
     }
   }
-  internal class FnMethod_Add_String : FnMethod<String> {
+  internal class FnFunction_Add_String : FnFunction<String> {
     [FnArg] protected FnObject<String> String0;
     [FnArg] protected FnObject<String> String1;
 
@@ -73,8 +73,8 @@ namespace FunctionScript {
     }
   }
   #endregion
-  #region Subtraction Methods
-  internal class FnMethod_Subtract_Int32 : FnMethod<Int32> {
+  #region Subtraction Functions
+  internal class FnFunction_Subtract_Int32 : FnFunction<Int32> {
     [FnArg] protected FnObject<Int32> Num0;
     [FnArg] protected FnObject<Int32> Num1;
 
@@ -82,7 +82,7 @@ namespace FunctionScript {
       return Num0.GetValue() - Num1.GetValue();
     }
   }
-  internal class FnMethod_Subtract_UInt32 : FnMethod<UInt32> {
+  internal class FnFunction_Subtract_UInt32 : FnFunction<UInt32> {
     [FnArg] protected FnObject<UInt32> Num0;
     [FnArg] protected FnObject<UInt32> Num1;
 
@@ -90,7 +90,7 @@ namespace FunctionScript {
       return Num0.GetValue() - Num1.GetValue();
     }
   }
-  internal class FnMethod_Subtract_Int64 : FnMethod<Int64> {
+  internal class FnFunction_Subtract_Int64 : FnFunction<Int64> {
     [FnArg] protected FnObject<Int64> Num0;
     [FnArg] protected FnObject<Int64> Num1;
 
@@ -98,7 +98,7 @@ namespace FunctionScript {
       return Num0.GetValue() - Num1.GetValue();
     }
   }
-  internal class FnMethod_Subtract_UInt64 : FnMethod<UInt64> {
+  internal class FnFunction_Subtract_UInt64 : FnFunction<UInt64> {
     [FnArg] protected FnObject<UInt64> Num0;
     [FnArg] protected FnObject<UInt64> Num1;
 
@@ -106,7 +106,7 @@ namespace FunctionScript {
       return Num0.GetValue() - Num1.GetValue();
     }
   }
-  internal class FnMethod_Subtract_Single : FnMethod<Single> {
+  internal class FnFunction_Subtract_Single : FnFunction<Single> {
     [FnArg] protected FnObject<Single> Num0;
     [FnArg] protected FnObject<Single> Num1;
 
@@ -114,7 +114,7 @@ namespace FunctionScript {
       return Num0.GetValue() - Num1.GetValue();
     }
   }
-  internal class FnMethod_Subtract_Double : FnMethod<Double> {
+  internal class FnFunction_Subtract_Double : FnFunction<Double> {
     [FnArg] protected FnObject<Double> Num0;
     [FnArg] protected FnObject<Double> Num1;
 
@@ -122,7 +122,7 @@ namespace FunctionScript {
       return Num0.GetValue() - Num1.GetValue();
     }
   }
-  internal class FnMethod_Subtract_Decimal : FnMethod<Decimal> {
+  internal class FnFunction_Subtract_Decimal : FnFunction<Decimal> {
     [FnArg] protected FnObject<Decimal> Num0;
     [FnArg] protected FnObject<Decimal> Num1;
 
@@ -131,8 +131,8 @@ namespace FunctionScript {
     }
   }
   #endregion
-  #region Multiplication Methods
-  internal class FnMethod_Multiply_Int32 : FnMethod<Int32> {
+  #region Multiplication Functions
+  internal class FnFunction_Multiply_Int32 : FnFunction<Int32> {
     [FnArg] protected FnObject<Int32> Num0;
     [FnArg] protected FnObject<Int32> Num1;
 
@@ -140,7 +140,7 @@ namespace FunctionScript {
       return Num0.GetValue() * Num1.GetValue();
     }
   }
-  internal class FnMethod_Multiply_UInt32 : FnMethod<UInt32> {
+  internal class FnFunction_Multiply_UInt32 : FnFunction<UInt32> {
     [FnArg] protected FnObject<UInt32> Num0;
     [FnArg] protected FnObject<UInt32> Num1;
 
@@ -148,7 +148,7 @@ namespace FunctionScript {
       return Num0.GetValue() * Num1.GetValue();
     }
   }
-  internal class FnMethod_Multiply_Int64 : FnMethod<Int64> {
+  internal class FnFunction_Multiply_Int64 : FnFunction<Int64> {
     [FnArg] protected FnObject<Int64> Num0;
     [FnArg] protected FnObject<Int64> Num1;
 
@@ -156,7 +156,7 @@ namespace FunctionScript {
       return Num0.GetValue() * Num1.GetValue();
     }
   }
-  internal class FnMethod_Multiply_UInt64 : FnMethod<UInt64> {
+  internal class FnFunction_Multiply_UInt64 : FnFunction<UInt64> {
     [FnArg] protected FnObject<UInt64> Num0;
     [FnArg] protected FnObject<UInt64> Num1;
 
@@ -164,7 +164,7 @@ namespace FunctionScript {
       return Num0.GetValue() * Num1.GetValue();
     }
   }
-  internal class FnMethod_Multiply_Single : FnMethod<Single> {
+  internal class FnFunction_Multiply_Single : FnFunction<Single> {
     [FnArg] protected FnObject<Single> Num0;
     [FnArg] protected FnObject<Single> Num1;
 
@@ -172,7 +172,7 @@ namespace FunctionScript {
       return Num0.GetValue() * Num1.GetValue();
     }
   }
-  internal class FnMethod_Multiply_Double : FnMethod<Double> {
+  internal class FnFunction_Multiply_Double : FnFunction<Double> {
     [FnArg] protected FnObject<Double> Num0;
     [FnArg] protected FnObject<Double> Num1;
 
@@ -181,7 +181,7 @@ namespace FunctionScript {
     }
 
   }
-  internal class FnMethod_Multiply_Decimal : FnMethod<Decimal> {
+  internal class FnFunction_Multiply_Decimal : FnFunction<Decimal> {
     [FnArg] protected FnObject<Decimal> Num0;
     [FnArg] protected FnObject<Decimal> Num1;
 
@@ -191,8 +191,8 @@ namespace FunctionScript {
 
   }
   #endregion
-  #region Division Methods
-  internal class FnMethod_Divide_Int32 : FnMethod<Int32> {
+  #region Division Functions
+  internal class FnFunction_Divide_Int32 : FnFunction<Int32> {
     [FnArg] protected FnObject<Int32> Num0;
     [FnArg] protected FnObject<Int32> Num1;
 
@@ -200,7 +200,7 @@ namespace FunctionScript {
       return Num0.GetValue() / Num1.GetValue();
     }
   }
-  internal class FnMethod_Divide_UInt32 : FnMethod<UInt32> {
+  internal class FnFunction_Divide_UInt32 : FnFunction<UInt32> {
     [FnArg] protected FnObject<UInt32> Num0;
     [FnArg] protected FnObject<UInt32> Num1;
 
@@ -208,7 +208,7 @@ namespace FunctionScript {
       return Num0.GetValue() / Num1.GetValue();
     }
   }
-  internal class FnMethod_Divide_Int64 : FnMethod<Int64> {
+  internal class FnFunction_Divide_Int64 : FnFunction<Int64> {
     [FnArg] protected FnObject<Int64> Num0;
     [FnArg] protected FnObject<Int64> Num1;
 
@@ -216,7 +216,7 @@ namespace FunctionScript {
       return Num0.GetValue() / Num1.GetValue();
     }
   }
-  internal class FnMethod_Divide_UInt64 : FnMethod<UInt64> {
+  internal class FnFunction_Divide_UInt64 : FnFunction<UInt64> {
     [FnArg] protected FnObject<UInt64> Num0;
     [FnArg] protected FnObject<UInt64> Num1;
 
@@ -224,7 +224,7 @@ namespace FunctionScript {
       return Num0.GetValue() / Num1.GetValue();
     }
   }
-  internal class FnMethod_Divide_Single : FnMethod<Single> {
+  internal class FnFunction_Divide_Single : FnFunction<Single> {
     [FnArg] protected FnObject<Single> Num0;
     [FnArg] protected FnObject<Single> Num1;
 
@@ -232,7 +232,7 @@ namespace FunctionScript {
       return Num0.GetValue() / Num1.GetValue();
     }
   }
-  internal class FnMethod_Divide_Double : FnMethod<Double> {
+  internal class FnFunction_Divide_Double : FnFunction<Double> {
     [FnArg] protected FnObject<Double> Num0;
     [FnArg] protected FnObject<Double> Num1;
 
@@ -240,7 +240,7 @@ namespace FunctionScript {
       return Num0.GetValue() / Num1.GetValue();
     }
   }
-  internal class FnMethod_Divide_Decimal : FnMethod<Decimal> {
+  internal class FnFunction_Divide_Decimal : FnFunction<Decimal> {
     [FnArg] protected FnObject<Decimal> Num0;
     [FnArg] protected FnObject<Decimal> Num1;
 
@@ -249,8 +249,8 @@ namespace FunctionScript {
     }
   }
   #endregion
-  #region Mod Methods
-  internal class FnMethod_Mod_Int32 : FnMethod<Int32> {
+  #region Mod Functions
+  internal class FnFunction_Mod_Int32 : FnFunction<Int32> {
     [FnArg] protected FnObject<Int32> Num0;
     [FnArg] protected FnObject<Int32> Num1;
 
@@ -258,7 +258,7 @@ namespace FunctionScript {
       return Num0.GetValue() % Num1.GetValue();
     }
   }
-  internal class FnMethod_Mod_UInt32 : FnMethod<UInt32> {
+  internal class FnFunction_Mod_UInt32 : FnFunction<UInt32> {
     [FnArg] protected FnObject<UInt32> Num0;
     [FnArg] protected FnObject<UInt32> Num1;
 
@@ -266,7 +266,7 @@ namespace FunctionScript {
       return Num0.GetValue() % Num1.GetValue();
     }
   }
-  internal class FnMethod_Mod_Int64 : FnMethod<Int64> {
+  internal class FnFunction_Mod_Int64 : FnFunction<Int64> {
     [FnArg] protected FnObject<Int64> Num0;
     [FnArg] protected FnObject<Int64> Num1;
 
@@ -274,7 +274,7 @@ namespace FunctionScript {
       return Num0.GetValue() % Num1.GetValue();
     }
   }
-  internal class FnMethod_Mod_UInt64 : FnMethod<UInt64> {
+  internal class FnFunction_Mod_UInt64 : FnFunction<UInt64> {
     [FnArg] protected FnObject<UInt64> Num0;
     [FnArg] protected FnObject<UInt64> Num1;
 
@@ -282,7 +282,7 @@ namespace FunctionScript {
       return Num0.GetValue() % Num1.GetValue();
     }
   }
-  internal class FnMethod_Mod_Single : FnMethod<Single> {
+  internal class FnFunction_Mod_Single : FnFunction<Single> {
     [FnArg] protected FnObject<Single> Num0;
     [FnArg] protected FnObject<Single> Num1;
 
@@ -290,7 +290,7 @@ namespace FunctionScript {
       return Num0.GetValue() % Num1.GetValue();
     }
   }
-  internal class FnMethod_Mod_Double : FnMethod<Double> {
+  internal class FnFunction_Mod_Double : FnFunction<Double> {
     [FnArg] protected FnObject<Double> Num0;
     [FnArg] protected FnObject<Double> Num1;
 
@@ -298,7 +298,7 @@ namespace FunctionScript {
       return Num0.GetValue() % Num1.GetValue();
     }
   }
-  internal class FnMethod_Mod_Decimal : FnMethod<Decimal> {
+  internal class FnFunction_Mod_Decimal : FnFunction<Decimal> {
     [FnArg] protected FnObject<Decimal> Num0;
     [FnArg] protected FnObject<Decimal> Num1;
 
@@ -308,80 +308,80 @@ namespace FunctionScript {
   }
   #endregion
   #endregion
-  #region Unary Operator Methods
+  #region Unary Operator Functions
 
   #region Positive
-  internal class FnMethod_Positive_SByte : FnMethod<SByte> {
+  internal class FnFunction_Positive_SByte : FnFunction<SByte> {
     [FnArg] protected FnObject<SByte> Num;
 
     public override SByte GetValue() {
       return Num.GetValue();
     }
   }
-  internal class FnMethod_Positive_Byte : FnMethod<Byte> {
+  internal class FnFunction_Positive_Byte : FnFunction<Byte> {
     [FnArg] protected FnObject<Byte> Num;
 
     public override Byte GetValue() {
       return Num.GetValue();
     }
   }
-  internal class FnMethod_Positive_Int16 : FnMethod<Int16> {
+  internal class FnFunction_Positive_Int16 : FnFunction<Int16> {
     [FnArg] protected FnObject<Int16> Num;
 
     public override Int16 GetValue() {
       return Num.GetValue();
     }
   }
-  internal class FnMethod_Positive_UInt16 : FnMethod<UInt16> {
+  internal class FnFunction_Positive_UInt16 : FnFunction<UInt16> {
     [FnArg] protected FnObject<UInt16> Num;
 
     public override UInt16 GetValue() {
       return Num.GetValue();
     }
   }
-  internal class FnMethod_Positive_Int32 : FnMethod<Int32> {
+  internal class FnFunction_Positive_Int32 : FnFunction<Int32> {
     [FnArg] protected FnObject<Int32> Num;
 
     public override Int32 GetValue() {
       return Num.GetValue();
     }
   }
-  internal class FnMethod_Positive_UInt32 : FnMethod<UInt32> {
+  internal class FnFunction_Positive_UInt32 : FnFunction<UInt32> {
     [FnArg] protected FnObject<UInt32> Num;
 
     public override UInt32 GetValue() {
       return Num.GetValue();
     }
   }
-  internal class FnMethod_Positive_Int64 : FnMethod<Int64> {
+  internal class FnFunction_Positive_Int64 : FnFunction<Int64> {
     [FnArg] protected FnObject<Int64> Num;
 
     public override Int64 GetValue() {
       return Num.GetValue();
     }
   }
-  internal class FnMethod_Positive_UInt64 : FnMethod<UInt64> {
+  internal class FnFunction_Positive_UInt64 : FnFunction<UInt64> {
     [FnArg] protected FnObject<UInt64> Num;
 
     public override UInt64 GetValue() {
       return Num.GetValue();
     }
   }
-  internal class FnMethod_Positive_Single : FnMethod<Single> {
+  internal class FnFunction_Positive_Single : FnFunction<Single> {
     [FnArg] protected FnObject<Single> Num;
 
     public override Single GetValue() {
       return Num.GetValue();
     }
   }
-  internal class FnMethod_Positive_Double : FnMethod<Double> {
+  internal class FnFunction_Positive_Double : FnFunction<Double> {
     [FnArg] protected FnObject<Double> Num;
 
     public override Double GetValue() {
       return Num.GetValue();
     }
   }
-  internal class FnMethod_Positive_Decimal : FnMethod<Decimal> {
+  internal class FnFunction_Positive_Decimal : FnFunction<Decimal> {
     [FnArg] protected FnObject<Decimal> Num;
 
     public override Decimal GetValue() {
@@ -391,49 +391,49 @@ namespace FunctionScript {
   #endregion
   #region Negative
   #region Signed Types
-  internal class FnMethod_Negative_SByte : FnMethod<SByte> {
+  internal class FnFunction_Negative_SByte : FnFunction<SByte> {
     [FnArg] protected FnObject<SByte> Num;
 
     public override SByte GetValue() {
       return (SByte)(-Num.GetValue());
     }
   }
-  internal class FnMethod_Negative_Int16 : FnMethod<Int16> {
+  internal class FnFunction_Negative_Int16 : FnFunction<Int16> {
     [FnArg] protected FnObject<Int16> Num;
 
     public override Int16 GetValue() {
       return (Int16)(-Num.GetValue());
     }
   }
-  internal class FnMethod_Negative_Int32 : FnMethod<Int32> {
+  internal class FnFunction_Negative_Int32 : FnFunction<Int32> {
     [FnArg] protected FnObject<Int32> Num;
 
     public override Int32 GetValue() {
       return -Num.GetValue();
     }
   }
-  internal class FnMethod_Negative_Int64 : FnMethod<Int64> {
+  internal class FnFunction_Negative_Int64 : FnFunction<Int64> {
     [FnArg] protected FnObject<Int64> Num;
 
     public override Int64 GetValue() {
       return -Num.GetValue();
     }
   }
-  internal class FnMethod_Negative_Single : FnMethod<Single> {
+  internal class FnFunction_Negative_Single : FnFunction<Single> {
     [FnArg] protected FnObject<Single> Num;
 
     public override Single GetValue() {
       return -Num.GetValue();
     }
   }
-  internal class FnMethod_Negative_Double : FnMethod<Double> {
+  internal class FnFunction_Negative_Double : FnFunction<Double> {
     [FnArg] protected FnObject<Double> Num;
 
     public override Double GetValue() {
       return -Num.GetValue();
     }
   }
-  internal class FnMethod_Negative_Decimal : FnMethod<Decimal> {
+  internal class FnFunction_Negative_Decimal : FnFunction<Decimal> {
     [FnArg] protected FnObject<Decimal> Num;
 
     public override Decimal GetValue() {
@@ -442,21 +442,21 @@ namespace FunctionScript {
   }
   #endregion
   #region Unsigned Types
-  internal class FnMethod_Negative_Byte : FnMethod<Int16> {
+  internal class FnFunction_Negative_Byte : FnFunction<Int16> {
     [FnArg] protected FnObject<Byte> Num;
 
     public override Int16 GetValue() {
       return (Int16)(-Num.GetValue());
     }
   }
-  internal class FnMethod_Negative_UInt16 : FnMethod<Int32> {
+  internal class FnFunction_Negative_UInt16 : FnFunction<Int32> {
     [FnArg] protected FnObject<UInt16> Num;
 
     public override Int32 GetValue() {
       return (Int32)(-Num.GetValue());
     }
   }
-  internal class FnMethod_Negative_UInt32 : FnMethod<Int64> {
+  internal class FnFunction_Negative_UInt32 : FnFunction<Int64> {
     [FnArg] protected FnObject<UInt32> Num;
 
     public override Int64 GetValue() {
@@ -466,8 +466,8 @@ namespace FunctionScript {
   // There are no acceptable data types to place a negative UInt64 in
   #endregion
   #endregion
-  #region Not Methods
-  internal class FnMethod_Not_Boolean : FnMethod<Boolean> {
+  #region Not Functions
+  internal class FnFunction_Not_Boolean : FnFunction<Boolean> {
     [FnArg] protected FnObject<Boolean> Param;
 
     public override Boolean GetValue() {
@@ -477,58 +477,58 @@ namespace FunctionScript {
   #endregion
 
   #endregion
-  #region Casting and Conversion Methods
-  #region To Byte Casting Methods
-  internal class FnMethod_Cast_ToByte_FromByte : FnMethod<Byte> {
+  #region Casting and Conversion Functions
+  #region To Byte Casting Functions
+  internal class FnFunction_Cast_ToByte_FromByte : FnFunction<Byte> {
     [FnArg] protected FnObject<Byte> Value;
 
     public override Byte GetValue() {
       return Value.GetValue();
     }
   }
-  internal class FnMethod_Cast_ToByte_FromSByte : FnMethod<Byte> {
+  internal class FnFunction_Cast_ToByte_FromSByte : FnFunction<Byte> {
     [FnArg] protected FnObject<SByte> Value;
 
     public override Byte GetValue() {
       return (Byte)Value.GetValue();
     }
   }
-  internal class FnMethod_Cast_ToByte_FromInt16 : FnMethod<Byte> {
+  internal class FnFunction_Cast_ToByte_FromInt16 : FnFunction<Byte> {
     [FnArg] protected FnObject<Int16> Value;
 
     public override Byte GetValue() {
       return (Byte)Value.GetValue();
     }
   }
-  internal class FnMethod_Cast_ToByte_FromUInt16 : FnMethod<Byte> {
+  internal class FnFunction_Cast_ToByte_FromUInt16 : FnFunction<Byte> {
     [FnArg] protected FnObject<UInt16> Value;
 
     public override Byte GetValue() {
       return (Byte)Value.GetValue();
     }
   }
-  internal class FnMethod_Cast_ToByte_FromInt32 : FnMethod<Byte> {
+  internal class FnFunction_Cast_ToByte_FromInt32 : FnFunction<Byte> {
     [FnArg] protected FnObject<Int32> Value;
 
     public override Byte GetValue() {
       return (Byte)Value.GetValue();
     }
   }
-  internal class FnMethod_Cast_ToByte_FromUInt32 : FnMethod<Byte> {
+  internal class FnFunction_Cast_ToByte_FromUInt32 : FnFunction<Byte> {
     [FnArg] protected FnObject<UInt32> Value;
 
     public override Byte GetValue() {
       return (Byte)Value.GetValue();
     }
   }
-  internal class FnMethod_Cast_ToByte_FromInt64 : FnMethod<Byte> {
+  internal class FnFunction_Cast_ToByte_FromInt64 : FnFunction<Byte> {
     [FnArg] protected FnObject<Int64> Value;
 
     public override Byte GetValue() {
       return (Byte)Value.GetValue();
     }
   }
-  internal class FnMethod_Cast_ToByte_FromUInt64 : FnMethod<Byte> {
+  internal class FnFunction_Cast_ToByte_FromUInt64 : FnFunction<Byte> {
     [FnArg] protected FnObject<UInt64> Value;
 
     public override Byte GetValue() {
@@ -536,21 +536,21 @@ namespace FunctionScript {
     }
   }
 
-  internal class FnMethod_Cast_ToByte_FromSingle : FnMethod<Byte> {
+  internal class FnFunction_Cast_ToByte_FromSingle : FnFunction<Byte> {
     [FnArg] protected FnObject<Single> Value;
 
     public override Byte GetValue() {
       return (Byte)Value.GetValue();
     }
   }
-  internal class FnMethod_Cast_ToByte_FromDouble : FnMethod<Byte> {
+  internal class FnFunction_Cast_ToByte_FromDouble : FnFunction<Byte> {
     [FnArg] protected FnObject<Double> Value;
 
     public override Byte GetValue() {
       return (Byte)Value.GetValue();
     }
   }
-  internal class FnMethod_Cast_ToByte_FromDecimal : FnMethod<Byte> {
+  internal class FnFunction_Cast_ToByte_FromDecimal : FnFunction<Byte> {
     [FnArg] protected FnObject<Decimal> Value;
 
     public override Byte GetValue() {
@@ -558,14 +558,14 @@ namespace FunctionScript {
     }
   }
 
-  internal class FnMethod_Cast_ToByte_FromChar : FnMethod<Byte> {
+  internal class FnFunction_Cast_ToByte_FromChar : FnFunction<Byte> {
     [FnArg] protected FnObject<Char> Value;
 
     public override Byte GetValue() {
       return (Byte)Value.GetValue();
     }
   }
-  internal class FnMethod_Cast_ToByte_FromString : FnMethod<Byte> {
+  internal class FnFunction_Cast_ToByte_FromString : FnFunction<Byte> {
     [FnArg] protected FnObject<String> Value;
 
     public override Byte GetValue() {
@@ -583,7 +583,7 @@ namespace FunctionScript {
     }
   }
 
-  internal class FnMethod_Cast_ToByte_FromObject : FnMethod<Byte> {
+  internal class FnFunction_Cast_ToByte_FromObject : FnFunction<Byte> {
     [FnArg] protected FnObject<Object> Value;
 
     public override Byte GetValue() {
@@ -591,57 +591,57 @@ namespace FunctionScript {
     }
   }
   #endregion
-  #region To SByte Casting Methods
-  internal class FnMethod_Cast_ToSByte_FromByte : FnMethod<SByte> {
+  #region To SByte Casting Functions
+  internal class FnFunction_Cast_ToSByte_FromByte : FnFunction<SByte> {
     [FnArg] protected FnObject<Byte> Value;
 
     public override SByte GetValue() {
       return (SByte)Value.GetValue();
     }
   }
-  internal class FnMethod_Cast_ToSByte_FromSByte : FnMethod<SByte> {
+  internal class FnFunction_Cast_ToSByte_FromSByte : FnFunction<SByte> {
     [FnArg] protected FnObject<SByte> Value;
 
     public override SByte GetValue() {
       return Value.GetValue();
     }
   }
-  internal class FnMethod_Cast_ToSByte_FromInt16 : FnMethod<SByte> {
+  internal class FnFunction_Cast_ToSByte_FromInt16 : FnFunction<SByte> {
     [FnArg] protected FnObject<Int16> Value;
 
     public override SByte GetValue() {
       return (SByte)Value.GetValue();
     }
   }
-  internal class FnMethod_Cast_ToSByte_FromUInt16 : FnMethod<SByte> {
+  internal class FnFunction_Cast_ToSByte_FromUInt16 : FnFunction<SByte> {
     [FnArg] protected FnObject<UInt16> Value;
 
     public override SByte GetValue() {
       return (SByte)Value.GetValue();
     }
   }
-  internal class FnMethod_Cast_ToSByte_FromInt32 : FnMethod<SByte> {
+  internal class FnFunction_Cast_ToSByte_FromInt32 : FnFunction<SByte> {
     [FnArg] protected FnObject<Int32> Value;
 
     public override SByte GetValue() {
       return (SByte)Value.GetValue();
     }
   }
-  internal class FnMethod_Cast_ToSByte_FromUInt32 : FnMethod<SByte> {
+  internal class FnFunction_Cast_ToSByte_FromUInt32 : FnFunction<SByte> {
     [FnArg] protected FnObject<UInt32> Value;
 
     public override SByte GetValue() {
       return (SByte)Value.GetValue();
     }
   }
-  internal class FnMethod_Cast_ToSByte_FromInt64 : FnMethod<SByte> {
+  internal class FnFunction_Cast_ToSByte_FromInt64 : FnFunction<SByte> {
     [FnArg] protected FnObject<Int64> Value;
 
     public override SByte GetValue() {
       return (SByte)Value.GetValue();
     }
   }
-  internal class FnMethod_Cast_ToSByte_FromUInt64 : FnMethod<SByte> {
+  internal class FnFunction_Cast_ToSByte_FromUInt64 : FnFunction<SByte> {
     [FnArg] protected FnObject<UInt64> Value;
 
     public override SByte GetValue() {
@@ -649,21 +649,21 @@ namespace FunctionScript {
     }
   }
 
-  internal class FnMethod_Cast_ToSByte_FromSingle : FnMethod<SByte> {
+  internal class FnFunction_Cast_ToSByte_FromSingle : FnFunction<SByte> {
     [FnArg] protected FnObject<Single> Value;
 
     public override SByte GetValue() {
       return (SByte)Value.GetValue();
     }
   }
-  internal class FnMethod_Cast_ToSByte_FromDouble : FnMethod<SByte> {
+  internal class FnFunction_Cast_ToSByte_FromDouble : FnFunction<SByte> {
     [FnArg] protected FnObject<Double> Value;
 
     public override SByte GetValue() {
       return (SByte)Value.GetValue();
     }
   }
-  internal class FnMethod_Cast_ToSByte_FromDecimal : FnMethod<SByte> {
+  internal class FnFunction_Cast_ToSByte_FromDecimal : FnFunction<SByte> {
     [FnArg] protected FnObject<Decimal> Value;
 
     public override SByte GetValue() {
@@ -671,14 +671,14 @@ namespace FunctionScript {
     }
   }
 
-  internal class FnMethod_Cast_ToSByte_FromChar : FnMethod<SByte> {
+  internal class FnFunction_Cast_ToSByte_FromChar : FnFunction<SByte> {
     [FnArg] protected FnObject<Char> Value;
 
     public override SByte GetValue() {
       return (SByte)Value.GetValue();
     }
   }
-  internal class FnMethod_CastSByte_FromString : FnMethod<SByte> {
+  internal class FnFunction_CastSByte_FromString : FnFunction<SByte> {
     [FnArg] protected FnObject<String> Value;
 
     public override SByte GetValue() {
@@ -695,7 +695,7 @@ namespace FunctionScript {
     }
   }
 
-  internal class FnMethod_CastSByte_FromObject : FnMethod<SByte> {
+  internal class FnFunction_CastSByte_FromObject : FnFunction<SByte> {
     [FnArg] protected FnObject<Object> Value;
 
     public override SByte GetValue() {
@@ -703,11 +703,11 @@ namespace FunctionScript {
     }
   }
   #endregion
-  #region To Int16 Casting Methods
-  internal class FnMethod_Cast_ToInt16_FromByte : FnMethod<Int16> {
+  #region To Int16 Casting Functions
+  internal class FnFunction_Cast_ToInt16_FromByte : FnFunction<Int16> {
     [FnArg] protected FnObject<Byte> Value;
 
-    public FnMethod_Cast_ToInt16_FromByte()
+    public FnFunction_Cast_ToInt16_FromByte()
         : base(new CompileFlags[] { CompileFlags.IMPLICIT_CONVERSION }) {
     }
 
@@ -715,10 +715,10 @@ namespace FunctionScript {
       return (Int16)Value.GetValue();
     }
   }
-  internal class FnMethod_Cast_ToInt16_FromSByte : FnMethod<Int16> {
+  internal class FnFunction_Cast_ToInt16_FromSByte : FnFunction<Int16> {
     [FnArg] protected FnObject<SByte> Value;
 
-    public FnMethod_Cast_ToInt16_FromSByte()
+    public FnFunction_Cast_ToInt16_FromSByte()
         : base(new CompileFlags[] { CompileFlags.IMPLICIT_CONVERSION }) {
     }
 
@@ -726,42 +726,42 @@ namespace FunctionScript {
       return (Int16)Value.GetValue();
     }
   }
-  internal class FnMethod_Cast_ToInt16_FromInt16 : FnMethod<Int16> {
+  internal class FnFunction_Cast_ToInt16_FromInt16 : FnFunction<Int16> {
     [FnArg] protected FnObject<Int16> Value;
 
     public override Int16 GetValue() {
       return Value.GetValue();
     }
   }
-  internal class FnMethod_Cast_ToInt16_FromUInt16 : FnMethod<Int16> {
+  internal class FnFunction_Cast_ToInt16_FromUInt16 : FnFunction<Int16> {
     [FnArg] protected FnObject<UInt16> Value;
 
     public override Int16 GetValue() {
       return (Int16)Value.GetValue();
     }
   }
-  internal class FnMethod_Cast_ToInt16_FromInt32 : FnMethod<Int16> {
+  internal class FnFunction_Cast_ToInt16_FromInt32 : FnFunction<Int16> {
     [FnArg] protected FnObject<Int32> Value;
 
     public override Int16 GetValue() {
       return (Int16)Value.GetValue();
     }
   }
-  internal class FnMethod_Cast_ToInt16_FromUInt32 : FnMethod<Int16> {
+  internal class FnFunction_Cast_ToInt16_FromUInt32 : FnFunction<Int16> {
     [FnArg] protected FnObject<UInt32> Value;
 
     public override Int16 GetValue() {
       return (Int16)Value.GetValue();
     }
   }
-  internal class FnMethod_Cast_ToInt16_FromInt64 : FnMethod<Int16> {
+  internal class FnFunction_Cast_ToInt16_FromInt64 : FnFunction<Int16> {
     [FnArg] protected FnObject<Int64> Value;
 
     public override Int16 GetValue() {
       return (Int16)Value.GetValue();
     }
   }
-  internal class FnMethod_Cast_ToInt16_FromUInt64 : FnMethod<Int16> {
+  internal class FnFunction_Cast_ToInt16_FromUInt64 : FnFunction<Int16> {
     [FnArg] protected FnObject<UInt64> Value;
 
     public override Int16 GetValue() {
@@ -769,21 +769,21 @@ namespace FunctionScript {
     }
   }
 
-  internal class FnMethod_Cast_ToInt16_FromSingle : FnMethod<Int16> {
+  internal class FnFunction_Cast_ToInt16_FromSingle : FnFunction<Int16> {
     [FnArg] protected FnObject<Single> Value;
 
     public override Int16 GetValue() {
       return (Int16)Value.GetValue();
     }
   }
-  internal class FnMethod_Cast_ToInt16_FromDouble : FnMethod<Int16> {
+  internal class FnFunction_Cast_ToInt16_FromDouble : FnFunction<Int16> {
     [FnArg] protected FnObject<Double> Value;
 
     public override Int16 GetValue() {
       return (Int16)Value.GetValue();
     }
   }
-  internal class FnMethod_Cast_ToInt16_FromDecimal : FnMethod<Int16> {
+  internal class FnFunction_Cast_ToInt16_FromDecimal : FnFunction<Int16> {
     [FnArg] protected FnObject<Decimal> Value;
 
     public override Int16 GetValue() {
@@ -791,14 +791,14 @@ namespace FunctionScript {
     }
   }
 
-  internal class FnMethod_Cast_ToInt16_FromChar : FnMethod<Int16> {
+  internal class FnFunction_Cast_ToInt16_FromChar : FnFunction<Int16> {
     [FnArg] protected FnObject<Char> Value;
 
     public override Int16 GetValue() {
       return (Int16)Value.GetValue();
     }
   }
-  internal class FnMethod_Cast_ToInt16_FromString : FnMethod<Int16> {
+  internal class FnFunction_Cast_ToInt16_FromString : FnFunction<Int16> {
     [FnArg] protected FnObject<String> Value;
 
     public override Int16 GetValue() {
@@ -815,7 +815,7 @@ namespace FunctionScript {
     }
   }
 
-  internal class FnMethod_Cast_ToInt16_FromObject : FnMethod<Int16> {
+  internal class FnFunction_Cast_ToInt16_FromObject : FnFunction<Int16> {
     [FnArg] protected FnObject<Object> Value;
 
     public override Int16 GetValue() {
@@ -823,11 +823,11 @@ namespace FunctionScript {
     }
   }
   #endregion
-  #region To UInt16 Casting Methods
-  internal class FnMethod_Cast_ToUInt16_FromByte : FnMethod<UInt16> {
+  #region To UInt16 Casting Functions
+  internal class FnFunction_Cast_ToUInt16_FromByte : FnFunction<UInt16> {
     [FnArg] protected FnObject<Byte> Value;
 
-    public FnMethod_Cast_ToUInt16_FromByte()
+    public FnFunction_Cast_ToUInt16_FromByte()
         : base(new CompileFlags[] { CompileFlags.IMPLICIT_CONVERSION }) {
     }
 
@@ -835,49 +835,49 @@ namespace FunctionScript {
       return (UInt16)Value.GetValue();
     }
   }
-  internal class FnMethod_Cast_ToUInt16_FromSByte : FnMethod<UInt16> {
+  internal class FnFunction_Cast_ToUInt16_FromSByte : FnFunction<UInt16> {
     [FnArg] protected FnObject<SByte> Value;
 
     public override UInt16 GetValue() {
       return (UInt16)Value.GetValue();
     }
   }
-  internal class FnMethod_Cast_ToUInt16_FromInt16 : FnMethod<UInt16> {
+  internal class FnFunction_Cast_ToUInt16_FromInt16 : FnFunction<UInt16> {
     [FnArg] protected FnObject<Int16> Value;
 
     public override UInt16 GetValue() {
       return (UInt16)Value.GetValue();
     }
   }
-  internal class FnMethod_Cast_ToUInt16_FromUInt16 : FnMethod<UInt16> {
+  internal class FnFunction_Cast_ToUInt16_FromUInt16 : FnFunction<UInt16> {
     [FnArg] protected FnObject<UInt16> Value;
 
     public override UInt16 GetValue() {
       return Value.GetValue();
     }
   }
-  internal class FnMethod_Cast_ToUInt16_FromInt32 : FnMethod<UInt16> {
+  internal class FnFunction_Cast_ToUInt16_FromInt32 : FnFunction<UInt16> {
     [FnArg] protected FnObject<Int32> Value;
 
     public override UInt16 GetValue() {
       return (UInt16)Value.GetValue();
     }
   }
-  internal class FnMethod_Cast_ToUInt16_FromUInt32 : FnMethod<UInt16> {
+  internal class FnFunction_Cast_ToUInt16_FromUInt32 : FnFunction<UInt16> {
     [FnArg] protected FnObject<UInt32> Value;
 
     public override UInt16 GetValue() {
       return (UInt16)Value.GetValue();
     }
   }
-  internal class FnMethod_Cast_ToUInt16_FromInt64 : FnMethod<UInt16> {
+  internal class FnFunction_Cast_ToUInt16_FromInt64 : FnFunction<UInt16> {
     [FnArg] protected FnObject<Int64> Value;
 
     public override UInt16 GetValue() {
       return (UInt16)Value.GetValue();
     }
   }
-  internal class FnMethod_Cast_ToUInt16_FromUInt64 : FnMethod<UInt16> {
+  internal class FnFunction_Cast_ToUInt16_FromUInt64 : FnFunction<UInt16> {
     [FnArg] protected FnObject<UInt64> Value;
 
     public override UInt16 GetValue() {
@@ -885,21 +885,21 @@ namespace FunctionScript {
     }
   }
 
-  internal class FnMethod_Cast_ToUInt16_FromSingle : FnMethod<UInt16> {
+  internal class FnFunction_Cast_ToUInt16_FromSingle : FnFunction<UInt16> {
     [FnArg] protected FnObject<Single> Value;
 
     public override UInt16 GetValue() {
       return (UInt16)Value.GetValue();
     }
   }
-  internal class FnMethod_Cast_ToUInt16_FromDouble : FnMethod<UInt16> {
+  internal class FnFunction_Cast_ToUInt16_FromDouble : FnFunction<UInt16> {
     [FnArg] protected FnObject<Double> Value;
 
     public override UInt16 GetValue() {
       return (UInt16)Value.GetValue();
     }
   }
-  internal class FnMethod_Cast_ToUInt16_FromDecimal : FnMethod<UInt16> {
+  internal class FnFunction_Cast_ToUInt16_FromDecimal : FnFunction<UInt16> {
     [FnArg] protected FnObject<Decimal> Value;
 
     public override UInt16 GetValue() {
@@ -907,10 +907,10 @@ namespace FunctionScript {
     }
   }
 
-  internal class FnMethod_Cast_ToUInt16_FromChar : FnMethod<UInt16> {
+  internal class FnFunction_Cast_ToUInt16_FromChar : FnFunction<UInt16> {
     [FnArg] protected FnObject<Char> Value;
 
-    public FnMethod_Cast_ToUInt16_FromChar()
+    public FnFunction_Cast_ToUInt16_FromChar()
         : base(new CompileFlags[] { CompileFlags.IMPLICIT_CONVERSION }) {
     }
 
@@ -918,7 +918,7 @@ namespace FunctionScript {
       return (UInt16)Value.GetValue();
     }
   }
-  internal class FnMethod_Cast_ToUInt16_FromString : FnMethod<UInt16> {
+  internal class FnFunction_Cast_ToUInt16_FromString : FnFunction<UInt16> {
     [FnArg] protected FnObject<String> Value;
 
     public override UInt16 GetValue() {
@@ -935,7 +935,7 @@ namespace FunctionScript {
     }
   }
 
-  internal class FnMethod_Cast_ToUInt16_FromObject : FnMethod<UInt16> {
+  internal class FnFunction_Cast_ToUInt16_FromObject : FnFunction<UInt16> {
     [FnArg] protected FnObject<Object> Value;
 
     public override UInt16 GetValue() {
@@ -943,11 +943,11 @@ namespace FunctionScript {
     }
   }
   #endregion
-  #region To Int32 Casting Methods
-  internal class FnMethod_Cast_ToInt32_FromByte : FnMethod<Int32> {
+  #region To Int32 Casting Functions
+  internal class FnFunction_Cast_ToInt32_FromByte : FnFunction<Int32> {
     [FnArg] protected FnObject<Byte> Value;
 
-    public FnMethod_Cast_ToInt32_FromByte()
+    public FnFunction_Cast_ToInt32_FromByte()
         : base(new CompileFlags[] { CompileFlags.IMPLICIT_CONVERSION }) {
     }
 
@@ -955,10 +955,10 @@ namespace FunctionScript {
       return (Int32)Value.GetValue();
     }
   }
-  internal class FnMethod_Cast_ToInt32_FromSByte : FnMethod<Int32> {
+  internal class FnFunction_Cast_ToInt32_FromSByte : FnFunction<Int32> {
     [FnArg] protected FnObject<SByte> Value;
 
-    public FnMethod_Cast_ToInt32_FromSByte()
+    public FnFunction_Cast_ToInt32_FromSByte()
         : base(new CompileFlags[] { CompileFlags.IMPLICIT_CONVERSION }) {
     }
 
@@ -966,10 +966,10 @@ namespace FunctionScript {
       return (Int32)Value.GetValue();
     }
   }
-  internal class FnMethod_Cast_ToInt32_FromInt16 : FnMethod<Int32> {
+  internal class FnFunction_Cast_ToInt32_FromInt16 : FnFunction<Int32> {
     [FnArg] protected FnObject<Int16> Value;
 
-    public FnMethod_Cast_ToInt32_FromInt16()
+    public FnFunction_Cast_ToInt32_FromInt16()
         : base(new CompileFlags[] { CompileFlags.IMPLICIT_CONVERSION }) {
     }
 
@@ -977,10 +977,10 @@ namespace FunctionScript {
       return (Int32)Value.GetValue();
     }
   }
-  internal class FnMethod_Cast_ToInt32_FromUInt16 : FnMethod<Int32> {
+  internal class FnFunction_Cast_ToInt32_FromUInt16 : FnFunction<Int32> {
     [FnArg] protected FnObject<UInt16> Value;
 
-    public FnMethod_Cast_ToInt32_FromUInt16()
+    public FnFunction_Cast_ToInt32_FromUInt16()
         : base(new CompileFlags[] { CompileFlags.IMPLICIT_CONVERSION }) {
     }
 
@@ -988,28 +988,28 @@ namespace FunctionScript {
       return (Int32)Value.GetValue();
     }
   }
-  internal class FnMethod_Cast_ToInt32_FromInt32 : FnMethod<Int32> {
+  internal class FnFunction_Cast_ToInt32_FromInt32 : FnFunction<Int32> {
     [FnArg] protected FnObject<Int32> Value;
 
     public override Int32 GetValue() {
       return Value.GetValue();
     }
   }
-  internal class FnMethod_Cast_ToInt32_FromUInt32 : FnMethod<Int32> {
+  internal class FnFunction_Cast_ToInt32_FromUInt32 : FnFunction<Int32> {
     [FnArg] protected FnObject<UInt32> Value;
 
     public override Int32 GetValue() {
       return (Int32)Value.GetValue();
     }
   }
-  internal class FnMethod_Cast_ToInt32_FromInt64 : FnMethod<Int32> {
+  internal class FnFunction_Cast_ToInt32_FromInt64 : FnFunction<Int32> {
     [FnArg] protected FnObject<Int64> Value;
 
     public override Int32 GetValue() {
       return (Int32)Value.GetValue();
     }
   }
-  internal class FnMethod_Cast_ToInt32_FromUInt64 : FnMethod<Int32> {
+  internal class FnFunction_Cast_ToInt32_FromUInt64 : FnFunction<Int32> {
     [FnArg] protected FnObject<UInt64> Value;
 
     public override Int32 GetValue() {
@@ -1017,21 +1017,21 @@ namespace FunctionScript {
     }
   }
 
-  internal class FnMethod_Cast_ToInt32_FromSingle : FnMethod<Int32> {
+  internal class FnFunction_Cast_ToInt32_FromSingle : FnFunction<Int32> {
     [FnArg] protected FnObject<Single> Value;
 
     public override Int32 GetValue() {
       return (Int32)Value.GetValue();
     }
   }
-  internal class FnMethod_Cast_ToInt32_FromDouble : FnMethod<Int32> {
+  internal class FnFunction_Cast_ToInt32_FromDouble : FnFunction<Int32> {
     [FnArg] protected FnObject<Double> Value;
 
     public override Int32 GetValue() {
       return (Int32)Value.GetValue();
     }
   }
-  internal class FnMethod_Cast_ToInt32_FromDecimal : FnMethod<Int32> {
+  internal class FnFunction_Cast_ToInt32_FromDecimal : FnFunction<Int32> {
     [FnArg] protected FnObject<Decimal> Value;
 
     public override Int32 GetValue() {
@@ -1039,10 +1039,10 @@ namespace FunctionScript {
     }
   }
 
-  internal class FnMethod_Cast_ToInt32_FromChar : FnMethod<Int32> {
+  internal class FnFunction_Cast_ToInt32_FromChar : FnFunction<Int32> {
     [FnArg] protected FnObject<Char> Value;
 
-    public FnMethod_Cast_ToInt32_FromChar()
+    public FnFunction_Cast_ToInt32_FromChar()
         : base(new CompileFlags[] { CompileFlags.IMPLICIT_CONVERSION }) {
     }
 
@@ -1050,7 +1050,7 @@ namespace FunctionScript {
       return (Int32)Value.GetValue();
     }
   }
-  internal class FnMethod_Cast_ToInt32_FromString : FnMethod<Int32> {
+  internal class FnFunction_Cast_ToInt32_FromString : FnFunction<Int32> {
     [FnArg] protected FnObject<String> Value;
 
     public override Int32 GetValue() {
@@ -1067,7 +1067,7 @@ namespace FunctionScript {
     }
   }
 
-  internal class FnMethod_Cast_ToInt32_FromObject : FnMethod<Int32> {
+  internal class FnFunction_Cast_ToInt32_FromObject : FnFunction<Int32> {
     [FnArg] protected FnObject<Object> Value;
 
     public override Int32 GetValue() {
@@ -1075,11 +1075,11 @@ namespace FunctionScript {
     }
   }
   #endregion
-  #region To UInt32 Casting Methods
-  internal class FnMethod_Cast_ToUInt32_FromByte : FnMethod<UInt32> {
+  #region To UInt32 Casting Functions
+  internal class FnFunction_Cast_ToUInt32_FromByte : FnFunction<UInt32> {
     [FnArg] protected FnObject<Byte> Value;
 
-    public FnMethod_Cast_ToUInt32_FromByte()
+    public FnFunction_Cast_ToUInt32_FromByte()
         : base(new CompileFlags[] { CompileFlags.IMPLICIT_CONVERSION }) {
     }
 
@@ -1087,24 +1087,24 @@ namespace FunctionScript {
       return (UInt32)Value.GetValue();
     }
   }
-  internal class FnMethod_Cast_ToUInt32_FromSByte : FnMethod<UInt32> {
+  internal class FnFunction_Cast_ToUInt32_FromSByte : FnFunction<UInt32> {
     [FnArg] protected FnObject<SByte> Value;
 
     public override UInt32 GetValue() {
       return (UInt32)Value.GetValue();
     }
   }
-  internal class FnMethod_Cast_ToUInt32_FromInt16 : FnMethod<UInt32> {
+  internal class FnFunction_Cast_ToUInt32_FromInt16 : FnFunction<UInt32> {
     [FnArg] protected FnObject<Int16> Value;
 
     public override UInt32 GetValue() {
       return (UInt32)Value.GetValue();
     }
   }
-  internal class FnMethod_Cast_ToUInt32_FromUInt16 : FnMethod<UInt32> {
+  internal class FnFunction_Cast_ToUInt32_FromUInt16 : FnFunction<UInt32> {
     [FnArg] protected FnObject<UInt16> Value;
 
-    public FnMethod_Cast_ToUInt32_FromUInt16()
+    public FnFunction_Cast_ToUInt32_FromUInt16()
         : base(new CompileFlags[] { CompileFlags.IMPLICIT_CONVERSION }) {
     }
 
@@ -1112,28 +1112,28 @@ namespace FunctionScript {
       return (UInt32)Value.GetValue();
     }
   }
-  internal class FnMethod_Cast_ToUInt32_FromInt32 : FnMethod<UInt32> {
+  internal class FnFunction_Cast_ToUInt32_FromInt32 : FnFunction<UInt32> {
     [FnArg] protected FnObject<Int32> Value;
 
     public override UInt32 GetValue() {
       return (UInt32)Value.GetValue();
     }
   }
-  internal class FnMethod_Cast_ToUInt32_FromUInt32 : FnMethod<UInt32> {
+  internal class FnFunction_Cast_ToUInt32_FromUInt32 : FnFunction<UInt32> {
     [FnArg] protected FnObject<UInt32> Value;
 
     public override UInt32 GetValue() {
       return Value.GetValue();
     }
   }
-  internal class FnMethod_Cast_ToUInt32_FromInt64 : FnMethod<UInt32> {
+  internal class FnFunction_Cast_ToUInt32_FromInt64 : FnFunction<UInt32> {
     [FnArg] protected FnObject<Int64> Value;
 
     public override UInt32 GetValue() {
       return (UInt32)Value.GetValue();
     }
   }
-  internal class FnMethod_Cast_ToUInt32_FromUInt64 : FnMethod<UInt32> {
+  internal class FnFunction_Cast_ToUInt32_FromUInt64 : FnFunction<UInt32> {
     [FnArg] protected FnObject<UInt64> Value;
 
     public override UInt32 GetValue() {
@@ -1141,21 +1141,21 @@ namespace FunctionScript {
     }
   }
 
-  internal class FnMethod_Cast_ToUInt32_FromSingle : FnMethod<UInt32> {
+  internal class FnFunction_Cast_ToUInt32_FromSingle : FnFunction<UInt32> {
     [FnArg] protected FnObject<Single> Value;
 
     public override UInt32 GetValue() {
       return (UInt32)Value.GetValue();
     }
   }
-  internal class FnMethod_Cast_ToUInt32_FromDouble : FnMethod<UInt32> {
+  internal class FnFunction_Cast_ToUInt32_FromDouble : FnFunction<UInt32> {
     [FnArg] protected FnObject<Double> Value;
 
     public override UInt32 GetValue() {
       return (UInt32)Value.GetValue();
     }
   }
-  internal class FnMethod_Cast_ToUInt32_FromDecimal : FnMethod<UInt32> {
+  internal class FnFunction_Cast_ToUInt32_FromDecimal : FnFunction<UInt32> {
     [FnArg] protected FnObject<Decimal> Value;
 
     public override UInt32 GetValue() {
@@ -1163,10 +1163,10 @@ namespace FunctionScript {
     }
   }
 
-  internal class FnMethod_Cast_ToUInt32_FromChar : FnMethod<UInt32> {
+  internal class FnFunction_Cast_ToUInt32_FromChar : FnFunction<UInt32> {
     [FnArg] protected FnObject<Char> Value;
 
-    public FnMethod_Cast_ToUInt32_FromChar()
+    public FnFunction_Cast_ToUInt32_FromChar()
         : base(new CompileFlags[] { CompileFlags.IMPLICIT_CONVERSION }) {
     }
 
@@ -1174,7 +1174,7 @@ namespace FunctionScript {
       return (UInt32)Value.GetValue();
     }
   }
-  internal class FnMethod_Cast_ToUInt32_FromString : FnMethod<UInt32> {
+  internal class FnFunction_Cast_ToUInt32_FromString : FnFunction<UInt32> {
     [FnArg] protected FnObject<String> Value;
 
     public override UInt32 GetValue() {
@@ -1191,7 +1191,7 @@ namespace FunctionScript {
     }
   }
 
-  internal class FnMethod_Cast_ToUInt32_FromObject : FnMethod<UInt32> {
+  internal class FnFunction_Cast_ToUInt32_FromObject : FnFunction<UInt32> {
     [FnArg] protected FnObject<Object> Value;
 
     public override UInt32 GetValue() {
@@ -1199,11 +1199,11 @@ namespace FunctionScript {
     }
   }
   #endregion
-  #region To Int64 Casting Methods
-  internal class FnMethod_Cast_ToInt64_FromByte : FnMethod<Int64> {
+  #region To Int64 Casting Functions
+  internal class FnFunction_Cast_ToInt64_FromByte : FnFunction<Int64> {
     [FnArg] protected FnObject<Byte> Value;
 
-    public FnMethod_Cast_ToInt64_FromByte()
+    public FnFunction_Cast_ToInt64_FromByte()
         : base(new CompileFlags[] { CompileFlags.IMPLICIT_CONVERSION }) {
     }
 
@@ -1211,10 +1211,10 @@ namespace FunctionScript {
       return (Int64)Value.GetValue();
     }
   }
-  internal class FnMethod_Cast_ToInt64_FromSByte : FnMethod<Int64> {
+  internal class FnFunction_Cast_ToInt64_FromSByte : FnFunction<Int64> {
     [FnArg] protected FnObject<SByte> Value;
 
-    public FnMethod_Cast_ToInt64_FromSByte()
+    public FnFunction_Cast_ToInt64_FromSByte()
         : base(new CompileFlags[] { CompileFlags.IMPLICIT_CONVERSION }) {
     }
 
@@ -1222,10 +1222,10 @@ namespace FunctionScript {
       return (Int64)Value.GetValue();
     }
   }
-  internal class FnMethod_Cast_ToInt64_FromInt16 : FnMethod<Int64> {
+  internal class FnFunction_Cast_ToInt64_FromInt16 : FnFunction<Int64> {
     [FnArg] protected FnObject<Int16> Value;
 
-    public FnMethod_Cast_ToInt64_FromInt16()
+    public FnFunction_Cast_ToInt64_FromInt16()
         : base(new CompileFlags[] { CompileFlags.IMPLICIT_CONVERSION }) {
     }
 
@@ -1233,10 +1233,10 @@ namespace FunctionScript {
       return (Int64)Value.GetValue();
     }
   }
-  internal class FnMethod_Cast_ToInt64_FromUInt16 : FnMethod<Int64> {
+  internal class FnFunction_Cast_ToInt64_FromUInt16 : FnFunction<Int64> {
     [FnArg] protected FnObject<UInt16> Value;
 
-    public FnMethod_Cast_ToInt64_FromUInt16()
+    public FnFunction_Cast_ToInt64_FromUInt16()
         : base(new CompileFlags[] { CompileFlags.IMPLICIT_CONVERSION }) {
     }
 
@@ -1244,10 +1244,10 @@ namespace FunctionScript {
       return (Int64)Value.GetValue();
     }
   }
-  internal class FnMethod_Cast_ToInt64_FromInt32 : FnMethod<Int64> {
+  internal class FnFunction_Cast_ToInt64_FromInt32 : FnFunction<Int64> {
     [FnArg] protected FnObject<Int32> Value;
 
-    public FnMethod_Cast_ToInt64_FromInt32()
+    public FnFunction_Cast_ToInt64_FromInt32()
         : base(new CompileFlags[] { CompileFlags.IMPLICIT_CONVERSION }) {
     }
 
@@ -1255,10 +1255,10 @@ namespace FunctionScript {
       return (Int64)Value.GetValue();
     }
   }
-  internal class FnMethod_Cast_ToInt64_FromUInt32 : FnMethod<Int64> {
+  internal class FnFunction_Cast_ToInt64_FromUInt32 : FnFunction<Int64> {
     [FnArg] protected FnObject<UInt32> Value;
 
-    public FnMethod_Cast_ToInt64_FromUInt32()
+    public FnFunction_Cast_ToInt64_FromUInt32()
         : base(new CompileFlags[] { CompileFlags.IMPLICIT_CONVERSION }) {
     }
 
@@ -1266,14 +1266,14 @@ namespace FunctionScript {
       return (Int64)Value.GetValue();
     }
   }
-  internal class FnMethod_Cast_ToInt64_FromInt64 : FnMethod<Int64> {
+  internal class FnFunction_Cast_ToInt64_FromInt64 : FnFunction<Int64> {
     [FnArg] protected FnObject<Int64> Value;
 
     public override Int64 GetValue() {
       return Value.GetValue();
     }
   }
-  internal class FnMethod_Cast_ToInt64_FromUInt64 : FnMethod<Int64> {
+  internal class FnFunction_Cast_ToInt64_FromUInt64 : FnFunction<Int64> {
     [FnArg] protected FnObject<UInt64> Value;
 
     public override Int64 GetValue() {
@@ -1281,21 +1281,21 @@ namespace FunctionScript {
     }
   }
 
-  internal class FnMethod_Cast_ToInt64_FromSingle : FnMethod<Int64> {
+  internal class FnFunction_Cast_ToInt64_FromSingle : FnFunction<Int64> {
     [FnArg] protected FnObject<Single> Value;
 
     public override Int64 GetValue() {
       return (Int64)Value.GetValue();
     }
   }
-  internal class FnMethod_Cast_ToInt64_FromDouble : FnMethod<Int64> {
+  internal class FnFunction_Cast_ToInt64_FromDouble : FnFunction<Int64> {
     [FnArg] protected FnObject<Double> Value;
 
     public override Int64 GetValue() {
       return (Int64)Value.GetValue();
     }
   }
-  internal class FnMethod_Cast_ToInt64_FromDecimal : FnMethod<Int64> {
+  internal class FnFunction_Cast_ToInt64_FromDecimal : FnFunction<Int64> {
     [FnArg] protected FnObject<Decimal> Value;
 
     public override Int64 GetValue() {
@@ -1303,10 +1303,10 @@ namespace FunctionScript {
     }
   }
 
-  internal class FnMethod_Cast_ToInt64_FromChar : FnMethod<Int64> {
+  internal class FnFunction_Cast_ToInt64_FromChar : FnFunction<Int64> {
     [FnArg] protected FnObject<Char> Value;
 
-    public FnMethod_Cast_ToInt64_FromChar()
+    public FnFunction_Cast_ToInt64_FromChar()
         : base(new CompileFlags[] { CompileFlags.IMPLICIT_CONVERSION }) {
     }
 
@@ -1314,7 +1314,7 @@ namespace FunctionScript {
       return (Int64)Value.GetValue();
     }
   }
-  internal class FnMethod_Cast_ToInt64_FromString : FnMethod<Int64> {
+  internal class FnFunction_Cast_ToInt64_FromString : FnFunction<Int64> {
     [FnArg] protected FnObject<String> Value;
 
     public override Int64 GetValue() {
@@ -1331,7 +1331,7 @@ namespace FunctionScript {
     }
   }
 
-  internal class FnMethod_Cast_ToInt64_FromObject : FnMethod<Int64> {
+  internal class FnFunction_Cast_ToInt64_FromObject : FnFunction<Int64> {
     [FnArg] protected FnObject<Object> Value;
 
     public override Int64 GetValue() {
@@ -1339,11 +1339,11 @@ namespace FunctionScript {
     }
   }
   #endregion
-  #region To UInt64 Casting Methods
-  internal class FnMethod_Cast_ToUInt64_FromByte : FnMethod<UInt64> {
+  #region To UInt64 Casting Functions
+  internal class FnFunction_Cast_ToUInt64_FromByte : FnFunction<UInt64> {
     [FnArg] protected FnObject<Byte> Value;
 
-    public FnMethod_Cast_ToUInt64_FromByte()
+    public FnFunction_Cast_ToUInt64_FromByte()
         : base(new CompileFlags[] { CompileFlags.IMPLICIT_CONVERSION }) {
     }
 
@@ -1351,24 +1351,24 @@ namespace FunctionScript {
       return (UInt64)Value.GetValue();
     }
   }
-  internal class FnMethod_Cast_ToUInt64_FromSByte : FnMethod<UInt64> {
+  internal class FnFunction_Cast_ToUInt64_FromSByte : FnFunction<UInt64> {
     [FnArg] protected FnObject<SByte> Value;
 
     public override UInt64 GetValue() {
       return (UInt64)Value.GetValue();
     }
   }
-  internal class FnMethod_Cast_ToUInt64_FromInt16 : FnMethod<UInt64> {
+  internal class FnFunction_Cast_ToUInt64_FromInt16 : FnFunction<UInt64> {
     [FnArg] protected FnObject<Int16> Value;
 
     public override UInt64 GetValue() {
       return (UInt64)Value.GetValue();
     }
   }
-  internal class FnMethod_Cast_ToUInt64_FromUInt16 : FnMethod<UInt64> {
+  internal class FnFunction_Cast_ToUInt64_FromUInt16 : FnFunction<UInt64> {
     [FnArg] protected FnObject<UInt16> Value;
 
-    public FnMethod_Cast_ToUInt64_FromUInt16()
+    public FnFunction_Cast_ToUInt64_FromUInt16()
         : base(new CompileFlags[] { CompileFlags.IMPLICIT_CONVERSION }) {
     }
 
@@ -1376,17 +1376,17 @@ namespace FunctionScript {
       return (UInt64)Value.GetValue();
     }
   }
-  internal class FnMethod_Cast_ToUInt64_FromInt32 : FnMethod<UInt64> {
+  internal class FnFunction_Cast_ToUInt64_FromInt32 : FnFunction<UInt64> {
     [FnArg] protected FnObject<Int32> Value;
 
     public override UInt64 GetValue() {
       return (UInt64)Value.GetValue();
     }
   }
-  internal class FnMethod_Cast_ToUInt64_FromUInt32 : FnMethod<UInt64> {
+  internal class FnFunction_Cast_ToUInt64_FromUInt32 : FnFunction<UInt64> {
     [FnArg] protected FnObject<UInt32> Value;
 
-    public FnMethod_Cast_ToUInt64_FromUInt32()
+    public FnFunction_Cast_ToUInt64_FromUInt32()
         : base(new CompileFlags[] { CompileFlags.IMPLICIT_CONVERSION }) {
     }
 
@@ -1394,14 +1394,14 @@ namespace FunctionScript {
       return (UInt64)Value.GetValue();
     }
   }
-  internal class FnMethod_Cast_ToUInt64_FromInt64 : FnMethod<UInt64> {
+  internal class FnFunction_Cast_ToUInt64_FromInt64 : FnFunction<UInt64> {
     [FnArg] protected FnObject<Int64> Value;
 
     public override UInt64 GetValue() {
       return (UInt64)Value.GetValue();
     }
   }
-  internal class FnMethod_Cast_ToUInt64_FromUInt64 : FnMethod<UInt64> {
+  internal class FnFunction_Cast_ToUInt64_FromUInt64 : FnFunction<UInt64> {
     [FnArg] protected FnObject<UInt64> Value;
 
     public override UInt64 GetValue() {
@@ -1409,21 +1409,21 @@ namespace FunctionScript {
     }
   }
 
-  internal class FnMethod_Cast_ToUInt64_FromSingle : FnMethod<UInt64> {
+  internal class FnFunction_Cast_ToUInt64_FromSingle : FnFunction<UInt64> {
     [FnArg] protected FnObject<Single> Value;
 
     public override UInt64 GetValue() {
       return (UInt64)Value.GetValue();
     }
   }
-  internal class FnMethod_Cast_ToUInt64_FromDouble : FnMethod<UInt64> {
+  internal class FnFunction_Cast_ToUInt64_FromDouble : FnFunction<UInt64> {
     [FnArg] protected FnObject<Double> Value;
 
     public override UInt64 GetValue() {
       return (UInt64)Value.GetValue();
     }
   }
-  internal class FnMethod_Cast_ToUInt64_FromDecimal : FnMethod<UInt64> {
+  internal class FnFunction_Cast_ToUInt64_FromDecimal : FnFunction<UInt64> {
     [FnArg] protected FnObject<Decimal> Value;
 
     public override UInt64 GetValue() {
@@ -1431,10 +1431,10 @@ namespace FunctionScript {
     }
   }
 
-  internal class FnMethod_Cast_ToUInt64_FromChar : FnMethod<UInt64> {
+  internal class FnFunction_Cast_ToUInt64_FromChar : FnFunction<UInt64> {
     [FnArg] protected FnObject<Char> Value;
 
-    public FnMethod_Cast_ToUInt64_FromChar()
+    public FnFunction_Cast_ToUInt64_FromChar()
         : base(new CompileFlags[] { CompileFlags.IMPLICIT_CONVERSION }) {
     }
 
@@ -1442,7 +1442,7 @@ namespace FunctionScript {
       return (UInt64)Value.GetValue();
     }
   }
-  internal class FnMethod_Cast_ToUInt64_FromString : FnMethod<UInt64> {
+  internal class FnFunction_Cast_ToUInt64_FromString : FnFunction<UInt64> {
     [FnArg] protected FnObject<String> Value;
 
     public override UInt64 GetValue() {
@@ -1459,7 +1459,7 @@ namespace FunctionScript {
     }
   }
 
-  internal class FnMethod_Cast_ToUInt64_FromObject : FnMethod<UInt64> {
+  internal class FnFunction_Cast_ToUInt64_FromObject : FnFunction<UInt64> {
     [FnArg] protected FnObject<Object> Value;
 
     public override UInt64 GetValue() {
@@ -1468,11 +1468,11 @@ namespace FunctionScript {
   }
   #endregion
 
-  #region To Single Casting Methods
-  internal class FnMethod_Cast_ToSingle_FromByte : FnMethod<Single> {
+  #region To Single Casting Functions
+  internal class FnFunction_Cast_ToSingle_FromByte : FnFunction<Single> {
     [FnArg] protected FnObject<Byte> Value;
 
-    public FnMethod_Cast_ToSingle_FromByte()
+    public FnFunction_Cast_ToSingle_FromByte()
         : base(new CompileFlags[] { CompileFlags.IMPLICIT_CONVERSION }) {
     }
 
@@ -1480,10 +1480,10 @@ namespace FunctionScript {
       return (Single)Value.GetValue();
     }
   }
-  internal class FnMethod_Cast_ToSingle_FromSByte : FnMethod<Single> {
+  internal class FnFunction_Cast_ToSingle_FromSByte : FnFunction<Single> {
     [FnArg] protected FnObject<SByte> Value;
 
-    public FnMethod_Cast_ToSingle_FromSByte()
+    public FnFunction_Cast_ToSingle_FromSByte()
         : base(new CompileFlags[] { CompileFlags.IMPLICIT_CONVERSION }) {
     }
 
@@ -1491,10 +1491,10 @@ namespace FunctionScript {
       return (Single)Value.GetValue();
     }
   }
-  internal class FnMethod_Cast_ToSingle_FromInt16 : FnMethod<Single> {
+  internal class FnFunction_Cast_ToSingle_FromInt16 : FnFunction<Single> {
     [FnArg] protected FnObject<Int16> Value;
 
-    public FnMethod_Cast_ToSingle_FromInt16()
+    public FnFunction_Cast_ToSingle_FromInt16()
         : base(new CompileFlags[] { CompileFlags.IMPLICIT_CONVERSION }) {
     }
 
@@ -1502,10 +1502,10 @@ namespace FunctionScript {
       return (Single)Value.GetValue();
     }
   }
-  internal class FnMethod_Cast_ToSingle_FromUInt16 : FnMethod<Single> {
+  internal class FnFunction_Cast_ToSingle_FromUInt16 : FnFunction<Single> {
     [FnArg] protected FnObject<UInt16> Value;
 
-    public FnMethod_Cast_ToSingle_FromUInt16()
+    public FnFunction_Cast_ToSingle_FromUInt16()
         : base(new CompileFlags[] { CompileFlags.IMPLICIT_CONVERSION }) {
     }
 
@@ -1513,10 +1513,10 @@ namespace FunctionScript {
       return (Single)Value.GetValue();
     }
   }
-  internal class FnMethod_Cast_ToSingle_FromInt32 : FnMethod<Single> {
+  internal class FnFunction_Cast_ToSingle_FromInt32 : FnFunction<Single> {
     [FnArg] protected FnObject<Int32> Value;
 
-    public FnMethod_Cast_ToSingle_FromInt32()
+    public FnFunction_Cast_ToSingle_FromInt32()
         : base(new CompileFlags[] { CompileFlags.IMPLICIT_CONVERSION }) {
     }
 
@@ -1524,10 +1524,10 @@ namespace FunctionScript {
       return (Single)Value.GetValue();
     }
   }
-  internal class FnMethod_Cast_ToSingle_FromUInt32 : FnMethod<Single> {
+  internal class FnFunction_Cast_ToSingle_FromUInt32 : FnFunction<Single> {
     [FnArg] protected FnObject<UInt32> Value;
 
-    public FnMethod_Cast_ToSingle_FromUInt32()
+    public FnFunction_Cast_ToSingle_FromUInt32()
         : base(new CompileFlags[] { CompileFlags.IMPLICIT_CONVERSION }) {
     }
 
@@ -1535,10 +1535,10 @@ namespace FunctionScript {
       return (Single)Value.GetValue();
     }
   }
-  internal class FnMethod_Cast_ToSingle_FromInt64 : FnMethod<Single> {
+  internal class FnFunction_Cast_ToSingle_FromInt64 : FnFunction<Single> {
     [FnArg] protected FnObject<Int64> Value;
 
-    public FnMethod_Cast_ToSingle_FromInt64()
+    public FnFunction_Cast_ToSingle_FromInt64()
         : base(new CompileFlags[] { CompileFlags.IMPLICIT_CONVERSION }) {
     }
 
@@ -1546,10 +1546,10 @@ namespace FunctionScript {
       return (Single)Value.GetValue();
     }
   }
-  internal class FnMethod_Cast_ToSingle_FromUInt64 : FnMethod<Single> {
+  internal class FnFunction_Cast_ToSingle_FromUInt64 : FnFunction<Single> {
     [FnArg] protected FnObject<UInt64> Value;
 
-    public FnMethod_Cast_ToSingle_FromUInt64()
+    public FnFunction_Cast_ToSingle_FromUInt64()
         : base(new CompileFlags[] { CompileFlags.IMPLICIT_CONVERSION }) {
     }
 
@@ -1558,21 +1558,21 @@ namespace FunctionScript {
     }
   }
 
-  internal class FnMethod_Cast_ToSingle_FromSingle : FnMethod<Single> {
+  internal class FnFunction_Cast_ToSingle_FromSingle : FnFunction<Single> {
     [FnArg] protected FnObject<Single> Value;
 
     public override Single GetValue() {
       return Value.GetValue();
     }
   }
-  internal class FnMethod_Cast_ToSingle_FromDouble : FnMethod<Single> {
+  internal class FnFunction_Cast_ToSingle_FromDouble : FnFunction<Single> {
     [FnArg] protected FnObject<Double> Value;
 
     public override Single GetValue() {
       return (Single)Value.GetValue();
     }
   }
-  internal class FnMethod_Cast_ToSingle_FromDecimal : FnMethod<Single> {
+  internal class FnFunction_Cast_ToSingle_FromDecimal : FnFunction<Single> {
     [FnArg] protected FnObject<Decimal> Value;
 
     public override Single GetValue() {
@@ -1580,10 +1580,10 @@ namespace FunctionScript {
     }
   }
 
-  internal class FnMethod_Cast_ToSingle_FromChar : FnMethod<Single> {
+  internal class FnFunction_Cast_ToSingle_FromChar : FnFunction<Single> {
     [FnArg] protected FnObject<Char> Value;
 
-    public FnMethod_Cast_ToSingle_FromChar()
+    public FnFunction_Cast_ToSingle_FromChar()
         : base(new CompileFlags[] { CompileFlags.IMPLICIT_CONVERSION }) {
     }
 
@@ -1591,7 +1591,7 @@ namespace FunctionScript {
       return (Single)Value.GetValue();
     }
   }
-  internal class FnMethod_Cast_ToSingle_FromString : FnMethod<Single> {
+  internal class FnFunction_Cast_ToSingle_FromString : FnFunction<Single> {
     [FnArg] protected FnObject<String> Value;
 
     public override Single GetValue() {
@@ -1599,7 +1599,7 @@ namespace FunctionScript {
     }
   }
 
-  internal class FnMethod_Cast_ToSingle_FromObject : FnMethod<Single> {
+  internal class FnFunction_Cast_ToSingle_FromObject : FnFunction<Single> {
     [FnArg] protected FnObject<Object> Value;
 
     public override Single GetValue() {
@@ -1607,11 +1607,11 @@ namespace FunctionScript {
     }
   }
   #endregion
-  #region To Double Casting Methods
-  internal class FnMethod_Cast_ToDouble_FromByte : FnMethod<Double> {
+  #region To Double Casting Functions
+  internal class FnFunction_Cast_ToDouble_FromByte : FnFunction<Double> {
     [FnArg] protected FnObject<Byte> Value;
 
-    public FnMethod_Cast_ToDouble_FromByte()
+    public FnFunction_Cast_ToDouble_FromByte()
         : base(new CompileFlags[] { CompileFlags.IMPLICIT_CONVERSION }) {
     }
 
@@ -1619,10 +1619,10 @@ namespace FunctionScript {
       return (Double)Value.GetValue();
     }
   }
-  internal class FnMethod_Cast_ToDouble_FromSByte : FnMethod<Double> {
+  internal class FnFunction_Cast_ToDouble_FromSByte : FnFunction<Double> {
     [FnArg] protected FnObject<SByte> Value;
 
-    public FnMethod_Cast_ToDouble_FromSByte()
+    public FnFunction_Cast_ToDouble_FromSByte()
         : base(new CompileFlags[] { CompileFlags.IMPLICIT_CONVERSION }) {
     }
 
@@ -1630,10 +1630,10 @@ namespace FunctionScript {
       return (Double)Value.GetValue();
     }
   }
-  internal class FnMethod_Cast_ToDouble_FromInt16 : FnMethod<Double> {
+  internal class FnFunction_Cast_ToDouble_FromInt16 : FnFunction<Double> {
     [FnArg] protected FnObject<Int16> Value;
 
-    public FnMethod_Cast_ToDouble_FromInt16()
+    public FnFunction_Cast_ToDouble_FromInt16()
         : base(new CompileFlags[] { CompileFlags.IMPLICIT_CONVERSION }) {
     }
 
@@ -1641,10 +1641,10 @@ namespace FunctionScript {
       return (Double)Value.GetValue();
     }
   }
-  internal class FnMethod_Cast_ToDouble_FromUInt16 : FnMethod<Double> {
+  internal class FnFunction_Cast_ToDouble_FromUInt16 : FnFunction<Double> {
     [FnArg] protected FnObject<UInt16> Value;
 
-    public FnMethod_Cast_ToDouble_FromUInt16()
+    public FnFunction_Cast_ToDouble_FromUInt16()
         : base(new CompileFlags[] { CompileFlags.IMPLICIT_CONVERSION }) {
     }
 
@@ -1652,10 +1652,10 @@ namespace FunctionScript {
       return (Double)Value.GetValue();
     }
   }
-  internal class FnMethod_Cast_ToDouble_FromInt32 : FnMethod<Double> {
+  internal class FnFunction_Cast_ToDouble_FromInt32 : FnFunction<Double> {
     [FnArg] protected FnObject<Int32> Value;
 
-    public FnMethod_Cast_ToDouble_FromInt32()
+    public FnFunction_Cast_ToDouble_FromInt32()
         : base(new CompileFlags[] { CompileFlags.IMPLICIT_CONVERSION }) {
     }
 
@@ -1663,10 +1663,10 @@ namespace FunctionScript {
       return (Double)Value.GetValue();
     }
   }
-  internal class FnMethod_Cast_ToDouble_FromUInt32 : FnMethod<Double> {
+  internal class FnFunction_Cast_ToDouble_FromUInt32 : FnFunction<Double> {
     [FnArg] protected FnObject<UInt32> Value;
 
-    public FnMethod_Cast_ToDouble_FromUInt32()
+    public FnFunction_Cast_ToDouble_FromUInt32()
         : base(new CompileFlags[] { CompileFlags.IMPLICIT_CONVERSION }) {
     }
 
@@ -1674,10 +1674,10 @@ namespace FunctionScript {
       return (Double)Value.GetValue();
     }
   }
-  internal class FnMethod_Cast_ToDouble_FromInt64 : FnMethod<Double> {
+  internal class FnFunction_Cast_ToDouble_FromInt64 : FnFunction<Double> {
     [FnArg] protected FnObject<Int64> Value;
 
-    public FnMethod_Cast_ToDouble_FromInt64()
+    public FnFunction_Cast_ToDouble_FromInt64()
         : base(new CompileFlags[] { CompileFlags.IMPLICIT_CONVERSION }) {
     }
 
@@ -1685,10 +1685,10 @@ namespace FunctionScript {
       return (Double)Value.GetValue();
     }
   }
-  internal class FnMethod_Cast_ToDouble_FromUInt64 : FnMethod<Double> {
+  internal class FnFunction_Cast_ToDouble_FromUInt64 : FnFunction<Double> {
     [FnArg] protected FnObject<UInt64> Value;
 
-    public FnMethod_Cast_ToDouble_FromUInt64()
+    public FnFunction_Cast_ToDouble_FromUInt64()
         : base(new CompileFlags[] { CompileFlags.IMPLICIT_CONVERSION }) {
     }
 
@@ -1697,10 +1697,10 @@ namespace FunctionScript {
     }
   }
 
-  internal class FnMethod_Cast_ToDouble_FromSingle : FnMethod<Double> {
+  internal class FnFunction_Cast_ToDouble_FromSingle : FnFunction<Double> {
     [FnArg] protected FnObject<Single> Value;
 
-    public FnMethod_Cast_ToDouble_FromSingle()
+    public FnFunction_Cast_ToDouble_FromSingle()
         : base(new CompileFlags[] { CompileFlags.IMPLICIT_CONVERSION }) {
     }
 
@@ -1708,14 +1708,14 @@ namespace FunctionScript {
       return (Double)Value.GetValue();
     }
   }
-  internal class FnMethod_Cast_ToDouble_FromDouble : FnMethod<Double> {
+  internal class FnFunction_Cast_ToDouble_FromDouble : FnFunction<Double> {
     [FnArg] protected FnObject<Double> Value;
 
     public override Double GetValue() {
       return Value.GetValue();
     }
   }
-  internal class FnMethod_Cast_ToDouble_FromDecimal : FnMethod<Double> {
+  internal class FnFunction_Cast_ToDouble_FromDecimal : FnFunction<Double> {
     [FnArg] protected FnObject<Decimal> Value;
 
     public override Double GetValue() {
@@ -1723,10 +1723,10 @@ namespace FunctionScript {
     }
   }
 
-  internal class FnMethod_Cast_ToDouble_FromChar : FnMethod<Double> {
+  internal class FnFunction_Cast_ToDouble_FromChar : FnFunction<Double> {
     [FnArg] protected FnObject<Char> Value;
 
-    public FnMethod_Cast_ToDouble_FromChar()
+    public FnFunction_Cast_ToDouble_FromChar()
         : base(new CompileFlags[] { CompileFlags.IMPLICIT_CONVERSION }) {
     }
 
@@ -1734,7 +1734,7 @@ namespace FunctionScript {
       return (Double)Value.GetValue();
     }
   }
-  internal class FnMethod_Cast_ToDouble_FromString : FnMethod<Double> {
+  internal class FnFunction_Cast_ToDouble_FromString : FnFunction<Double> {
     [FnArg] protected FnObject<String> Value;
 
     public override Double GetValue() {
@@ -1742,7 +1742,7 @@ namespace FunctionScript {
     }
   }
 
-  internal class FnMethod_Cast_ToDouble_FromObject : FnMethod<Double> {
+  internal class FnFunction_Cast_ToDouble_FromObject : FnFunction<Double> {
     [FnArg] protected FnObject<Object> Value;
 
     public override Double GetValue() {
@@ -1750,11 +1750,11 @@ namespace FunctionScript {
     }
   }
   #endregion
-  #region To Decimal Casting Methods
-  internal class FnMethod_Cast_ToDecimal_FromByte : FnMethod<Decimal> {
+  #region To Decimal Casting Functions
+  internal class FnFunction_Cast_ToDecimal_FromByte : FnFunction<Decimal> {
     [FnArg] protected FnObject<Byte> Value;
 
-    public FnMethod_Cast_ToDecimal_FromByte()
+    public FnFunction_Cast_ToDecimal_FromByte()
         : base(new CompileFlags[] { CompileFlags.IMPLICIT_CONVERSION }) {
     }
 
@@ -1762,10 +1762,10 @@ namespace FunctionScript {
       return (Decimal)Value.GetValue();
     }
   }
-  internal class FnMethod_Cast_ToDecimal_FromSByte : FnMethod<Decimal> {
+  internal class FnFunction_Cast_ToDecimal_FromSByte : FnFunction<Decimal> {
     [FnArg] protected FnObject<SByte> Value;
 
-    public FnMethod_Cast_ToDecimal_FromSByte()
+    public FnFunction_Cast_ToDecimal_FromSByte()
         : base(new CompileFlags[] { CompileFlags.IMPLICIT_CONVERSION }) {
     }
 
@@ -1773,10 +1773,10 @@ namespace FunctionScript {
       return (Decimal)Value.GetValue();
     }
   }
-  internal class FnMethod_Cast_ToDecimal_FromInt16 : FnMethod<Decimal> {
+  internal class FnFunction_Cast_ToDecimal_FromInt16 : FnFunction<Decimal> {
     [FnArg] protected FnObject<Int16> Value;
 
-    public FnMethod_Cast_ToDecimal_FromInt16()
+    public FnFunction_Cast_ToDecimal_FromInt16()
         : base(new CompileFlags[] { CompileFlags.IMPLICIT_CONVERSION }) {
     }
 
@@ -1784,10 +1784,10 @@ namespace FunctionScript {
       return (Decimal)Value.GetValue();
     }
   }
-  internal class FnMethod_Cast_ToDecimal_FromUInt16 : FnMethod<Decimal> {
+  internal class FnFunction_Cast_ToDecimal_FromUInt16 : FnFunction<Decimal> {
     [FnArg] protected FnObject<UInt16> Value;
 
-    public FnMethod_Cast_ToDecimal_FromUInt16()
+    public FnFunction_Cast_ToDecimal_FromUInt16()
         : base(new CompileFlags[] { CompileFlags.IMPLICIT_CONVERSION }) {
     }
 
@@ -1795,10 +1795,10 @@ namespace FunctionScript {
       return (Decimal)Value.GetValue();
     }
   }
-  internal class FnMethod_Cast_ToDecimal_FromInt32 : FnMethod<Decimal> {
+  internal class FnFunction_Cast_ToDecimal_FromInt32 : FnFunction<Decimal> {
     [FnArg] protected FnObject<Int32> Value;
 
-    public FnMethod_Cast_ToDecimal_FromInt32()
+    public FnFunction_Cast_ToDecimal_FromInt32()
         : base(new CompileFlags[] { CompileFlags.IMPLICIT_CONVERSION }) {
     }
 
@@ -1806,10 +1806,10 @@ namespace FunctionScript {
       return (Decimal)Value.GetValue();
     }
   }
-  internal class FnMethod_Cast_ToDecimal_FromUInt32 : FnMethod<Decimal> {
+  internal class FnFunction_Cast_ToDecimal_FromUInt32 : FnFunction<Decimal> {
     [FnArg] protected FnObject<UInt32> Value;
 
-    public FnMethod_Cast_ToDecimal_FromUInt32()
+    public FnFunction_Cast_ToDecimal_FromUInt32()
         : base(new CompileFlags[] { CompileFlags.IMPLICIT_CONVERSION }) {
     }
 
@@ -1817,10 +1817,10 @@ namespace FunctionScript {
       return (Decimal)Value.GetValue();
     }
   }
-  internal class FnMethod_Cast_ToDecimal_FromInt64 : FnMethod<Decimal> {
+  internal class FnFunction_Cast_ToDecimal_FromInt64 : FnFunction<Decimal> {
     [FnArg] protected FnObject<Int64> Value;
 
-    public FnMethod_Cast_ToDecimal_FromInt64()
+    public FnFunction_Cast_ToDecimal_FromInt64()
         : base(new CompileFlags[] { CompileFlags.IMPLICIT_CONVERSION }) {
     }
 
@@ -1828,10 +1828,10 @@ namespace FunctionScript {
       return (Decimal)Value.GetValue();
     }
   }
-  internal class FnMethod_Cast_ToDecimal_FromUInt64 : FnMethod<Decimal> {
+  internal class FnFunction_Cast_ToDecimal_FromUInt64 : FnFunction<Decimal> {
     [FnArg] protected FnObject<UInt64> Value;
 
-    public FnMethod_Cast_ToDecimal_FromUInt64()
+    public FnFunction_Cast_ToDecimal_FromUInt64()
         : base(new CompileFlags[] { CompileFlags.IMPLICIT_CONVERSION }) {
     }
 
@@ -1840,21 +1840,21 @@ namespace FunctionScript {
     }
   }
 
-  internal class FnMethod_Cast_ToDecimal_FromSingle : FnMethod<Decimal> {
+  internal class FnFunction_Cast_ToDecimal_FromSingle : FnFunction<Decimal> {
     [FnArg] protected FnObject<Single> Value;
 
     public override Decimal GetValue() {
       return (Decimal)Value.GetValue();
     }
   }
-  internal class FnMethod_Cast_ToDecimal_FromDouble : FnMethod<Decimal> {
+  internal class FnFunction_Cast_ToDecimal_FromDouble : FnFunction<Decimal> {
     [FnArg] protected FnObject<Double> Value;
 
     public override Decimal GetValue() {
       return (Decimal)Value.GetValue();
     }
   }
-  internal class FnMethod_Cast_ToDecimal_FromDecimal : FnMethod<Decimal> {
+  internal class FnFunction_Cast_ToDecimal_FromDecimal : FnFunction<Decimal> {
     [FnArg] protected FnObject<Decimal> Value;
 
     public override Decimal GetValue() {
@@ -1862,10 +1862,10 @@ namespace FunctionScript {
     }
   }
 
-  internal class FnMethod_Cast_ToDecimal_FromChar : FnMethod<Decimal> {
+  internal class FnFunction_Cast_ToDecimal_FromChar : FnFunction<Decimal> {
     [FnArg] protected FnObject<Char> Value;
 
-    public FnMethod_Cast_ToDecimal_FromChar()
+    public FnFunction_Cast_ToDecimal_FromChar()
         : base(new CompileFlags[] { CompileFlags.IMPLICIT_CONVERSION }) {
     }
 
@@ -1873,7 +1873,7 @@ namespace FunctionScript {
       return (Decimal)Value.GetValue();
     }
   }
-  internal class FnMethod_Cast_ToDecimal_FromString : FnMethod<Decimal> {
+  internal class FnFunction_Cast_ToDecimal_FromString : FnFunction<Decimal> {
     [FnArg] protected FnObject<String> Value;
 
     public override Decimal GetValue() {
@@ -1881,7 +1881,7 @@ namespace FunctionScript {
     }
   }
 
-  internal class FnMethod_Cast_ToDecimal_FromObject : FnMethod<Decimal> {
+  internal class FnFunction_Cast_ToDecimal_FromObject : FnFunction<Decimal> {
     [FnArg] protected FnObject<Object> Value;
 
     public override Decimal GetValue() {
@@ -1889,57 +1889,57 @@ namespace FunctionScript {
     }
   }
   #endregion
-  #region To Char Casting Methods
-  internal class FnMethod_Cast_ToChar_FromByte : FnMethod<Char> {
+  #region To Char Casting Functions
+  internal class FnFunction_Cast_ToChar_FromByte : FnFunction<Char> {
     [FnArg] protected FnObject<Byte> Value;
 
     public override Char GetValue() {
       return (Char)Value.GetValue();
     }
   }
-  internal class FnMethod_Cast_ToChar_FromSByte : FnMethod<Char> {
+  internal class FnFunction_Cast_ToChar_FromSByte : FnFunction<Char> {
     [FnArg] protected FnObject<SByte> Value;
 
     public override Char GetValue() {
       return (Char)Value.GetValue();
     }
   }
-  internal class FnMethod_Cast_ToChar_FromInt16 : FnMethod<Char> {
+  internal class FnFunction_Cast_ToChar_FromInt16 : FnFunction<Char> {
     [FnArg] protected FnObject<Int16> Value;
 
     public override Char GetValue() {
       return (Char)Value.GetValue();
     }
   }
-  internal class FnMethod_Cast_ToChar_FromUInt16 : FnMethod<Char> {
+  internal class FnFunction_Cast_ToChar_FromUInt16 : FnFunction<Char> {
     [FnArg] protected FnObject<UInt16> Value;
 
     public override Char GetValue() {
       return (Char)Value.GetValue();
     }
   }
-  internal class FnMethod_Cast_ToChar_FromInt32 : FnMethod<Char> {
+  internal class FnFunction_Cast_ToChar_FromInt32 : FnFunction<Char> {
     [FnArg] protected FnObject<Int32> Value;
 
     public override Char GetValue() {
       return (Char)Value.GetValue();
     }
   }
-  internal class FnMethod_Cast_ToChar_FromUInt32 : FnMethod<Char> {
+  internal class FnFunction_Cast_ToChar_FromUInt32 : FnFunction<Char> {
     [FnArg] protected FnObject<UInt32> Value;
 
     public override Char GetValue() {
       return (Char)Value.GetValue();
     }
   }
-  internal class FnMethod_Cast_ToChar_FromInt64 : FnMethod<Char> {
+  internal class FnFunction_Cast_ToChar_FromInt64 : FnFunction<Char> {
     [FnArg] protected FnObject<Int64> Value;
 
     public override Char GetValue() {
       return (Char)Value.GetValue();
     }
   }
-  internal class FnMethod_Cast_ToChar_FromUInt64 : FnMethod<Char> {
+  internal class FnFunction_Cast_ToChar_FromUInt64 : FnFunction<Char> {
     [FnArg] protected FnObject<UInt64> Value;
 
     public override Char GetValue() {
@@ -1947,21 +1947,21 @@ namespace FunctionScript {
     }
   }
 
-  internal class FnMethod_Cast_ToChar_FromSingle : FnMethod<Char> {
+  internal class FnFunction_Cast_ToChar_FromSingle : FnFunction<Char> {
     [FnArg] protected FnObject<Single> Value;
 
     public override Char GetValue() {
       return (Char)Value.GetValue();
     }
   }
-  internal class FnMethod_Cast_ToChar_FromDouble : FnMethod<Char> {
+  internal class FnFunction_Cast_ToChar_FromDouble : FnFunction<Char> {
     [FnArg] protected FnObject<Double> Value;
 
     public override Char GetValue() {
       return (Char)Value.GetValue();
     }
   }
-  internal class FnMethod_Cast_ToChar_FromDecimal : FnMethod<Char> {
+  internal class FnFunction_Cast_ToChar_FromDecimal : FnFunction<Char> {
     [FnArg] protected FnObject<Decimal> Value;
 
     public override Char GetValue() {
@@ -1969,14 +1969,14 @@ namespace FunctionScript {
     }
   }
 
-  internal class FnMethod_Cast_ToChar_FromChar : FnMethod<Char> {
+  internal class FnFunction_Cast_ToChar_FromChar : FnFunction<Char> {
     [FnArg] protected FnObject<Char> Value;
 
     public override Char GetValue() {
       return Value.GetValue();
     }
   }
-  internal class FnMethod_Cast_ToChar_FromString : FnMethod<Char> {
+  internal class FnFunction_Cast_ToChar_FromString : FnFunction<Char> {
     [FnArg] protected FnObject<String> Value;
 
     public override Char GetValue() {
@@ -1993,7 +1993,7 @@ namespace FunctionScript {
     }
   }
 
-  internal class FnMethod_Cast_ToChar_FromObject : FnMethod<Char> {
+  internal class FnFunction_Cast_ToChar_FromObject : FnFunction<Char> {
     [FnArg] protected FnObject<Object> Value;
 
     public override Char GetValue() {
@@ -2002,11 +2002,11 @@ namespace FunctionScript {
   }
   #endregion
 
-  #region To Int32? Casting Methods
-  internal class FnMethod_ToNullableInt32_FromNull : FnMethod<Int32?> {
+  #region To Int32? Casting Functions
+  internal class FnFunction_ToNullableInt32_FromNull : FnFunction<Int32?> {
     [FnArg] protected FnObject<Object> Value;
 
-    public FnMethod_ToNullableInt32_FromNull()
+    public FnFunction_ToNullableInt32_FromNull()
         : base(new CompileFlags[] { CompileFlags.IMPLICIT_CONVERSION }) {
     }
 
@@ -2016,15 +2016,15 @@ namespace FunctionScript {
   }
   #endregion
 
-  #region To String Casting Methods
-  internal class FnMethod_Cast_ToString_FromString : FnMethod<String> {
+  #region To String Casting Functions
+  internal class FnFunction_Cast_ToString_FromString : FnFunction<String> {
     [FnArg] protected FnObject<String> Value;
 
     public override String GetValue() {
       return Value.GetValue();
     }
   }
-  internal class FnMethod_Cast_ToString_FromObject : FnMethod<String> {
+  internal class FnFunction_Cast_ToString_FromObject : FnFunction<String> {
     [FnArg] protected FnObject<Object> Value;
 
     public override String GetValue() {
@@ -2033,8 +2033,8 @@ namespace FunctionScript {
   }
   #endregion
 
-  #region ToString Methods
-  internal class FnMethod_ToString<T> : FnMethod<String> {
+  #region ToString Functions
+  internal class FnFunction_ToString<T> : FnFunction<String> {
     [FnArg] protected FnObject<T> Value;
 
     public override String GetValue() {
@@ -2043,11 +2043,11 @@ namespace FunctionScript {
   }
   #endregion
 
-  #region To Object Casting Methods
-  internal class FnMethod_Cast_ToObject_FromObject : FnMethod<Object> {
+  #region To Object Casting Functions
+  internal class FnFunction_Cast_ToObject_FromObject : FnFunction<Object> {
     [FnArg] protected FnObject<Object> Value;
 
-    public FnMethod_Cast_ToObject_FromObject()
+    public FnFunction_Cast_ToObject_FromObject()
         : base(new CompileFlags[] { CompileFlags.IMPLICIT_CONVERSION }) {
     }
 
@@ -2057,9 +2057,9 @@ namespace FunctionScript {
   }
   #endregion
   #endregion
-  #region Comparison Methods TODO: Add XNOR
-  #region IsGreaterThan Methods
-  internal class FnMethod_IsGreaterThan_Byte : FnMethod<Boolean> {
+  #region Comparison Functions TODO: Add XNOR
+  #region IsGreaterThan Functions
+  internal class FnFunction_IsGreaterThan_Byte : FnFunction<Boolean> {
     [FnArg] protected FnObject<Byte> LeftVal;
     [FnArg] protected FnObject<Byte> RightVal;
 
@@ -2067,7 +2067,7 @@ namespace FunctionScript {
       return LeftVal.GetValue() > RightVal.GetValue();
     }
   }
-  internal class FnMethod_IsGreaterThan_SByte : FnMethod<Boolean> {
+  internal class FnFunction_IsGreaterThan_SByte : FnFunction<Boolean> {
     [FnArg] protected FnObject<SByte> LeftVal;
     [FnArg] protected FnObject<SByte> RightVal;
 
@@ -2075,7 +2075,7 @@ namespace FunctionScript {
       return LeftVal.GetValue() > RightVal.GetValue();
     }
   }
-  internal class FnMethod_IsGreaterThan_Int16 : FnMethod<Boolean> {
+  internal class FnFunction_IsGreaterThan_Int16 : FnFunction<Boolean> {
     [FnArg] protected FnObject<Int16> LeftVal;
     [FnArg] protected FnObject<Int16> RightVal;
 
@@ -2083,7 +2083,7 @@ namespace FunctionScript {
       return LeftVal.GetValue() > RightVal.GetValue();
     }
   }
-  internal class FnMethod_IsGreaterThan_UInt16 : FnMethod<Boolean> {
+  internal class FnFunction_IsGreaterThan_UInt16 : FnFunction<Boolean> {
     [FnArg] protected FnObject<UInt16> LeftVal;
     [FnArg] protected FnObject<UInt16> RightVal;
 
@@ -2091,7 +2091,7 @@ namespace FunctionScript {
       return LeftVal.GetValue() > RightVal.GetValue();
     }
   }
-  internal class FnMethod_IsGreaterThan_Int32 : FnMethod<Boolean> {
+  internal class FnFunction_IsGreaterThan_Int32 : FnFunction<Boolean> {
     [FnArg] protected FnObject<Int32> LeftVal;
     [FnArg] protected FnObject<Int32> RightVal;
 
@@ -2099,7 +2099,7 @@ namespace FunctionScript {
       return LeftVal.GetValue() > RightVal.GetValue();
     }
   }
-  internal class FnMethod_IsGreaterThan_UInt32 : FnMethod<Boolean> {
+  internal class FnFunction_IsGreaterThan_UInt32 : FnFunction<Boolean> {
     [FnArg] protected FnObject<UInt32> LeftVal;
     [FnArg] protected FnObject<UInt32> RightVal;
 
@@ -2107,7 +2107,7 @@ namespace FunctionScript {
       return LeftVal.GetValue() > RightVal.GetValue();
     }
   }
-  internal class FnMethod_IsGreaterThan_Int64 : FnMethod<Boolean> {
+  internal class FnFunction_IsGreaterThan_Int64 : FnFunction<Boolean> {
     [FnArg] protected FnObject<Int64> LeftVal;
     [FnArg] protected FnObject<Int64> RightVal;
 
@@ -2115,7 +2115,7 @@ namespace FunctionScript {
       return LeftVal.GetValue() > RightVal.GetValue();
     }
   }
-  internal class FnMethod_IsGreaterThan_UInt64 : FnMethod<Boolean> {
+  internal class FnFunction_IsGreaterThan_UInt64 : FnFunction<Boolean> {
     [FnArg] protected FnObject<UInt64> LeftVal;
     [FnArg] protected FnObject<UInt64> RightVal;
 
@@ -2123,7 +2123,7 @@ namespace FunctionScript {
       return LeftVal.GetValue() > RightVal.GetValue();
     }
   }
-  internal class FnMethod_IsGreaterThan_Single : FnMethod<Boolean> {
+  internal class FnFunction_IsGreaterThan_Single : FnFunction<Boolean> {
     [FnArg] protected FnObject<Single> LeftVal;
     [FnArg] protected FnObject<Single> RightVal;
 
@@ -2131,7 +2131,7 @@ namespace FunctionScript {
       return LeftVal.GetValue() > RightVal.GetValue();
     }
   }
-  internal class FnMethod_IsGreaterThan_Double : FnMethod<Boolean> {
+  internal class FnFunction_IsGreaterThan_Double : FnFunction<Boolean> {
     [FnArg] protected FnObject<Double> LeftVal;
     [FnArg] protected FnObject<Double> RightVal;
 
@@ -2139,7 +2139,7 @@ namespace FunctionScript {
       return LeftVal.GetValue() > RightVal.GetValue();
     }
   }
-  internal class FnMethod_IsGreaterThan_Decimal : FnMethod<Boolean> {
+  internal class FnFunction_IsGreaterThan_Decimal : FnFunction<Boolean> {
     [FnArg] protected FnObject<Decimal> LeftVal;
     [FnArg] protected FnObject<Decimal> RightVal;
 
@@ -2148,7 +2148,7 @@ namespace FunctionScript {
     }
   }
 
-  internal class FnMethod_IsGreaterThan_Char : FnMethod<Boolean> {
+  internal class FnFunction_IsGreaterThan_Char : FnFunction<Boolean> {
     [FnArg] protected FnObject<Char> LeftVal;
     [FnArg] protected FnObject<Char> RightVal;
 
@@ -2157,8 +2157,8 @@ namespace FunctionScript {
     }
   }
   #endregion
-  #region IsGreaterThanOrEqual Methods
-  internal class FnMethod_IsGreaterThanOrEqual_SByte : FnMethod<Boolean> {
+  #region IsGreaterThanOrEqual Functions
+  internal class FnFunction_IsGreaterThanOrEqual_SByte : FnFunction<Boolean> {
     [FnArg] protected FnObject<SByte> LeftVal;
     [FnArg] protected FnObject<SByte> RightVal;
 
@@ -2166,7 +2166,7 @@ namespace FunctionScript {
       return LeftVal.GetValue() >= RightVal.GetValue();
     }
   }
-  internal class FnMethod_IsGreaterThanOrEqual_Byte : FnMethod<Boolean> {
+  internal class FnFunction_IsGreaterThanOrEqual_Byte : FnFunction<Boolean> {
     [FnArg] protected FnObject<Byte> LeftVal;
     [FnArg] protected FnObject<Byte> RightVal;
 
@@ -2174,7 +2174,7 @@ namespace FunctionScript {
       return LeftVal.GetValue() >= RightVal.GetValue();
     }
   }
-  internal class FnMethod_IsGreaterThanOrEqual_Int16 : FnMethod<Boolean> {
+  internal class FnFunction_IsGreaterThanOrEqual_Int16 : FnFunction<Boolean> {
     [FnArg] protected FnObject<Int16> LeftVal;
     [FnArg] protected FnObject<Int16> RightVal;
 
@@ -2182,7 +2182,7 @@ namespace FunctionScript {
       return LeftVal.GetValue() >= RightVal.GetValue();
     }
   }
-  internal class FnMethod_IsGreaterThanOrEqual_UInt16 : FnMethod<Boolean> {
+  internal class FnFunction_IsGreaterThanOrEqual_UInt16 : FnFunction<Boolean> {
     [FnArg] protected FnObject<UInt16> LeftVal;
     [FnArg] protected FnObject<UInt16> RightVal;
 
@@ -2190,7 +2190,7 @@ namespace FunctionScript {
       return LeftVal.GetValue() >= RightVal.GetValue();
     }
   }
-  internal class FnMethod_IsGreaterThanOrEqual_Int32 : FnMethod<Boolean> {
+  internal class FnFunction_IsGreaterThanOrEqual_Int32 : FnFunction<Boolean> {
     [FnArg] protected FnObject<Int32> LeftVal;
     [FnArg] protected FnObject<Int32> RightVal;
 
@@ -2198,7 +2198,7 @@ namespace FunctionScript {
       return LeftVal.GetValue() >= RightVal.GetValue();
     }
   }
-  internal class FnMethod_IsGreaterThanOrEqual_UInt32 : FnMethod<Boolean> {
+  internal class FnFunction_IsGreaterThanOrEqual_UInt32 : FnFunction<Boolean> {
     [FnArg] protected FnObject<UInt32> LeftVal;
     [FnArg] protected FnObject<UInt32> RightVal;
 
@@ -2206,7 +2206,7 @@ namespace FunctionScript {
       return LeftVal.GetValue() >= RightVal.GetValue();
     }
   }
-  internal class FnMethod_IsGreaterThanOrEqual_Int64 : FnMethod<Boolean> {
+  internal class FnFunction_IsGreaterThanOrEqual_Int64 : FnFunction<Boolean> {
     [FnArg] protected FnObject<Int64> LeftVal;
     [FnArg] protected FnObject<Int64> RightVal;
 
@@ -2214,7 +2214,7 @@ namespace FunctionScript {
       return LeftVal.GetValue() >= RightVal.GetValue();
     }
   }
-  internal class FnMethod_IsGreaterThanOrEqual_UInt64 : FnMethod<Boolean> {
+  internal class FnFunction_IsGreaterThanOrEqual_UInt64 : FnFunction<Boolean> {
     [FnArg] protected FnObject<UInt64> LeftVal;
     [FnArg] protected FnObject<UInt64> RightVal;
 
@@ -2222,7 +2222,7 @@ namespace FunctionScript {
       return LeftVal.GetValue() >= RightVal.GetValue();
     }
   }
-  internal class FnMethod_IsGreaterThanOrEqual_Single : FnMethod<Boolean> {
+  internal class FnFunction_IsGreaterThanOrEqual_Single : FnFunction<Boolean> {
     [FnArg] protected FnObject<Single> LeftVal;
     [FnArg] protected FnObject<Single> RightVal;
 
@@ -2230,7 +2230,7 @@ namespace FunctionScript {
       return LeftVal.GetValue() >= RightVal.GetValue();
     }
   }
-  internal class FnMethod_IsGreaterThanOrEqual_Double : FnMethod<Boolean> {
+  internal class FnFunction_IsGreaterThanOrEqual_Double : FnFunction<Boolean> {
     [FnArg] protected FnObject<Double> LeftVal;
     [FnArg] protected FnObject<Double> RightVal;
 
@@ -2238,7 +2238,7 @@ namespace FunctionScript {
       return LeftVal.GetValue() >= RightVal.GetValue();
     }
   }
-  internal class FnMethod_IsGreaterThanOrEqual_Decimal : FnMethod<Boolean> {
+  internal class FnFunction_IsGreaterThanOrEqual_Decimal : FnFunction<Boolean> {
     [FnArg] protected FnObject<Decimal> LeftVal;
     [FnArg] protected FnObject<Decimal> RightVal;
 
@@ -2247,7 +2247,7 @@ namespace FunctionScript {
     }
   }
 
-  internal class FnMethod_IsGreaterThanOrEqual_Char : FnMethod<Boolean> {
+  internal class FnFunction_IsGreaterThanOrEqual_Char : FnFunction<Boolean> {
     [FnArg] protected FnObject<Char> LeftVal;
     [FnArg] protected FnObject<Char> RightVal;
 
@@ -2256,8 +2256,8 @@ namespace FunctionScript {
     }
   }
   #endregion
-  #region IsLessThan Methods
-  internal class FnMethod_IsLessThan_Byte : FnMethod<Boolean> {
+  #region IsLessThan Functions
+  internal class FnFunction_IsLessThan_Byte : FnFunction<Boolean> {
     [FnArg] protected FnObject<Byte> LeftVal;
     [FnArg] protected FnObject<Byte> RightVal;
 
@@ -2265,7 +2265,7 @@ namespace FunctionScript {
       return LeftVal.GetValue() < RightVal.GetValue();
     }
   }
-  internal class FnMethod_IsLessThan_SByte : FnMethod<Boolean> {
+  internal class FnFunction_IsLessThan_SByte : FnFunction<Boolean> {
     [FnArg] protected FnObject<SByte> LeftVal;
     [FnArg] protected FnObject<SByte> RightVal;
 
@@ -2273,7 +2273,7 @@ namespace FunctionScript {
       return LeftVal.GetValue() < RightVal.GetValue();
     }
   }
-  internal class FnMethod_IsLessThan_Int16 : FnMethod<Boolean> {
+  internal class FnFunction_IsLessThan_Int16 : FnFunction<Boolean> {
     [FnArg] protected FnObject<Int16> LeftVal;
     [FnArg] protected FnObject<Int16> RightVal;
 
@@ -2281,7 +2281,7 @@ namespace FunctionScript {
       return LeftVal.GetValue() < RightVal.GetValue();
     }
   }
-  internal class FnMethod_IsLessThan_UInt16 : FnMethod<Boolean> {
+  internal class FnFunction_IsLessThan_UInt16 : FnFunction<Boolean> {
     [FnArg] protected FnObject<UInt16> LeftVal;
     [FnArg] protected FnObject<UInt16> RightVal;
 
@@ -2289,7 +2289,7 @@ namespace FunctionScript {
       return LeftVal.GetValue() < RightVal.GetValue();
     }
   }
-  internal class FnMethod_IsLessThan_Int32 : FnMethod<Boolean> {
+  internal class FnFunction_IsLessThan_Int32 : FnFunction<Boolean> {
     [FnArg] protected FnObject<Int32> LeftVal;
     [FnArg] protected FnObject<Int32> RightVal;
 
@@ -2297,7 +2297,7 @@ namespace FunctionScript {
       return LeftVal.GetValue() < RightVal.GetValue();
     }
   }
-  internal class FnMethod_IsLessThan_UInt32 : FnMethod<Boolean> {
+  internal class FnFunction_IsLessThan_UInt32 : FnFunction<Boolean> {
     [FnArg] protected FnObject<UInt32> LeftVal;
     [FnArg] protected FnObject<UInt32> RightVal;
 
@@ -2305,7 +2305,7 @@ namespace FunctionScript {
       return LeftVal.GetValue() < RightVal.GetValue();
     }
   }
-  internal class FnMethod_IsLessThan_Int64 : FnMethod<Boolean> {
+  internal class FnFunction_IsLessThan_Int64 : FnFunction<Boolean> {
     [FnArg] protected FnObject<Int64> LeftVal;
     [FnArg] protected FnObject<Int64> RightVal;
 
@@ -2313,7 +2313,7 @@ namespace FunctionScript {
       return LeftVal.GetValue() < RightVal.GetValue();
     }
   }
-  internal class FnMethod_IsLessThan_UInt64 : FnMethod<Boolean> {
+  internal class FnFunction_IsLessThan_UInt64 : FnFunction<Boolean> {
     [FnArg] protected FnObject<UInt64> LeftVal;
     [FnArg] protected FnObject<UInt64> RightVal;
 
@@ -2321,7 +2321,7 @@ namespace FunctionScript {
       return LeftVal.GetValue() < RightVal.GetValue();
     }
   }
-  internal class FnMethod_IsLessThan_Single : FnMethod<Boolean> {
+  internal class FnFunction_IsLessThan_Single : FnFunction<Boolean> {
     [FnArg] protected FnObject<Single> LeftVal;
     [FnArg] protected FnObject<Single> RightVal;
 
@@ -2329,7 +2329,7 @@ namespace FunctionScript {
       return LeftVal.GetValue() < RightVal.GetValue();
     }
   }
-  internal class FnMethod_IsLessThan_Double : FnMethod<Boolean> {
+  internal class FnFunction_IsLessThan_Double : FnFunction<Boolean> {
     [FnArg] protected FnObject<Double> LeftVal;
     [FnArg] protected FnObject<Double> RightVal;
 
@@ -2337,7 +2337,7 @@ namespace FunctionScript {
       return LeftVal.GetValue() < RightVal.GetValue();
     }
   }
-  internal class FnMethod_IsLessThan_Decimal : FnMethod<Boolean> {
+  internal class FnFunction_IsLessThan_Decimal : FnFunction<Boolean> {
     [FnArg] protected FnObject<Decimal> LeftVal;
     [FnArg] protected FnObject<Decimal> RightVal;
 
@@ -2346,7 +2346,7 @@ namespace FunctionScript {
     }
   }
 
-  internal class FnMethod_IsLessThan_Char : FnMethod<Boolean> {
+  internal class FnFunction_IsLessThan_Char : FnFunction<Boolean> {
     [FnArg] protected FnObject<Char> LeftVal;
     [FnArg] protected FnObject<Char> RightVal;
 
@@ -2355,8 +2355,8 @@ namespace FunctionScript {
     }
   }
   #endregion
-  #region IsLessThanOrEqual Methods
-  internal class FnMethod_IsLessThanOrEqual_Byte : FnMethod<Boolean> {
+  #region IsLessThanOrEqual Functions
+  internal class FnFunction_IsLessThanOrEqual_Byte : FnFunction<Boolean> {
     [FnArg] protected FnObject<Byte> LeftVal;
     [FnArg] protected FnObject<Byte> RightVal;
 
@@ -2364,7 +2364,7 @@ namespace FunctionScript {
       return LeftVal.GetValue() <= RightVal.GetValue();
     }
   }
-  internal class FnMethod_IsLessThanOrEqual_SByte : FnMethod<Boolean> {
+  internal class FnFunction_IsLessThanOrEqual_SByte : FnFunction<Boolean> {
     [FnArg] protected FnObject<SByte> LeftVal;
     [FnArg] protected FnObject<SByte> RightVal;
 
@@ -2372,7 +2372,7 @@ namespace FunctionScript {
       return LeftVal.GetValue() <= RightVal.GetValue();
     }
   }
-  internal class FnMethod_IsLessThanOrEqual_Int16 : FnMethod<Boolean> {
+  internal class FnFunction_IsLessThanOrEqual_Int16 : FnFunction<Boolean> {
     [FnArg] protected FnObject<Int16> LeftVal;
     [FnArg] protected FnObject<Int16> RightVal;
 
@@ -2380,7 +2380,7 @@ namespace FunctionScript {
       return LeftVal.GetValue() <= RightVal.GetValue();
     }
   }
-  internal class FnMethod_IsLessThanOrEqual_UInt16 : FnMethod<Boolean> {
+  internal class FnFunction_IsLessThanOrEqual_UInt16 : FnFunction<Boolean> {
     [FnArg] protected FnObject<UInt16> LeftVal;
     [FnArg] protected FnObject<UInt16> RightVal;
 
@@ -2388,7 +2388,7 @@ namespace FunctionScript {
       return LeftVal.GetValue() <= RightVal.GetValue();
     }
   }
-  internal class FnMethod_IsLessThanOrEqual_Int32 : FnMethod<Boolean> {
+  internal class FnFunction_IsLessThanOrEqual_Int32 : FnFunction<Boolean> {
     [FnArg] protected FnObject<Int32> LeftVal;
     [FnArg] protected FnObject<Int32> RightVal;
 
@@ -2396,7 +2396,7 @@ namespace FunctionScript {
       return LeftVal.GetValue() <= RightVal.GetValue();
     }
   }
-  internal class FnMethod_IsLessThanOrEqual_UInt32 : FnMethod<Boolean> {
+  internal class FnFunction_IsLessThanOrEqual_UInt32 : FnFunction<Boolean> {
     [FnArg] protected FnObject<UInt32> LeftVal;
     [FnArg] protected FnObject<UInt32> RightVal;
 
@@ -2404,7 +2404,7 @@ namespace FunctionScript {
       return LeftVal.GetValue() <= RightVal.GetValue();
     }
   }
-  internal class FnMethod_IsLessThanOrEqual_Int64 : FnMethod<Boolean> {
+  internal class FnFunction_IsLessThanOrEqual_Int64 : FnFunction<Boolean> {
     [FnArg] protected FnObject<Int64> LeftVal;
     [FnArg] protected FnObject<Int64> RightVal;
 
@@ -2412,7 +2412,7 @@ namespace FunctionScript {
       return LeftVal.GetValue() <= RightVal.GetValue();
     }
   }
-  internal class FnMethod_IsLessThanOrEqual_UInt64 : FnMethod<Boolean> {
+  internal class FnFunction_IsLessThanOrEqual_UInt64 : FnFunction<Boolean> {
     [FnArg] protected FnObject<UInt64> LeftVal;
     [FnArg] protected FnObject<UInt64> RightVal;
 
@@ -2420,7 +2420,7 @@ namespace FunctionScript {
       return LeftVal.GetValue() <= RightVal.GetValue();
     }
   }
-  internal class FnMethod_IsLessThanOrEqual_Single : FnMethod<Boolean> {
+  internal class FnFunction_IsLessThanOrEqual_Single : FnFunction<Boolean> {
     [FnArg] protected FnObject<Single> LeftVal;
     [FnArg] protected FnObject<Single> RightVal;
 
@@ -2428,7 +2428,7 @@ namespace FunctionScript {
       return LeftVal.GetValue() <= RightVal.GetValue();
     }
   }
-  internal class FnMethod_IsLessThanOrEqual_Double : FnMethod<Boolean> {
+  internal class FnFunction_IsLessThanOrEqual_Double : FnFunction<Boolean> {
     [FnArg] protected FnObject<Double> LeftVal;
     [FnArg] protected FnObject<Double> RightVal;
 
@@ -2436,7 +2436,7 @@ namespace FunctionScript {
       return LeftVal.GetValue() <= RightVal.GetValue();
     }
   }
-  internal class FnMethod_IsLessThanOrEqual_Decimal : FnMethod<Boolean> {
+  internal class FnFunction_IsLessThanOrEqual_Decimal : FnFunction<Boolean> {
     [FnArg] protected FnObject<Decimal> LeftVal;
     [FnArg] protected FnObject<Decimal> RightVal;
 
@@ -2445,7 +2445,7 @@ namespace FunctionScript {
     }
   }
 
-  internal class FnMethod_IsLessThanOrEqual_Char : FnMethod<Boolean> {
+  internal class FnFunction_IsLessThanOrEqual_Char : FnFunction<Boolean> {
     [FnArg] protected FnObject<Char> LeftVal;
     [FnArg] protected FnObject<Char> RightVal;
 
@@ -2454,8 +2454,8 @@ namespace FunctionScript {
     }
   }
   #endregion
-  #region IsEqual Methods
-  internal class FnMethod_IsEqual_Byte : FnMethod<Boolean> {
+  #region IsEqual Functions
+  internal class FnFunction_IsEqual_Byte : FnFunction<Boolean> {
     [FnArg] protected FnObject<Byte> LeftVal;
     [FnArg] protected FnObject<Byte> RightVal;
 
@@ -2463,7 +2463,7 @@ namespace FunctionScript {
       return LeftVal.GetValue() == RightVal.GetValue();
     }
   }
-  internal class FnMethod_IsEqual_SByte : FnMethod<Boolean> {
+  internal class FnFunction_IsEqual_SByte : FnFunction<Boolean> {
     [FnArg] protected FnObject<SByte> LeftVal;
     [FnArg] protected FnObject<SByte> RightVal;
 
@@ -2471,7 +2471,7 @@ namespace FunctionScript {
       return LeftVal.GetValue() == RightVal.GetValue();
     }
   }
-  internal class FnMethod_IsEqual_Int16 : FnMethod<Boolean> {
+  internal class FnFunction_IsEqual_Int16 : FnFunction<Boolean> {
     [FnArg] protected FnObject<Int16> LeftVal;
     [FnArg] protected FnObject<Int16> RightVal;
 
@@ -2479,7 +2479,7 @@ namespace FunctionScript {
       return LeftVal.GetValue() == RightVal.GetValue();
     }
   }
-  internal class FnMethod_IsEqual_UInt16 : FnMethod<Boolean> {
+  internal class FnFunction_IsEqual_UInt16 : FnFunction<Boolean> {
     [FnArg] protected FnObject<UInt16> LeftVal;
     [FnArg] protected FnObject<UInt16> RightVal;
 
@@ -2487,7 +2487,7 @@ namespace FunctionScript {
       return LeftVal.GetValue() == RightVal.GetValue();
     }
   }
-  internal class FnMethod_IsEqual_Int32 : FnMethod<Boolean> {
+  internal class FnFunction_IsEqual_Int32 : FnFunction<Boolean> {
     [FnArg] protected FnObject<Int32> LeftVal;
     [FnArg] protected FnObject<Int32> RightVal;
 
@@ -2495,7 +2495,7 @@ namespace FunctionScript {
       return LeftVal.GetValue() == RightVal.GetValue();
     }
   }
-  internal class FnMethod_IsEqual_UInt32 : FnMethod<Boolean> {
+  internal class FnFunction_IsEqual_UInt32 : FnFunction<Boolean> {
     [FnArg] protected FnObject<UInt32> LeftVal;
     [FnArg] protected FnObject<UInt32> RightVal;
 
@@ -2503,7 +2503,7 @@ namespace FunctionScript {
       return LeftVal.GetValue() == RightVal.GetValue();
     }
   }
-  internal class FnMethod_IsEqual_Int64 : FnMethod<Boolean> {
+  internal class FnFunction_IsEqual_Int64 : FnFunction<Boolean> {
     [FnArg] protected FnObject<Int64> LeftVal;
     [FnArg] protected FnObject<Int64> RightVal;
 
@@ -2511,7 +2511,7 @@ namespace FunctionScript {
       return LeftVal.GetValue() == RightVal.GetValue();
     }
   }
-  internal class FnMethod_IsEqual_UInt64 : FnMethod<Boolean> {
+  internal class FnFunction_IsEqual_UInt64 : FnFunction<Boolean> {
     [FnArg] protected FnObject<UInt64> LeftVal;
     [FnArg] protected FnObject<UInt64> RightVal;
 
@@ -2519,7 +2519,7 @@ namespace FunctionScript {
       return LeftVal.GetValue() == RightVal.GetValue();
     }
   }
-  internal class FnMethod_IsEqual_Single : FnMethod<Boolean> {
+  internal class FnFunction_IsEqual_Single : FnFunction<Boolean> {
     [FnArg] protected FnObject<Single> LeftVal;
     [FnArg] protected FnObject<Single> RightVal;
 
@@ -2527,7 +2527,7 @@ namespace FunctionScript {
       return LeftVal.GetValue() == RightVal.GetValue();
     }
   }
-  internal class FnMethod_IsEqual_Double : FnMethod<Boolean> {
+  internal class FnFunction_IsEqual_Double : FnFunction<Boolean> {
     [FnArg] protected FnObject<Double> LeftVal;
     [FnArg] protected FnObject<Double> RightVal;
 
@@ -2535,7 +2535,7 @@ namespace FunctionScript {
       return LeftVal.GetValue() == RightVal.GetValue();
     }
   }
-  internal class FnMethod_IsEqual_Decimal : FnMethod<Boolean> {
+  internal class FnFunction_IsEqual_Decimal : FnFunction<Boolean> {
     [FnArg] protected FnObject<Decimal> LeftVal;
     [FnArg] protected FnObject<Decimal> RightVal;
 
@@ -2544,7 +2544,7 @@ namespace FunctionScript {
     }
   }
 
-  internal class FnMethod_IsEqual_Char : FnMethod<Boolean> {
+  internal class FnFunction_IsEqual_Char : FnFunction<Boolean> {
     [FnArg] protected FnObject<Char> LeftVal;
     [FnArg] protected FnObject<Char> RightVal;
 
@@ -2552,7 +2552,7 @@ namespace FunctionScript {
       return LeftVal.GetValue() == RightVal.GetValue();
     }
   }
-  internal class FnMethod_IsEqual_String : FnMethod<Boolean> {
+  internal class FnFunction_IsEqual_String : FnFunction<Boolean> {
     [FnArg] protected FnObject<String> LeftVal;
     [FnArg] protected FnObject<String> RightVal;
 
@@ -2561,7 +2561,7 @@ namespace FunctionScript {
     }
   }
 
-  internal class FnMethod_IsEqual_Boolean : FnMethod<Boolean> {
+  internal class FnFunction_IsEqual_Boolean : FnFunction<Boolean> {
     [FnArg] protected FnObject<Boolean> LeftVal;
     [FnArg] protected FnObject<Boolean> RightVal;
 
@@ -2570,7 +2570,7 @@ namespace FunctionScript {
     }
   }
 
-  internal class FnMethod_IsEqual_Object : FnMethod<Boolean> {
+  internal class FnFunction_IsEqual_Object : FnFunction<Boolean> {
     [FnArg] protected FnObject<Object> LeftVal;
     [FnArg] protected FnObject<Object> RightVal;
 
@@ -2579,8 +2579,8 @@ namespace FunctionScript {
     }
   }
   #endregion
-  #region IsNotEqual Methods
-  internal class FnMethod_IsNotEqual_Byte : FnMethod<Boolean> {
+  #region IsNotEqual Functions
+  internal class FnFunction_IsNotEqual_Byte : FnFunction<Boolean> {
     [FnArg] protected FnObject<Byte> LeftVal;
     [FnArg] protected FnObject<Byte> RightVal;
 
@@ -2588,7 +2588,7 @@ namespace FunctionScript {
       return LeftVal.GetValue() != RightVal.GetValue();
     }
   }
-  internal class FnMethod_IsNotEqual_SByte : FnMethod<Boolean> {
+  internal class FnFunction_IsNotEqual_SByte : FnFunction<Boolean> {
     [FnArg] protected FnObject<SByte> LeftVal;
     [FnArg] protected FnObject<SByte> RightVal;
 
@@ -2596,7 +2596,7 @@ namespace FunctionScript {
       return LeftVal.GetValue() != RightVal.GetValue();
     }
   }
-  internal class FnMethod_IsNotEqual_Int16 : FnMethod<Boolean> {
+  internal class FnFunction_IsNotEqual_Int16 : FnFunction<Boolean> {
     [FnArg] protected FnObject<Int16> LeftVal;
     [FnArg] protected FnObject<Int16> RightVal;
 
@@ -2604,7 +2604,7 @@ namespace FunctionScript {
       return LeftVal.GetValue() != RightVal.GetValue();
     }
   }
-  internal class FnMethod_IsNotEqual_UInt16 : FnMethod<Boolean> {
+  internal class FnFunction_IsNotEqual_UInt16 : FnFunction<Boolean> {
     [FnArg] protected FnObject<UInt16> LeftVal;
     [FnArg] protected FnObject<UInt16> RightVal;
 
@@ -2612,7 +2612,7 @@ namespace FunctionScript {
       return LeftVal.GetValue() != RightVal.GetValue();
     }
   }
-  internal class FnMethod_IsNotEqual_Int32 : FnMethod<Boolean> {
+  internal class FnFunction_IsNotEqual_Int32 : FnFunction<Boolean> {
     [FnArg] protected FnObject<Int32> LeftVal;
     [FnArg] protected FnObject<Int32> RightVal;
 
@@ -2620,7 +2620,7 @@ namespace FunctionScript {
       return LeftVal.GetValue() != RightVal.GetValue();
     }
   }
-  internal class FnMethod_IsNotEqual_UInt32 : FnMethod<Boolean> {
+  internal class FnFunction_IsNotEqual_UInt32 : FnFunction<Boolean> {
     [FnArg] protected FnObject<UInt32> LeftVal;
     [FnArg] protected FnObject<UInt32> RightVal;
 
@@ -2628,7 +2628,7 @@ namespace FunctionScript {
       return LeftVal.GetValue() != RightVal.GetValue();
     }
   }
-  internal class FnMethod_IsNotEqual_Int64 : FnMethod<Boolean> {
+  internal class FnFunction_IsNotEqual_Int64 : FnFunction<Boolean> {
     [FnArg] protected FnObject<Int64> LeftVal;
     [FnArg] protected FnObject<Int64> RightVal;
 
@@ -2636,7 +2636,7 @@ namespace FunctionScript {
       return LeftVal.GetValue() != RightVal.GetValue();
     }
   }
-  internal class FnMethod_IsNotEqual_UInt64 : FnMethod<Boolean> {
+  internal class FnFunction_IsNotEqual_UInt64 : FnFunction<Boolean> {
     [FnArg] protected FnObject<UInt64> LeftVal;
     [FnArg] protected FnObject<UInt64> RightVal;
 
@@ -2644,7 +2644,7 @@ namespace FunctionScript {
       return LeftVal.GetValue() != RightVal.GetValue();
     }
   }
-  internal class FnMethod_IsNotEqual_Single : FnMethod<Boolean> {
+  internal class FnFunction_IsNotEqual_Single : FnFunction<Boolean> {
     [FnArg] protected FnObject<Single> LeftVal;
     [FnArg] protected FnObject<Single> RightVal;
 
@@ -2652,7 +2652,7 @@ namespace FunctionScript {
       return LeftVal.GetValue() != RightVal.GetValue();
     }
   }
-  internal class FnMethod_IsNotEqual_Double : FnMethod<Boolean> {
+  internal class FnFunction_IsNotEqual_Double : FnFunction<Boolean> {
     [FnArg] protected FnObject<Double> LeftVal;
     [FnArg] protected FnObject<Double> RightVal;
 
@@ -2660,7 +2660,7 @@ namespace FunctionScript {
       return LeftVal.GetValue() != RightVal.GetValue();
     }
   }
-  internal class FnMethod_IsNotEqual_Decimal : FnMethod<Boolean> {
+  internal class FnFunction_IsNotEqual_Decimal : FnFunction<Boolean> {
     [FnArg] protected FnObject<Decimal> LeftVal;
     [FnArg] protected FnObject<Decimal> RightVal;
 
@@ -2669,7 +2669,7 @@ namespace FunctionScript {
     }
   }
 
-  internal class FnMethod_IsNotEqual_Char : FnMethod<Boolean> {
+  internal class FnFunction_IsNotEqual_Char : FnFunction<Boolean> {
     [FnArg] protected FnObject<Char> LeftVal;
     [FnArg] protected FnObject<Char> RightVal;
 
@@ -2677,7 +2677,7 @@ namespace FunctionScript {
       return LeftVal.GetValue() != RightVal.GetValue();
     }
   }
-  internal class FnMethod_IsNotEqual_String : FnMethod<Boolean> {
+  internal class FnFunction_IsNotEqual_String : FnFunction<Boolean> {
     [FnArg] protected FnObject<String> LeftVal;
     [FnArg] protected FnObject<String> RightVal;
 
@@ -2686,7 +2686,7 @@ namespace FunctionScript {
     }
   }
 
-  internal class FnMethod_IsNotEqual_Boolean : FnMethod<Boolean> {
+  internal class FnFunction_IsNotEqual_Boolean : FnFunction<Boolean> {
     [FnArg] protected FnObject<Boolean> LeftVal;
     [FnArg] protected FnObject<Boolean> RightVal;
 
@@ -2695,7 +2695,7 @@ namespace FunctionScript {
     }
   }
 
-  internal class FnMethod_IsNotEqual_Object : FnMethod<Boolean> {
+  internal class FnFunction_IsNotEqual_Object : FnFunction<Boolean> {
     [FnArg] protected FnObject<Object> LeftVal;
     [FnArg] protected FnObject<Object> RightVal;
 
@@ -2704,8 +2704,8 @@ namespace FunctionScript {
     }
   }
   #endregion
-  #region And Methods
-  internal class FnMethod_And : FnMethod<Boolean> {
+  #region And Functions
+  internal class FnFunction_And : FnFunction<Boolean> {
     [FnArg] protected FnObject<Boolean> LeftVal;
     [FnArg] protected FnObject<Boolean> RightVal;
 
@@ -2714,8 +2714,8 @@ namespace FunctionScript {
     }
   }
   #endregion
-  #region Nand Methods
-  internal class FnMethod_Nand : FnMethod<Boolean> {
+  #region Nand Functions
+  internal class FnFunction_Nand : FnFunction<Boolean> {
     [FnArg] protected FnObject<Boolean> LeftVal;
     [FnArg] protected FnObject<Boolean> RightVal;
 
@@ -2724,8 +2724,8 @@ namespace FunctionScript {
     }
   }
   #endregion
-  #region Or Methods
-  internal class FnMethod_Or : FnMethod<Boolean> {
+  #region Or Functions
+  internal class FnFunction_Or : FnFunction<Boolean> {
     [FnArg] protected FnObject<Boolean> LeftVal;
     [FnArg] protected FnObject<Boolean> RightVal;
 
@@ -2734,8 +2734,8 @@ namespace FunctionScript {
     }
   }
   #endregion
-  #region Nor Methods
-  internal class FnMethod_Nor : FnMethod<Boolean> {
+  #region Nor Functions
+  internal class FnFunction_Nor : FnFunction<Boolean> {
     [FnArg] protected FnObject<Boolean> LeftVal;
     [FnArg] protected FnObject<Boolean> RightVal;
 
@@ -2744,8 +2744,8 @@ namespace FunctionScript {
     }
   }
   #endregion
-  #region Xor Methods
-  internal class FnMethod_Xor : FnMethod<Boolean> {
+  #region Xor Functions
+  internal class FnFunction_Xor : FnFunction<Boolean> {
     [FnArg] protected FnObject<Boolean> LeftVal;
     [FnArg] protected FnObject<Boolean> RightVal;
 
@@ -2756,24 +2756,24 @@ namespace FunctionScript {
   #endregion
   //This is where my XNor would go, IF I HAD ONE!! (obscure Fairly Odd Parents reference) Insert when 2.5 conversion is done
   #endregion
-  #region Void Method Wrappers
+  #region Void Function Wrappers
   // Public so people can reference it with their own types
-  public class FnMethod_Return<T> : FnMethod<T> {
+  public class FnFunction_Return<T> : FnFunction<T> {
     [FnArg] protected FnObject<T> ReturnValue;
-    [FnArg] protected FnObject<Object> VoidMethod;
+    [FnArg] protected FnObject<Object> VoidFunction;
 
     public override T GetValue() {
-      // Execute the VoidMethod
-      VoidMethod.GetValue();
+      // Execute the VoidFunction
+      VoidFunction.GetValue();
 
       // Return the desired value
       return ReturnValue.GetValue();
     }
   }
   #endregion
-  #region Nullable Types Helper Methods
-  #region IsNull Methods
-  internal class FnMethod_IsNull : FnMethod<Boolean> {
+  #region Nullable Types Helper Functions
+  #region IsNull Functions
+  internal class FnFunction_IsNull : FnFunction<Boolean> {
     [FnArg] protected FnObject<Object> Param0;
 
     public override Boolean GetValue() {
@@ -2781,12 +2781,12 @@ namespace FunctionScript {
     }
   }
   #endregion
-  #region Nullable GetValue Methods
+  #region Nullable GetValue Functions
   // Allows you to get a value from a nullable type
   // Public so people can extend it with their own types
-  public class FnMethod_GetValue<T> : FnMethod<T>
+  public class FnFunction_GetValue<T> : FnFunction<T>
       where T : struct {
-    //Method parameters
+    //Function parameters
     [FnArg] protected FnObject<Nullable<T>> NullableObject;
 
     public override T GetValue() {
@@ -2796,23 +2796,23 @@ namespace FunctionScript {
   #endregion
   #endregion
 
-  #region .Net Math Wrapper Methods
+  #region .Net Math Wrapper Functions
   #region Math.Abs
-  internal class FnMethod_Abs_Decimal : FnMethod<Decimal> {
+  internal class FnFunction_Abs_Decimal : FnFunction<Decimal> {
     [FnArg] protected FnObject<Decimal> Param0;
 
     public override Decimal GetValue() {
       return Math.Abs(Param0.GetValue());
     }
   }
-  internal class FnMethod_Abs_Double : FnMethod<Double> {
+  internal class FnFunction_Abs_Double : FnFunction<Double> {
     [FnArg] protected FnObject<Double> Param0;
 
     public override Double GetValue() {
       return Math.Abs(Param0.GetValue());
     }
   }
-  internal class FnMethod_Abs_Single : FnMethod<Single> {
+  internal class FnFunction_Abs_Single : FnFunction<Single> {
     [FnArg] protected FnObject<Single> Param0;
 
     public override Single GetValue() {
@@ -2820,28 +2820,28 @@ namespace FunctionScript {
     }
   }
 
-  internal class FnMethod_Abs_Int64 : FnMethod<Int64> {
+  internal class FnFunction_Abs_Int64 : FnFunction<Int64> {
     [FnArg] protected FnObject<Int64> Param0;
 
     public override Int64 GetValue() {
       return Math.Abs(Param0.GetValue());
     }
   }
-  internal class FnMethod_Abs_Int32 : FnMethod<Int32> {
+  internal class FnFunction_Abs_Int32 : FnFunction<Int32> {
     [FnArg] protected FnObject<Int32> Param0;
 
     public override Int32 GetValue() {
       return Math.Abs(Param0.GetValue());
     }
   }
-  internal class FnMethod_Abs_Int16 : FnMethod<Int16> {
+  internal class FnFunction_Abs_Int16 : FnFunction<Int16> {
     [FnArg] protected FnObject<Int16> Param0;
 
     public override Int16 GetValue() {
       return Math.Abs(Param0.GetValue());
     }
   }
-  internal class FnMethod_Abs_SByte : FnMethod<SByte> {
+  internal class FnFunction_Abs_SByte : FnFunction<SByte> {
     [FnArg] protected FnObject<SByte> Param0;
 
     public override SByte GetValue() {
@@ -2850,14 +2850,14 @@ namespace FunctionScript {
   }
   #endregion
   #region Math.Acos
-  internal class FnMethod_Acos_Double : FnMethod<Double> {
+  internal class FnFunction_Acos_Double : FnFunction<Double> {
     [FnArg] protected FnObject<Double> Param0;
 
     public override Double GetValue() {
       return Math.Acos(Param0.GetValue());
     }
   }
-  internal class FnMethod_Acos_Single : FnMethod<Single> {
+  internal class FnFunction_Acos_Single : FnFunction<Single> {
     [FnArg] protected FnObject<Single> Param0;
 
     public override Single GetValue() {
@@ -2866,14 +2866,14 @@ namespace FunctionScript {
   }
   #endregion
   #region Math.Asin
-  internal class FnMethod_Asin_Double : FnMethod<Double> {
+  internal class FnFunction_Asin_Double : FnFunction<Double> {
     [FnArg] protected FnObject<Double> Param0;
 
     public override Double GetValue() {
       return Math.Asin(Param0.GetValue());
     }
   }
-  internal class FnMethod_Asin_Single : FnMethod<Single> {
+  internal class FnFunction_Asin_Single : FnFunction<Single> {
     [FnArg] protected FnObject<Single> Param0;
 
     public override Single GetValue() {
@@ -2882,14 +2882,14 @@ namespace FunctionScript {
   }
   #endregion
   #region Math.Atan
-  internal class FnMethod_Atan_Double : FnMethod<Double> {
+  internal class FnFunction_Atan_Double : FnFunction<Double> {
     [FnArg] protected FnObject<Double> Param0;
 
     public override Double GetValue() {
       return Math.Atan(Param0.GetValue());
     }
   }
-  internal class FnMethod_Atan_Single : FnMethod<Single> {
+  internal class FnFunction_Atan_Single : FnFunction<Single> {
     [FnArg] protected FnObject<Single> Param0;
 
     public override Single GetValue() {
@@ -2898,7 +2898,7 @@ namespace FunctionScript {
   }
   #endregion
   #region Math.Atan2
-  internal class FnMethod_Atan2_Double : FnMethod<Double> {
+  internal class FnFunction_Atan2_Double : FnFunction<Double> {
     [FnArg] protected FnObject<Double> Param0;
     [FnArg] protected FnObject<Double> Param1;
 
@@ -2906,7 +2906,7 @@ namespace FunctionScript {
       return Math.Atan2(Param0.GetValue(), Param1.GetValue());
     }
   }
-  internal class FnMethod_Atan2_Single : FnMethod<Single> {
+  internal class FnFunction_Atan2_Single : FnFunction<Single> {
     [FnArg] protected FnObject<Single> Param0;
     [FnArg] protected FnObject<Single> Param1;
 
@@ -2916,14 +2916,14 @@ namespace FunctionScript {
   }
   #endregion
   #region Math.Ceiling
-  internal class FnMethod_Ceiling_Double : FnMethod<Double> {
+  internal class FnFunction_Ceiling_Double : FnFunction<Double> {
     [FnArg] protected FnObject<Double> Param0;
 
     public override Double GetValue() {
       return Math.Ceiling(Param0.GetValue());
     }
   }
-  internal class FnMethod_Ceiling_Single : FnMethod<Single> {
+  internal class FnFunction_Ceiling_Single : FnFunction<Single> {
     [FnArg] protected FnObject<Single> Param0;
 
     public override Single GetValue() {
@@ -2932,14 +2932,14 @@ namespace FunctionScript {
   }
   #endregion
   #region Math.Cos
-  internal class FnMethod_Cos_Double : FnMethod<Double> {
+  internal class FnFunction_Cos_Double : FnFunction<Double> {
     [FnArg] protected FnObject<Double> Param0;
 
     public override Double GetValue() {
       return Math.Cos(Param0.GetValue());
     }
   }
-  internal class FnMethod_Cos_Single : FnMethod<Single> {
+  internal class FnFunction_Cos_Single : FnFunction<Single> {
     [FnArg] protected FnObject<Single> Param0;
 
     public override Single GetValue() {
@@ -2948,14 +2948,14 @@ namespace FunctionScript {
   }
   #endregion
   #region Math.Cosh
-  internal class FnMethod_Cosh_Double : FnMethod<Double> {
+  internal class FnFunction_Cosh_Double : FnFunction<Double> {
     [FnArg] protected FnObject<Double> Param0;
 
     public override Double GetValue() {
       return Math.Cosh(Param0.GetValue());
     }
   }
-  internal class FnMethod_Cosh_Single : FnMethod<Single> {
+  internal class FnFunction_Cosh_Single : FnFunction<Single> {
     [FnArg] protected FnObject<Single> Param0;
 
     public override Single GetValue() {
@@ -2964,42 +2964,42 @@ namespace FunctionScript {
   }
   #endregion
   #region Math.Exp
-  internal class FnMethod_Exp_Int32 : FnMethod<Int32> {
+  internal class FnFunction_Exp_Int32 : FnFunction<Int32> {
     [FnArg] protected FnObject<Int32> Param0;
 
     public override Int32 GetValue() {
       return (Int32)Math.Exp(Param0.GetValue());
     }
   }
-  internal class FnMethod_Exp_UInt32 : FnMethod<UInt32> {
+  internal class FnFunction_Exp_UInt32 : FnFunction<UInt32> {
     [FnArg] protected FnObject<UInt32> Param0;
 
     public override UInt32 GetValue() {
       return (UInt32)Math.Exp(Param0.GetValue());
     }
   }
-  internal class FnMethod_Exp_Int64 : FnMethod<Int64> {
+  internal class FnFunction_Exp_Int64 : FnFunction<Int64> {
     [FnArg] protected FnObject<Int64> Param0;
 
     public override Int64 GetValue() {
       return (Int64)Math.Exp(Param0.GetValue());
     }
   }
-  internal class FnMethod_Exp_UInt64 : FnMethod<UInt64> {
+  internal class FnFunction_Exp_UInt64 : FnFunction<UInt64> {
     [FnArg] protected FnObject<UInt64> Param0;
 
     public override UInt64 GetValue() {
       return (UInt64)Math.Exp(Param0.GetValue());
     }
   }
-  internal class FnMethod_Exp_Single : FnMethod<Single> {
+  internal class FnFunction_Exp_Single : FnFunction<Single> {
     [FnArg] protected FnObject<Single> Param0;
 
     public override Single GetValue() {
       return (Single)Math.Exp(Param0.GetValue());
     }
   }
-  internal class FnMethod_Exp_Double : FnMethod<Double> {
+  internal class FnFunction_Exp_Double : FnFunction<Double> {
     [FnArg] protected FnObject<Double> Param0;
 
     public override Double GetValue() {
@@ -3008,14 +3008,14 @@ namespace FunctionScript {
   }
   #endregion
   #region Math.Floor
-  internal class FnMethod_Floor_Double : FnMethod<Double> {
+  internal class FnFunction_Floor_Double : FnFunction<Double> {
     [FnArg] protected FnObject<Double> Param0;
 
     public override Double GetValue() {
       return Math.Floor(Param0.GetValue());
     }
   }
-  internal class FnMethod_Floor_Single : FnMethod<Single> {
+  internal class FnFunction_Floor_Single : FnFunction<Single> {
     [FnArg] protected FnObject<Single> Param0;
 
     public override Single GetValue() {
@@ -3024,7 +3024,7 @@ namespace FunctionScript {
   }
   #endregion
   #region Math.IEEERemainder
-  internal class FnMethod_IEEERemainder : FnMethod<Double> {
+  internal class FnFunction_IEEERemainder : FnFunction<Double> {
     [FnArg] protected FnObject<Double> Param0;
     [FnArg] protected FnObject<Double> Param1;
 
@@ -3034,21 +3034,21 @@ namespace FunctionScript {
   }
   #endregion
   #region Math.Log
-  internal class FnMethod_Log_BaseE_Single : FnMethod<Single> {
+  internal class FnFunction_Log_BaseE_Single : FnFunction<Single> {
     [FnArg] protected FnObject<Single> Param0;
 
     public override Single GetValue() {
       return (Single)Math.Log(Param0.GetValue());
     }
   }
-  internal class FnMethod_Log_BaseE_Double : FnMethod<Double> {
+  internal class FnFunction_Log_BaseE_Double : FnFunction<Double> {
     [FnArg] protected FnObject<Double> Param0;
 
     public override Double GetValue() {
       return Math.Log(Param0.GetValue());
     }
   }
-  internal class FnMethod_Log_CustomBase_Single : FnMethod<Single> {
+  internal class FnFunction_Log_CustomBase_Single : FnFunction<Single> {
     [FnArg] protected FnObject<Single> Param0;
     [FnArg] protected FnObject<Single> Base;
 
@@ -3056,7 +3056,7 @@ namespace FunctionScript {
       return (Single)Math.Log(Param0.GetValue(), Base.GetValue());
     }
   }
-  internal class FnMethod_Log_CustomBase_Double : FnMethod<Double> {
+  internal class FnFunction_Log_CustomBase_Double : FnFunction<Double> {
     [FnArg] protected FnObject<Double> Param0;
     [FnArg] protected FnObject<Double> Base;
 
@@ -3066,14 +3066,14 @@ namespace FunctionScript {
   }
   #endregion
   #region Math.Log10
-  internal class FnMethod_Log10_Single : FnMethod<Single> {
+  internal class FnFunction_Log10_Single : FnFunction<Single> {
     [FnArg] protected FnObject<Single> Param0;
 
     public override Single GetValue() {
       return (Single)Math.Log10(Param0.GetValue());
     }
   }
-  internal class FnMethod_Log10_Double : FnMethod<Double> {
+  internal class FnFunction_Log10_Double : FnFunction<Double> {
     [FnArg] protected FnObject<Double> Param0;
 
     public override Double GetValue() {
@@ -3082,7 +3082,7 @@ namespace FunctionScript {
   }
   #endregion
   #region Math.Max
-  internal class FnMethod_Max_Byte : FnMethod<Byte> {
+  internal class FnFunction_Max_Byte : FnFunction<Byte> {
     [FnArg] protected FnObject<Byte> A;
     [FnArg] protected FnObject<Byte> B;
 
@@ -3090,7 +3090,7 @@ namespace FunctionScript {
       return Math.Max(A.GetValue(), B.GetValue());
     }
   }
-  internal class FnMethod_Max_SByte : FnMethod<SByte> {
+  internal class FnFunction_Max_SByte : FnFunction<SByte> {
     [FnArg] protected FnObject<SByte> A;
     [FnArg] protected FnObject<SByte> B;
 
@@ -3098,7 +3098,7 @@ namespace FunctionScript {
       return Math.Max(A.GetValue(), B.GetValue());
     }
   }
-  internal class FnMethod_Max_Int16 : FnMethod<Int16> {
+  internal class FnFunction_Max_Int16 : FnFunction<Int16> {
     [FnArg] protected FnObject<Int16> A;
     [FnArg] protected FnObject<Int16> B;
 
@@ -3106,7 +3106,7 @@ namespace FunctionScript {
       return Math.Max(A.GetValue(), B.GetValue());
     }
   }
-  internal class FnMethod_Max_UInt16 : FnMethod<UInt16> {
+  internal class FnFunction_Max_UInt16 : FnFunction<UInt16> {
     [FnArg] protected FnObject<UInt16> A;
     [FnArg] protected FnObject<UInt16> B;
 
@@ -3114,7 +3114,7 @@ namespace FunctionScript {
       return Math.Max(A.GetValue(), B.GetValue());
     }
   }
-  internal class FnMethod_Max_Int32 : FnMethod<Int32> {
+  internal class FnFunction_Max_Int32 : FnFunction<Int32> {
     [FnArg] protected FnObject<Int32> A;
     [FnArg] protected FnObject<Int32> B;
 
@@ -3122,7 +3122,7 @@ namespace FunctionScript {
       return Math.Max(A.GetValue(), B.GetValue());
     }
   }
-  internal class FnMethod_Max_UInt32 : FnMethod<UInt32> {
+  internal class FnFunction_Max_UInt32 : FnFunction<UInt32> {
     [FnArg] protected FnObject<UInt32> A;
     [FnArg] protected FnObject<UInt32> B;
 
@@ -3130,7 +3130,7 @@ namespace FunctionScript {
       return Math.Max(A.GetValue(), B.GetValue());
     }
   }
-  internal class FnMethod_Max_Int64 : FnMethod<Int64> {
+  internal class FnFunction_Max_Int64 : FnFunction<Int64> {
     [FnArg] protected FnObject<Int64> A;
     [FnArg] protected FnObject<Int64> B;
 
@@ -3138,7 +3138,7 @@ namespace FunctionScript {
       return Math.Max(A.GetValue(), B.GetValue());
     }
   }
-  internal class FnMethod_Max_UInt64 : FnMethod<UInt64> {
+  internal class FnFunction_Max_UInt64 : FnFunction<UInt64> {
     [FnArg] protected FnObject<UInt64> A;
     [FnArg] protected FnObject<UInt64> B;
 
@@ -3147,7 +3147,7 @@ namespace FunctionScript {
     }
   }
 
-  internal class FnMethod_Max_Single : FnMethod<Single> {
+  internal class FnFunction_Max_Single : FnFunction<Single> {
     [FnArg] protected FnObject<Single> A;
     [FnArg] protected FnObject<Single> B;
 
@@ -3155,7 +3155,7 @@ namespace FunctionScript {
       return Math.Max(A.GetValue(), B.GetValue());
     }
   }
-  internal class FnMethod_Max_Double : FnMethod<Double> {
+  internal class FnFunction_Max_Double : FnFunction<Double> {
     [FnArg] protected FnObject<Double> A;
     [FnArg] protected FnObject<Double> B;
 
@@ -3163,7 +3163,7 @@ namespace FunctionScript {
       return Math.Max(A.GetValue(), B.GetValue());
     }
   }
-  internal class FnMethod_Max_Decimal : FnMethod<Decimal> {
+  internal class FnFunction_Max_Decimal : FnFunction<Decimal> {
     [FnArg] protected FnObject<Decimal> A;
     [FnArg] protected FnObject<Decimal> B;
 
@@ -3173,7 +3173,7 @@ namespace FunctionScript {
   }
   #endregion
   #region Math.Min
-  internal class FnMethod_Min_Byte : FnMethod<Byte> {
+  internal class FnFunction_Min_Byte : FnFunction<Byte> {
     [FnArg] protected FnObject<Byte> Param0;
     [FnArg] protected FnObject<Byte> Param1;
 
@@ -3181,7 +3181,7 @@ namespace FunctionScript {
       return Math.Min(Param0.GetValue(), Param1.GetValue());
     }
   }
-  internal class FnMethod_Min_SByte : FnMethod<SByte> {
+  internal class FnFunction_Min_SByte : FnFunction<SByte> {
     [FnArg] protected FnObject<SByte> Param0;
     [FnArg] protected FnObject<SByte> Param1;
 
@@ -3189,7 +3189,7 @@ namespace FunctionScript {
       return Math.Min(Param0.GetValue(), Param1.GetValue());
     }
   }
-  internal class FnMethod_Min_Int16 : FnMethod<Int16> {
+  internal class FnFunction_Min_Int16 : FnFunction<Int16> {
     [FnArg] protected FnObject<Int16> Param0;
     [FnArg] protected FnObject<Int16> Param1;
 
@@ -3197,7 +3197,7 @@ namespace FunctionScript {
       return Math.Min(Param0.GetValue(), Param1.GetValue());
     }
   }
-  internal class FnMethod_Min_UInt16 : FnMethod<UInt16> {
+  internal class FnFunction_Min_UInt16 : FnFunction<UInt16> {
     [FnArg] protected FnObject<UInt16> Param0;
     [FnArg] protected FnObject<UInt16> Param1;
 
@@ -3205,7 +3205,7 @@ namespace FunctionScript {
       return Math.Min(Param0.GetValue(), Param1.GetValue());
     }
   }
-  internal class FnMethod_Min_Int32 : FnMethod<Int32> {
+  internal class FnFunction_Min_Int32 : FnFunction<Int32> {
     [FnArg] protected FnObject<Int32> Param0;
     [FnArg] protected FnObject<Int32> Param1;
 
@@ -3213,7 +3213,7 @@ namespace FunctionScript {
       return Math.Min(Param0.GetValue(), Param1.GetValue());
     }
   }
-  internal class FnMethod_Min_UInt32 : FnMethod<UInt32> {
+  internal class FnFunction_Min_UInt32 : FnFunction<UInt32> {
     [FnArg] protected FnObject<UInt32> Param0;
     [FnArg] protected FnObject<UInt32> Param1;
 
@@ -3221,7 +3221,7 @@ namespace FunctionScript {
       return Math.Min(Param0.GetValue(), Param1.GetValue());
     }
   }
-  internal class FnMethod_Min_Int64 : FnMethod<Int64> {
+  internal class FnFunction_Min_Int64 : FnFunction<Int64> {
     [FnArg] protected FnObject<Int64> Param0;
     [FnArg] protected FnObject<Int64> Param1;
 
@@ -3229,7 +3229,7 @@ namespace FunctionScript {
       return Math.Min(Param0.GetValue(), Param1.GetValue());
     }
   }
-  internal class FnMethod_Min_UInt64 : FnMethod<UInt64> {
+  internal class FnFunction_Min_UInt64 : FnFunction<UInt64> {
     [FnArg] protected FnObject<UInt64> Param0;
     [FnArg] protected FnObject<UInt64> Param1;
 
@@ -3238,7 +3238,7 @@ namespace FunctionScript {
     }
   }
 
-  internal class FnMethod_Min_Single : FnMethod<Single> {
+  internal class FnFunction_Min_Single : FnFunction<Single> {
     [FnArg] protected FnObject<Single> Param0;
     [FnArg] protected FnObject<Single> Param1;
 
@@ -3246,7 +3246,7 @@ namespace FunctionScript {
       return Math.Min(Param0.GetValue(), Param1.GetValue());
     }
   }
-  internal class FnMethod_Min_Double : FnMethod<Double> {
+  internal class FnFunction_Min_Double : FnFunction<Double> {
     [FnArg] protected FnObject<Double> Param0;
     [FnArg] protected FnObject<Double> Param1;
 
@@ -3254,7 +3254,7 @@ namespace FunctionScript {
       return Math.Min(Param0.GetValue(), Param1.GetValue());
     }
   }
-  internal class FnMethod_Min_Decimal : FnMethod<Decimal> {
+  internal class FnFunction_Min_Decimal : FnFunction<Decimal> {
     [FnArg] protected FnObject<Decimal> Param0;
     [FnArg] protected FnObject<Decimal> Param1;
 
@@ -3264,7 +3264,7 @@ namespace FunctionScript {
   }
   #endregion
   #region Math.Pow
-  internal class FnMethod_Pow_Int32 : FnMethod<Int32> {
+  internal class FnFunction_Pow_Int32 : FnFunction<Int32> {
     [FnArg] protected FnObject<Int32> Num;
     [FnArg] protected FnObject<Int32> Pow;
 
@@ -3272,7 +3272,7 @@ namespace FunctionScript {
       return (Int32)Math.Pow(Num.GetValue(), Pow.GetValue());
     }
   }
-  internal class FnMethod_Pow_UInt32 : FnMethod<UInt32> {
+  internal class FnFunction_Pow_UInt32 : FnFunction<UInt32> {
     [FnArg] protected FnObject<UInt32> Num;
     [FnArg] protected FnObject<UInt32> Pow;
 
@@ -3280,7 +3280,7 @@ namespace FunctionScript {
       return (UInt32)Math.Pow(Num.GetValue(), Pow.GetValue());
     }
   }
-  internal class FnMethod_Pow_Int64 : FnMethod<Int64> {
+  internal class FnFunction_Pow_Int64 : FnFunction<Int64> {
     [FnArg] protected FnObject<Int64> Num;
     [FnArg] protected FnObject<Int64> Pow;
 
@@ -3288,7 +3288,7 @@ namespace FunctionScript {
       return (Int64)Math.Pow(Num.GetValue(), Pow.GetValue());
     }
   }
-  internal class FnMethod_Pow_UInt64 : FnMethod<UInt64> {
+  internal class FnFunction_Pow_UInt64 : FnFunction<UInt64> {
     [FnArg] protected FnObject<UInt64> Num;
     [FnArg] protected FnObject<UInt64> Pow;
 
@@ -3296,7 +3296,7 @@ namespace FunctionScript {
       return (UInt64)Math.Pow(Num.GetValue(), Pow.GetValue());
     }
   }
-  internal class FnMethod_Pow_Single : FnMethod<Single> {
+  internal class FnFunction_Pow_Single : FnFunction<Single> {
     [FnArg] protected FnObject<Single> Num;
     [FnArg] protected FnObject<Single> Pow;
 
@@ -3304,7 +3304,7 @@ namespace FunctionScript {
       return (Single)Math.Pow(Num.GetValue(), Pow.GetValue());
     }
   }
-  internal class FnMethod_Pow_Double : FnMethod<Double> {
+  internal class FnFunction_Pow_Double : FnFunction<Double> {
     [FnArg] protected FnObject<Double> Num;
     [FnArg] protected FnObject<Double> Pow;
 
@@ -3314,21 +3314,21 @@ namespace FunctionScript {
   }
   #endregion
   #region Math.Round
-  internal class FnMethod_Round_Single_1 : FnMethod<Single> {
+  internal class FnFunction_Round_Single_1 : FnFunction<Single> {
     [FnArg] protected FnObject<Single> Num;
 
     public override Single GetValue() {
       return (Single)Math.Round(Num.GetValue());
     }
   }
-  internal class FnMethod_Round_Double_1 : FnMethod<Double> {
+  internal class FnFunction_Round_Double_1 : FnFunction<Double> {
     [FnArg] protected FnObject<Double> Num;
 
     public override Double GetValue() {
       return Math.Round(Num.GetValue());
     }
   }
-  internal class FnMethod_Round_Decimal_1 : FnMethod<Decimal> {
+  internal class FnFunction_Round_Decimal_1 : FnFunction<Decimal> {
     [FnArg] protected FnObject<Decimal> Num;
 
     public override Decimal GetValue() {
@@ -3336,7 +3336,7 @@ namespace FunctionScript {
     }
   }
 
-  internal class FnMethod_Round_Single_2 : FnMethod<Single> {
+  internal class FnFunction_Round_Single_2 : FnFunction<Single> {
     [FnArg] protected FnObject<Single> Num;
     [FnArg] protected FnObject<Int32> Digits;
 
@@ -3344,7 +3344,7 @@ namespace FunctionScript {
       return (Single)Math.Round(Num.GetValue(), Digits.GetValue());
     }
   }
-  internal class FnMethod_Round_Double_2 : FnMethod<Double> {
+  internal class FnFunction_Round_Double_2 : FnFunction<Double> {
     [FnArg] protected FnObject<Double> Num;
     [FnArg] protected FnObject<Int32> Digits;
 
@@ -3352,7 +3352,7 @@ namespace FunctionScript {
       return Math.Round(Num.GetValue(), Digits.GetValue());
     }
   }
-  internal class FnMethod_Round_Decimal_2 : FnMethod<Decimal> {
+  internal class FnFunction_Round_Decimal_2 : FnFunction<Decimal> {
     [FnArg] protected FnObject<Decimal> Num;
     [FnArg] protected FnObject<Int32> Digits;
 
@@ -3362,49 +3362,49 @@ namespace FunctionScript {
   }
   #endregion
   #region Math.Sign
-  internal class FnMethod_Sign_SByte : FnMethod<Int32> {
+  internal class FnFunction_Sign_SByte : FnFunction<Int32> {
     [FnArg] protected FnObject<SByte> Value;
 
     public override Int32 GetValue() {
       return Math.Sign(Value.GetValue());
     }
   }
-  internal class FnMethod_Sign_Int16 : FnMethod<Int32> {
+  internal class FnFunction_Sign_Int16 : FnFunction<Int32> {
     [FnArg] protected FnObject<Int16> Value;
 
     public override Int32 GetValue() {
       return Math.Sign(Value.GetValue());
     }
   }
-  internal class FnMethod_Sign_Int32 : FnMethod<Int32> {
+  internal class FnFunction_Sign_Int32 : FnFunction<Int32> {
     [FnArg] protected FnObject<Int32> Value;
 
     public override Int32 GetValue() {
       return Math.Sign(Value.GetValue());
     }
   }
-  internal class FnMethod_Sign_Int64 : FnMethod<Int32> {
+  internal class FnFunction_Sign_Int64 : FnFunction<Int32> {
     [FnArg] protected FnObject<Int64> Value;
 
     public override Int32 GetValue() {
       return Math.Sign(Value.GetValue());
     }
   }
-  internal class FnMethod_Sign_Single : FnMethod<Int32> {
+  internal class FnFunction_Sign_Single : FnFunction<Int32> {
     [FnArg] protected FnObject<Single> Value;
 
     public override Int32 GetValue() {
       return Math.Sign(Value.GetValue());
     }
   }
-  internal class FnMethod_Sign_Double : FnMethod<Int32> {
+  internal class FnFunction_Sign_Double : FnFunction<Int32> {
     [FnArg] protected FnObject<Double> Value;
 
     public override Int32 GetValue() {
       return Math.Sign(Value.GetValue());
     }
   }
-  internal class FnMethod_Sign_Decimal : FnMethod<Int32> {
+  internal class FnFunction_Sign_Decimal : FnFunction<Int32> {
     [FnArg] protected FnObject<Decimal> Value;
 
     public override Int32 GetValue() {
@@ -3413,14 +3413,14 @@ namespace FunctionScript {
   }
   #endregion
   #region Math.Sin
-  internal class FnMethod_Sin_Single : FnMethod<Single> {
+  internal class FnFunction_Sin_Single : FnFunction<Single> {
     [FnArg] protected FnObject<Single> Value;
 
     public override Single GetValue() {
       return (Single)Math.Sin(Value.GetValue());
     }
   }
-  internal class FnMethod_Sin_Double : FnMethod<Double> {
+  internal class FnFunction_Sin_Double : FnFunction<Double> {
     [FnArg] protected FnObject<Double> Value;
 
     public override Double GetValue() {
@@ -3429,14 +3429,14 @@ namespace FunctionScript {
   }
   #endregion
   #region Math.Sinh
-  internal class FnMethod_Sinh_Single : FnMethod<Single> {
+  internal class FnFunction_Sinh_Single : FnFunction<Single> {
     [FnArg] protected FnObject<Single> Value;
 
     public override Single GetValue() {
       return (Single)Math.Sinh(Value.GetValue());
     }
   }
-  internal class FnMethod_Sinh_Double : FnMethod<Double> {
+  internal class FnFunction_Sinh_Double : FnFunction<Double> {
     [FnArg] protected FnObject<Double> Value;
 
     public override Double GetValue() {
@@ -3445,14 +3445,14 @@ namespace FunctionScript {
   }
   #endregion
   #region Math.Sqrt
-  internal class FnMethod_Sqrt_Single : FnMethod<Single> {
+  internal class FnFunction_Sqrt_Single : FnFunction<Single> {
     [FnArg] protected FnObject<Single> Num;
 
     public override Single GetValue() {
       return (Single)Math.Sqrt(Num.GetValue());
     }
   }
-  internal class FnMethod_Sqrt_Double : FnMethod<Double> {
+  internal class FnFunction_Sqrt_Double : FnFunction<Double> {
     [FnArg] protected FnObject<Double> Num;
 
     public override Double GetValue() {
@@ -3461,14 +3461,14 @@ namespace FunctionScript {
   }
   #endregion
   #region Math.Tan
-  internal class FnMethod_Tan_Single : FnMethod<Single> {
+  internal class FnFunction_Tan_Single : FnFunction<Single> {
     [FnArg] protected FnObject<Single> Num;
 
     public override Single GetValue() {
       return (Single)Math.Tan(Num.GetValue());
     }
   }
-  internal class FnMethod_Tan_Double : FnMethod<Double> {
+  internal class FnFunction_Tan_Double : FnFunction<Double> {
     [FnArg] protected FnObject<Double> Num;
 
     public override Double GetValue() {
@@ -3477,14 +3477,14 @@ namespace FunctionScript {
   }
   #endregion
   #region Math.Tanh
-  internal class FnMethod_Tanh_Single : FnMethod<Single> {
+  internal class FnFunction_Tanh_Single : FnFunction<Single> {
     [FnArg] protected FnObject<Single> Num;
 
     public override Single GetValue() {
       return (Single)Math.Tanh(Num.GetValue());
     }
   }
-  internal class FnMethod_Tanh_Double : FnMethod<Double> {
+  internal class FnFunction_Tanh_Double : FnFunction<Double> {
     [FnArg] protected FnObject<Double> Num;
 
     public override Double GetValue() {
@@ -3494,9 +3494,9 @@ namespace FunctionScript {
   #endregion
   #endregion
 
-  #region Bezier Curve Methods
+  #region Bezier Curve Functions
   #region Quadratic Bezier Curves
-  internal class FnMethod_Bezier_Quadratic_Single : FnMethod<Single> {
+  internal class FnFunction_Bezier_Quadratic_Single : FnFunction<Single> {
     [FnArg] protected FnObject<Single> P0;
     [FnArg] protected FnObject<Single> P1;
     [FnArg] protected FnObject<Single> P2;
@@ -3516,7 +3516,7 @@ namespace FunctionScript {
           (s * s * p2);
     }
   }
-  internal class FnMethod_Bezier_Quadratic_Double : FnMethod<Double> {
+  internal class FnFunction_Bezier_Quadratic_Double : FnFunction<Double> {
     [FnArg] protected FnObject<Double> P0;
     [FnArg] protected FnObject<Double> P1;
     [FnArg] protected FnObject<Double> P2;
@@ -3538,7 +3538,7 @@ namespace FunctionScript {
   }
   #endregion
   #region Cubic Bezier Curves
-  internal class FnMethod_Bezier_Cubic_Single : FnMethod<Single> {
+  internal class FnFunction_Bezier_Cubic_Single : FnFunction<Single> {
     [FnArg] protected FnObject<Single> P0;
     [FnArg] protected FnObject<Single> P1;
     [FnArg] protected FnObject<Single> P2;
@@ -3561,7 +3561,7 @@ namespace FunctionScript {
           (s * s * s * p3);
     }
   }
-  internal class FnMethod_Bezier_Cubic_Double : FnMethod<Double> {
+  internal class FnFunction_Bezier_Cubic_Double : FnFunction<Double> {
     [FnArg] protected FnObject<Double> P0;
     [FnArg] protected FnObject<Double> P1;
     [FnArg] protected FnObject<Double> P2;
@@ -3587,9 +3587,9 @@ namespace FunctionScript {
   #endregion
   #endregion
 
-  #region Other Math Methods
+  #region Other Math Functions
   #region Cycle
-  internal class FnMethod_Cycle_Int32 : FnMethod<Int32> {
+  internal class FnFunction_Cycle_Int32 : FnFunction<Int32> {
     [FnArg] protected FnObject<Int32> Num;
 
     [FnArg] protected FnObject<Int32> LowerBound;
@@ -3604,7 +3604,7 @@ namespace FunctionScript {
       return (value - lowerBound) % (upperBound - lowerBound) + lowerBound;
     }
   }
-  internal class FnMethod_Cycle_Single : FnMethod<Single> {
+  internal class FnFunction_Cycle_Single : FnFunction<Single> {
     [FnArg] protected FnObject<Single> Num;
 
     [FnArg] protected FnObject<Single> LowerBound;
@@ -3621,11 +3621,11 @@ namespace FunctionScript {
   }
   #endregion
   #region RandomInt
-  internal class FnMethod_RandomInt : FnMethod<Int32> {
+  internal class FnFunction_RandomInt : FnFunction<Int32> {
     //The random number generator
     private Random RandomGenerator;
 
-    public FnMethod_RandomInt()
+    public FnFunction_RandomInt()
         : base(new CompileFlags[] { CompileFlags.DO_NOT_CACHE }) {
       RandomGenerator = new Random();
     }
@@ -3635,13 +3635,13 @@ namespace FunctionScript {
       return RandomGenerator.Next();
     }
   }
-  internal class FnMethod_RandomInt_Max : FnMethod<Int32> {
+  internal class FnFunction_RandomInt_Max : FnFunction<Int32> {
     [FnArg] protected FnObject<Int32> MaxValue;
 
     // The random number generator
     private Random RandomGenerator;
 
-    public FnMethod_RandomInt_Max()
+    public FnFunction_RandomInt_Max()
         : base(new CompileFlags[] { CompileFlags.DO_NOT_CACHE }) {
       RandomGenerator = new Random();
     }
@@ -3650,14 +3650,14 @@ namespace FunctionScript {
       return RandomGenerator.Next(MaxValue.GetValue());
     }
   }
-  internal class FnMethod_RandomInt_Min_Max : FnMethod<Int32> {
+  internal class FnFunction_RandomInt_Min_Max : FnFunction<Int32> {
     [FnArg] protected FnObject<Int32> MinValue;
     [FnArg] protected FnObject<Int32> MaxValue;
 
     //The random number generator
     private Random RandomGenerator;
 
-    public FnMethod_RandomInt_Min_Max()
+    public FnFunction_RandomInt_Min_Max()
         : base(new CompileFlags[] { CompileFlags.DO_NOT_CACHE }) {
       RandomGenerator = new Random();
     }
@@ -3669,13 +3669,13 @@ namespace FunctionScript {
   #endregion
   #endregion
 
-  #region FnObject Parameter Methods
+  #region FnObject Parameter Functions
   #region SetParameter
-  internal class FnMethod_SetParameter<T> : FnMethod<Object> {
+  internal class FnFunction_SetParameter<T> : FnFunction<Object> {
     [FnArg] protected FnVariable<T> Parameter;
     [FnArg] protected FnObject<T> Value;
 
-    public FnMethod_SetParameter()
+    public FnFunction_SetParameter()
         : base(new CompileFlags[] { CompileFlags.DO_NOT_CACHE }) {
     }
 
@@ -3695,10 +3695,10 @@ namespace FunctionScript {
   #endregion
   #endregion
 
-  #region String Methods
-  #region String Class Wrapper Methods
+  #region String Functions
+  #region String Class Wrapper Functions
   #region SubString
-  internal class FnMethod_SubString_StartOnly : FnMethod<String> {
+  internal class FnFunction_SubString_StartOnly : FnFunction<String> {
     [FnArg] protected FnObject<String> SourceString;
     [FnArg] protected FnObject<Int32> StartIndex;
 
@@ -3706,7 +3706,7 @@ namespace FunctionScript {
       return SourceString.GetValue().Substring(StartIndex.GetValue());
     }
   }
-  internal class FnMethod_SubString_StartAndEnd : FnMethod<String> {
+  internal class FnFunction_SubString_StartAndEnd : FnFunction<String> {
     [FnArg] protected FnObject<String> SourceString;
     [FnArg] protected FnObject<Int32> StartIndex;
     [FnArg] protected FnObject<Int32> Length;
@@ -3717,17 +3717,17 @@ namespace FunctionScript {
   }
   #endregion
   #endregion
-  #region Custom String Methods
+  #region Custom String Functions
   #region RandomString
-  internal class FnMethod_RandomString_WithoutPrefix : FnMethod<String> {
+  internal class FnFunction_RandomString_WithoutPrefix : FnFunction<String> {
     /// <summary>
-    /// Generates the random String
+    /// Generates the random String.
     /// </summary>
     Random RandomGenerator;
 
     [FnArg] protected FnObject<Int32> Length;
 
-    public FnMethod_RandomString_WithoutPrefix()
+    public FnFunction_RandomString_WithoutPrefix()
         : base(new CompileFlags[] { CompileFlags.DO_NOT_CACHE }) {
       RandomGenerator = new Random();
     }
@@ -3748,13 +3748,13 @@ namespace FunctionScript {
       return output.ToString();
     }
   }
-  internal class FnMethod_RandomString_WithPrefix : FnMethod<String> {
+  internal class FnFunction_RandomString_WithPrefix : FnFunction<String> {
     Random RandomGenerator;
 
     [FnArg] protected FnObject<Int32> Length;
     [FnArg] protected FnObject<String> Prefix;
 
-    public FnMethod_RandomString_WithPrefix()
+    public FnFunction_RandomString_WithPrefix()
         : base(new CompileFlags[] { CompileFlags.DO_NOT_CACHE }) {
       RandomGenerator = new Random();
     }
@@ -3776,7 +3776,7 @@ namespace FunctionScript {
   }
   #endregion
   #region LengthOf
-  internal class FnMethod_LengthOf : FnMethod<Int32> {
+  internal class FnFunction_LengthOf : FnFunction<Int32> {
     [FnArg] protected FnObject<String> Input;
 
     public override Int32 GetValue() {
@@ -3785,7 +3785,7 @@ namespace FunctionScript {
   }
   #endregion
   #region CharAt
-  internal class FnMethod_CharAt : FnMethod<Char> {
+  internal class FnFunction_CharAt : FnFunction<Char> {
     [FnArg] protected FnObject<String> Input;
     [FnArg] protected FnObject<Int32> Index;
 
@@ -3802,7 +3802,7 @@ namespace FunctionScript {
   }
   #endregion
   #region Reverse
-  internal class FnMethod_Reverse : FnMethod<String> {
+  internal class FnFunction_Reverse : FnFunction<String> {
     [FnArg] protected FnObject<String> Input;
 
     public override String GetValue() {

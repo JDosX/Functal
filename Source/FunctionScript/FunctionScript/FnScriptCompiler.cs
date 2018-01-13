@@ -32,7 +32,7 @@ namespace FunctionScript {
       UnaryPrefixOperator,
       UnarySuffixOperator,
       Name,
-      MethodName,
+      FunctionName,
       StartGrouping,
       EndGrouping,
       DivisionGrouping,
@@ -214,7 +214,7 @@ namespace FunctionScript {
       }
       #endregion
 
-      Stack<Int32> methodBracketBalances = new Stack<Int32>();
+      Stack<Int32> functionBracketBalances = new Stack<Int32>();
       Int32 bracketBalance = 0;
 
       for (int i = 0; i < expression.Length; i++) {
@@ -228,18 +228,18 @@ namespace FunctionScript {
         } else if (FollowsOperatorStartRule(expression[i]))                           //Check and format operators
           {
           FormatOperator(ref expression, ref characterProfiles, ref i);
-        } else if (FollowsNameStartRule(expression[i]))                               //Check and Format Constants and Method Calls
+        } else if (FollowsNameStartRule(expression[i]))                               //Check and Format Constants and Function Calls
           {
-          FormatMethodOrConstant(ref expression, ref characterProfiles, ref i, bracketBalance, methodBracketBalances);
+          FormatFunctionOrConstant(ref expression, ref characterProfiles, ref i, bracketBalance, functionBracketBalances);
         } else if (FollowsStartGroupingRule(expression[i]))                           //Check and Format Start Grouping
           {
           FormatStartGrouping(ref expression, ref characterProfiles, ref i, ref bracketBalance);
         } else if (FollowsEndGroupingRule(expression[i]))                             //Check and format end grouping
           {
-          FormatEndGrouping(ref expression, ref characterProfiles, ref i, ref bracketBalance, ref methodBracketBalances);
+          FormatEndGrouping(ref expression, ref characterProfiles, ref i, ref bracketBalance, ref functionBracketBalances);
         } else if (FollowsDivisionGroupingRule(expression[i]))                        //Check for and and format division grouping
           {
-          FormatDivisionGrouping(ref expression, ref characterProfiles, ref i, ref bracketBalance, ref methodBracketBalances);
+          FormatDivisionGrouping(ref expression, ref characterProfiles, ref i, ref bracketBalance, ref functionBracketBalances);
         } else if (FollowsParameterStartRule(expression[i]))                          //Check and format parameters
           {
           FormatParameter(ref expression, ref characterProfiles, ref parameters, ref i);
@@ -262,7 +262,7 @@ namespace FunctionScript {
 
       ConvertToExecutionTree(expression, characterProfiles, ref parameters, ref executionList, ref isBound, isPreExecute);
 
-      //lastly, check our root node matches return type. If not, them attempt to add in an implicit casting method
+      //lastly, check our root node matches return type. If not, them attempt to add in an implicit casting function
       if (executionList.Last().GetWrappedObjectType() != (typeof(T))) {
         if (FnScriptResources.ImplicitConversionSwitches.ContainsKey(typeof(T))) {
           executionList.Add(FnScriptResources.ImplicitConversionSwitches[typeof(T)].CreateObjectWithPointer(new List<FnObject> { executionList.Last() }, parameters, isPreExecute));
@@ -323,8 +323,8 @@ namespace FunctionScript {
           AddParameterInstanceToExecutionTree(expression, characterProfiles, ref parameters, ref executionList, ref isBound, ref i);
         } else if (characterProfiles[i] == FnObjectProfiles.Constant) {
           AddConstantToExecutionTree(expression, characterProfiles, ref executionList, ref isBound, ref i);
-        } else if (characterProfiles[i] == FnObjectProfiles.MethodName) {
-          AddMethodToExecutionTree(expression, characterProfiles, ref parameters, ref executionList, ref isBound, ref i, isPreExecute);
+        } else if (characterProfiles[i] == FnObjectProfiles.FunctionName) {
+          AddFunctionToExecutionTree(expression, characterProfiles, ref parameters, ref executionList, ref isBound, ref i, isPreExecute);
         } else {
           throw new ArgumentException("The Execution tree doesn't support this type of object");
         }
@@ -732,7 +732,7 @@ namespace FunctionScript {
     #region Method and Constant Rules
 
     /// <summary>
-    /// Determines if the character provided is the valid start to a name for a method or constant
+    /// Determines if the character provided is the valid start to a name for a function or constant
     /// </summary>
     /// <param name="expressionCharacter">The character to analyse</param>
     /// <returns></returns>
@@ -744,7 +744,7 @@ namespace FunctionScript {
     }
 
     /// <summary>
-    /// Determines if the next character in the expression string is valid for the body of a method or constant name
+    /// Determines if the next character in the expression string is valid for the body of a function or constant name
     /// </summary>
     /// <param name="expressionCharacter">The character to analyse</param>
     /// <returns></returns>
@@ -756,13 +756,13 @@ namespace FunctionScript {
     }
 
     /// <summary>
-    /// Determines if the next character in the string is a valid character to follow a method name with
+    /// Determines if the next character in the string is a valid character to follow a function name with
     /// </summary>
     /// <param name="expression">The expression to analyse</param>
     /// <param name="profiles">The profiles for each character in the expression</param>
-    /// <param name="index">The index of the character succeeding the method name</param>
+    /// <param name="index">The index of the character succeeding the function name</param>
     /// <returns></returns>
-    private Boolean FollowsMethodNameSuccessorRule(ref String expression, ref List<FnObjectProfiles> profiles, Int32 index) {
+    private Boolean FollowsFunctionNameSuccessorRule(ref String expression, ref List<FnObjectProfiles> profiles, Int32 index) {
       while (index < expression.Length && expression[index] == ' ') {
         RemoveCharacterFromExpression(ref expression, ref profiles, index);
       }
@@ -958,22 +958,24 @@ namespace FunctionScript {
 
     /// <summary>
     /// Analyses and formats a valid variable name in the expression into a minimised format, and profiles each character in the name in the corresponding profile list. It then uses the surrounding context to determine
-    /// if the name is the name of a constant or a method call
+    /// if the name is the name of a constant or a function call
     /// </summary>
     /// <param name="expression">The expression in string form</param>
     /// <param name="profiles">The list of profiles for each character</param>
     /// <param name="index">The index the name starts at</param>
     /// <param name="bracketBalance">A number which stores the current level of grouping symbols. It is the number of open brackets passed minus the number of closed brackets passed</param>
-    /// <param name="methodBracketBalances">A stack which stores the bracket balances at the location of each method call</param>
-    private void FormatMethodOrConstant(ref String expression, ref List<FnObjectProfiles> profiles, ref Int32 index, Int32 bracketBalance, Stack<Int32> methodBracketBalances) {
+    /// <param name="functionBracketBalances">A stack which stores the bracket balances at the location of each function call</param>
+    private void FormatFunctionOrConstant(ref String expression, ref List<FnObjectProfiles> profiles, ref Int32 index, Int32 bracketBalance, Stack<Int32> functionBracketBalances) {
       Int32 nameStart = index;
       Int32 nameSuccessor = index + 1;
       String name = "";
 
       if (!FollowsNameStartRule(expression[index])) {
-        throw new ArgumentException("the position provided isn't the start of a method call or constant", index.ToString());
+        throw new ArgumentException(
+          "the position provided isn't the start of a function call or constant", index.ToString()
+        );
       } else {
-        //set the current profile to that of Name, to be decided later whether it's a constant or a method name
+        //set the current profile to that of Name, to be decided later whether it's a constant or a function name
         profiles[index] = FnObjectProfiles.Name;
         index += 1;
 
@@ -986,32 +988,32 @@ namespace FunctionScript {
 
         name = expression.Substring(nameStart, nameSuccessor - nameStart);
 
-        //determine if it is a constant or a method name by looking at the succeeding characters
-        if (FollowsOperandSuccessorRule(ref expression, ref profiles, index))                       //if it follows this rule it is a constant
+        // Determine if it is a constant or a function name by looking at the succeeding characters.
+        if (FollowsOperandSuccessorRule(ref expression, ref profiles, index))  // If it follows this rule it is a constant.
         {
           //check that it is a valid constant name. If not, throw and exception
           if (!FnScriptResources.DoesConstantExist(name)) {
-            throw new ArgumentException("the specified constant does not exist");
+            throw new ArgumentException(String.Format("the specified constant ({0}) does not exist", name));
           }
 
           for (int i = nameStart; i < nameSuccessor; i++) {
             profiles[i] = FnObjectProfiles.Constant;
           }
-        } else if (FollowsMethodNameSuccessorRule(ref expression, ref profiles, nameSuccessor))                                 //if it follows this rule it is a method name
+        } else if (FollowsFunctionNameSuccessorRule(ref expression, ref profiles, nameSuccessor)) // If it follows this rule it is a function name
           {
-          //check that it is a valid method name. If not, throw and exception
-          if (!FnScriptResources.DoesMethodExist(name) && name != "if") {
-            throw new ArgumentException("the specified method does not exist");
+          // Check that it is a valid function name. If not, throw and exception
+          if (!FnScriptResources.DoesFunctionExist(name) && name != "if") {
+            throw new ArgumentException(String.Format("the specified function ({0}) does not exist.", name));
           }
 
           for (int i = nameStart; i < nameSuccessor; i++) {
-            profiles[i] = FnObjectProfiles.MethodName;
+            profiles[i] = FnObjectProfiles.FunctionName;
           }
 
-          //add the method's current bracket count to the bracket balance stack
-          methodBracketBalances.Push(bracketBalance + 1);
+          // Add the function's current bracket count to the bracket balance stack
+          functionBracketBalances.Push(bracketBalance + 1);
         } else {
-          throw new ArgumentException("invalid operand/operator combination found");
+          throw new ArgumentException("Invalid operand/operator combination found.");
         }
       }
 
@@ -1019,13 +1021,16 @@ namespace FunctionScript {
     }
 
     /// <summary>
-    /// Analyses and formats a start grouping symbol in the expression into a minimised format, and profiles each character in the symbol in the corresponding profile list
+    /// Analyses and formats a start grouping symbol in the expression into a minimised format, and profiles each
+    /// character in the symbol in the corresponding profile list.
     /// </summary>
     /// <param name="expression">The expression in string form</param>
     /// <param name="profiles">The list of profiles for each character</param>
     /// <param name="index">The index the start grouping symbol starts at</param>
-    /// <param name="bracketBalance">A number which stores the current level of grouping symbols. It is the number of open brackets passed minus the number of closed brackets passed</param>
-    /// <param name="methodBracketBalances">A stack which stores the bracket balances at the location of each method call</param>
+    /// <param name="bracketBalance">
+    /// A number which stores the current level of grouping symbols. It is the number of open brackets passed minus the
+    /// number of closed brackets passed.
+    /// </param>
     private void FormatStartGrouping(ref String expression, ref List<FnObjectProfiles> profiles, ref Int32 index, ref Int32 bracketBalance) {
       if (!FollowsStartGroupingRule(expression[index])) {
         throw new ArgumentException("The provided index does not denote an open grouping symbol", index.ToString());
@@ -1040,7 +1045,7 @@ namespace FunctionScript {
         }
 
         //an opening bracket can be succeeded by an operator, another open bracket, a comma, or EOS
-        if (index + 1 >= expression.Length || (FollowsEndGroupingRule(expression[index + 1]) && (profiles[index - 1] != FnObjectProfiles.MethodName)) || FollowsDivisionGroupingRule(expression[index + 1])) {
+        if (index + 1 >= expression.Length || (FollowsEndGroupingRule(expression[index + 1]) && (profiles[index - 1] != FnObjectProfiles.FunctionName)) || FollowsDivisionGroupingRule(expression[index + 1])) {
           throw new ArgumentException("the open grouping symbol you have provided is in the incorrect context");
         }
       }
@@ -1053,11 +1058,11 @@ namespace FunctionScript {
     /// <param name="profiles">The list of profiles for each character</param>
     /// <param name="index">The index the division grouping symbol starts at</param>
     /// <param name="bracketBalance">A number which stores the current level of grouping symbols. It is the number of open brackets passed minus the number of closed brackets passed</param>
-    /// <param name="methodBracketBalances">A stack which stores the bracket balances at the location of each method call</param>
-    private void FormatDivisionGrouping(ref String expression, ref List<FnObjectProfiles> profiles, ref Int32 index, ref Int32 bracketBalance, ref Stack<Int32> methodBracketBalances) {
+    /// <param name="functionBracketBalances">A stack which stores the bracket balances at the location of each function call</param>
+    private void FormatDivisionGrouping(ref String expression, ref List<FnObjectProfiles> profiles, ref Int32 index, ref Int32 bracketBalance, ref Stack<Int32> functionBracketBalances) {
       if (!FollowsDivisionGroupingRule(expression[index])) {
         throw new ArgumentException("The provided index does not denote a division grouping symbol", index.ToString());
-      } else if (methodBracketBalances.Count == 0 || bracketBalance != methodBracketBalances.Peek()) {
+      } else if (functionBracketBalances.Count == 0 || bracketBalance != functionBracketBalances.Peek()) {
         throw new ArgumentException("The division grouping symbol is in the incorrect context", expression);
       } else {
         profiles[index] = FnObjectProfiles.DivisionGrouping;
@@ -1080,16 +1085,16 @@ namespace FunctionScript {
     /// <param name="profiles">The list of profiles for each character</param>
     /// <param name="index">The index the end grouping symbol starts at</param>
     /// <param name="bracketBalance">A number which stores the current level of grouping symbols. It is the number of open brackets passed minus the number of closed brackets passed</param>
-    /// <param name="methodBracketBalances">A stack which stores the bracket balances at the location of each method call</param>
-    private void FormatEndGrouping(ref String expression, ref List<FnObjectProfiles> profiles, ref Int32 index, ref Int32 bracketBalance, ref Stack<Int32> methodBracketBalances) {
+    /// <param name="functionBracketBalances">A stack which stores the bracket balances at the location of each function call</param>
+    private void FormatEndGrouping(ref String expression, ref List<FnObjectProfiles> profiles, ref Int32 index, ref Int32 bracketBalance, ref Stack<Int32> functionBracketBalances) {
       if (!FollowsEndGroupingRule(expression[index])) {
         throw new ArgumentException("The provided index does not denote a close grouping symbol", index.ToString());
       } else if (bracketBalance - 1 < 0) {
         throw new ArgumentException("Open/close bracket mismatch");
       } else {
-        //remove unneccessary methodBracketBalances
-        if (methodBracketBalances.Count > 0 && bracketBalance == methodBracketBalances.Peek()) {
-          methodBracketBalances.Pop();
+        // remove unneccessary function bracket balances.
+        if (functionBracketBalances.Count > 0 && bracketBalance == functionBracketBalances.Peek()) {
+          functionBracketBalances.Pop();
         } else {
           if (profiles[index - 1] == FnObjectProfiles.StartGrouping)  //MOVE THIS TO START BRACKET FORMATTING
           {
@@ -1101,12 +1106,12 @@ namespace FunctionScript {
 
         profiles[index] = FnObjectProfiles.EndGrouping;
 
-        //remove all whitespaces after the beginning of the start grouping
+        // Remove all whitespaces after the beginning of the start grouping.
         while (index + 1 < expression.Length && expression[index + 1] == ' ') {
           RemoveCharacterFromExpression(ref expression, ref profiles, index + 1);
         }
 
-        //a close bracket can be succeeded by an operator, another close bracket, a comma, or EOS
+        // A close bracket can be succeeded by an operator, another close bracket, a comma, or EOS.
         if (index + 1 >= expression.Length || FollowsOperatorStartRule(expression[index + 1]) || FollowsEndGroupingRule(expression[index + 1]) || FollowsDivisionGroupingRule(expression[index + 1])) {
         } else {
           throw new ArgumentException("the close bracket you have provided is in the incorrect context");
@@ -1475,13 +1480,13 @@ namespace FunctionScript {
         Int32 firstOperatorIndex = GetNextUnBoundIndex(ref IsBound);
         IsBound[firstOperatorIndex] = true;
 
-        ExecutionList.Add(GetOperatorMethod(operatorStack.Pop(), operatorProfileStack.Pop(), new List<FnObject> { ExecutionList[firstOperatorIndex], ExecutionList[secondOperatorIndex] }, parameters, isPreExecute));
+        ExecutionList.Add(GetOperatorFunction(operatorStack.Pop(), operatorProfileStack.Pop(), new List<FnObject> { ExecutionList[firstOperatorIndex], ExecutionList[secondOperatorIndex] }, parameters, isPreExecute));
       } else                //Unary prefix and unary suffix operators obey the same rule
         {
         Int32 firstOperatorIndex = GetNextUnBoundIndex(ref IsBound);
         IsBound[firstOperatorIndex] = true;
 
-        ExecutionList.Add(GetOperatorMethod(operatorStack.Pop(), operatorProfileStack.Pop(), new List<FnObject> { ExecutionList[firstOperatorIndex] }, parameters, isPreExecute));
+        ExecutionList.Add(GetOperatorFunction(operatorStack.Pop(), operatorProfileStack.Pop(), new List<FnObject> { ExecutionList[firstOperatorIndex] }, parameters, isPreExecute));
       }
 
       IsBound.Add(false);
@@ -1588,28 +1593,33 @@ namespace FunctionScript {
     }
 
     /// <summary>
-    /// Detects the method call from the desired position in an expression and adds the method to the execution tree
+    /// Detects the function call from the desired position in an expression and adds the function to the execution
+    /// tree.
     /// </summary>
-    /// <param name="expression">The expression containing the method</param>
+    /// <param name="expression">The expression containing the function</param>
     /// <param name="profiles">The list of object profiles for the entire expression</param>
-    /// <param name="index">The starting character position for the method call</param>
-    private void AddMethodToExecutionTree(String expression, List<FnObjectProfiles> profiles, ref Dictionary<String, FnObject> parameters, ref List<FnObject> executionList, ref List<Boolean> isBound, ref Int32 index, FnVariable<Boolean> isPreExecute) {
-      Int32 methodNameStart = index;
-      Int32 methodNameSuccessor;
-      String methodName;
+    /// <param name="index">The starting character position for the function call</param>
+    private void AddFunctionToExecutionTree(
+      String expression, List<FnObjectProfiles> profiles, ref Dictionary<String, FnObject> parameters,
+      ref List<FnObject> executionList, ref List<Boolean> isBound, ref Int32 index,
+      FnVariable<Boolean> isImmutableExecute
+    ) {
+      Int32 functionNameStart = index;
+      Int32 functionNameSuccessor;
+      String functionName;
 
-      List<FnObject> compiledMethodArguments = new List<FnObject>();
+      List<FnObject> compiledFunctionArguments = new List<FnObject>();
 
-      while (index < profiles.Count && profiles[index] == FnObjectProfiles.MethodName) {
+      while (index < profiles.Count && profiles[index] == FnObjectProfiles.FunctionName) {
         index += 1;
       }
 
-      methodNameSuccessor = index;
+      functionNameSuccessor = index;
 
-      methodName = expression.Substring(methodNameStart, methodNameSuccessor - methodNameStart);
+      functionName = expression.Substring(functionNameStart, functionNameSuccessor - functionNameStart);
 
       Int32 bracketLevel = 0;
-      Int32 argumentStart = methodNameSuccessor + 1;
+      Int32 argumentStart = functionNameSuccessor + 1;
       Int32 argumentSuccessor;
 
       //loop through the arguments, pick out each one and compile it
@@ -1633,16 +1643,20 @@ namespace FunctionScript {
               argumentProfiles.Add(profiles[i]);
             }
 
-            ConvertToExecutionTree(expression.Substring(argumentStart, argumentSuccessor - argumentStart), argumentProfiles, ref parameters, ref executionList, ref isBound, isPreExecute);
-            compiledMethodArguments.Add(executionList.Last());
+            ConvertToExecutionTree(expression.Substring(
+              argumentStart, argumentSuccessor - argumentStart), argumentProfiles,
+              ref parameters, ref executionList, ref isBound, isImmutableExecute
+            );
+            
+            compiledFunctionArguments.Add(executionList.Last());
             isBound[isBound.Count - 1] = true;
           }
 
-          //set up argumentStart for the next argument
+          // Set up argumentStart for the next argument
           argumentStart = argumentSuccessor + 1;
         }
 
-        //if our bracket level is now 0, get out of the loop
+        // If our bracket level is now 0, get out of the loop
         if (bracketLevel == 0) {
           break;
         }
@@ -1650,39 +1664,38 @@ namespace FunctionScript {
         index += 1;
       }
 
-      if (methodName == "if")                //If it's a conditional argument, then create a method pointer using one of the "return" arguments, either 1 or 2, depending on which one has the higher type precedence
+      if (functionName == "if")                // If it's a conditional argument, then create a function pointer using one of the "return" arguments, either 1 or 2, depending on which one has the higher type precedence
       {
         //figure out which return type has the highest precedence
-        if (FnScriptResources.TypePrecedence[compiledMethodArguments[1].GetWrappedObjectType()] > FnScriptResources.TypePrecedence[compiledMethodArguments[2].GetWrappedObjectType()]) {
-          //ExecutionList.Add(compiledMethodArguments[1].CreateConditionalFnObjectWithSameType(compiledMethodArguments));
+        if (FnScriptResources.TypePrecedence[compiledFunctionArguments[1].GetWrappedObjectType()] > FnScriptResources.TypePrecedence[compiledFunctionArguments[2].GetWrappedObjectType()]) {
 
-          if (FnScriptResources.ImplicitConversionSwitches.ContainsKey(compiledMethodArguments[1].GetWrappedObjectType())) {
-            executionList.Add(FnScriptResources.ImplicitConversionSwitches[compiledMethodArguments[1].GetWrappedObjectType()].CreateObjectWithPointer(new List<FnObject> { compiledMethodArguments[2] }, parameters, isPreExecute));
+          if (FnScriptResources.ImplicitConversionSwitches.ContainsKey(compiledFunctionArguments[1].GetWrappedObjectType())) {
+            executionList.Add(FnScriptResources.ImplicitConversionSwitches[compiledFunctionArguments[1].GetWrappedObjectType()].CreateObjectWithPointer(new List<FnObject> { compiledFunctionArguments[2] }, parameters, isImmutableExecute));
             isBound[isBound.Count - 1] = true;
             isBound.Add(false);
 
-            compiledMethodArguments[2] = executionList.Last();
+            compiledFunctionArguments[2] = executionList.Last();
           } else {
             throw new ArgumentException("The output type of the expression doesn't match the specified return type", expression);   //This is the WRONG exception message
           }
+        } else if (FnScriptResources.TypePrecedence[compiledFunctionArguments[2].GetWrappedObjectType()] > FnScriptResources.TypePrecedence[compiledFunctionArguments[1].GetWrappedObjectType()]) {
 
-        } else if (FnScriptResources.TypePrecedence[compiledMethodArguments[2].GetWrappedObjectType()] > FnScriptResources.TypePrecedence[compiledMethodArguments[1].GetWrappedObjectType()]) {
-          if (FnScriptResources.ImplicitConversionSwitches.ContainsKey(compiledMethodArguments[2].GetWrappedObjectType())) {
-            executionList.Add(FnScriptResources.ImplicitConversionSwitches[compiledMethodArguments[2].GetWrappedObjectType()].CreateObjectWithPointer(new List<FnObject> { compiledMethodArguments[1] }, parameters, isPreExecute));
+          if (FnScriptResources.ImplicitConversionSwitches.ContainsKey(compiledFunctionArguments[2].GetWrappedObjectType())) {
+            executionList.Add(FnScriptResources.ImplicitConversionSwitches[compiledFunctionArguments[2].GetWrappedObjectType()].CreateObjectWithPointer(new List<FnObject> { compiledFunctionArguments[1] }, parameters, isImmutableExecute));
             isBound[isBound.Count - 1] = true;
             isBound.Add(false);
 
-            compiledMethodArguments[1] = executionList.Last();
+            compiledFunctionArguments[1] = executionList.Last();
           } else {
             throw new ArgumentException("The output type of the expression doesn't match the specified return type", expression);   //This is the WRONG exception message
           }
         }
 
-        executionList.Add(compiledMethodArguments[1].CreateFnIfWithSameType(compiledMethodArguments[0] as FnObject<bool>, compiledMethodArguments[1], compiledMethodArguments[2]));
+        executionList.Add(compiledFunctionArguments[1].CreateFnIfWithSameType(compiledFunctionArguments[0] as FnObject<bool>, compiledFunctionArguments[1], compiledFunctionArguments[2]));
 
         isBound.Add(false);
       } else {
-        executionList.Add(FnScriptResources.FnMethods[methodName].CreateObjectWithPointer(compiledMethodArguments, parameters, isPreExecute));
+        executionList.Add(FnScriptResources.FnFunctions[functionName].CreateObjectWithPointer(compiledFunctionArguments, parameters, isImmutableExecute));
         isBound.Add(false);
       }
     }
@@ -1725,55 +1738,55 @@ namespace FunctionScript {
     }
 
     /// <summary>
-    /// Returns an FnObject storing the method that corresponds with the operator provided
+    /// Returns an FnObject storing the function that corresponds with the operator provided
     /// </summary>
     /// <param name="operatorString">The operator to analyse, in string format</param>
     /// <param name="operatorProfile">The profile for this operator, be it UnaryPrefixOperator, UnarySuffixOperator or BinaryOperator</param>
-    /// <param name="operands">A list of operands that this operator uses. These are used as method parameters in the returned FnObject</param>
+    /// <param name="operands">A list of operands that this operator uses. These are used as function parameters in the returned FnObject</param>
     /// <returns></returns>
-    private FnObject GetOperatorMethod(String operatorString, FnObjectProfiles operatorProfile, List<FnObject> operands, Dictionary<String, FnObject> parameters, FnVariable<Boolean> isPreExecute) {
+    private FnObject GetOperatorFunction(String operatorString, FnObjectProfiles operatorProfile, List<FnObject> operands, Dictionary<String, FnObject> parameters, FnVariable<Boolean> isPreExecute) {
       if (operatorProfile == FnObjectProfiles.UnaryPrefixOperator) {
         if (operatorString == "+") {
-          return FnScriptResources.FnMethods["Positive"].CreateObjectWithPointer(operands, parameters, isPreExecute);
+          return FnScriptResources.FnFunctions["Positive"].CreateObjectWithPointer(operands, parameters, isPreExecute);
         } else if (operatorString == "-") {
-          return FnScriptResources.FnMethods["Negative"].CreateObjectWithPointer(operands, parameters, isPreExecute);
+          return FnScriptResources.FnFunctions["Negative"].CreateObjectWithPointer(operands, parameters, isPreExecute);
         } else if (operatorString == "!") {
-          return FnScriptResources.FnMethods["Not"].CreateObjectWithPointer(operands, parameters, isPreExecute);
+          return FnScriptResources.FnFunctions["Not"].CreateObjectWithPointer(operands, parameters, isPreExecute);
         }
       } else if (operatorProfile == FnObjectProfiles.UnarySuffixOperator) {
       } else if (operatorProfile == FnObjectProfiles.BinaryOperator) {
         if (operatorString == "+") {
-          return FnScriptResources.FnMethods["Add"].CreateObjectWithPointer(operands, parameters, isPreExecute);
+          return FnScriptResources.FnFunctions["Add"].CreateObjectWithPointer(operands, parameters, isPreExecute);
         } else if (operatorString == "-") {
-          return FnScriptResources.FnMethods["Subtract"].CreateObjectWithPointer(operands, parameters, isPreExecute);
+          return FnScriptResources.FnFunctions["Subtract"].CreateObjectWithPointer(operands, parameters, isPreExecute);
         } else if (operatorString == "*") {
-          return FnScriptResources.FnMethods["Multiply"].CreateObjectWithPointer(operands, parameters, isPreExecute);
+          return FnScriptResources.FnFunctions["Multiply"].CreateObjectWithPointer(operands, parameters, isPreExecute);
         } else if (operatorString == "/") {
-          return FnScriptResources.FnMethods["Divide"].CreateObjectWithPointer(operands, parameters, isPreExecute);
+          return FnScriptResources.FnFunctions["Divide"].CreateObjectWithPointer(operands, parameters, isPreExecute);
         } else if (operatorString == "%") {
-          return FnScriptResources.FnMethods["Mod"].CreateObjectWithPointer(operands, parameters, isPreExecute);
+          return FnScriptResources.FnFunctions["Mod"].CreateObjectWithPointer(operands, parameters, isPreExecute);
         } else if (operatorString == ">") {
-          return FnScriptResources.FnMethods["IsGreaterThan"].CreateObjectWithPointer(operands, parameters, isPreExecute);
+          return FnScriptResources.FnFunctions["IsGreaterThan"].CreateObjectWithPointer(operands, parameters, isPreExecute);
         } else if (operatorString == ">=") {
-          return FnScriptResources.FnMethods["IsGreaterThanOrEqual"].CreateObjectWithPointer(operands, parameters, isPreExecute);
+          return FnScriptResources.FnFunctions["IsGreaterThanOrEqual"].CreateObjectWithPointer(operands, parameters, isPreExecute);
         } else if (operatorString == "<") {
-          return FnScriptResources.FnMethods["IsLessThan"].CreateObjectWithPointer(operands, parameters, isPreExecute);
+          return FnScriptResources.FnFunctions["IsLessThan"].CreateObjectWithPointer(operands, parameters, isPreExecute);
         } else if (operatorString == "<=") {
-          return FnScriptResources.FnMethods["IsLessThanOrEqual"].CreateObjectWithPointer(operands, parameters, isPreExecute);
+          return FnScriptResources.FnFunctions["IsLessThanOrEqual"].CreateObjectWithPointer(operands, parameters, isPreExecute);
         } else if (operatorString == "==") {
-          return FnScriptResources.FnMethods["IsEqual"].CreateObjectWithPointer(operands, parameters, isPreExecute);
+          return FnScriptResources.FnFunctions["IsEqual"].CreateObjectWithPointer(operands, parameters, isPreExecute);
         } else if (operatorString == "!=") {
-          return FnScriptResources.FnMethods["IsNotEqual"].CreateObjectWithPointer(operands, parameters, isPreExecute);
+          return FnScriptResources.FnFunctions["IsNotEqual"].CreateObjectWithPointer(operands, parameters, isPreExecute);
         } else if (operatorString == "&&") {
-          return FnScriptResources.FnMethods["And"].CreateObjectWithPointer(operands, parameters, isPreExecute);
+          return FnScriptResources.FnFunctions["And"].CreateObjectWithPointer(operands, parameters, isPreExecute);
         } else if (operatorString == "!&&") {
-          return FnScriptResources.FnMethods["Nand"].CreateObjectWithPointer(operands, parameters, isPreExecute);
+          return FnScriptResources.FnFunctions["Nand"].CreateObjectWithPointer(operands, parameters, isPreExecute);
         } else if (operatorString == "||") {
-          return FnScriptResources.FnMethods["Or"].CreateObjectWithPointer(operands, parameters, isPreExecute);
+          return FnScriptResources.FnFunctions["Or"].CreateObjectWithPointer(operands, parameters, isPreExecute);
         } else if (operatorString == "!||") {
-          return FnScriptResources.FnMethods["Nor"].CreateObjectWithPointer(operands, parameters, isPreExecute);
+          return FnScriptResources.FnFunctions["Nor"].CreateObjectWithPointer(operands, parameters, isPreExecute);
         } else if (operatorString == "^") {
-          return FnScriptResources.FnMethods["Xor"].CreateObjectWithPointer(operands, parameters, isPreExecute);
+          return FnScriptResources.FnFunctions["Xor"].CreateObjectWithPointer(operands, parameters, isPreExecute);
         }
         //This is where we will add XNor, at the end of FnScript 2.2 upgrade
       }

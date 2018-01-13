@@ -36,12 +36,12 @@
     <!-- A reference to the entire .NET Framework is automatically included -->
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DefaultMethods.cs" />
+    <Compile Include="DefaultFunctions.cs" />
     <Compile Include="FnConstant.cs" />
     <Compile Include="FnIf.cs" />
-    <Compile Include="FnMethod.cs" />
-    <Compile Include="FnMethodPointer.cs" />
-    <Compile Include="FnMethodGroup.cs" />
+    <Compile Include="FnFunction.cs" />
+    <Compile Include="FnFunctionPointer.cs" />
+    <Compile Include="FnFunctionGroup.cs" />
     <Compile Include="FnObject.cs" />
     <Compile Include="FnScriptCompiler.cs" />
     <Compile Include="FnScriptExpression.cs" />
