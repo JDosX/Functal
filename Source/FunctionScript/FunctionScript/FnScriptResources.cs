@@ -8,9 +8,9 @@ namespace FunctionScript {
   /// </summary>
   public static class FnScriptResources {
     /// <summary>
-    /// Stores all the constants that can be used within FnScript, along with their name
+    /// A random number generator of no seed to use in FunctionScript functions.
     /// </summary>
-    private static Dictionary<String, FnObject> Constants;
+    public static readonly Random GenericRandom;
 
     /// <summary>
     /// Stores all the functions that can be used within FunctionScript.
@@ -30,16 +30,19 @@ namespace FunctionScript {
     /// <summary>
     /// Global parameters that can be accessed by any FnObject
     /// </summary>
-    public static Dictionary<String, FnObject> GlobalParameters;
-
-    #region Exception Messages
-    const String InvalidNumberOfArguments = "No overload for this function matches the arguments provided.";
-    #endregion
+    internal static Dictionary<String, FnObject> GlobalParameters;
 
     /// <summary>
-    /// A random number generator of no seed to use in FunctionScript functions.
+    /// Stores all the constants that can be used within FnScript, along with their name
     /// </summary>
-    public static readonly Random GenericRandom;
+    private static Dictionary<String, FnObject> Constants;
+
+    #region Exception Messages
+    /// <summary>
+    /// An exception message to use for an invalid number of arguments provided.
+    /// </summary>
+    private const String InvalidNumberOfArguments = "No overload for this function matches the arguments provided.";
+    #endregion
 
     /// <summary>
     /// Constructor.
@@ -76,7 +79,7 @@ namespace FunctionScript {
     }
 
     /// <summary>
-    /// Initializes the constants dictionary and adds in all the default constants that can be used from the FnScript API
+    /// Initializes the constants dictionary and adds all the default constants.
     /// </summary>
     private static void InitializeConstants() {
       Constants = new Dictionary<String, FnObject>();
@@ -95,6 +98,11 @@ namespace FunctionScript {
       AddConstant<Object>("null", null);
       #endregion
     }
+
+    /// <summary>
+    /// Initializes default global parameters. Any default global parameters should be placed here.
+    /// </summary>
+    private static void InitializeGlobalParameters() {}
 
     /// <summary>
     /// Initializes the functions dictionary and adds in all the defualt functions that can be called.
@@ -469,6 +477,8 @@ namespace FunctionScript {
 
       AddFunctionToGroup("ToString", new FnFunction_ToString<Char>());
       AddFunctionToGroup("ToString", new FnFunction_ToString<String>());
+
+      AddFunctionToGroup("ToString", new FnFunction_ToString<Boolean>());
 
       AddFunctionToGroup("ToString", new FnFunction_ToString<Object>());
       #endregion
@@ -907,34 +917,28 @@ namespace FunctionScript {
       #endregion
     }
 
-    /// <summary>
-    /// Initializes default global parameters. Any default global parameters should be placed here.
-    /// </summary>
-    private static void InitializeGlobalParameters() {
-    }
-
-    #region Global Parameter Modification Functions
+    #region Global Parameter Mutation Functions.
 
     /// <summary>
     /// Defines a global parameter, initialized with the specified value.
     /// </summary>
-    /// <typeparam name="TInput">The data type of the global parameter</typeparam>
-    /// <param name="parameterName">The name to assign to the global parameter</param>
-    /// <param name="parameterValue">The value to initialize the new parameter with</param>
+    /// <typeparam name="TInput">The data type of the global parameter.</typeparam>
+    /// <param name="parameterName">The name of the global parameter.</param>
+    /// <param name="parameterValue">The value to initialize the parameter with.</param>
     public static void AddGlobalParameter<TInput>(String parameterName, TInput parameterValue) {
       if (!GlobalParameters.ContainsKey(parameterName)) {
         GlobalParameters.Add(parameterName, new FnVariable<TInput>(parameterValue));
       } else {
-        throw new ArgumentException(String.Format("Parameter of name \"{0}\" already exist.", parameterName));
+        throw new ArgumentException("Parameter name already exists.", parameterName);
       }
     }
 
     /// <summary>
-    /// Sets the value of a specified global parameter with a specified value
+    /// Sets the value of the specified global parameter with a specified value.
     /// </summary>
-    /// <typeparam name="TInput">The data type of the global parameter</typeparam>
-    /// <param name="parameterName">The name of the global parameter</param>
-    /// <param name="parameterValue">The value to assign to the global parameter</param>
+    /// <typeparam name="TInput">The data type of the global parameter.</typeparam>
+    /// <param name="parameterName">The name of the global parameter.</param>
+    /// <param name="parameterValue">The value to assign to the parameter.</param>
     public static void SetGlobalParameter<TInput>(String parameterName, TInput parameterValue) {
       if (GlobalParameters.ContainsKey(parameterName)) {
         if (GlobalParameters[parameterName] is FnVariable<TInput>) {
@@ -950,25 +954,13 @@ namespace FunctionScript {
       }
     }
 
-    /// <summary>
-    /// Removes the global parameter with the specified name.
-    /// </summary>
-    /// <param name="parameterName">The name of the parameter to remove from the global parameters list</param>
-    public static void RemoveGlobalParameter(String parameterName) {
-      if (GlobalParameters.ContainsKey(parameterName)) {
-        GlobalParameters.Remove(parameterName);
-      } else {
-        throw new ArgumentException("Parameter of name \"{0}\" doesn't exist.", parameterName);
-      }
-    }
-
     #endregion
 
     /// <summary>
     /// Creates a constant with the specified name and value.
     /// </summary>
     /// <typeparam name="T">The data type of the constant.</typeparam>
-    /// <param name="name">The name of the constant</param>
+    /// <param name="name">The name of the constant.</param>
     /// <param name="data">The value of the constant.</param>
     public static void AddConstant<T>(String name, T data) {
       // Check the validity of the constant name, constants can only be made of letters, digits or underscores, and must
@@ -984,7 +976,9 @@ namespace FunctionScript {
     }
 
     /// <summary>
-    /// Creates a new function group with the specified name and adds it to the list of callable functions.
+    /// Creates a new function group with the specified name. Once a group is created, you can add
+    /// <see cref="FnFunction"/>s to it to create function overloads. Functions can then be called from a FunctionScript
+    /// expression using the name of the group.
     /// </summary>
     /// <param name="name">The name of the group.</param>
     public static void CreateFunctionGroup(String name) {
@@ -992,15 +986,18 @@ namespace FunctionScript {
         FnFunctions.Add(name, new FnFunctionGroup(name));
       } else {
         throw new ArgumentException(
-          "Invalid function name provided. Names for switches can only contain underscores, letters or digits, must" +
-          "start with an underscore or a letter, and must not be blank"
+          "Invalid function group name provided. Names for switches can only contain underscores, letters or digits," +
+          "must start with an underscore or a letter, and must not be blank", name
         );
       }
     }
 
     /// <summary>
-    /// Creates an alias which references a switch. Changes made to the switch at any time are reflected in the alias.
+    /// Creates an alias for a function group. Function groups that are aliased can be called 
     /// </summary>
+    /// <remarks>
+    /// A function group can have as many aliases as desired. For example
+    /// </remarks>
     /// <param name="groupName">The name of the function group to alias.</param>
     /// <param name="alias">The alias.</param>
     public static void AddAliasForFunctionGroup(String groupName, String alias) {
@@ -1026,15 +1023,17 @@ namespace FunctionScript {
         // We do check for an overload conflict, but instead of doing it here it's done in
         // FnFunctionSwitch.AddFunctionPointer().
       } else {
-        throw new ArgumentException("Invalid function name provided. A function group by this name does not exist.");
+        throw new ArgumentException(
+          "Invalid function name provided. A function group by this name does not exist.", name
+        );
       }
 
       // If this function has an implicit conversion flag.
       if (function.Flags != null && function.Flags.Contains(FnFunction<T>.CompileFlags.IMPLICIT_CONVERSION)) {
-        if (function.ArgumentTypes == null || function.ArgumentTypes.Length > 1 || function.ArgumentTypes.Length == 0) {
+        if (function.ArgumentTypes == null || function.ArgumentTypes.Length != 1) {
           throw new ArgumentException(
-            "The FnFunction provided has the incorrect number of parameters. To be a valid Implicit Converion function it" +
-            "must have exactly one parameter."
+            "The provided FnFunction is marked as an implicit conversion function, but has the incorrect number of" +
+            "parameters. To be a valid Implicit Converion function it must have exactly one parameter."
           );
         }
 

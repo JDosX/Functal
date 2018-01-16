@@ -7,7 +7,7 @@ namespace FunctionScript {
   /// </summary>
   public abstract class FnObject {
     /// <summary>
-    /// Returns the data type wrapped by this FnObject.
+    /// Returns the data type wrapped by this <see cref="FnObject"/>.
     /// </summary>
     public abstract Type GetWrappedObjectType();
 
@@ -54,12 +54,12 @@ namespace FunctionScript {
   /// <summary>
   /// Represent a FunctionScript language construct.
   /// </summary>
+  /// <typeparam name="T">The type wraped by the <see cref="FnObject"/>.</typeparam>
   public abstract class FnObject<T> : FnObject {
     #region Abstract Methods
     /// <summary>
     /// Returns the contained value of this FnObject.
     /// </summary>
-    /// <returns>The value.</returns>
     public abstract T GetValue();
     #endregion
 

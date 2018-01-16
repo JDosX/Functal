@@ -1,6 +1,5 @@
 /Users/JDos/Repos/FunctionScript/Source/FunctionScript/FunctionScript/bin/Release/FunctionScript.dll
 /Users/JDos/Repos/FunctionScript/Source/FunctionScript/FunctionScript/bin/Release/FunctionScript.pdb
-/Users/JDos/Repos/FunctionScript/Source/FunctionScript/FunctionScript/obj/Release/FunctionScript.csprojResolveAssemblyReference.cache
 /Users/JDos/Repos/FunctionScript/Source/FunctionScript/FunctionScript/obj/Release/FunctionScript.csproj.CoreCompileInputs.cache
 /Users/JDos/Repos/FunctionScript/Source/FunctionScript/FunctionScript/obj/Release/FunctionScript.dll
 /Users/JDos/Repos/FunctionScript/Source/FunctionScript/FunctionScript/obj/Release/FunctionScript.pdb
