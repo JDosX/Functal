@@ -1,14 +1,14 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workbench ActiveDocument="FunctionScript/FnScriptResources.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="FunctionScript/FnScriptCompiler.cs">
     <Files>
       <File FileName="FunctionScript/FnConstant.cs" Line="25" Column="5" />
-      <File FileName="FunctionScript/FnObject.cs" Line="12" Column="49" />
+      <File FileName="FunctionScript/FnObject.cs" Line="68" Column="56" />
       <File FileName="FunctionScript/DefaultFunctions.cs" Line="2020" Column="47" />
       <File FileName="FunctionScript/FnFunctionPointer.cs" Line="31" Column="17" />
-      <File FileName="FunctionScript/FnScriptCompiler.cs" Line="378" Column="41" />
+      <File FileName="FunctionScript/FnScriptCompiler.cs" Line="7" Column="17" />
       <File FileName="FunctionScript/FnScriptExpression.cs" Line="21" Column="47" />
       <File FileName="FunctionScript/FnFunction.cs" Line="176" Column="46" />
-      <File FileName="FunctionScript/FnScriptResources.cs" Line="481" Column="7" />
+      <File FileName="FunctionScript/FnScriptResources.cs" Line="476" Column="59" />
       <File FileName="FunctionScript/FnFunctionGroup.cs" Line="23" Column="58" />
     </Files>
   </MonoDevelop.Ide.Workbench>

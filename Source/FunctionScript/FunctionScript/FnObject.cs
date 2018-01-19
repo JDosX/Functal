@@ -54,11 +54,11 @@ namespace FunctionScript {
   /// <summary>
   /// Represent a FunctionScript language construct.
   /// </summary>
-  /// <typeparam name="T">The type wraped by the <see cref="FnObject"/>.</typeparam>
+  /// <typeparam name="T">The type wrapped by the <see cref="FnObject"/>.</typeparam>
   public abstract class FnObject<T> : FnObject {
     #region Abstract Methods
     /// <summary>
-    /// Returns the contained value of this FnObject.
+    /// Returns the value contained in this <see cref="FnObject"/>.
     /// </summary>
     public abstract T GetValue();
     #endregion
