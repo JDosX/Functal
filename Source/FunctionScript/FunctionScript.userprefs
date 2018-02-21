@@ -5,7 +5,7 @@
       <File FileName="FunctionScript/FnObject.cs" Line="68" Column="56" />
       <File FileName="FunctionScript/DefaultFunctions.cs" Line="2020" Column="47" />
       <File FileName="FunctionScript/FnFunctionPointer.cs" Line="31" Column="17" />
-      <File FileName="FunctionScript/FnScriptCompiler.cs" Line="7" Column="17" />
+      <File FileName="FunctionScript/FnScriptCompiler.cs" Line="870" Column="75" />
       <File FileName="FunctionScript/FnScriptExpression.cs" Line="21" Column="47" />
       <File FileName="FunctionScript/FnFunction.cs" Line="176" Column="46" />
       <File FileName="FunctionScript/FnScriptResources.cs" Line="476" Column="59" />

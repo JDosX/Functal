@@ -171,10 +171,23 @@ namespace FunctionScript {
     }
 
     /// <summary>
-    /// Compiles an expression in string form into an execution tree by checking the syntax and then constructing an
-    /// execution tree. The lead node is then evaluated when calling execute on the expression
+    /// Compiles a FunctionScript expression into an executable <see cref="FnScriptExpression"/>.
     /// </summary>
-    /// <param name="expression">The FnScript expression to compile</param>
+    /// <returns>An executable <see cref="FnScriptExpression"/> that can be run by calling .</returns>
+    /// <param name="expression">The expression to compile.</param>
+    /// <typeparam name="T">The return type of the expression to compile.</typeparam>
+    public FnScriptExpression<T> Compile<T>(string expression) {
+      return Compile<T>(expression, null, null);
+    }
+
+    /// <summary>
+    /// Compiles a FunctionScript expression into an executable <see cref="FnScriptExpression"/>.
+    /// </summary>
+    /// <returns>An executable <see cref="FnScriptExpression"/> that can be run by calling .</returns>
+    /// <param name="expression">The expression to compile.</param>
+    /// <param name="localParameters"></param>
+    /// <param name="collectionParameters"></param>
+    /// <typeparam name="T">The return type of the expression to compile.</typeparam>
     public FnScriptExpression<T> Compile<T>(
       string expression, Dictionary<String, FnObject> localParameters, Dictionary<String, FnObject> collectionParameters
     ) {
