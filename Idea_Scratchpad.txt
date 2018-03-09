@@ -1,0 +1,55 @@
+Fn2 Ideas:
+
+Deferred Function Args
+======================
+
+If an arg is labelled as deferred, it won’t be executed until its value is needed. E.g:
+
+func if<T>(bool condition, deferred T trueArg, deferred T falseArg) -> T { … }
+
+note: if either arg is pure and can be verified at compile-time, they will still be evaluated at compile time.
+
+Native Bind
+===========
+
+Used to bind a FunctionScript function/variable/const definition to a "native" object from the runtime environment. E.g:
+
+func Foo(int bar, float baz) -> int = #BIND{NativeFoo}
+
+would bind to some function NativeFoo that the compiler knows about from the runtime environment.
+
+Access to Native Types
+======================
+
+I'm not sure how this would work but it'd be great if FunctionScript could access all the native types in C#. Something like:
+
+#NATIVE_USING System.Collections.Generic;
+
+List<string> something = new List<string>;
+
+It would be additionally great if you could mix Native types with FunctionScript types. This should be easy to do in the compiler, you'd just need to create the list in the runtime as List<FnObject<string>>, or something like that.
+
+
+
+Compiler Extensions
+===================
+
+A language object that can get the compiler to do extra stuff. A generalisation of the Native Bind example above. I'm not sure exactly what form this would take, but I'd like it to be generalizable. Following the native bind example, you could signify a compiler extension directive with a # or other symbol, then everything that follows gets forwarded to a compiler extension that understands the directive. You would also get access to the AST, so you could choose what the extension does. Example users:
+
+- Replace code with something else. kind of like a #DEFINE
+- Bind to a native object (as above).
+- Macros.
+- Something else I can't think of much right now.
+- Verify a precondition is provable. E.g:
+
+#PRECOND(foo == baz)
+
+Pattern Matching & Overloads
+============================
+
+Most languages have either pattern matching or overloads. I want to have both.
+
+-> Not sure if this is a good idea, maybe I should look into why languages don't do that.
+-> Order for pattern matching is important, ordering for overloads is not.
+
+
