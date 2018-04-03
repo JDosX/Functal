@@ -59,9 +59,8 @@ namespace FunctionScript {
     }
 
     /// <summary>
-    /// Returns the contained value of this FnObject.
+    /// Executes the object and returns the contained value.
     /// </summary>
-    /// <returns>The value.</returns>
     public override T GetValue() {
       if (Condition.GetValue()) {
         return TrueArg.GetValue();

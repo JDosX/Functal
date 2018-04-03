@@ -29,6 +29,10 @@ namespace FunctionScript {
       return this;
     }
 
+    /// <summary>
+    /// Returns the value wrapped by this object.
+    /// </summary>
+    /// <returns>The value.</returns>
     public override T GetValue() {
       return Value;
     }

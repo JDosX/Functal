@@ -58,7 +58,7 @@ namespace FunctionScript {
   public abstract class FnObject<T> : FnObject {
     #region Abstract Methods
     /// <summary>
-    /// Returns the value contained in this <see cref="FnObject"/>.
+    /// Executes the object and returns the contained value.
     /// </summary>
     public abstract T GetValue();
     #endregion
