@@ -1,18 +1,11 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workbench ActiveDocument="FunctionScript/FnScriptCompiler.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="../../../Amadeus/Source/Amadeus/Amadeus/Scratchpad.txt">
     <Files>
-      <File FileName="FunctionScript/FnConstant.cs" Line="25" Column="5" />
-      <File FileName="FunctionScript/FnObject.cs" Line="68" Column="56" />
-      <File FileName="FunctionScript/DefaultFunctions.cs" Line="2020" Column="47" />
-      <File FileName="FunctionScript/FnFunctionPointer.cs" Line="31" Column="17" />
-      <File FileName="FunctionScript/FnScriptCompiler.cs" Line="7" Column="17" />
-      <File FileName="FunctionScript/FnScriptExpression.cs" Line="21" Column="47" />
-      <File FileName="FunctionScript/FnFunction.cs" Line="176" Column="46" />
-      <File FileName="FunctionScript/FnScriptResources.cs" Line="476" Column="59" />
-      <File FileName="FunctionScript/FnFunctionGroup.cs" Line="23" Column="58" />
+      <File FileName="../New_FunctionScript/FunctionScript/FunctionScript/Tokenizing/ConstToken.cs" Line="18" Column="141" />
+      <File FileName="../../../Amadeus/Source/Amadeus/Amadeus/Scratchpad.txt" Line="15" Column="45" />
     </Files>
   </MonoDevelop.Ide.Workbench>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Release" />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>

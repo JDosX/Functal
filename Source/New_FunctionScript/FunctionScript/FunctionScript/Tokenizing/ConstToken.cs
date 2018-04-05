@@ -5,9 +5,9 @@ using Amadeus.Tokenizing;
 namespace FunctionScript.Tokenizing {
   internal sealed class ConstToken : Token {
     internal sealed class Builder : Token.Builder {
-      protected override IEnumerator<BuildState> Feed(char? c) {
+      protected override IEnumerator<BuildState> NextChar(CharContainer c) {
         // First char must be a letter or underscore.
-        if (c >= 'a' && c <= 'z' || c >= 'A' && c <= 'Z' || c == '_') {
+        if (c.Value >= 'a' && c.Value <= 'z' || c.Value >= 'A' && c.Value <= 'Z' || c.Value == '_') {
           yield return BuildState.InProgress;
         } else {
           yield return BuildState.Invalid;
@@ -15,7 +15,7 @@ namespace FunctionScript.Tokenizing {
         }
 
         // Every subsequent character can be a letter, number or underscore.
-        while (c >= 'a' && c <= 'z' || c >= 'A' && c <= 'Z' || c >= '0' && c <= '9' || c == '_') {
+        while (c.Value >= 'a' && c.Value <= 'z' || c.Value >= 'A' && c.Value <= 'Z' || c.Value >= '0' && c.Value <= '9' || c.Value == '_') {
           yield return BuildState.InProgress;
         }
 
