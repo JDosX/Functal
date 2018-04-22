@@ -13,4 +13,7 @@
   <ItemGroup>
     <Folder Include="Tokenizing\" />
   </ItemGroup>
+  <ItemGroup>
+    <Compile Remove="Tokenizing\StringTokens.cs" />
+  </ItemGroup>
 </Project>
