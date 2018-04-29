@@ -1,7 +1,6 @@
 using System;
 
 namespace FunctionScript {
-
   /// <summary>
   /// Represents a FunctionScript language construct.
   /// </summary>
@@ -12,7 +11,7 @@ namespace FunctionScript {
     public abstract Type GetWrappedObjectType();
 
     /// <summary>
-    /// Gets the value of the data wrapped by this FnObject as an <see cref="object"/>.
+    /// Gets the value of the data contained in this <see cref="FnObject"/> as an <see cref="object"/>.
     /// </summary>
     public abstract Object GetValueAsObject();
 
@@ -52,20 +51,20 @@ namespace FunctionScript {
   }
 
   /// <summary>
-  /// Represent a FunctionScript language construct.
+  /// Represent a FunctionScript language construct with a defined type.
   /// </summary>
   /// <typeparam name="T">The type wrapped by the <see cref="FnObject"/>.</typeparam>
   public abstract class FnObject<T> : FnObject {
     #region Abstract Methods
     /// <summary>
-    /// Executes the object and returns the contained value.
+    /// Gets the value of the data contained in this <see cref="FnObject"/>.
     /// </summary>
     public abstract T GetValue();
     #endregion
 
     #region Public Methods
     /// <summary>
-    /// Returns the data type wrapped by this FnObject.
+    /// Returns the data type wrapped by this <see cref="FnObject"/>.
     /// </summary>
     public override Type GetWrappedObjectType() {
       return typeof(T);

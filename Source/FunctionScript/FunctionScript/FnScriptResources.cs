@@ -4,11 +4,11 @@ using System.Linq;
 
 namespace FunctionScript {
   /// <summary>
-  /// Contains resources for the FunctionScript language, such as available functions, constants and global variables.
+  /// Contains resources for FunctionScript, such as utility functions, constants and global parameters.
   /// </summary>
   public static class FnScriptResources {
     /// <summary>
-    /// A random number generator of no seed to use in FunctionScript functions.
+    /// A random number generator of no seed to use in <see cref="FnFunction{T}"/>s.
     /// </summary>
     public static readonly Random GenericRandom;
 

@@ -132,8 +132,8 @@ namespace FunctionScript {
       }
 
       if (LowestScoreIndex >= 0 && LowestScoreCount == 1) {
-        //now we iterate through the list of arguments, and everywhere we have a type mismatch, we replace the argument with
-        //an implicit cast of the argument to the correct data type
+        // Now we iterate through the list of arguments, and everywhere we have a type mismatch, we replace the argument
+        // with an implicit cast of the argument to the correct data type
 
         for (int i = 0; i < arguments.Count; i++) {
           if (FunctionPointers[LowestScoreIndex].GetFunctionTypeArray()[i] != arguments[i].GetWrappedObjectType()) {
@@ -145,9 +145,13 @@ namespace FunctionScript {
 
         return FunctionPointers[LowestScoreIndex].CreateObjectWithPointer(arguments, parameters, isPreExecute);
       } else if (LowestScoreIndex >= 0 && LowestScoreCount > 1) {
-        throw new ArgumentException("The function call is too ambiguous to resolve, use more specific argument types", arguments.ToString());
+        throw new ArgumentException(
+          "The function call is too ambiguous to resolve, use more specific argument types", arguments.ToString()
+        );
       } else {
-        throw new ArgumentException("The function has no overloads which match the specified arguments", arguments.ToString());
+        throw new ArgumentException(
+          "The function has no overloads which match the specified arguments", arguments.ToString()
+        );
       }
     }
   }

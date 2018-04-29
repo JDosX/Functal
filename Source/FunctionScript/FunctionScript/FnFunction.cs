@@ -5,7 +5,7 @@ using System.Reflection;
 
 namespace FunctionScript {
   /// <summary>
-  /// Reflection tag for identifying if an FnObject is a function argument in an FnFunction.
+  /// Reflection tag for identifying if an FnObject is an <see cref="FnFunction{T}"/> argument.
   /// </summary>
   [System.AttributeUsage(AttributeTargets.Field)]
   public class FnArg : Attribute { }
@@ -39,7 +39,13 @@ namespace FunctionScript {
     /// Compiler flags which can be used in FnFunctions to alter the way an <see cref="FnScriptExpression"/> is compiled.
     /// </summary>
     public enum CompileFlags {
+      /// <summary>
+      /// Sets the <see cref="FnFunction{T}"/> as un-cachable. Use this if the function cannot be executed immutably.
+      /// </summary>
       DO_NOT_CACHE = 0,
+      /// <summary>
+      /// Marks the <see cref="FnFunction{T}"/> as an implicit conversion.
+      /// </summary>
       IMPLICIT_CONVERSION,
     }
     #endregion

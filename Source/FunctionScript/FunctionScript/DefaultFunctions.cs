@@ -2786,7 +2786,7 @@ namespace FunctionScript {
   // Public so people can extend it with their own types
   public class FnFunction_GetValue<T> : FnFunction<T>
       where T : struct {
-    //Function parameters
+    // Function parameters.
     [FnArg] protected FnObject<Nullable<T>> NullableObject;
 
     public override T GetValue() {

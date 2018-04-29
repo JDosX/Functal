@@ -10,7 +10,7 @@ namespace FunctionScript {
     /// The possible profiles each of the characters in an expression string can have. Some of these are only used
     /// during syntax checking.
     /// </summary>
-    enum FnObjectProfiles {
+    private enum FnObjectProfiles {
       Constant = 0,
       ParameterBody,
       StringBody,
@@ -162,6 +162,9 @@ namespace FunctionScript {
 
     #endregion
 
+    /// <summary>
+    /// Constructor.
+    /// </summary>
     public FnScriptCompiler() {
       Array.Sort<Char>(OperatorsAndGrouping);
       Array.Sort<Char>(Operators);
