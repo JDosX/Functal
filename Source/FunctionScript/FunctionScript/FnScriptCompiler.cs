@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 
 namespace FunctionScript {
+  /// <summary>
+  /// Compiles <see cref="FnScriptExpression{T}"/>s from input strings.
+  /// </summary>
   public class FnScriptCompiler {
     #region Data
 
@@ -174,9 +177,9 @@ namespace FunctionScript {
     }
 
     /// <summary>
-    /// Compiles a FunctionScript expression into an executable <see cref="FnScriptExpression"/>.
+    /// Compiles an executable <see cref="FnScriptExpression{T}"/> expression from a provided
+    /// string.
     /// </summary>
-    /// <returns>An executable <see cref="FnScriptExpression"/> that can be run by calling .</returns>
     /// <param name="expression">The expression to compile.</param>
     /// <typeparam name="T">The return type of the expression to compile.</typeparam>
     public FnScriptExpression<T> Compile<T>(string expression) {
@@ -184,12 +187,16 @@ namespace FunctionScript {
     }
 
     /// <summary>
-    /// Compiles a FunctionScript expression into an executable <see cref="FnScriptExpression"/>.
+    /// Compiles an executable <see cref="FnScriptExpression{T}"/> expression from a provided
+    /// string.
     /// </summary>
-    /// <returns>An executable <see cref="FnScriptExpression"/> that can be run by calling .</returns>
     /// <param name="expression">The expression to compile.</param>
-    /// <param name="localParameters"></param>
-    /// <param name="collectionParameters"></param>
+    /// <param name="localParameters">
+    ///   The list of parameters the expression uses, with local scope.
+    /// </param>
+    /// <param name="collectionParameters">
+    ///   The list of parameters the expression uses, with collection scope.
+    /// </param>
     /// <typeparam name="T">The return type of the expression to compile.</typeparam>
     public FnScriptExpression<T> Compile<T>(
       string expression, Dictionary<String, FnObject> localParameters, Dictionary<String, FnObject> collectionParameters
@@ -1018,7 +1025,7 @@ namespace FunctionScript {
         } else if (FollowsFunctionNameSuccessorRule(ref expression, ref profiles, nameSuccessor)) // If it follows this rule it is a function name
           {
           // Check that it is a valid function name. If not, throw and exception
-          if (!FnScriptResources.DoesFunctionExist(name) && name != "if") {
+          if (!FnScriptResources.DoesFunctionGroupExist(name) && name != "if") {
             throw new ArgumentException(String.Format("the specified function ({0}) does not exist.", name));
           }
 

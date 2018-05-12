@@ -4,7 +4,8 @@ using System.Linq;
 
 namespace FunctionScript {
   /// <summary>
-  /// Contains resources for FunctionScript, such as utility functions, constants and global parameters.
+  /// Maintains the FunctionScript runtime. Is used to define globally accessible constants,
+  /// parameters and functions.
   /// </summary>
   public static class FnScriptResources {
     /// <summary>
@@ -925,6 +926,10 @@ namespace FunctionScript {
     /// <typeparam name="TInput">The data type of the global parameter.</typeparam>
     /// <param name="parameterName">The name of the global parameter.</param>
     /// <param name="parameterValue">The value to initialize the parameter with.</param>
+    /// <exception cref="ArgumentException">
+    /// Thrown if a global parameter already exists with the name specified in
+    /// <paramref name="parameterName"/>.
+    /// </exception>
     public static void AddGlobalParameter<TInput>(String parameterName, TInput parameterValue) {
       if (!GlobalParameters.ContainsKey(parameterName)) {
         GlobalParameters.Add(parameterName, new FnVariable<TInput>(parameterValue));
@@ -934,11 +939,14 @@ namespace FunctionScript {
     }
 
     /// <summary>
-    /// Sets the value of the specified global parameter with a specified value.
+    /// Sets the value of the global parameter of the specified name with the specified value.
     /// </summary>
     /// <typeparam name="TInput">The data type of the global parameter.</typeparam>
     /// <param name="parameterName">The name of the global parameter.</param>
     /// <param name="parameterValue">The value to assign to the parameter.</param>
+    /// <exception cref="ArgumentException">
+    /// Thrown if a global parameter of the specified name or type does not exist.
+    /// </exception>
     public static void SetGlobalParameter<TInput>(String parameterName, TInput parameterValue) {
       if (GlobalParameters.ContainsKey(parameterName)) {
         if (GlobalParameters[parameterName] is FnVariable<TInput>) {
@@ -950,73 +958,103 @@ namespace FunctionScript {
           );
         }
       } else {
-        throw new ArgumentException(String.Format("Parameter of name \"{0}\" doesn't exist.", parameterName));
+        throw new ArgumentException(
+          String.Format("Parameter of name \"{0}\" doesn't exist.", parameterName)
+        );
       }
     }
 
     #endregion
 
     /// <summary>
-    /// Creates a constant with the specified name and value.
+    /// Defines a constant with the specified name, type and value.
     /// </summary>
     /// <typeparam name="T">The data type of the constant.</typeparam>
     /// <param name="name">The name of the constant.</param>
     /// <param name="data">The value of the constant.</param>
+    /// <exception cref="ArgumentException">
+    /// Thrown if <paramref name="name"/> is of an invalid format. Constant names must start with
+    /// a letter or underscore, and each following character must be either a letter, number or
+    /// undersore.
+    /// </exception>
     public static void AddConstant<T>(String name, T data) {
-      // Check the validity of the constant name, constants can only be made of letters, digits or underscores, and must
-      // start with a letter or an underscore.
+      // Check the validity of the constant name, constants can only be made of letters, digits or
+      // underscores, and must start with a letter or an underscore.
       if (IsValidName(name)) {
         Constants.Add(name, new FnConstant<T>(data));
       } else {
         throw new ArgumentException(
-          "Invalid constant name provided. Names for constants can only contain underscores, letters or digits, must" +
-          "start with an underscore or a letter, and must not be blank"
+          "Invalid constant name provided. Names for constants can only contain underscores, " +
+          "letters or digits, must start with an underscore or a letter, and must not be blank"
         );
       }
     }
 
     /// <summary>
-    /// Creates a new function group with the specified name. Once a group is created, you can add
-    /// <see cref="FnFunction"/>s to it to create function overloads. Functions can then be called from a FunctionScript
-    /// expression using the name of the group.
+    /// Creates a new function group with the specified name. Once a group is created,
+    /// <see cref="FnFunction{Type}"/>s can be added to it to create function overloads.
+    /// Functions can then be called from a FunctionScript expression using the name of the group.
     /// </summary>
     /// <param name="name">The name of the group.</param>
+    /// <exception cref="ArgumentException">
+    /// Thrown if <paramref name="name"/> is of an invalid format. Function group names must start
+    /// with a letter or underscore, and each following character must be either a letter, number or
+    /// undersore.
+    /// </exception>
     public static void CreateFunctionGroup(String name) {
       if (IsValidName(name) && !FnFunctions.ContainsKey(name)) {
         FnFunctions.Add(name, new FnFunctionGroup(name));
       } else {
         throw new ArgumentException(
-          "Invalid function group name provided. Names for switches can only contain underscores, letters or digits," +
-          "must start with an underscore or a letter, and must not be blank", name
+          "Invalid function group name provided. Names for switches can only contain " +
+          "underscores, letters or digits, must start with an underscore or a letter, and must " +
+          "not be blank", name
         );
       }
     }
 
     /// <summary>
-    /// Creates an alias for a function group. Function groups that are aliased can be called 
+    /// Creates an alias for a function group. Function groups can be called with a FunctionScript
+    /// expression using any aliased name.
     /// </summary>
-    /// <remarks>
-    /// A function group can have as many aliases as desired. For example
-    /// </remarks>
     /// <param name="groupName">The name of the function group to alias.</param>
     /// <param name="alias">The alias.</param>
+    /// <exception cref="ArgumentException">
+    /// Thrown if <paramref name="alias"/> is of an invalid format. Function group names must start
+    /// with a letter or underscore, and each following character must be either a letter, number or
+    /// undersore.
+    /// </exception>
     public static void AddAliasForFunctionGroup(String groupName, String alias) {
       if (IsValidName(alias) && !FnFunctions.ContainsKey(alias)) {
         FnFunctions.Add(alias, FnFunctions[groupName]);
       } else {
         throw new ArgumentException(
-          "Invalid alias name provided. Aliases for switches can only contain underscores, letters or digits, must" +
-          "start with an underscore or a letter, and must not be blank", groupName
+          "Invalid alias name provided. Aliases for switches can only contain underscores, " +
+          "letters or digits, must start with an underscore or a letter, and must not be blank",
+          groupName
         );
       }
     }
 
     /// <summary>
-    /// Adds an <see cref="FnFunction"/> to the function group of the provided name.
+    /// Adds an <see cref="FnFunction{Type}"/> to the function group of the provided name.
     /// </summary>
     /// <typeparam name="T">The return type of the function.</typeparam>
     /// <param name="name">The name of the group to add it to.</param>
     /// <param name="function">An initialized copy of the function.</param>
+    /// <exception cref="ArgumentException">
+    /// Thrown if a function group with name <paramref name="name"/> does not exist.
+    /// </exception>
+    /// <exception cref="ArgumentException">
+    /// Thrown if the provided function is flagged with
+    /// <see cref="FnFunction{T}.CompileFlags.IMPLICIT_CONVERSION"/> but has more than one
+    /// parameter. Implicit conversion functions can only take one argument.
+    /// </exception>
+    /// <exception cref="ArgumentException">
+    /// Thrown if the provided function is flagged with
+    /// <see cref="FnFunction{T}.CompileFlags.IMPLICIT_CONVERSION"/> but another function already
+    /// exists which handles the same implicit conversion.
+    /// </exception>
     public static void AddFunctionToGroup<T>(String name, FnFunction<T> function) {
       if (FnFunctions.ContainsKey(name)) {
         FnFunctions[name].AddFunctionPointer(new FnFunctionPointer<T>(function));
@@ -1029,11 +1067,15 @@ namespace FunctionScript {
       }
 
       // If this function has an implicit conversion flag.
-      if (function.Flags != null && function.Flags.Contains(FnFunction<T>.CompileFlags.IMPLICIT_CONVERSION)) {
+      if (
+        function.Flags != null &&
+        function.Flags.Contains(FnFunction<T>.CompileFlags.IMPLICIT_CONVERSION)
+      ) {
         if (function.ArgumentTypes == null || function.ArgumentTypes.Length != 1) {
           throw new ArgumentException(
-            "The provided FnFunction is marked as an implicit conversion function, but has the incorrect number of" +
-            "parameters. To be a valid Implicit Converion function it must have exactly one parameter."
+            "The provided FnFunction is marked as an implicit conversion function, but has the " +
+            "incorrect number of parameters. To be a valid Implicit Converion function it must " +
+            "have exactly one parameter."
           );
         }
 
@@ -1122,20 +1164,19 @@ namespace FunctionScript {
     }
 
     /// <summary>
-    /// Determines if a constant with the specified name exists.
+    /// Returns true if a constant with the specified name exists, false otherwise.
     /// </summary>
     /// <param name="name">The name to verify.</param>
-    /// <returns></returns>
     public static Boolean DoesConstantExist(String name) {
       return Constants.ContainsKey(name);
     }
 
     /// <summary>
-    /// Determines if an FnFunctionSwitch with the spedified name exists.
+    /// Returns true if a function group with the spedified name exists, false otherwise.
     /// </summary>
     /// <param name="name">The name to verify</param>
     /// <returns></returns>
-    public static Boolean DoesFunctionExist(String name) {
+    public static Boolean DoesFunctionGroupExist(String name) {
       return FnFunctions.ContainsKey(name);
     }
 
@@ -1143,20 +1184,25 @@ namespace FunctionScript {
     /// Returns the <see cref="FnFunctionGroup"/> with the specified name.
     /// </summary>
     /// <param name="name">The name of the function group.</param>
-    /// <returns></returns>
     internal static FnFunctionGroup GetFunctionGroup(String name) {
-      if (DoesFunctionExist(name)) { return FnFunctions[name]; }
-      throw new ArgumentException(String.Format("The function you have requested ({0}) does not exist", name));
+      if (DoesFunctionGroupExist(name)) { return FnFunctions[name]; }
+      throw new ArgumentException(
+        String.Format("The function you have requested ({0}) does not exist", name)
+      );
     }
 
     /// <summary>
-    /// Returns the FnObject containing the constant with the specified name
+    /// Returns the <see cref="FnObject"/> containing the constant with the specified name.
     /// </summary>
-    /// <param name="name">The name of the constant</param>
-    /// <returns></returns>
+    /// <param name="name">The name of the constant.</param>
+    /// <exception cref="ArgumentException">
+    /// Thrown if a constant of name <paramref name="name"/> doesn't exist.
+    /// </exception>
     public static FnObject GetConstant(String name) {
       if (DoesConstantExist(name)) { return Constants[name]; }
-      throw new ArgumentException(String.Format("The constant you have requested ({0}) does not exist", name));
+      throw new ArgumentException(
+        String.Format("The constant you have requested ({0}) does not exist", name)
+      );
     }
 
     /// <summary>

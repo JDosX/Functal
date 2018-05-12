@@ -38,7 +38,6 @@ namespace FunctionScript {
     /// <summary>
     /// Gets the value of this <see cref="FnVariable{T}"/> as an <see cref="object"/>.
     /// </summary>
-    /// <returns>The value as object.</returns>
     public override object GetValueAsObject() {
       return (object)Value;
     }

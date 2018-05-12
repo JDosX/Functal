@@ -7,7 +7,6 @@ namespace FunctionScript {
   /// Represents a FunctionScript expression.
   /// </summary>
   public abstract class FnScriptExpression {
-    
     /// <summary>
     /// Stores whether the expression is executing immutably.
     /// </summary>
@@ -29,7 +28,7 @@ namespace FunctionScript {
   public class FnScriptExpression<T> : FnScriptExpression {
     
     /// <summary>
-    /// The raw expression that was used to compile this FnScriptExpression.
+    /// The raw string this <see cref="FnScriptExpression{T}"/> was compiled from.
     /// </summary>
     public readonly String RawExpression;
 
@@ -60,11 +59,11 @@ namespace FunctionScript {
     }
 
     /// <summary>
-    /// Sets the value of a parameter in the collection parameter dictionary with the given name
+    /// Sets the parameter of the specified name to the specified value.
     /// </summary>
-    /// <typeparam name="TInput">The data type of the value to assign to the collection parameter</typeparam>
-    /// <param name="parameterName">The name of the collection parameter</param>
-    /// <param name="parameterValue">The value to assign to the collection parameter</param>
+    /// <typeparam name="TInput">The data type of the parameter.</typeparam>
+    /// <param name="parameterName">The name of the parameter.</param>
+    /// <param name="parameterValue">The value to assign to the parameter.</param>
     public void SetParameter<TInput>(String parameterName, TInput parameterValue) {
       if (Parameters.ContainsKey(parameterName)) {
         if (Parameters[parameterName] is FnVariable<TInput>) {
@@ -81,22 +80,23 @@ namespace FunctionScript {
     }
 
     /// <summary>
-    /// Returns the data type this expression will return when executed.
+    /// Gets the return type of this <see cref="FnScriptExpression{T}"/>.
     /// </summary>
     public Type GetReturnType() {
       return typeof(T);
     }
 
     /// <summary>
-    /// Executes the expression immutably and returns the result. Immutable execution means the expression runs
-    /// without incurring any changes in global state.
+    /// Executes the expression immutably and returns the result. Immutable execution means the
+    /// expression executes without changing the program's state.
     /// </summary>
     /// <remarks>
-    /// For immutable execution to work correctly it requires immutable support from each of the methods that it
-    /// uses. 
+    /// For immutable execution to work correctly it requires immutable support from each of the
+    /// functionsthat it uses. 
     /// </remarks>
-    /// <returns>The computed result of the expression. Note: If a function used in the expression relies on a state
-    /// to compute results, then you may notice a change in returned value when compared to using Execute.</returns>
+    /// <returns>The computed result of the expression. If a function used in the expression relies
+    /// on a state change to compute results, you may notice the returned value differs when
+    /// compared to calling <see cref="Execute"/>.</returns>
     public T ImmutableExecute() {
       IsImmutableExecute.Value = true;
       T data = ExecutionNode.GetValue();
@@ -106,9 +106,9 @@ namespace FunctionScript {
     }
 
     /// <summary>
-    /// Executes the expression and returns the result whilst storing it.
+    /// Executes the expression and returns the result.
     /// </summary>
-    /// <returns>The result of the expression execution</returns>
+    /// <returns>The computed result of the expression.</returns>
     public T Execute() {
       return ExecutionNode.GetValue();
     }

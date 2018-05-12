@@ -5,46 +5,36 @@ using System.Reflection;
 
 namespace FunctionScript {
   /// <summary>
-  /// Reflection tag for identifying if an FnObject is an <see cref="FnFunction{T}"/> argument.
+  /// <para>
+  /// <see cref="Attribute"/> tag for identifying if an <see cref="FnObject"/> is an
+  /// <see cref="FnFunction{T}"/> argument.
+  /// </para>
+  /// <para>
+  /// The order in which <see cref="FnArg"/>s are declared is the order in which they must
+  /// be provided when calling the function from a FunctionScript expression.
+  /// </para>
   /// </summary>
   [System.AttributeUsage(AttributeTargets.Field)]
   public class FnArg : Attribute { }
 
-  // TODO: DID I END UP USING THIS?
-  [System.AttributeUsage(AttributeTargets.Class)]
-  public class UseFunction : Attribute {
-    /// <summary>
-    /// The list of names the attached FnFunction could have.
-    /// </summary>
-    private string[] FunctionNames;
-
-    public bool IsImmutable = false;
-    public bool ImplicitConversion = false;
-
-    /// <summary>
-    /// Constructor.
-    /// </summary>
-    /// <param name="functionNames">The list of names the attached FnFunction could have.</param>
-    public UseFunction(params string[] functionNames) {
-      FunctionNames = functionNames;
-    }
-  }
-
   /// <summary>
-  /// Represents a FunctionScript Function.
+  /// Represents a FunctionScript function.
   /// </summary>
   public abstract class FnFunction<T> : FnObject<T> {
     #region Nested Data Types
     /// <summary>
-    /// Compiler flags which can be used in FnFunctions to alter the way an <see cref="FnScriptExpression"/> is compiled.
+    /// Flags which can be used in the <see cref="FnFunction{T}"/>s to correctly compile the
+    /// function into an <see cref="FnScriptExpression"/>.
     /// </summary>
     public enum CompileFlags {
       /// <summary>
-      /// Sets the <see cref="FnFunction{T}"/> as un-cachable. Use this if the function cannot be executed immutably.
+      /// Sets the <see cref="FnFunction{T}"/> as un-cachable. Use this if the function cannot be
+      /// executed immutably.
       /// </summary>
       DO_NOT_CACHE = 0,
       /// <summary>
-      /// Marks the <see cref="FnFunction{T}"/> as an implicit conversion.
+      /// Marks the <see cref="FnFunction{T}"/> as an implicit type conversion. An
+      /// <see cref="FnFunction{T}"/> with this flag can only take one function argument.
       /// </summary>
       IMPLICIT_CONVERSION,
     }
@@ -80,16 +70,16 @@ namespace FunctionScript {
 
     #region Constructors
     /// <summary>
-    /// Creates a new FnFunction.
+    /// Constructor.
     /// </summary>
     public FnFunction() {
       Initialize(null);
     }
 
     /// <summary>
-    /// Creates a new FnFunction with the specified list of compiler flags.
+    /// Constructs a new <see cref="FnFunction{T}"/> with the specified list of compilation flags.
     /// </summary>
-    /// <param name="flags">The list of compile flags the function should have</param>
+    /// <param name="flags">The list of compilation flags the function should have.</param>
     public FnFunction(CompileFlags[] flags) {
       Initialize(flags);
     }
@@ -123,7 +113,7 @@ namespace FunctionScript {
     }
 
     /// <summary>
-    /// Gets the value of the data wrapped by this FnObject as an <see cref="object"/>.
+    /// Gets the output of this <see cref="FnFunction{T}"/> as an <see cref="object"/>.
     /// </summary>
     public override object GetValueAsObject() {
       return (Object)GetValue();
