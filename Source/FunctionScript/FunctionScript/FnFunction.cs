@@ -10,7 +10,9 @@ namespace FunctionScript {
   [System.AttributeUsage(AttributeTargets.Field)]
   public class FnArg : Attribute { }
 
-  // TODO: DID I END UP USING THIS?
+  /// <summary>
+  /// Attribute for identifying an FnFunction
+  /// </summary>
   [System.AttributeUsage(AttributeTargets.Class)]
   public class UseFunction : Attribute {
     /// <summary>

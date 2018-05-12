@@ -1,6 +1,8 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
+using FunctionScript.DefaultFunctions;
 
 namespace FunctionScript {
   /// <summary>
@@ -105,10 +107,31 @@ namespace FunctionScript {
     private static void InitializeGlobalParameters() {}
 
     /// <summary>
+    /// Locates and records the types of <see cref="FnFunction"/>s available.
+    /// </summary>
+    /// <param name="assembly">The assembly to search for <see cref="FnFunction"/>s.</param>
+    private static void AddFunctionsTypes(Assembly assembly) {
+      Type[] functionTypes =
+        assembly.GetTypes()
+                .Where(type => type.GetCustomAttribute<UseFunction>() != null)
+                .ToArray<Type>();
+
+
+    }
+
+    /// <summary>
     /// Initializes the functions dictionary and adds in all the defualt functions that can be called.
     /// </summary>
     private static void InitializeFunctions() {
       FnFunctions = new Dictionary<String, FnFunctionGroup>();
+
+      AppDomain.CurrentDomain.AssemblyLoad += (sender, args) => {
+        AddFunctionsTypes(args.LoadedAssembly);
+      };
+
+      foreach (Assembly assembly in AppDomain.CurrentDomain.GetAssemblies()) {
+        AddFunctionsTypes(assembly);
+      }
 
       #region Default FnScript API Functions
 
@@ -1033,7 +1056,7 @@ namespace FunctionScript {
         if (function.ArgumentTypes == null || function.ArgumentTypes.Length != 1) {
           throw new ArgumentException(
             "The provided FnFunction is marked as an implicit conversion function, but has the incorrect number of" +
-            "parameters. To be a valid Implicit Converion function it must have exactly one parameter."
+            "parameters. To be a valid implicit converion function it must have exactly one parameter."
           );
         }
 
@@ -1080,10 +1103,10 @@ namespace FunctionScript {
 
           return TypePrecedence[functionType] - TypePrecedence[argumentType];
         } else {
-          if (argumentType == typeof(Char)) {  //if it's a char then we have to do some weird stuff
+          if (argumentType == typeof(Char)) {  // If it's a char then we have to do some weird stuff
             return TypePrecedence[functionType] - TypePrecedence[typeof(UInt16)];
-          } else { //if it's anything else, give it ambiguity level 13 and return the result
-            return TypePrecedence[functionType] - 13;      // 13'S A MAGIC NUMBER BUT IT'S THERE BECAUSE THAT'S THE GAP THAT WAS LEFT BETWEEN DECIMAL AND OBJECT FOR AMBIGUITY SCORES
+          } else { // If it's anything else, give it ambiguity level 13 and return the result
+            return TypePrecedence[functionType] - 13;      // 13'S A MAGIC NUMBER BUT IT'S THERE BECAUSE THAT'S THE GAP THAT WAS LEFT BETWEEN DECIMAL AND OBJECT FOR AMBIGUITY SCORES.
           }
         }
       } else {
