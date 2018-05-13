@@ -62,7 +62,7 @@ namespace FunctionScript {
       "-",   // SUBTRACTION
       "*",   // MULTIPLICATION
       "/",   // DIVISION
-      "%"    // MODULO
+      "%"    // REMAINDER
     };
 
     #endregion

@@ -42,7 +42,8 @@ namespace FunctionScript {
     /// <summary>
     /// An exception message to use for an invalid number of arguments provided.
     /// </summary>
-    private const String InvalidNumberOfArguments = "No overload for this function matches the arguments provided.";
+    private const String InvalidNumberOfArguments =
+      "No overload for this function matches the arguments provided.";
     #endregion
 
     /// <summary>
