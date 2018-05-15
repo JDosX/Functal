@@ -194,6 +194,19 @@ namespace FunctionScript {
     /// <param name="localParameters">
     ///   The list of parameters the expression uses, with local scope.
     /// </param>
+    /// <typeparam name="T">The return type of the expression to compile.</typeparam>
+    public FnScriptExpression<T> Compile<T>(string expression, Dictionary<String, FnObject> localParameters) {
+      return Compile<T>(expression, localParameters, null);
+    }
+
+    /// <summary>
+    /// Compiles an executable <see cref="FnScriptExpression{T}"/> expression from a provided
+    /// string.
+    /// </summary>
+    /// <param name="expression">The expression to compile.</param>
+    /// <param name="localParameters">
+    ///   The list of parameters the expression uses, with local scope.
+    /// </param>
     /// <param name="collectionParameters">
     ///   The list of parameters the expression uses, with collection scope.
     /// </param>

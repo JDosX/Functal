@@ -1,0 +1,23 @@
+stuff to copy to fn 1.5:
+
+  /// <summary>
+  /// An <see cref="Attribute" /> tag to be used to denote <see cref="FnFunction" />s.
+  /// </summary>
+  [System.AttributeUsage(AttributeTargets.Class)]
+  public class UseFunction : Attribute {
+    /// <summary>
+    /// The list of names the attached FnFunction could have.
+    /// </summary>
+    private string[] FunctionNames;
+
+    public bool IsImmutable = false;
+    public bool ImplicitConversion = false;
+
+    /// <summary>
+    /// Constructor.
+    /// </summary>
+    /// <param name="functionNames">The list of names the attached FnFunction could have.</param>
+    public UseFunction(params string[] functionNames) {
+      FunctionNames = functionNames;
+    }
+  }
