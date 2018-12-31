@@ -2754,10 +2754,9 @@ namespace FunctionScript {
     }
   }
   #endregion
-  //This is where my XNor would go, IF I HAD ONE!! (obscure Fairly Odd Parents reference) Insert when 2.5 conversion is done
   #endregion
   #region Void Function Wrappers
-  // Public so people can reference it with their own types
+  // Public so users can reference it with their own types
   public class FnFunction_Return<T> : FnFunction<T> {
     [FnArg] protected FnObject<T> ReturnValue;
     [FnArg] protected FnObject<Object> VoidFunction;

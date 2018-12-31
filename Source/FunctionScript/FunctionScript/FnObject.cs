@@ -51,20 +51,20 @@ namespace FunctionScript {
   }
 
   /// <summary>
-  /// Represent a FunctionScript language construct with a defined type.
+  /// Represents a FunctionScript language construct with a defined type.
   /// </summary>
-  /// <typeparam name="T">The type wrapped by the <see cref="FnObject"/>.</typeparam>
+  /// <typeparam name="T">The type wrapped by the <see cref="FnObject{T}"/>.</typeparam>
   public abstract class FnObject<T> : FnObject {
     #region Abstract Methods
     /// <summary>
-    /// Gets the value of the data contained in this <see cref="FnObject"/>.
+    /// Gets the value of the data contained in this <see cref="FnObject{T}"/>.
     /// </summary>
     public abstract T GetValue();
     #endregion
 
     #region Public Methods
     /// <summary>
-    /// Returns the data type wrapped by this <see cref="FnObject"/>.
+    /// Returns the data type wrapped by this <see cref="FnObject{T}"/>.
     /// </summary>
     public override Type GetWrappedObjectType() {
       return typeof(T);

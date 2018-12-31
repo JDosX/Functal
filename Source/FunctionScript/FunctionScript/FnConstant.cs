@@ -2,7 +2,7 @@ namespace FunctionScript {
   /// <summary>
   /// Represents a FunctionScript constant.
   /// </summary>
-  /// <typeparam name="T">The contained type of the constant.</typeparam>
+  /// <typeparam name="T">The type of the contained constant.</typeparam>
   public class FnConstant<T> : FnObject<T> {
     /// <summary>
     /// The value of the <see cref="FnConstant{T}"/>.

@@ -2,6 +2,7 @@ namespace FunctionScript {
   /// <summary>
   /// Represents a FunctionScript variable/parameter.
   /// </summary>
+  /// <typeparam name="T">The type wrapped by the <see cref="FnVariable{T}"/>.</typeparam>
   public class FnVariable<T> : FnObject<T> {
     /// <summary>
     /// The value of the <see cref="FnVariable{T}"/>.
@@ -11,7 +12,7 @@ namespace FunctionScript {
     /// <summary>
     /// Constructor.
     /// </summary>
-    /// <param name="value">The value of the <see cref="FnVariable{T}"/>.</param>
+    /// <param name="value">The initial value of the <see cref="FnVariable{T}"/>.</param>
     public FnVariable(T value) {
       Value = value;
     }

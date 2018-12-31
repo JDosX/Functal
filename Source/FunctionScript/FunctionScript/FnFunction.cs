@@ -20,11 +20,14 @@ namespace FunctionScript {
   /// <summary>
   /// Represents a FunctionScript function.
   /// </summary>
+  /// <typeparam name="T">
+  /// The type return by the <see cref="FnFunction{T}"/> when executed.
+  /// </typeparam>
   public abstract class FnFunction<T> : FnObject<T> {
     #region Nested Data Types
     /// <summary>
-    /// Flags which can be used in the <see cref="FnFunction{T}"/>s to correctly compile the
-    /// function into an <see cref="FnScriptExpression"/>.
+    /// Flags which can be used to correctly compile an <see cref="FnFunction{T}"/> into an
+    /// <see cref="FnScriptExpression"/>.
     /// </summary>
     public enum CompileFlags {
       /// <summary>
