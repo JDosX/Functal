@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 
-namespace FunctionScript {
+namespace Functal {
   /// <summary>
   /// <para>
   /// <see cref="Attribute"/> tag for identifying if an <see cref="FnObject"/> is an
@@ -11,14 +11,14 @@ namespace FunctionScript {
   /// </para>
   /// <para>
   /// The order in which <see cref="FnArg"/>s are declared is the order in which they must
-  /// be provided when calling the function from a FunctionScript expression.
+  /// be provided when calling the function from a Functal expression.
   /// </para>
   /// </summary>
   [System.AttributeUsage(AttributeTargets.Field)]
   public class FnArg : Attribute { }
 
   /// <summary>
-  /// Represents a FunctionScript function.
+  /// Represents a Functal function.
   /// </summary>
   /// <typeparam name="T">
   /// The type return by the <see cref="FnFunction{T}"/> when executed.
@@ -27,7 +27,7 @@ namespace FunctionScript {
     #region Nested Data Types
     /// <summary>
     /// Flags which can be used to correctly compile an <see cref="FnFunction{T}"/> into an
-    /// <see cref="FnScriptExpression"/>.
+    /// <see cref="FunctalExpression"/>.
     /// </summary>
     public enum CompileFlags {
       /// <summary>

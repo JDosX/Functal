@@ -2,19 +2,19 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace FunctionScript {
+namespace Functal {
   /// <summary>
-  /// Maintains the FunctionScript runtime. Is used to define globally accessible constants,
+  /// Maintains the Functal runtime. Is used to define globally accessible constants,
   /// parameters and functions.
   /// </summary>
-  public static class FnScriptResources {
+  public static class FunctalResources {
     /// <summary>
     /// A random number generator of no seed to use in <see cref="FnFunction{T}"/>s.
     /// </summary>
     public static readonly Random GenericRandom;
 
     /// <summary>
-    /// Stores all the functions that can be used within FunctionScript.
+    /// Stores all the functions that can be used within Functal.
     /// </summary>
     internal static Dictionary<String, FnFunctionGroup> FnFunctions;
 
@@ -49,7 +49,7 @@ namespace FunctionScript {
     /// <summary>
     /// Constructor.
     /// </summary>
-    static FnScriptResources() {
+    static FunctalResources() {
       GlobalParameters = new Dictionary<String, FnObject>();
       ImplicitConversionSwitches = new Dictionary<Type, FnFunctionGroup>();
 
@@ -994,7 +994,7 @@ namespace FunctionScript {
     /// <summary>
     /// Creates a new function group with the specified name. Once a group is created,
     /// <see cref="FnFunction{Type}"/>s can be added to it to create function overloads.
-    /// Functions can then be called from a FunctionScript expression using the name of the group.
+    /// Functions can then be called from a Functal expression using the name of the group.
     /// </summary>
     /// <param name="name">The name of the group.</param>
     /// <exception cref="ArgumentException">
@@ -1015,7 +1015,7 @@ namespace FunctionScript {
     }
 
     /// <summary>
-    /// Creates an alias for a function group. Function groups can be called with a FunctionScript
+    /// Creates an alias for a function group. Function groups can be called with a Functal
     /// expression using any aliased name.
     /// </summary>
     /// <param name="groupName">The name of the function group to alias.</param>
@@ -1135,7 +1135,7 @@ namespace FunctionScript {
     }
 
     /// <summary>
-    /// Determines if the string specified is a valid name for a Function or Constant to be used in FunctionScript.
+    /// Determines if the string specified is a valid name for a Function or Constant to be used in Functal.
     /// </summary>
     /// <param name="name">The name to verify</param>
     private static Boolean IsValidName(String name) {

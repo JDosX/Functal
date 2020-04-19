@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Text;
 
-namespace FunctionScript {
+namespace Functal {
   // Disabling non-assignment warning to prevent one warning being thrown per FnArg. Each FnArg will be assigned to
   // during expression compilation via reflection.
   #pragma warning disable 0649

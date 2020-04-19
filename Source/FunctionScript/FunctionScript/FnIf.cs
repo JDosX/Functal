@@ -1,8 +1,8 @@
 using System;
 
-namespace FunctionScript {
+namespace Functal {
   /// <summary>
-  /// A FunctionScript conditional.
+  /// A Functal conditional.
   /// </summary>
   internal class FnIf<T> : FnObject<T> {
     /// <summary>

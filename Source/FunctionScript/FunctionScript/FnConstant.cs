@@ -1,6 +1,6 @@
-namespace FunctionScript {
+namespace Functal {
   /// <summary>
-  /// Represents a FunctionScript constant.
+  /// Represents a Functal constant.
   /// </summary>
   /// <typeparam name="T">The type of the contained constant.</typeparam>
   public class FnConstant<T> : FnObject<T> {

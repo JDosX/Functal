@@ -1,8 +1,8 @@
 using System;
 
-namespace FunctionScript {
+namespace Functal {
   /// <summary>
-  /// Represents a FunctionScript language construct.
+  /// Represents a Functal language construct.
   /// </summary>
   public abstract class FnObject {
     /// <summary>
@@ -32,7 +32,7 @@ namespace FunctionScript {
     /// Optimises the execution tree stemming from this FnObject.
     /// </summary>
     /// <remarks>
-    /// The optimisations performed will vary depending on the version of FunctionScript. In this version, the following
+    /// The optimisations performed will vary depending on the version of Functal. In this version, the following
     /// optimisations are performed:
     /// <list type="bullet">
     ///   <item>
@@ -51,7 +51,7 @@ namespace FunctionScript {
   }
 
   /// <summary>
-  /// Represents a FunctionScript language construct with a defined type.
+  /// Represents a Functal language construct with a defined type.
   /// </summary>
   /// <typeparam name="T">The type wrapped by the <see cref="FnObject{T}"/>.</typeparam>
   public abstract class FnObject<T> : FnObject {

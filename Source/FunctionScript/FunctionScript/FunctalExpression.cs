@@ -1,12 +1,12 @@
 using System;
 using System.Collections.Generic;
 
-namespace FunctionScript {
+namespace Functal {
 
   /// <summary>
-  /// Represents a FunctionScript expression.
+  /// Represents a Functal expression.
   /// </summary>
-  public abstract class FnScriptExpression {
+  public abstract class FunctalExpression {
     /// <summary>
     /// Stores whether the expression is executing immutably.
     /// </summary>
@@ -16,19 +16,19 @@ namespace FunctionScript {
     /// Constructor.
     /// </summary>
     /// <param name="isImmutableExecute">The FnVariable to fill when performing an immutable execution.</param>
-    protected FnScriptExpression(FnVariable<Boolean> isImmutableExecute) {
+    protected FunctalExpression(FnVariable<Boolean> isImmutableExecute) {
       IsImmutableExecute = isImmutableExecute;
     }
   }
 
   /// <summary>
-  /// Represents a FunctionScript expression.
+  /// Represents a Functal expression.
   /// </summary>
   /// <typeparam name="T">The return type of the expression.</typeparam>
-  public class FnScriptExpression<T> : FnScriptExpression {
+  public class FunctalExpression<T> : FunctalExpression {
     
     /// <summary>
-    /// The raw string this <see cref="FnScriptExpression{T}"/> was compiled from.
+    /// The raw string this <see cref="FunctalExpression{T}"/> was compiled from.
     /// </summary>
     public readonly String RawExpression;
 
@@ -49,7 +49,7 @@ namespace FunctionScript {
     /// <summary>
     /// The default constructor, creates a new blank FnScriptExpression
     /// </summary>
-    internal FnScriptExpression(
+    internal FunctalExpression(
       FnObject<T> executionNode, string rawExpression,
       Dictionary<String, FnObject> parameters, FnVariable<Boolean> isPreExecute
     ) : base(isPreExecute) {
@@ -80,7 +80,7 @@ namespace FunctionScript {
     }
 
     /// <summary>
-    /// Gets the return type of this <see cref="FnScriptExpression{T}"/>.
+    /// Gets the return type of this <see cref="FunctalExpression{T}"/>.
     /// </summary>
     public Type GetReturnType() {
       return typeof(T);

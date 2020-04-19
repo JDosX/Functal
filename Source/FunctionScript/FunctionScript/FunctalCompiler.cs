@@ -2,11 +2,11 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace FunctionScript {
+namespace Functal {
   /// <summary>
-  /// Compiles <see cref="FnScriptExpression{T}"/>s from input strings.
+  /// Compiles <see cref="FunctalExpression{T}"/>s from input strings.
   /// </summary>
-  public class FnScriptCompiler {
+  public class FunctalCompiler {
     #region Data
 
     /// <summary>
@@ -168,7 +168,7 @@ namespace FunctionScript {
     /// <summary>
     /// Constructor.
     /// </summary>
-    public FnScriptCompiler() {
+    public FunctalCompiler() {
       Array.Sort<Char>(OperatorsAndGrouping);
       Array.Sort<Char>(Operators);
 
@@ -177,17 +177,17 @@ namespace FunctionScript {
     }
 
     /// <summary>
-    /// Compiles an executable <see cref="FnScriptExpression{T}"/> expression from a provided
+    /// Compiles an executable <see cref="FunctalExpression{T}"/> expression from a provided
     /// string.
     /// </summary>
     /// <param name="expression">The expression to compile.</param>
     /// <typeparam name="T">The return type of the expression to compile.</typeparam>
-    public FnScriptExpression<T> Compile<T>(string expression) {
+    public FunctalExpression<T> Compile<T>(string expression) {
       return Compile<T>(expression, null, null);
     }
 
     /// <summary>
-    /// Compiles an executable <see cref="FnScriptExpression{T}"/> expression from a provided
+    /// Compiles an executable <see cref="FunctalExpression{T}"/> expression from a provided
     /// string.
     /// </summary>
     /// <param name="expression">The expression to compile.</param>
@@ -195,12 +195,12 @@ namespace FunctionScript {
     ///   The list of parameters the expression uses, with local scope.
     /// </param>
     /// <typeparam name="T">The return type of the expression to compile.</typeparam>
-    public FnScriptExpression<T> Compile<T>(string expression, Dictionary<String, FnObject> localParameters) {
+    public FunctalExpression<T> Compile<T>(string expression, Dictionary<String, FnObject> localParameters) {
       return Compile<T>(expression, localParameters, null);
     }
 
     /// <summary>
-    /// Compiles an executable <see cref="FnScriptExpression{T}"/> expression from a provided
+    /// Compiles an executable <see cref="FunctalExpression{T}"/> expression from a provided
     /// string.
     /// </summary>
     /// <param name="expression">The expression to compile.</param>
@@ -211,7 +211,7 @@ namespace FunctionScript {
     ///   The list of parameters the expression uses, with collection scope.
     /// </param>
     /// <typeparam name="T">The return type of the expression to compile.</typeparam>
-    public FnScriptExpression<T> Compile<T>(
+    public FunctalExpression<T> Compile<T>(
       string expression, Dictionary<String, FnObject> localParameters, Dictionary<String, FnObject> collectionParameters
     ) {
       #region Data Needed to construct the final FnScriptExpression 
@@ -300,8 +300,8 @@ namespace FunctionScript {
 
       //lastly, check our root node matches return type. If not, them attempt to add in an implicit casting function
       if (executionList.Last().GetWrappedObjectType() != (typeof(T))) {
-        if (FnScriptResources.ImplicitConversionSwitches.ContainsKey(typeof(T))) {
-          executionList.Add(FnScriptResources.ImplicitConversionSwitches[typeof(T)].CreateObjectWithPointer(new List<FnObject> { executionList.Last() }, parameters, isPreExecute));
+        if (FunctalResources.ImplicitConversionSwitches.ContainsKey(typeof(T))) {
+          executionList.Add(FunctalResources.ImplicitConversionSwitches[typeof(T)].CreateObjectWithPointer(new List<FnObject> { executionList.Last() }, parameters, isPreExecute));
           isBound[isBound.Count - 1] = true;
           isBound.Add(false);
         } else {
@@ -317,7 +317,7 @@ namespace FunctionScript {
       CacheExpression(ref executionNode);
 
       //TODO: MAKE THIS RETURN THE CORRECT FNSCRIPTEXPRESSION (Is this referring to rawexpression?)
-      FnScriptExpression<T> returnExpression = new FnScriptExpression<T>(executionNode, rawExpression, parameters, isPreExecute);
+      FunctalExpression<T> returnExpression = new FunctalExpression<T>(executionNode, rawExpression, parameters, isPreExecute);
 
       return returnExpression;
     }
@@ -407,23 +407,23 @@ namespace FunctionScript {
       }
 
       //Add the global parameters, discarding any with a conflicting name to what is already present
-      for (int i = 0; i < FnScriptResources.GlobalParameters.Count; i++) {
+      for (int i = 0; i < FunctalResources.GlobalParameters.Count; i++) {
         //Extract the key as we will use it twice
-        String globalKey = FnScriptResources.GlobalParameters.ElementAt(i).Key;
+        String globalKey = FunctalResources.GlobalParameters.ElementAt(i).Key;
 
         if (!outputDictionary.ContainsKey(globalKey)) {
-          outputDictionary.Add(globalKey, FnScriptResources.GlobalParameters[globalKey]);
+          outputDictionary.Add(globalKey, FunctalResources.GlobalParameters[globalKey]);
         }
       }
 
       return outputDictionary;
     }
 
-    private void AddLocalGhostArgument_ParentExpression<T>(ref List<FnObject> ghostArguments, ref FnScriptExpression<T> expression) {
+    private void AddLocalGhostArgument_ParentExpression<T>(ref List<FnObject> ghostArguments, ref FunctalExpression<T> expression) {
       //Add local ghost arguments
 
       //I THINK THIS IS UNSATISFACTORY, WE HAVE TO SPEED THIS UP
-      ghostArguments.Insert(0, new FnVariable<FnScriptExpression>(expression));
+      ghostArguments.Insert(0, new FnVariable<FunctalExpression>(expression));
     }
 
     #endregion
@@ -1028,7 +1028,7 @@ namespace FunctionScript {
         if (FollowsOperandSuccessorRule(ref expression, ref profiles, index))  // If it follows this rule it is a constant.
         {
           //check that it is a valid constant name. If not, throw and exception
-          if (!FnScriptResources.DoesConstantExist(name)) {
+          if (!FunctalResources.DoesConstantExist(name)) {
             throw new ArgumentException(String.Format("the specified constant ({0}) does not exist", name));
           }
 
@@ -1038,7 +1038,7 @@ namespace FunctionScript {
         } else if (FollowsFunctionNameSuccessorRule(ref expression, ref profiles, nameSuccessor)) // If it follows this rule it is a function name
           {
           // Check that it is a valid function name. If not, throw and exception
-          if (!FnScriptResources.DoesFunctionGroupExist(name) && name != "if") {
+          if (!FunctalResources.DoesFunctionGroupExist(name) && name != "if") {
             throw new ArgumentException(String.Format("the specified function ({0}) does not exist.", name));
           }
 
@@ -1624,7 +1624,7 @@ namespace FunctionScript {
       constantName = expression.Substring(constantStart, constantSuccessor - constantStart);
 
       //we have already determined the constant exists in syntax checking, we can go straight ahead and add it
-      ExecutionList.Add(FnScriptResources.GetConstant(constantName));
+      ExecutionList.Add(FunctalResources.GetConstant(constantName));
       IsBound.Add(false);
     }
 
@@ -1703,10 +1703,10 @@ namespace FunctionScript {
       if (functionName == "if")                // If it's a conditional argument, then create a function pointer using one of the "return" arguments, either 1 or 2, depending on which one has the higher type precedence
       {
         //figure out which return type has the highest precedence
-        if (FnScriptResources.TypePrecedence[compiledFunctionArguments[1].GetWrappedObjectType()] > FnScriptResources.TypePrecedence[compiledFunctionArguments[2].GetWrappedObjectType()]) {
+        if (FunctalResources.TypePrecedence[compiledFunctionArguments[1].GetWrappedObjectType()] > FunctalResources.TypePrecedence[compiledFunctionArguments[2].GetWrappedObjectType()]) {
 
-          if (FnScriptResources.ImplicitConversionSwitches.ContainsKey(compiledFunctionArguments[1].GetWrappedObjectType())) {
-            executionList.Add(FnScriptResources.ImplicitConversionSwitches[compiledFunctionArguments[1].GetWrappedObjectType()].CreateObjectWithPointer(new List<FnObject> { compiledFunctionArguments[2] }, parameters, isImmutableExecute));
+          if (FunctalResources.ImplicitConversionSwitches.ContainsKey(compiledFunctionArguments[1].GetWrappedObjectType())) {
+            executionList.Add(FunctalResources.ImplicitConversionSwitches[compiledFunctionArguments[1].GetWrappedObjectType()].CreateObjectWithPointer(new List<FnObject> { compiledFunctionArguments[2] }, parameters, isImmutableExecute));
             isBound[isBound.Count - 1] = true;
             isBound.Add(false);
 
@@ -1714,10 +1714,10 @@ namespace FunctionScript {
           } else {
             throw new ArgumentException("The output type of the expression doesn't match the specified return type", expression);   //This is the WRONG exception message
           }
-        } else if (FnScriptResources.TypePrecedence[compiledFunctionArguments[2].GetWrappedObjectType()] > FnScriptResources.TypePrecedence[compiledFunctionArguments[1].GetWrappedObjectType()]) {
+        } else if (FunctalResources.TypePrecedence[compiledFunctionArguments[2].GetWrappedObjectType()] > FunctalResources.TypePrecedence[compiledFunctionArguments[1].GetWrappedObjectType()]) {
 
-          if (FnScriptResources.ImplicitConversionSwitches.ContainsKey(compiledFunctionArguments[2].GetWrappedObjectType())) {
-            executionList.Add(FnScriptResources.ImplicitConversionSwitches[compiledFunctionArguments[2].GetWrappedObjectType()].CreateObjectWithPointer(new List<FnObject> { compiledFunctionArguments[1] }, parameters, isImmutableExecute));
+          if (FunctalResources.ImplicitConversionSwitches.ContainsKey(compiledFunctionArguments[2].GetWrappedObjectType())) {
+            executionList.Add(FunctalResources.ImplicitConversionSwitches[compiledFunctionArguments[2].GetWrappedObjectType()].CreateObjectWithPointer(new List<FnObject> { compiledFunctionArguments[1] }, parameters, isImmutableExecute));
             isBound[isBound.Count - 1] = true;
             isBound.Add(false);
 
@@ -1731,7 +1731,7 @@ namespace FunctionScript {
 
         isBound.Add(false);
       } else {
-        executionList.Add(FnScriptResources.FnFunctions[functionName].CreateObjectWithPointer(compiledFunctionArguments, parameters, isImmutableExecute));
+        executionList.Add(FunctalResources.FnFunctions[functionName].CreateObjectWithPointer(compiledFunctionArguments, parameters, isImmutableExecute));
         isBound.Add(false);
       }
     }
@@ -1783,46 +1783,46 @@ namespace FunctionScript {
     private FnObject GetOperatorFunction(String operatorString, FnObjectProfiles operatorProfile, List<FnObject> operands, Dictionary<String, FnObject> parameters, FnVariable<Boolean> isPreExecute) {
       if (operatorProfile == FnObjectProfiles.UnaryPrefixOperator) {
         if (operatorString == "+") {
-          return FnScriptResources.FnFunctions["Positive"].CreateObjectWithPointer(operands, parameters, isPreExecute);
+          return FunctalResources.FnFunctions["Positive"].CreateObjectWithPointer(operands, parameters, isPreExecute);
         } else if (operatorString == "-") {
-          return FnScriptResources.FnFunctions["Negative"].CreateObjectWithPointer(operands, parameters, isPreExecute);
+          return FunctalResources.FnFunctions["Negative"].CreateObjectWithPointer(operands, parameters, isPreExecute);
         } else if (operatorString == "!") {
-          return FnScriptResources.FnFunctions["Not"].CreateObjectWithPointer(operands, parameters, isPreExecute);
+          return FunctalResources.FnFunctions["Not"].CreateObjectWithPointer(operands, parameters, isPreExecute);
         }
       } else if (operatorProfile == FnObjectProfiles.UnarySuffixOperator) {
       } else if (operatorProfile == FnObjectProfiles.BinaryOperator) {
         if (operatorString == "+") {
-          return FnScriptResources.FnFunctions["Add"].CreateObjectWithPointer(operands, parameters, isPreExecute);
+          return FunctalResources.FnFunctions["Add"].CreateObjectWithPointer(operands, parameters, isPreExecute);
         } else if (operatorString == "-") {
-          return FnScriptResources.FnFunctions["Subtract"].CreateObjectWithPointer(operands, parameters, isPreExecute);
+          return FunctalResources.FnFunctions["Subtract"].CreateObjectWithPointer(operands, parameters, isPreExecute);
         } else if (operatorString == "*") {
-          return FnScriptResources.FnFunctions["Multiply"].CreateObjectWithPointer(operands, parameters, isPreExecute);
+          return FunctalResources.FnFunctions["Multiply"].CreateObjectWithPointer(operands, parameters, isPreExecute);
         } else if (operatorString == "/") {
-          return FnScriptResources.FnFunctions["Divide"].CreateObjectWithPointer(operands, parameters, isPreExecute);
+          return FunctalResources.FnFunctions["Divide"].CreateObjectWithPointer(operands, parameters, isPreExecute);
         } else if (operatorString == "%") {
-          return FnScriptResources.FnFunctions["Mod"].CreateObjectWithPointer(operands, parameters, isPreExecute);
+          return FunctalResources.FnFunctions["Mod"].CreateObjectWithPointer(operands, parameters, isPreExecute);
         } else if (operatorString == ">") {
-          return FnScriptResources.FnFunctions["IsGreaterThan"].CreateObjectWithPointer(operands, parameters, isPreExecute);
+          return FunctalResources.FnFunctions["IsGreaterThan"].CreateObjectWithPointer(operands, parameters, isPreExecute);
         } else if (operatorString == ">=") {
-          return FnScriptResources.FnFunctions["IsGreaterThanOrEqual"].CreateObjectWithPointer(operands, parameters, isPreExecute);
+          return FunctalResources.FnFunctions["IsGreaterThanOrEqual"].CreateObjectWithPointer(operands, parameters, isPreExecute);
         } else if (operatorString == "<") {
-          return FnScriptResources.FnFunctions["IsLessThan"].CreateObjectWithPointer(operands, parameters, isPreExecute);
+          return FunctalResources.FnFunctions["IsLessThan"].CreateObjectWithPointer(operands, parameters, isPreExecute);
         } else if (operatorString == "<=") {
-          return FnScriptResources.FnFunctions["IsLessThanOrEqual"].CreateObjectWithPointer(operands, parameters, isPreExecute);
+          return FunctalResources.FnFunctions["IsLessThanOrEqual"].CreateObjectWithPointer(operands, parameters, isPreExecute);
         } else if (operatorString == "==") {
-          return FnScriptResources.FnFunctions["IsEqual"].CreateObjectWithPointer(operands, parameters, isPreExecute);
+          return FunctalResources.FnFunctions["IsEqual"].CreateObjectWithPointer(operands, parameters, isPreExecute);
         } else if (operatorString == "!=") {
-          return FnScriptResources.FnFunctions["IsNotEqual"].CreateObjectWithPointer(operands, parameters, isPreExecute);
+          return FunctalResources.FnFunctions["IsNotEqual"].CreateObjectWithPointer(operands, parameters, isPreExecute);
         } else if (operatorString == "&&") {
-          return FnScriptResources.FnFunctions["And"].CreateObjectWithPointer(operands, parameters, isPreExecute);
+          return FunctalResources.FnFunctions["And"].CreateObjectWithPointer(operands, parameters, isPreExecute);
         } else if (operatorString == "!&&") {
-          return FnScriptResources.FnFunctions["Nand"].CreateObjectWithPointer(operands, parameters, isPreExecute);
+          return FunctalResources.FnFunctions["Nand"].CreateObjectWithPointer(operands, parameters, isPreExecute);
         } else if (operatorString == "||") {
-          return FnScriptResources.FnFunctions["Or"].CreateObjectWithPointer(operands, parameters, isPreExecute);
+          return FunctalResources.FnFunctions["Or"].CreateObjectWithPointer(operands, parameters, isPreExecute);
         } else if (operatorString == "!||") {
-          return FnScriptResources.FnFunctions["Nor"].CreateObjectWithPointer(operands, parameters, isPreExecute);
+          return FunctalResources.FnFunctions["Nor"].CreateObjectWithPointer(operands, parameters, isPreExecute);
         } else if (operatorString == "^") {
-          return FnScriptResources.FnFunctions["Xor"].CreateObjectWithPointer(operands, parameters, isPreExecute);
+          return FunctalResources.FnFunctions["Xor"].CreateObjectWithPointer(operands, parameters, isPreExecute);
         }
         //This is where we will add XNor, at the end of FnScript 2.2 upgrade
       }

@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace FunctionScript {
+namespace Functal {
   /// <summary>
   /// Is used to define a function callable from fnScript, encapsulates all possible overloads, and returns the corrent
   /// one to the compiler based on input parameters.
@@ -95,7 +95,7 @@ namespace FunctionScript {
           for (int j = 0; j < currentFunctionsTypeArray.Length; j++) {
             //if we have two conflicting data types
             if (currentFunctionsTypeArray[j] != arguments[j].GetWrappedObjectType()) {
-              Int32 TypeAmbiguity = FnScriptResources.GetAmbiguityScore(currentFunctionsTypeArray[j], arguments[j].GetWrappedObjectType());
+              Int32 TypeAmbiguity = FunctalResources.GetAmbiguityScore(currentFunctionsTypeArray[j], arguments[j].GetWrappedObjectType());
               if (TypeAmbiguity <= 0) //if this is 0, then our two types are on the same level of ambiguity and so are unable to up cast. If it is less than zero, than the one to cast to is of a lower data type, so up casting isn't possible
               {
                 Ambiguity[i] = -1;
@@ -137,7 +137,7 @@ namespace FunctionScript {
 
         for (int i = 0; i < arguments.Count; i++) {
           if (FunctionPointers[LowestScoreIndex].GetFunctionTypeArray()[i] != arguments[i].GetWrappedObjectType()) {
-            arguments[i] = FnScriptResources.ImplicitConversionSwitches[FunctionPointers[LowestScoreIndex].GetFunctionTypeArray()[i]].CreateObjectWithPointer(new List<FnObject> { arguments[i] }, parameters, isPreExecute);
+            arguments[i] = FunctalResources.ImplicitConversionSwitches[FunctionPointers[LowestScoreIndex].GetFunctionTypeArray()[i]].CreateObjectWithPointer(new List<FnObject> { arguments[i] }, parameters, isPreExecute);
 
             //ExecutionList.Add(FnScriptResources.ImplicitConversionSwitches[typeof(T)].CreateObjectWithPointer(new List<FnObject> { ExecutionList.Last() }, GhostArguments));
           }

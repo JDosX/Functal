@@ -1,6 +1,6 @@
-namespace FunctionScript {
+namespace Functal {
   /// <summary>
-  /// Represents a FunctionScript variable/parameter.
+  /// Represents a Functal variable/parameter.
   /// </summary>
   /// <typeparam name="T">The type wrapped by the <see cref="FnVariable{T}"/>.</typeparam>
   public class FnVariable<T> : FnObject<T> {

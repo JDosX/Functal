@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace FunctionScript {
+namespace Functal {
   /// <summary>
   /// The generic interface for a function pointer.
   /// </summary>
