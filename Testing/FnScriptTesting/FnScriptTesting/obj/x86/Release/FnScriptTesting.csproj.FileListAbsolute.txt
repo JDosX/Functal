@@ -29,3 +29,15 @@ D:\Data\My Documents\Projects\FunctionScript\Testing\FnScriptTesting\FnScriptTes
 D:\Data\My Documents\Projects\FunctionScript\Testing\FnScriptTesting\FnScriptTesting\bin\Release\FnScriptTesting.pdb
 D:\Data\My Documents\Projects\FunctionScript\Testing\FnScriptTesting\FnScriptTesting\bin\Release\FunctionScript.dll
 D:\Data\My Documents\Projects\FunctionScript\Testing\FnScriptTesting\FnScriptTesting\bin\Release\FunctionScript.pdb
+E:\Users\Jayden\Projects\FunctionScript\Testing\FnScriptTesting\FnScriptTesting\bin\Release\FnScriptTesting.exe.config
+E:\Users\Jayden\Projects\FunctionScript\Testing\FnScriptTesting\FnScriptTesting\bin\Release\FnScriptTesting.exe
+E:\Users\Jayden\Projects\FunctionScript\Testing\FnScriptTesting\FnScriptTesting\bin\Release\FnScriptTesting.pdb
+E:\Users\Jayden\Projects\FunctionScript\Testing\FnScriptTesting\FnScriptTesting\bin\Release\FunctionScript.pdb
+E:\Users\Jayden\Projects\FunctionScript\Testing\FnScriptTesting\FnScriptTesting\obj\x86\Release\FnScriptTesting.csprojAssemblyReference.cache
+E:\Users\Jayden\Projects\FunctionScript\Testing\FnScriptTesting\FnScriptTesting\obj\x86\Release\FnScriptTesting.Form1.resources
+E:\Users\Jayden\Projects\FunctionScript\Testing\FnScriptTesting\FnScriptTesting\obj\x86\Release\FnScriptTesting.Properties.Resources.resources
+E:\Users\Jayden\Projects\FunctionScript\Testing\FnScriptTesting\FnScriptTesting\obj\x86\Release\FnScriptTesting.csproj.GenerateResource.cache
+E:\Users\Jayden\Projects\FunctionScript\Testing\FnScriptTesting\FnScriptTesting\obj\x86\Release\FnScriptTesting.csproj.CoreCompileInputs.cache
+E:\Users\Jayden\Projects\FunctionScript\Testing\FnScriptTesting\FnScriptTesting\obj\x86\Release\FnScriptTesting.csproj.CopyComplete
+E:\Users\Jayden\Projects\FunctionScript\Testing\FnScriptTesting\FnScriptTesting\obj\x86\Release\FnScriptTesting.exe
+E:\Users\Jayden\Projects\FunctionScript\Testing\FnScriptTesting\FnScriptTesting\obj\x86\Release\FnScriptTesting.pdb

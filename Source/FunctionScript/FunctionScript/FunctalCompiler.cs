@@ -1700,10 +1700,21 @@ namespace Functal {
         index += 1;
       }
 
-      if (functionName == "if")                // If it's a conditional argument, then create a function pointer using one of the "return" arguments, either 1 or 2, depending on which one has the higher type precedence
+      if (functionName == "if")                // If it's a conditional argument, then create a function pointer using the type one of the "return" arguments, either 1 or 2, depending on which one has the higher type precedence
       {
-        //figure out which return type has the highest precedence
-        if (FunctalResources.TypePrecedence[compiledFunctionArguments[1].GetWrappedObjectType()] > FunctalResources.TypePrecedence[compiledFunctionArguments[2].GetWrappedObjectType()]) {
+        Type trueArgType = compiledFunctionArguments[1].GetWrappedObjectType();
+        Type falseArgType = compiledFunctionArguments[2].GetWrappedObjectType();
+
+        // If one of the types cannot be implicitly converted between, both types must match.
+        bool isTrueArgTypeConvertible = FunctalResources.TypePrecedence.ContainsKey(trueArgType);
+        bool isFalseArgTypeConvertible = FunctalResources.TypePrecedence.ContainsKey(falseArgType);
+        if (!isTrueArgTypeConvertible && !isFalseArgTypeConvertible) {
+          if (!trueArgType.Equals(falseArgType)) {
+            throw new ArgumentException("The true and false code paths of an if statement must either be the same type, or an implicit conversion must exist between the two types.", expression);
+          }
+        }
+        // figure out which return type has the highest precedence
+        else if (FunctalResources.TypePrecedence[compiledFunctionArguments[1].GetWrappedObjectType()] > FunctalResources.TypePrecedence[compiledFunctionArguments[2].GetWrappedObjectType()]) {
 
           if (FunctalResources.ImplicitConversionSwitches.ContainsKey(compiledFunctionArguments[1].GetWrappedObjectType())) {
             executionList.Add(FunctalResources.ImplicitConversionSwitches[compiledFunctionArguments[1].GetWrappedObjectType()].CreateObjectWithPointer(new List<FnObject> { compiledFunctionArguments[2] }, parameters, isImmutableExecute));
@@ -1712,7 +1723,7 @@ namespace Functal {
 
             compiledFunctionArguments[2] = executionList.Last();
           } else {
-            throw new ArgumentException("The output type of the expression doesn't match the specified return type", expression);   //This is the WRONG exception message
+            throw new ArgumentException("The true and false code paths of an if statement must either be the same type, or an implicit conversion must exist between the two types.", expression);
           }
         } else if (FunctalResources.TypePrecedence[compiledFunctionArguments[2].GetWrappedObjectType()] > FunctalResources.TypePrecedence[compiledFunctionArguments[1].GetWrappedObjectType()]) {
 
@@ -1723,7 +1734,7 @@ namespace Functal {
 
             compiledFunctionArguments[1] = executionList.Last();
           } else {
-            throw new ArgumentException("The output type of the expression doesn't match the specified return type", expression);   //This is the WRONG exception message
+            throw new ArgumentException("The true and false code paths of an if statement must either be the same type, or an implicit conversion must exist between the two types.", expression);
           }
         }
 
