@@ -946,7 +946,7 @@ namespace Functal {
     /// <param name="parameterName">The name of the global parameter.</param>
     /// <param name="parameterValue">The value to assign to the parameter.</param>
     /// <exception cref="ArgumentException">
-    /// Thrown if a global parameter of the specified name or type does not exist.
+    /// Thrown if a global parameter of the specified name and type does not exist.
     /// </exception>
     public static void SetGlobalParameter<TInput>(String parameterName, TInput parameterValue) {
       if (GlobalParameters.ContainsKey(parameterName)) {
@@ -1015,7 +1015,7 @@ namespace Functal {
     }
 
     /// <summary>
-    /// Creates an alias for a function group. Function groups can be called with a Functal
+    /// Creates an alias for a function group. Function groups can be called within a Functal
     /// expression using any aliased name.
     /// </summary>
     /// <param name="groupName">The name of the function group to alias.</param>
@@ -1038,7 +1038,7 @@ namespace Functal {
     }
 
     /// <summary>
-    /// Adds an <see cref="FnFunction{Type}"/> to the function group of the provided name.
+    /// Adds an <see cref="FnFunction{T}"/> to the function group of the provided name.
     /// </summary>
     /// <typeparam name="T">The return type of the function.</typeparam>
     /// <param name="name">The name of the group to add it to.</param>

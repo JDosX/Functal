@@ -92,11 +92,13 @@ namespace Functal {
     /// </summary>
     /// <remarks>
     /// For immutable execution to work correctly it requires immutable support from each of the
-    /// functionsthat it uses. 
+    /// functions that it uses. 
     /// </remarks>
-    /// <returns>The computed result of the expression. If a function used in the expression relies
+    /// <returns>
+    /// The computed result of the expression. If a function used in the expression relies
     /// on a state change to compute results, you may notice the returned value differs when
-    /// compared to calling <see cref="Execute"/>.</returns>
+    /// compared to calling <see cref="Execute"/>.
+    /// </returns>
     public T ImmutableExecute() {
       IsImmutableExecute.Value = true;
       T data = ExecutionNode.GetValue();
