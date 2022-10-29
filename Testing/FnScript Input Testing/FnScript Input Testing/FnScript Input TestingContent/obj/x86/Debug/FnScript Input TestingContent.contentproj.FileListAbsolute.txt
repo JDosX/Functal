@@ -1,2 +1,0 @@
-C:\Users\JDos\Documents\Projects\Dynamo\Source\Windows 7_Phone7_Xbox360\FnScript Input Testing\FnScript Input Testing\FnScript Input TestingContent\obj\x86\Debug\ResolveAssemblyReference.cache
-D:\Data\My Documents\Projects\Dynamo\Source\Windows 7_Phone7_Xbox360\FnScript Input Testing\FnScript Input Testing\FnScript Input TestingContent\obj\x86\Debug\FnScript Input TestingContent.contentprojResolveAssemblyReference.cache
